@@ -1,4 +1,6 @@
 
+![Logotipo Barbearia Retrô Preto Branco e Dourado (1)](https://github.com/SSancaSH-Projetos/AutoSenai/assets/158601578/ce3efa41-25ef-49b9-aa71-b51a077584b8)
+
 # Projeto: Autoatendimento Senai São Carlos
 
 - Área: Setor de apoios
