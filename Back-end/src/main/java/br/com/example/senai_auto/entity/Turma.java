@@ -23,5 +23,6 @@ public class Turma implements Serializable{
 	private String codigo_turma;
 	private String nome_curso;
 	private String duracao_curso;
+	@Column(length = 100
 	private String desc_curso;
 }
