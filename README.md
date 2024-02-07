@@ -38,12 +38,6 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
   
 - **Solução:** Implemente manutenção preventiva regularmente, tenha um suporte técnico disponível e um plano de contingência para lidar com problemas imprevistos.
 
-### Treinamento e Conscientização
-
-- **Risco:** Usuários podem não compreender completamente como utilizar o totem, resultando em erros.
-  
-- **Solução:** Ofereça treinamento adequado para usuários e funcionários. Crie materiais de suporte, como manuais ou vídeos instrutivos, para facilitar a compreensão.
-
 ### Manutenção e Atualizações
 
 - **Risco:** Falta de manutenção regular e atualizações podem levar a problemas de desempenho.
@@ -54,11 +48,6 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 
 - **Comentário:** A conectividade é crucial. Considere implementar uma solução offline temporária para situações em que a internet não esteja disponível. Além disso, forneça informações claras aos usuários sobre a necessidade de conectividade e as medidas alternativas disponíveis.
 
-### Feedback dos Usuários
-
-- **Risco:** Falta de feedback ou feedback negativo pode indicar problemas que não foram identificados.
-  
-- **Solução:** Estabeleça canais de comunicação eficientes para receber feedback dos usuários. Esteja disposto a fazer ajustes com base nas sugestões recebidas.
 
 ## 4. Cronograma
 
@@ -71,10 +60,13 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 ### Fevereiro/2024: Desenvolvimento do MVP (menor produto viável)
 
 - Codificação e validação do MVP com os professores e adaptação dos documentos (se necessário)
+- Criação dá tela de turmas
+- Criação dá tela de mapa
+- Criação do designer od app
+- Criação do banco
 
 ### Março/2024: Desenvolvimento do protótipo do aplicativo
 
-- Desenvolvimento das interfaces do usuário, fluxos da aplicação
 - Desenvolvimento dos micro serviços e bancos de dados
 - Revisão e ajuste do protótipo com feedback dos professores
 
