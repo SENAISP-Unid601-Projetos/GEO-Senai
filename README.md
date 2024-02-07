@@ -106,10 +106,9 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 - Sistemas de versionamento de código: Git e GitHub para manter o código versionado e sempre atualizado.
 - Servidores e Infraestrutura em Nuvem: Para hospedar o aplicativo e os dados do sistema.
 - Ferramentas de Teste de Software: Para garantir a qualidade e a confiabilidade do aplicativo e do sistema.
-- API do chat GPT: Custo total (considerando licenças): $50
-- Tela sensível ao toque: Custo total: $500 - $1700
-- Computador embutido, tablet ou sistema embarcado: Custo total: $500 - $800
-- Conectividade (Wi-Fi ou Ethernet): Custo total: $100 - $300
+- servidores ou infraestrutura em nuvem.
+- tablet
+- Conectividade (Wi-Fi ou Ethernet)
 
 ### Equipamentos
 
@@ -122,8 +121,6 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 - Ferramentas de Comunicação Online: Para facilitar a colaboração entre a equipe, como e-mails, mensagens instantâneas e videoconferências.
 
 ## 6. Custos
-
-**OBS:** Essa é uma das principais seções deste documento... realizar um orçamento de tudo que será preciso para desenvolver esse software, principalmente componentes físicos que precisam ser disponibilizados pelo SENAI. Quem irá avaliar esses orçamentos será o professor Marinho!
 
 ### Pessoal
 
@@ -154,37 +151,25 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 
 - Custo total (considerando licenças): $0
 
-#### API do Chat GPT
+#### Tablet
 
-- Custo total (considerando licenças): $50
-
-#### Tela Sensível ao Toque
-
-- Custo total: $500 - $1700
-
-#### Computador Embutido, Tablet ou Sistema Embarcado
-
-- Custo total: $500 - $800
-
-#### Conectividade (Wi-Fi ou Ethernet)
-
-- Custo total: $100 - $300
+- Custo total: $500
 
 ### Equipamentos
 
 #### Estrutura Física do Totem
 
-- Custo total: $3.300,00 - $10.000,00
+- Custo total: R$5.000,00
 
 ### Total Geral
 
 - Pessoal: $0
-- Tecnologia: $1.650 - $3.350
-- Equipamentos: $3.300,00 - $10.000,00
+- Tecnologia: R$500
+- Equipamentos: R$5.000,00
 
 ### Custo Total do Projeto
 
-- $4.950,00 - $13.350,00
+- R$5,500.00
 
 ## 7. Documentação
 
