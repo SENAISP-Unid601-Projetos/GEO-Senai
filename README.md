@@ -98,7 +98,6 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 - Sistemas de versionamento de código: Git e GitHub para manter o código versionado e sempre atualizado.
 - Servidores e Infraestrutura em Nuvem: Para hospedar o aplicativo e os dados do sistema.
 - Ferramentas de Teste de Software: Para garantir a qualidade e a confiabilidade do aplicativo e do sistema.
-- servidores ou infraestrutura em nuvem.
 - tablet
 - Conectividade (Wi-Fi ou Ethernet)
 
@@ -165,27 +164,27 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 
 ## 7. Documentação
 
-### Requisitos Funcionais
+### Requisitos Funcionais (Aluno)
 
 - Como aluno novo quero poder encontrar informações rápidas sem enfrentar filas no setor de apoio.
 
-### Critérios de Aceitação
+### Critérios de Aceitação (Desenvolvedores)
 
 - Nosso aplicativo irá possuir uma integração com o setor de apoio e facilitar os alunos em sua assistência.
 
-### Critérios de Aceitação
+### Requisitos Funcionais (Aluno)
 
 - Como aluno, gostaria de ter uma tela que através de um botão eu pudesse encontrar as salas e informações do Senai.
 
-### Critérios de Aceitação
+### Critérios de Aceitação (Desenvolvedores)
 
 - Nosso token terá as informações acessadas através de botões que guiarão o usuário a telas de informações para as respectivas informações do Senai.
 
-### Critérios de Aceitação
+### Requisitos Funcionais (Funcionarios)
 
 - Como funcionário(a) do setor de apoio quero ser atualizado(a) sobre as informações de assistência e sobre como elas têm ajudado os alunos.
 
-### Critérios de Aceitação
+### Critérios de Aceitação (Desenvolvedores)
 
 - Por isso, o funcionário do setor de apoio terá acesso a um perfil de administrador que será contratado pelo setor de apoio.
 
@@ -193,7 +192,7 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 
 ### Taxa de Utilização do Totem
 
-- **Objetivo:** Alcançar uma taxa de utilização do totem de autoatendimento de 35% entre os estudantes e visitantes e iniciantes do Senai.
+- **Objetivo:** Alcançar uma taxa de utilização do totem de autoatendimento de 25% entre os estudantes veteranos e 50% entre os visitantes e iniciantes do Senai.
   
 - **Métrica:** Número total de interações com o totem em comparação com o número total de estudantes e visitantes.
 
@@ -211,7 +210,7 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 
 ### Avaliação da Informação Acadêmica
 
-- **Objetivo:** Garantir que 90% dos estudantes acessem informações acadêmicas relevantes por meio do totem.
+- **Objetivo:** Garantir que 70% dos estudantes acessem informações acadêmicas relevantes por meio do totem.
   
 - **Métrica:** Número de estudantes que acessam informações acadêmicas em comparação com o número total de estudantes matriculados.
 
@@ -235,7 +234,7 @@ O projeto visa implementar um totem de autoatendimento no ambiente do Senai, pro
 
 ### Disponibilidade do Totem
 
-- **Objetivo:** Garantir uma disponibilidade do totem de pelo menos 98% ao longo do tempo.
+- **Objetivo:** Garantir uma disponibilidade do totem de pelo menos 75% ao longo do tempo.
   
 - **Métrica:** Tempo total de operação sem interrupções em comparação com o tempo total planejado.
 
