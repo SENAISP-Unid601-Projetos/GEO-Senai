@@ -1,0 +1,211 @@
+body{
+    background-color: #fffcfc;
+    background-image: url("https://www.transparenttextures.com/patterns/shattered.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    margin : 0;
+}   
+
+.container{
+     
+    display: flex;  
+   
+
+}
+header{
+    background-color: rgb(255, 255, 255); 
+    top: 0;
+    color: rgb(3, 3, 3);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5vw;
+    width: 100vw;
+    border-bottom: 2px solid rgb(154, 154, 154);
+    padding-bottom: 0.5vh;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra */
+
+    
+}
+.itensMenu{
+    margin-top: 7vh;
+    margin-left: 60px;
+    text-decoration: none;
+    color: black;
+
+}
+#imgLogo{
+   
+    height: 100px;
+    width: 100px;
+    margin-left: 20px;
+}
+
+.containerUm{
+    margin-top: 50px;
+    display: flex;
+}
+.ImagemTextoUm{
+    height: 500px;
+    width: 500px;
+    margin-left: 80px;
+    margin-bottom: 15vh; 
+}
+.ImagemTextoUmSenai{
+    margin-top: 10vh;
+    height: 150px;
+    width: 500px;
+    margin-left: 45px;
+    margin-bottom: 20vh; 
+}
+
+.textoUm{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 100px;
+    margin-right: -20px;
+    height: 100px;
+    width: 800px;
+    font-size: 28px;
+}
+.containerDois{
+    margin-top: 100px;
+    height: 56vh;
+    width: 99vw;
+    background-color: rgb(249, 3, 3);
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra */
+}
+#tituloContainer2{
+    margin-top: 100px;
+}
+#qrCode{
+    height: 200px;
+    width: 200px;
+}
+#TextoContainerDois{
+    color: rgb(233, 233, 233);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+.containerTres{
+    height: 50vh;
+}
+#containerFooter{
+    padding-top: 5px;
+    height: 100px;
+    background-color: rgb(247, 50, 1);
+    color: rgba(240, 248, 255, 0.674);
+}
+#textFooter{
+    font-size: 13px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#txtFooter{
+    
+    margin-right: 100px;
+    margin-left: 100px;
+}
+#btnUm{
+    margin-left: 11vw;
+    padding: 10px;
+    width: 30vw;
+    font-size: 20px;
+    color: rgb(53, 52, 52);
+    background-color: #fffcfc;
+background-image: url("https://www.transparenttextures.com/patterns/shattered.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    border: 2px solid red;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#btnUm:hover{
+    background-color: red;
+    color: white; /* Muda a cor do texto quando o botão está em hover */
+}
+#textCentral{
+    margin-left: 13%;
+    margin-bottom: 40vh;
+    margin-top: 10vh;
+}
+#titulo{
+    margin-left: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+}
+#titulo2{
+    font-family: 'Sacramento', cursive;
+    margin-left: 30px;
+    color: red;
+    font-size: 120px;
+    margin-top: 90px;
+}
+
+#btnHeader{
+    background-color: red;
+    height: 35px;
+    border: none;
+    margin-top: 38px;
+    margin-left: 20px;
+    color: aliceblue ;
+}
+#barra{
+    height: 50px;
+    width: 3px;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 20px;
+    background-color: rgb(51, 52, 52);
+}
+
+
+/* Estilizando a barra de rolagem */
+::-webkit-scrollbar {
+    width: 10px; /* largura da barra de rolagem */
+}
+
+/* Estilizando o botão da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* cor do botão da barra de rolagem */
+    border-radius: 5px; /* borda arredondada do botão */
+}
+
+/* Estilizando a trilha da barra de rolagem */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* cor de fundo da trilha */
+}
+body {
+    background-color: rgb(246, 246, 246);
+    margin: 0;
+    overflow-x: hidden; /* Removendo a barra de rolagem horizontal */
+}
+
+        .card {
+            width: 300px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            margin: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+        }
+#containerCards{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20vh;
+}
+
+.tituloCard{
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
