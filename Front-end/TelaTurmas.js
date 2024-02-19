@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { BackHandler } from 'react-native-web';
 
 const TelaTurmas = ({ navigation }) => {
     const [turmas, setTurmas] = useState([]);
@@ -16,6 +17,10 @@ const TelaTurmas = ({ navigation }) => {
     const adicionarTurma = () => {
         navigation.navigate('CadastroTurma');
     };
+
+    const voltar = () => {
+        navigation.navigate('TelaInicial');
+  };
 
     return (
         <View style={styles.container}>
@@ -38,12 +43,12 @@ const TelaTurmas = ({ navigation }) => {
                         <Text style={styles.buttonText}>{turma.codigo_turma}</Text>
                     </Pressable>
                 ))}
-                <Pressable style={styles.ButtonTurmas} onPress={adicionarTurma}>
+                <Pressable style={styles.ButtonAdd} onPress={adicionarTurma}>
                     <Text style={styles.buttonText}>Adicionar Turma</Text>
                 </Pressable>
             </View>
 
-            <Pressable style={styles.ReturnButton} onPress={() => console.log('Configurações pressionadas')}>
+            <Pressable style={styles.ReturnButton} onPress={voltar}>
                 <Image source={require("./assets/SetaRetorno2.png")} style={styles.seta} />
             </Pressable>
 
