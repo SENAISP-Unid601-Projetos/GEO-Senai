@@ -13,9 +13,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="TelaInicial">
-        <Stack.Screen name="TelaTurmas" component={TelaTurmas} />
-        <Stack.Screen name="CadastroTurma" component={CadastroTurma} />
-        <Stack.Screen name="TelaInicial" component={TelaInicial} />
+        <Stack.Screen name="TelaTurmas" component={TelaTurmas} options={{ headerShown: false }} />
+        <Stack.Screen name="CadastroTurma" component={CadastroTurma} options={{ headerShown: false }} />
+        <Stack.Screen name="TelaInicial" component={TelaInicial} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

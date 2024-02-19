@@ -18,10 +18,6 @@ const TelaTurmas = ({ navigation }) => {
         navigation.navigate('CadastroTurma');
     };
 
-    const voltar = () => {
-        navigation.navigate('TelaInicial');
-  };
-
     return (
         <View style={styles.container}>
             <Text style={styles.BemVindo}>Turmas</Text>
@@ -48,7 +44,7 @@ const TelaTurmas = ({ navigation }) => {
                 </Pressable>
             </View>
 
-            <Pressable style={styles.ReturnButton} onPress={voltar}>
+            <Pressable style={styles.ReturnButton} onPress={() => navigation.goBack()}>
                 <Image source={require("./assets/SetaRetorno2.png")} style={styles.seta} />
             </Pressable>
 
@@ -75,6 +71,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#ccc',
         alignItems: 'flex-end',
+        flexDirection: 'row',
     },
     headerText: {
         fontSize: 25,

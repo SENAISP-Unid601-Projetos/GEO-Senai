@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Pressable, Alert, StyleSheet, Text } from 'react-native';
+import { View, TextInput, Pressable, Alert, StyleSheet, Text, Image } from 'react-native';
 
 const CadastroTurma = ({ navigation }) => {
     const [codigoTurma, setCodigoTurma] = useState('');
@@ -49,6 +49,15 @@ const CadastroTurma = ({ navigation }) => {
   
     return (
       <View style={styles.container}>
+        <View style={styles.header}>
+          <Pressable onPress={() => navigation.goBack()}>
+            <Image
+              source={require("./assets/SetaRetorno2.png")}
+              style={styles.seta}
+            />
+          </Pressable>
+          <Text style={styles.headerText}>Cadastro de Turma</Text>
+        </View>
         <TextInput
           style={styles.input}
           placeholder="Código da Turma"
@@ -92,7 +101,6 @@ const CadastroTurma = ({ navigation }) => {
     container: {
       backgroundColor: 'white',
       flex: 1,
-      justifyContent: 'center',
       padding: 20,
     },
     input: {
@@ -115,6 +123,20 @@ const CadastroTurma = ({ navigation }) => {
       color: '#fff',
       fontSize: 18,
       fontWeight: 'bold',
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 20,
+    },
+    headerText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    seta: {
+      width: 30,
+      height: 30,
+      marginRight: 10,
     },
   });
   
