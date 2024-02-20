@@ -6,8 +6,7 @@ const TelaTurmas = ({ navigation }) => {
     const [turmas, setTurmas] = useState([]);
 
     useEffect(() => {
-        // Aqui você faria uma chamada para a sua API para obter a lista de turmas
-        // Exemplo fictício:
+        // Aqui você faz uma chamada para a sua API para obter a lista de turmas
         fetch('http://localhost:8080/senaiauto/turmas')
             .then(response => response.json())
             .then(data => setTurmas(data))
