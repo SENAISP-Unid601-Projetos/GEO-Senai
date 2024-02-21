@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Data
-public class Turma implements Serializable{
+public class sTurma implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id

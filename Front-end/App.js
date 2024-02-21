@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import CadastroTurma from "./CadastroTurma";
 import TelaTurmas from "./TelaTurmas";
 import TelaInicial from "./TelaInicial";
+import InformacoesTurma from "./InformacoesTurma";
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,11 @@ const App = () => {
         <Stack.Screen
           name="TelaInicial"
           component={TelaInicial}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="InformacoesTurma"
+          component={InformacoesTurma}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

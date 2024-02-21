@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-} from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import Cabecalho from "./src/components/Cabecalho";
 
 const TelaInicial = ({ navigation }) => {
   const botaoTurmas = () => {
@@ -23,10 +18,8 @@ const TelaInicial = ({ navigation }) => {
       <Text style={styles.TextoMedio}>
         É um prazer tê-los conosco, como podemos ajudar?
       </Text>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>SENAI</Text>
-        <Image source={require("./assets/Brasil.png")} style={styles.logo} />
-      </View>
+
+      <Cabecalho />
 
       <Pressable
         style={styles.classesButton}
