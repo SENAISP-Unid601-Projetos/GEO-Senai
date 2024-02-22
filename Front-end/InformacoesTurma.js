@@ -1,25 +1,27 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import Cabecalho from './src/components/Cabecalho';
+
+// Importando o ícone de seta
+import { FontAwesome } from '@expo/vector-icons';
 
 // Componente principal da tela inicial
-const InformacoesTurma = ({ route }) => {
+const InformacoesTurma = ({ route, navigation }) => {
   const { turma } = route.params;
 
   return (
     <View style={styles.container}>
-      {/* Cabeçalho vermelho no topo */}
-      <View style={styles.header}>
-        <Cabecalho/>
-      </View>
+      {/* Ícone de seta para voltar */}
+      <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
+        <FontAwesome name="arrow-left" size={24} color="black" />
+      </Pressable>
 
       {/* Quadro vermelho ocupando a tela */}
       <View style={styles.redBack}>
         {/* Quadro1 */}
-        <View style={[styles.quadro, styles.roundedCorners]}>
+        <View style={[styles.quadro, styles.roundedCorners, styles.quadroPadding]}>
           <Text style={styles.titulo}>{turma.codigo_turma}</Text>
-          <Text style={styles.corpoTXT}>Sala: {turma.sala_turma}</Text>
-          <Text style={styles.corpoTXT}>Duração do curso: {turma.duracao_curso}</Text>
+          <Text style={styles.txtInfoCurso}>Sala: {turma.sala_turma}</Text>
+          <Text style={styles.txtInfoCurso}>Duração do curso: {turma.duracao_curso}</Text>
 
           <Pressable
             style={[styles.botãoVerMapa, { borderWidth: 1, }]} 
@@ -30,7 +32,7 @@ const InformacoesTurma = ({ route }) => {
         </View>
 
         {/* Quadro2 */}
-        <View style={[styles.quadro, styles.roundedCorners]}>
+        <View style={[styles.quadro, styles.roundedCorners, styles.quadroPadding]}>
 
         <Pressable
             style={[styles.botaoFoto, { borderWidth: 1, }]} 
@@ -55,7 +57,7 @@ const InformacoesTurma = ({ route }) => {
         </View>
 
         {/* Quadro3 */}
-        <View style={[styles.quadro3, styles.roundedCorners]}>
+        <View style={[styles.quadro3, styles.roundedCorners, styles.quadroPadding]}>
 
         <Text style={styles.titulo}>{turma.nome_curso}</Text>
 
@@ -74,27 +76,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff', // Cor de fundo da tela
-    paddingHorizontal: 120, // Adicionando margens laterais
+    paddingHorizontal: 120,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
-  header: {
-    backgroundColor: '#ff0000', // Cor de fundo vermelha
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc', // Cor da borda inferior
-    alignItems: 'flex-end', // Alinhar itens à direita
-    height: 70, // Altura do cabeçalho
+  backButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 1,
   },
-  headerText: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#fff', // Cor do texto do cabeçalho (branco)
-  },
-  logo: {
-    width: 70,
-    height: 53,
-  },
-
-  //quadro vermelho ocupando a tela
   redBack: {
     flex: 1,
     backgroundColor: 'white', // Cor de fundo vermelha do quadrado
@@ -157,7 +148,15 @@ const styles = StyleSheet.create({
  
   titulo: {
     textAlign: 'center',
-    fontSize: 50,
+    fontSize: 40,
+    fontWeight: "bold",
+    color: 'white',
+  },
+  txtInfoCurso: {
+    textAlign: 'center',
+    fontSize: 25,
+    fontWeight: "bold",
+    color: 'white',
   },
   corpoTXT: {
     textAlign: 'center',
@@ -177,7 +176,11 @@ const styles = StyleSheet.create({
   roundedCorners: {
     borderRadius: 20,
   },
-
+  
+  // Estilo para adicionar margem horizontal aos quadros
+  quadroPadding: {
+    paddingHorizontal: 40,
+  },
 });
 
 export default InformacoesTurma;
