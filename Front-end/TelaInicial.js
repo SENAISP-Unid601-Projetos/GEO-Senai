@@ -14,9 +14,9 @@ const TelaInicial = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.BemVindo}>Sejam bem vindos</Text>
+      <Text style={styles.BemVindo}>Seja bem-vindo!</Text>
       <Text style={styles.TextoMedio}>
-        É um prazer tê-los conosco, como podemos ajudar?
+        É um prazer tê-lo conosco, como posso te ajudar?
       </Text>
 
       <Cabecalho />
@@ -108,14 +108,16 @@ const styles = StyleSheet.create({
   },
   BemVindo: {
     color: "black",
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
+    marginBottom: 10,
   },
   TextoMedio: {
     color: "black",
-    fontSize: "15",
+    fontSize: 20,
     fontWeight: "normal",
     borderRadius: 40,
+    marginBottom: 50,
   },
 });
 

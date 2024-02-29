@@ -12,7 +12,7 @@ const TelaTurmas = ({ navigation }) => {
 
   useEffect(() => {
     // Chamada para a sua API para obter a lista de turmas
-    fetch('http://localhost:8080/senaiauto/turmas')
+    fetch('http://10.110.12.19:8080/senaiauto/turmas')
       .then(response => response.json())
       .then(data => setTurmas(data))
       .catch(error => console.error('Erro ao obter turmas:', error));
@@ -159,9 +159,8 @@ const styles = StyleSheet.create({
   },
   BemVindo: {
     color: 'black',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
-    marginBottom: 20,
   },
   Buttons: {
     borderRadius: 10,

@@ -25,7 +25,7 @@ const CadastroTurma = ({ navigation }) => {
       };
   
       // Enviar os dados para o back-end
-      fetch('http://localhost:8080/senaiauto/turmas/nova-turma', {
+      fetch('http://10.110.12.19:8080/senaiauto/turmas/nova-turma', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
