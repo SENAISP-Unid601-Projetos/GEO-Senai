@@ -252,8 +252,10 @@ img {
   left: 1rem;
   line-height: 6rem;
   font-size: var(--biggest-font-size);
-  background: var(--text-gradient);
-  color: transparent;
+ 
+  background: linear-gradient(180deg, white 20%, black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -264,13 +266,13 @@ img {
 }
 
 .home__title-description {
-  font-size: var(--h3-font-size);
+  font-size: 3vw;
   font-weight: var(--font-medium);
   margin-bottom: var(--mb-1);
 }
 
 .home__description {
-  font-size: large;
+  font-size: 2vw;
   margin-bottom: var(--mb-2-5);
   line-height: var(--text-line-height);
 }
@@ -376,7 +378,7 @@ img {
 .case__description {
   margin-bottom: var(--mb-1-5);
   line-height: var(--text-line-height);
-   font-size: large;
+   font-size: 2vw;
 }
 
 /*=============== DISCOUNT ===============*/
@@ -388,13 +390,13 @@ img {
 }
 
 .discount__title {
-  font-size: var(--h3-font-size);
+  font-size: 3vw;
   margin-bottom: var(--mb-0-75);
 }
 
 .discount__description {
   margin-bottom: var(--mb-1);
-   font-size: large;
+   font-size: 2vw;
 }
 
 .discount__img {
@@ -779,3 +781,8 @@ img {
 .senaiTitulo{
   color: red;
 }
+
+.botaoGitHub{
+  color: white;
+}
+
