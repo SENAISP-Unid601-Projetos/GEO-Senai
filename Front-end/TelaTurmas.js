@@ -34,7 +34,7 @@ const TelaTurmas = ({ navigation }) => {
       setAdm(true);
       setModalVisible(false);
     } else {
-      window.alert('Senha incorreta.');
+      Alert.alert('Senha incorreta.');
     }
   };
 
@@ -64,7 +64,7 @@ const TelaTurmas = ({ navigation }) => {
           <Pressable
             key={turma.id}
             style={styles.ButtonTurmas}
-            onPress={() => navigation.navigate('InformacoesTurma', { turma: turma })}
+            onPress={() => navigation.navigate('InformacoesTurma', { turma: turma, adm: adm, senha: senha, setAdm: setAdm })}
           >
             <Text style={styles.buttonText}>{turma.codigo_turma}</Text>
           </Pressable>

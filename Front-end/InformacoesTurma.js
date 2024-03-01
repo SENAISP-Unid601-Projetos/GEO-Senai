@@ -1,10 +1,44 @@
-import React from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Image, Pressable, Modal, TextInput, Button, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import BotaoADM from "./src/components/BotaoADM";
 
 const InformacoesTurma = ({ route, navigation }) => {
-  const { turma } = route.params;
+  const { turma, adm, setAdm } = route.params;
+  const [modalVisible, setModalVisible] = useState(false);
+  const [senha, setSenha] = useState('');
+
+  useEffect(() => {
+    if (senha === '1234') {
+      setAdm(true);
+    } else {
+      setAdm(false);
+    }
+  }, [senha]); // Executa quando o estado de senha é alterado
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const toggleADM = () => {
+    if (!adm) {
+      toggleModal(); // Se não for adm, abre o modal de login
+    } else {
+      setAdm(false); // Se for adm, desloga o usuário
+      setModalVisible(false); // Fecha o modal
+    }
+  };
+
+  // Função para lidar com o login
+  const handleLogin = () => {
+    // Lógica de autenticação
+    if (senha === '1234') {
+      setAdm(true);
+      setModalVisible(false);
+    } else {
+      Alert.alert('Senha incorreta.');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -12,12 +46,43 @@ const InformacoesTurma = ({ route, navigation }) => {
         style={styles.lixeiraButton}
         onPress={() => console.log("Lixeira pressionada")}
       >
-        <View style={styles.circle}>
-          <Image source={require("./assets/lixeiraicon.png")} style={styles.lixeiraIcon} />
-        </View>
+        {adm && (
+          <View style={styles.circle}>
+            <Image source={require("./assets/lixeiraicon.png")} style={styles.lixeiraIcon} />
+          </View>
+        )}
       </Pressable>
 
-      <BotaoADM />
+      <BotaoADM onPress={toggleADM} adm={adm} />
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Entre como administrador</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Senha"
+              value={senha}
+              onChangeText={text => setSenha(text)} // Atualiza o estado da senha
+              secureTextEntry={true}
+            />
+            <Button title="Login" onPress={handleLogin} />
+            <Pressable
+              style={styles.button}
+              onPress={toggleModal}
+            >
+              <Text style={styles.fecharStyle}>Fechar</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
 
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
         <FontAwesome name="arrow-left" size={24} color="black" />
@@ -195,6 +260,44 @@ const styles = StyleSheet.create({
   lixeiraIcon: {
     width: 30,
     height: 30,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  input: {
+    height: 40,
+    width: 200,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+  },
+  fecharStyle: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 

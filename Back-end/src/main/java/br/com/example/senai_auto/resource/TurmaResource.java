@@ -24,3 +24,9 @@ public class TurmaResource {
 		return turmaRepository.findAll();
 	}
 }
+
+//	@DeleteMapping("/turmas/deletar/{id}")
+//	public String deletaTurma(@PathVariable Long id) {
+//	turmaRepository.deleteById(id);
+//	return ('Turma apagada');
+//	}
