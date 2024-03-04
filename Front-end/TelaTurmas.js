@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Pressable, Modal, TextInput, Button, Alert, ScrollView } from 'react-native';
 import Cabecalho from './src/components/Cabecalho';
 import BotaoADM from './src/components/BotaoADM';
+import { FontAwesome } from '@expo/vector-icons'; // Importe o ícone FontAwesome da biblioteca
+
 
 const TelaTurmas = ({ navigation }) => {
   const [turmas, setTurmas] = useState([]);
@@ -70,17 +72,15 @@ const TelaTurmas = ({ navigation }) => {
           </Pressable>
         ))}
         {adm && (
-          <Pressable style={styles.ButtonAdd} onPress={adicionarTurma}>
-            <Text style={styles.buttonText}>Adicionar Turma</Text>
-          </Pressable>
+            <Pressable style={styles.ButtonAdd} onPress={adicionarTurma}>
+               <FontAwesome name="plus" size={30} color="#ffffff" style={styles.iconPlus} />
+              <Text style={styles.buttonText}>Adicionar Turma</Text> 
+            </Pressable>
         )}
       </View>
 
       <Pressable style={styles.ReturnButton} onPress={() => navigation.goBack()}>
-        <Image
-          source={require('./assets/SetaRetorno2.png')}
-          style={styles.seta}
-        />
+      <FontAwesome name="arrow-left" size={30} color="#ffffff" />
       </Pressable>
 
       {/* Componente BotaoADM */}
@@ -92,6 +92,7 @@ const TelaTurmas = ({ navigation }) => {
           style={styles.atualizarButton}
           onPress={atualizarListaTurmas}
         >
+          <FontAwesome name="refresh" size={30}   style={styles.iconPlus} color="#ffffff" />
           <Text style={styles.buttonAttText}>Atualizar Lista</Text>
         </Pressable>
       )}
@@ -115,7 +116,7 @@ const TelaTurmas = ({ navigation }) => {
               onChangeText={text => setSenha(text)} // Atualiza o estado da senha
               secureTextEntry={true}
             />
-            <Button title="Login" onPress={handleLogin} />
+            <Button title="Login" onPress={handleLogin} style={styles.buttonLogin}/>
             <Pressable
               style={[styles.button]}
               onPress={toggleModal}
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: "##E8E8E8",
   },
   header: {
     position: 'absolute',
@@ -170,14 +171,17 @@ const styles = StyleSheet.create({
   ButtonTurmas: {
     backgroundColor: '#ff0000',
     padding: 20,
-    borderRadius: 30,
     marginBottom: 10,
     alignItems: 'center',
-    width: 200,
+    width: 500,
     height: 65,
+    marginBottom:20
   },
   ButtonAdd: {
-    backgroundColor: '#0384fc',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#02234D',
     padding: 20,
     borderRadius: 30,
     marginBottom: 10,
@@ -186,7 +190,7 @@ const styles = StyleSheet.create({
     height: 65,
   },
   ReturnButton: {
-    backgroundColor: '#ff0000',
+    backgroundColor: '#E8E8E8',
     padding: 5,
     borderRadius: 30,
     alignItems: 'center',
@@ -197,20 +201,26 @@ const styles = StyleSheet.create({
     left: 20,
   },
   atualizarButton: {
-    backgroundColor: '#0384fc',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#02234D',
     padding: 13,
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center', // Adicionando alinhamento vertical para centralizar o texto
-    width: 140,
+    width: 200,
     height: 40,
     position: 'absolute',
     bottom: 20,
     left: 80,
   },
+  iconPlus:{
+    paddingRight:14,
+  },
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   buttonAttText: {
@@ -247,6 +257,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  
+  buttonLogin: {
+    backgroundColor:"red" 
   },
   button: {
     borderRadius: 20,

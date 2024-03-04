@@ -1,36 +1,54 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import Cabecalho from "./src/components/Cabecalho";
+import { FontAwesome } from '@expo/vector-icons'; // Importe o ícone FontAwesome da biblioteca
+import { FaPeopleGroup } from "react-icons/fa6";
+
 
 const TelaInicial = ({ navigation }) => {
   const botaoTurmas = () => {
     navigation.navigate("TelaTurmas");
   };
 
-  //   const abrirSite = () => {
-  //     const url = 'https://sp.senai.br/unidade/saocarlos';
-  //     Linking.openURL(url);
-  //   };
+   const abrirSite = () => {
+       const url = 'https://sp.senai.br/unidade/saocarlos';
+       Linking.openURL(url);
+     };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.BemVindo}>Seja bem-vindo!</Text>
+       <Image
+        source={require("./assets/Brasil.png")}
+        style={styles.logo}
+      />
+       <Image
+        source={require("./assets/logoSenai.png")}
+        style={styles.logoSenai}
+      />
+      
+      <Text style={styles.BemVindo}>Seja bem-vindo ao GEO SENAI!</Text>
       <Text style={styles.TextoMedio}>
         É um prazer tê-lo conosco, como posso te ajudar?
       </Text>
 
-      <Cabecalho />
+     
 
       <Pressable
         style={styles.classesButton}
         onPress={() => console.log("Mapas pressionadas")}
       >
         <Text style={styles.buttonText}>Mapas</Text>
+        <FontAwesome name="map" size={30} color="#ffffff" /> {/* Use o ícone FontAwesome */}
       </Pressable>
 
       <Pressable style={styles.classesButton} onPress={botaoTurmas}>
         <Text style={styles.buttonText}>Turmas</Text>
+        <FontAwesome name="users" size={30} color="#ffffff" /> {/* Use o ícone FontAwesome dentro do Pressable */}
       </Pressable>
+      
+      <Text style={styles.textoOculto}>
+            Todos os direitos reservados para @Templarios.
+        </Text>
 
       {/* <Pressable style={styles.classesButton} onPress={abrirSite}>
         <Text style={styles.buttonText}>Notícias</Text>
@@ -40,7 +58,8 @@ const TelaInicial = ({ navigation }) => {
         style={styles.settingsButton}
         onPress={() => console.log("Configurações pressionadas")}
       >
-        <Text style={styles.settingsbuttonText}>ADM</Text>
+        <FontAwesome name="lock"  style={styles.settingsbuttonText}/>
+
       </Pressable>
     </View>
   );
@@ -51,15 +70,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "##E8E8E8",
   },
   classesButton: {
-    backgroundColor: "#ff0000",
+    flexDirection: 'row', // Para alinhar o texto e o ícone lado a lado
+    justifyContent: 'space-between',
+    backgroundColor: "red",
     padding: 20,
-    borderRadius: 30,
-    marginBottom: 10,
+    marginBottom: 20,
     alignItems: "center",
-    width: 200,
+    width: 500,
     height: 65,
   },
   settingsButton: {
@@ -80,8 +100,9 @@ const styles = StyleSheet.create({
   },
   settingsbuttonText: {
     color: "#fff",
-    fontSize: 10,
-    fontWeight: "bold",
+    fontSize: 25,
+    
+    marginTop:-5,
     alignContent: "center",
   },
   header: {
@@ -99,11 +120,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#fff",
   },
-  logo: {
+
+  logoSenaigo: {
+   
+  },
+    logo: {
     width: 70,
     height: 53,
-    top: 0,
-    left: 0,
+    top: 10,
+    left: 10,
     position: "absolute",
   },
   BemVindo: {
@@ -111,6 +136,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     marginBottom: 10,
+    marginTop:40,
   },
   TextoMedio: {
     color: "black",
@@ -119,6 +145,10 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     marginBottom: 50,
   },
+  textoOculto:{
+    color:"#C8C8C8",
+    fontSize: 10,
+  }
 });
 
 export default TelaInicial;

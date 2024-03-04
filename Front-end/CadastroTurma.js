@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Pressable, Alert, StyleSheet, Text, Image } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'; // Importe o ícone FontAwesome da biblioteca
+
 
 const CadastroTurma = ({ navigation }) => {
     const [codigoTurma, setCodigoTurma] = useState('');
@@ -50,63 +52,81 @@ const CadastroTurma = ({ navigation }) => {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Pressable onPress={() => navigation.goBack()}>
-            <Image
-              source={require("./assets/SetaRetorno2.png")}
-              style={styles.seta}
-            />
-          </Pressable>
-          <Text style={styles.headerText}>Cadastro de Turma</Text>
+         
+       
         </View>
-        <TextInput
-          style={styles.input}
-          placeholder="Código da Turma"
-          value={codigoTurma}
-          onChangeText={text => setCodigoTurma(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Nome do Curso"
-          value={nomeCurso}
-          onChangeText={text => setNomeCurso(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Sala"
-          value={salaTurma}
-          onChangeText={text => setSalaTurma(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Duração do Curso"
-          value={duracaoCurso}
-          onChangeText={text => setDuracaoCurso(text)}
-        />
-        <TextInput
-          style={[styles.input, styles.textArea]}
-          placeholder="Descrição do Curso"
-          multiline
-          numberOfLines={4}
-          value={descricaoCurso}
-          onChangeText={text => setDescricaoCurso(text)}
-        />
-        <Pressable style={styles.button} onPress={enviarDados}>
-          <Text style={styles.buttonText}>Enviar</Text>
-        </Pressable>
+        <View style={styles.containerForm}>      
+        <Text style={styles.headerText}>Cadastro de Turma</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Código da Turma"
+            placeholderTextColor="gray" 
+            value={codigoTurma}
+            onChangeText={text => setCodigoTurma(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Nome do Curso"
+            placeholderTextColor="gray" 
+            value={nomeCurso}
+            onChangeText={text => setNomeCurso(text)}
+          />
+          <TextInput
+            
+            style={styles.input}
+            placeholder="Sala"
+            placeholderTextColor="gray" 
+            value={salaTurma}
+            onChangeText={text => setSalaTurma(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Duração do Curso"
+            placeholderTextColor="gray" 
+            value={duracaoCurso}
+            onChangeText={text => setDuracaoCurso(text)}
+          />
+          <TextInput
+            style={[styles.input, styles.textArea]}
+            placeholder="Descrição do Curso"
+            placeholderTextColor="gray" 
+            multiline
+            numberOfLines={4}
+            value={descricaoCurso}
+            onChangeText={text => setDescricaoCurso(text)}
+          />
+          <View style={styles.containerBtnForm}>
+            <Pressable style={styles.button} onPress={enviarDados}>
+              <Text style={styles.buttonText}>Salvar</Text>
+            </Pressable>
+          </View>
+        </View> 
+        <Pressable onPress={() => navigation.goBack()}>
+        <FontAwesome name="arrow-left" size={30} color="#ffffff" />
+          </Pressable>
       </View>
     );
   };
   
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: 'white',
+      backgroundColor: "#E8E8E8",
       flex: 1,
       padding: 20,
     },
+    containerForm:{
+      padding:10,
+      borderRadius:10,
+      backgroundColor: "#ffffff",
+    },
+    containerBtnForm:{
+      alignItems:'flex-end'
+    },
     input: {
       height: 40,
-      borderColor: 'gray',
-      borderWidth: 1,
+      borderColor: '#E8E8E8', // Cor da borda
+      borderWidth: 2, // Largura da borda
+      borderRadius: 8, // Raio da borda
       marginBottom: 10,
       paddingHorizontal: 10,
     },
@@ -115,9 +135,12 @@ const CadastroTurma = ({ navigation }) => {
     },
     button: {
       backgroundColor: '#ff0000',
-      padding: 20,
+      padding: 10,
       borderRadius: 10,
       alignItems: 'center',
+      width:100,
+      height:40
+
     },
     buttonText: {
       color: '#fff',
@@ -132,6 +155,7 @@ const CadastroTurma = ({ navigation }) => {
     headerText: {
       fontSize: 20,
       fontWeight: 'bold',
+      marginBottom:20,
     },
     seta: {
       width: 30,

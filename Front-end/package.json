@@ -17,6 +17,7 @@
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^5.0.1",
     "react-native": "0.73.4",
     "react-native-gesture-handler": "^2.15.0",
     "react-native-idle-timer": "^2.2.1",

@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 70,
     height: 53,
-    top: 0,
-    left: 0,
+    top: 5,
+    left: 5,
     position: "absolute",
   },
   headerText: {
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     top: 0,
     width: "100%",
     backgroundColor: "#ff0000",
-    padding: 10,
-    borderBottomWidth: 1,
+    padding: 15,
+  
     borderBottomColor: "#ccc",
     alignItems: "flex-end",
   },
