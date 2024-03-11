@@ -1,13 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, Pressable } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Importe o ícone FontAwesome da biblioteca
+import AuthContext from '../../context/AuthContext';
 
 
-const BotaoADM = ({ onPress, adm }) => {
+const BotaoADM = ({ onPress }) => {
+  const { adm } = useContext(AuthContext); // Obtendo o valor de adm do contexto AuthContext
+
   return (
     <Pressable style={styles.ADMButton} onPress={onPress}>
-              <FontAwesome name="lock"  style={styles.settingsbuttonText}/>
-
+      <FontAwesome name={adm ? "unlock" : "lock"} style={styles.settingsbuttonText} />
     </Pressable>
   );
 };
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
   settingsbuttonText: {
     color: "#fff",
     fontSize: 25,
-    marginTop:-5,
+    marginTop: -5,
     alignContent: "center",
   },
 });

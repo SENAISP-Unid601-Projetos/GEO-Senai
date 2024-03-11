@@ -9,24 +9,24 @@ import br.com.example.senai_auto.repository.TurmaRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/senaiauto")
+@RequestMapping("/turmas")
 public class TurmaResource {
 	@Autowired
 	private TurmaRepository turmaRepository;
 	
-	@PostMapping("/turmas/nova-turma")
+	@PostMapping("/nova-turma")
 	public Turma adicionaTurma(@RequestBody Turma turma) {
 		return turmaRepository.save(turma);
 	}
 
-	@GetMapping("/turmas")
+	@GetMapping
 	public List<Turma> getTurmas() {
 		return turmaRepository.findAll();
 	}
+
+	@DeleteMapping("/deletar/{id}")
+	public void deletaTurma(@PathVariable Long id) {
+		turmaRepository.deleteById(id);
+	}
 }
 
-//	@DeleteMapping("/turmas/deletar/{id}")
-//	public String deletaTurma(@PathVariable Long id) {
-//	turmaRepository.deleteById(id);
-//	return ('Turma apagada');
-//	}
