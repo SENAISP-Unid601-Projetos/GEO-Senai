@@ -12,7 +12,19 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const InformacoesTurma = ({ route, navigation }) => {
+
+  const TelaFoto = () => {
+    navigation.navigate("TelaFoto");
+  };
+  const TelaHorarios = () => {
+    navigation.navigate("TelaHorarios");
+  };
+  const botaoMapa = () => {
+    navigation.navigate("TelaMapa");
+  };
   const { turma } = route.params;
+
+ 
 
   const [local] = useState(
     `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`
@@ -50,21 +62,21 @@ const InformacoesTurma = ({ route, navigation }) => {
         >
           <Pressable
             style={[styles.botaoFoto, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
+            onPress={TelaFoto}
           >
             <Text style={styles.texto}>Foto</Text>
           </Pressable>
 
           <Pressable
             style={[styles.botaoHorario, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
+            onPress={TelaHorarios}
           >
             <Text style={styles.texto}>Horarios</Text>
           </Pressable>
 
           <Pressable
             style={[styles.botaoLocalizarse, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
+            onPress={botaoMapa}
           >
             <Text style={styles.texto}>Localize-se</Text>
           </Pressable>

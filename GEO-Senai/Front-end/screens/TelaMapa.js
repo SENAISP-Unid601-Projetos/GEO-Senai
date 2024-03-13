@@ -1,7 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 
-const TelaMapa = ( navigation ) => {
+const TelaMapa = ({navigation}) => {
+  
+  const CaminhoQr = () => {
+    navigation.navigate("Qr");
+  };
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -88,26 +93,24 @@ const TelaMapa = ( navigation ) => {
 
       {/* Rodapé */}
       <View style={styles.footer}>
+
         <Pressable
           style={[
             styles.botão_Voltar,
             { borderWidth: 1, borderColor: "black" },
           ]}
-          onPress={() => console.log("Turmas pressionados")}
+          onPress={() => navigation.goBack()}
         >
           <Text style={styles.footerText}>voltar</Text>
         </Pressable>
 
-        <Pressable
-          style={[
-            styles.botão_Baixar_Caminho,
-            { borderWidth: 1, borderColor: "black" },
-          ]}
-          onPress={() => console.log("Turmas pressionados")}
-        >
-          <Text style={styles.footerText}>Baixar caminho</Text>
-        </Pressable>
 
+
+
+        <Pressable
+          style={[styles.botão_Baixar_Caminho,{ borderWidth: 1, borderColor: "black" },]} onPress={CaminhoQr}
+        > <Text style={styles.footerText}>Baixar caminho</Text> 
+        </Pressable>
         <Pressable
           style={[styles.botãoADM, { borderWidth: 1, borderColor: "black" }]}
           onPress={() => console.log("Turmas pressionados")}

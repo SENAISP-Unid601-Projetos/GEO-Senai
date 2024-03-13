@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+
 const TelaInicial = ({ navigation }) => {
+  
   const botaoTurmas = () => {
     navigation.navigate("TelaTurmas");
   };
@@ -32,15 +34,27 @@ const TelaInicial = ({ navigation }) => {
         É um prazer tê-lo conosco, como posso te ajudar?
       </Text>
 
+
+
+
       <Pressable style={styles.classesButton} onPress={botaoMapa}>
         <Text style={styles.buttonText}>Mapas</Text>
         <FontAwesome name="map" size={30} color="#ffffff" />
       </Pressable>
 
+
+
+
+
       <Pressable style={styles.classesButton} onPress={botaoTurmas}>
         <Text style={styles.buttonText}>Turmas</Text>
         <FontAwesome name="users" size={30} color="#ffffff" />
       </Pressable>
+
+
+
+
+
 
       <Pressable style={styles.classesButton} onPress={botaoVagas}>
         <Text style={styles.buttonText}>Vagas</Text>

@@ -31,6 +31,7 @@ const TelaTurmas = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      
       <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
         <FontAwesome name="arrow-left" size={24} color="black" />
       </Pressable>

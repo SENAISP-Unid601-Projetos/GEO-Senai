@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-const TelaVagas = ({ navigation }) => {
+const TelaVagas = ({ navigation }) => { //navegar para tela inicial
   const [vagas, setVagas] = useState([]);
 
   const atualizarVagas = () => {
@@ -25,6 +25,7 @@ const TelaVagas = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        
         <Pressable
           onPress={() => navigation.goBack()}
           style={styles.backButton}
@@ -44,7 +45,7 @@ const TelaVagas = ({ navigation }) => {
               key={vaga.id}
               style={styles.ButtonVagas}
               onPress={() =>
-                navigation.navigate("InformacoesVaga", { vaga: vaga })
+                navigation.navigate("InformacoesVaga", { vaga: vaga }) //navegar para tela inicial
               }
             >
               <Text style={styles.buttonText}>

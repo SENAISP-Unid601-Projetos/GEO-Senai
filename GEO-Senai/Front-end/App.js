@@ -8,6 +8,10 @@ import InformacoesTurma from "./screens/InformacoesTurma";
 import Carrossel from "./src/components/Carrossel";
 import TelaMapa from "./screens/TelaMapa";
 import TelaVagas from "./screens/TelaVagas";
+import Qr from "./screens/Qr";
+import TelaFoto from "./screens/TelaFoto";
+import TelaHorarios from "./screens/TelaHorarios";
+
 
 const Stack = createStackNavigator();
 
@@ -88,6 +92,21 @@ const App = () => {
         <Stack.Screen
           name="TelaMapa"
           component={TelaMapa}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="Qr"
+          component={Qr}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TelaFoto"
+          component={TelaFoto}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TelaHorarios"
+          component={TelaHorarios}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
