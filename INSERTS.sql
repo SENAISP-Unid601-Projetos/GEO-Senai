@@ -27,6 +27,7 @@ INSERT INTO Turma (codigo_turma, nome_curso, sala_turma, duracao_curso, desc_cur
 ('T019', 'Curso de Desenvolvimento Front-end', 'Sala S', '3 meses', 'Aprenda as tecnologias essenciais para desenvolvimento de interfaces web interativas.'),
 ('T020', 'Curso de Gestão Empresarial', 'Sala T', '6 meses', 'Desenvolva habilidades de liderança e gestão para administrar uma empresa com sucesso.');
 
+-- Inserir vagas
 INSERT INTO Vaga (area_vaga, nome_vaga, desc_vaga, requisitos_vaga, carga_vaga, contato_vaga, salario_vaga) VALUES
 ('Desenvolvimento Web', 'Desenvolvedor Front-end', 'Desenvolvimento de interfaces web utilizando HTML, CSS e JavaScript.', 'Experiência com frameworks como React ou Angular.', '40 horas semanais', 'rh@empresa.com', 'R$ 5500,00'),
 ('Marketing Digital', 'Analista de Mídias Sociais', 'Criação e gerenciamento de campanhas nas redes sociais.', 'Conhecimento em ferramentas de análise de métricas.', '30 horas semanais', 'contato@empresa.com', 'A combinar'),
