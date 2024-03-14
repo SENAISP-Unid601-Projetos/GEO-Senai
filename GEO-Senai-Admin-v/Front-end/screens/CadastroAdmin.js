@@ -1,3 +1,6 @@
+// Tela que possibilita ao administrador responsável  que permita a outros colaboradores o acesso
+// a versão de administrador do GEO SENAI 
+
 import React, { useState } from "react";
 import {
   View,

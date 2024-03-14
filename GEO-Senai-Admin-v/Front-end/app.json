@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Vagas",
-    "slug": "Vagas",
+    "name": "GEO SENAI Controller (for Admin)",
+    "slug": "GEO SENAI Controller (for Admin)",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

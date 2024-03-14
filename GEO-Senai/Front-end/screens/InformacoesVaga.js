@@ -1,3 +1,6 @@
+// Tela para exibir todas as informações de uma vaga de emprego em específico, previamente cadastrada
+// em CadastroVaga, na versão para administrador do GEO SENAI
+
 import React from "react";
 import { View, Text, Pressable, Image, StyleSheet, Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";

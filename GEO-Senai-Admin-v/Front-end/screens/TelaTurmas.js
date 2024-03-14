@@ -1,3 +1,6 @@
+// Versão do administrador de TelaTurmas, com o acréscimo da função de acrescentar
+// novas turmas
+
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";

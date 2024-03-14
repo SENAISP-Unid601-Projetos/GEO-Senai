@@ -1,3 +1,6 @@
+// Tela de login da versão de administrador do GEO SENAI.
+// Restringe o acesso a administradores.
+
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, Pressable, TextInput, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -5,29 +8,14 @@ import { FontAwesome } from "@expo/vector-icons";
 const TelaLogin = ({ navigation }) => {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false);
 
   const realizarLogin = async () => {
-    try {
-      // Enviar os dados para o servidor
-      const response = await fetch('http://10.110.12.19:8080/admin/cadastrar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ usuario, senha })
-      });
-
-      // Verificar a resposta do servidor
-      if (response.ok) {
-        // Login bem-sucedido
-        navigation.navigate('TelaInicial');
-      } else {
-        // Login falhou
-        Alert.alert('Erro', 'Usuário ou senha inválidos.');
-      }
-    } catch (error) {
-      console.error('Erro ao fazer login:', error);
-      Alert.alert('Erro', 'Ocorreu um erro ao fazer login. Por favor, tente novamente mais tarde.');
+    // Login chumbado :)
+    if (usuario === 'alunos00' && senha === 'senai>harvard') {
+      navigation.navigate('TelaInicial');
+    } else {
+      Alert.alert('Erro', 'Usuário ou senha inválidos.');
     }
   };
 
@@ -45,14 +33,19 @@ const TelaLogin = ({ navigation }) => {
         value={usuario}
         onChangeText={(text) => setUsuario(text)}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Senha"
-        placeholderTextColor="gray"
-        secureTextEntry={true}
-        value={senha}
-        onChangeText={(text) => setSenha(text)}
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          placeholderTextColor="gray"
+          secureTextEntry={!mostrarSenha}
+          value={senha}
+          onChangeText={(text) => setSenha(text)}
+        />
+        <Pressable onPress={() => setMostrarSenha(!mostrarSenha)} style={styles.eyeIcon}>
+          <FontAwesome name={mostrarSenha ? "eye-slash" : "eye"} size={20} color="gray" />
+        </Pressable>
+      </View>
 
       <Pressable style={styles.classesButton} onPress={realizarLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
@@ -109,6 +102,10 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
     marginBottom: 50,
   },
+  inputContainer: {
+    position: 'relative',
+    width: '100%',
+  },
   input: {
     width: "100%",
     height: 60,
@@ -117,7 +114,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 8,
     marginBottom: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
+  },
+  eyeIcon: {
+    position: 'absolute',
+    right: 10,
+    top: 20,
   },
   textoOculto: {
     color: '#C8C8C8',

@@ -1,8 +1,12 @@
+// Tela que apresenta em forma de botão todas as vagas de emprego cadastradas no GEO SENAI,
+// permitindo o acesso as informações de cada turma específica (InformacoesVaga)
+
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-const TelaVagas = ({ navigation }) => { //navegar para tela inicial
+const TelaVagas = ({ navigation }) => {
+  //navegar para tela inicial
   const [vagas, setVagas] = useState([]);
 
   const atualizarVagas = () => {
@@ -25,7 +29,6 @@ const TelaVagas = ({ navigation }) => { //navegar para tela inicial
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        
         <Pressable
           onPress={() => navigation.goBack()}
           style={styles.backButton}
@@ -44,8 +47,8 @@ const TelaVagas = ({ navigation }) => { //navegar para tela inicial
             <Pressable
               key={vaga.id}
               style={styles.ButtonVagas}
-              onPress={() =>
-                navigation.navigate("InformacoesVaga", { vaga: vaga }) //navegar para tela inicial
+              onPress={
+                () => navigation.navigate("InformacoesVaga", { vaga: vaga }) //navegar para tela inicial
               }
             >
               <Text style={styles.buttonText}>

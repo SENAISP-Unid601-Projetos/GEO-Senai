@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 const TelaMapa = ({navigation}) => {
   
   const CaminhoQr = () => {
-    navigation.navigate("Qr");
+    navigation.navigate("TelaQR");
   };
 
   return (
@@ -59,35 +59,7 @@ const TelaMapa = ({navigation}) => {
             <Text style={styles.texto}>Botão 2</Text>
           </Pressable>
 
-          <Pressable
-            style={[
-              styles.botãoSala1,
-              { borderWidth: 1, borderColor: "black" },
-            ]}
-            onPress={() => console.log("Novo botão 2 pressionado")}
-          >
-            <Text style={styles.texto}>Botão 2</Text>
-          </Pressable>
-
-          <Pressable
-            style={[
-              styles.botãoSala1,
-              { borderWidth: 1, borderColor: "black" },
-            ]}
-            onPress={() => console.log("Novo botão 2 pressionado")}
-          >
-            <Text style={styles.texto}>Botão 2</Text>
-          </Pressable>
-
-          <Pressable
-            style={[
-              styles.botãoSala1,
-              { borderWidth: 1, borderColor: "black" },
-            ]}
-            onPress={() => console.log("Novo botão 2 pressionado")}
-          >
-            <Text style={styles.texto}>Botão 2</Text>
-          </Pressable>
+          {/* Você pode continuar adicionando mais Pressable com texto dentro de <Text> aqui */}
         </View>
       </View>
 
@@ -104,13 +76,12 @@ const TelaMapa = ({navigation}) => {
           <Text style={styles.footerText}>voltar</Text>
         </Pressable>
 
-
-
-
         <Pressable
           style={[styles.botão_Baixar_Caminho,{ borderWidth: 1, borderColor: "black" },]} onPress={CaminhoQr}
-        > <Text style={styles.footerText}>Baixar caminho</Text> 
+        > 
+          <Text style={styles.footerText}>Baixar caminho</Text> 
         </Pressable>
+
         <Pressable
           style={[styles.botãoADM, { borderWidth: 1, borderColor: "black" }]}
           onPress={() => console.log("Turmas pressionados")}
@@ -128,12 +99,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   header: {
-    flexDirection: "row", // Organizar itens horizontalmente
+    flexDirection: "row", 
     backgroundColor: "#ff0000",
     height: 75,
-    alignItems: "center", // Alinhar itens verticalmente
-    justifyContent: "space-between", // Distribuir espaço entre os itens
-    paddingHorizontal: 16, // Adicionar preenchimento horizontal
+    alignItems: "center", 
+    justifyContent: "space-between", 
+    paddingHorizontal: 16, 
   },
   headerText: {
     fontSize: 25,
@@ -178,41 +149,40 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    backgroundColor: "white", // Define a cor de fundo do rodapé como branco.
-    height: 65, // Define a altura do rodapé como 65 unidades.
-    width: "100%", // Define a largura do rodapé como 100% da largura do contêiner pai.
-    flexDirection: "row", // Organiza os itens horizontalmente
-    justifyContent: "space-between", // Distribui o espaço entre os itens
-    alignItems: "center", // Centraliza os itens verticalmente dentro do rodapé.
+    backgroundColor: "white", 
+    height: 65, 
+    width: "100%", 
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "center", 
   },
   botão_Voltar: {
     backgroundColor: "#ff0000",
     borderRadius: 100,
     width: 100,
     height: 50,
-    alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
-    justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
+    alignItems: "center", 
+    justifyContent: "center", 
   },
   botão_Baixar_Caminho: {
     backgroundColor: "#ff0000",
     borderRadius: 100,
-    width: 150, // Ajuste a largura para acomodar o texto "Baixar caminho"
+    width: 150, 
     height: 50,
-    alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
-    justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
+    alignItems: "center", 
+    justifyContent: "center", 
   },
   botãoADM: {
     backgroundColor: "#ff0000",
     borderRadius: 100,
     width: 100,
     height: 50,
-    alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
-    justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
+    alignItems: "center", 
+    justifyContent: "center", 
   },
   footerText: {
     fontSize: 15,
     fontWeight: "bold",
-    //alignSelf: 'center',
   },
 });
 

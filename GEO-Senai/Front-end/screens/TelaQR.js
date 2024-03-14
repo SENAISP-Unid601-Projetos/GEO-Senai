@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
 });
 
 
-const HomeScreen = ({ navigation }) => {
+const TelaQR = ({ navigation }) => {
 
 
   return (
@@ -193,4 +193,4 @@ const HomeScreen = ({ navigation }) => {
 
 
 
-export default HomeScreen;
+export default TelaQR;
