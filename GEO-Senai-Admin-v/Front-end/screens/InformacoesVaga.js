@@ -23,6 +23,10 @@ const InformacoesVaga = ({ route, navigation }) => {
     setModalVisible(!modalVisible);
   };
 
+  const editarVaga = () => {
+    navigation.navigate('EditarVaga', { vaga: vaga });
+  };
+
   const deletarVaga = async () => {
     setModalVisible(false);
 
@@ -91,10 +95,13 @@ const InformacoesVaga = ({ route, navigation }) => {
 
       <Pressable style={styles.lixeiraButton} onPress={toggleModal}>
         <View style={styles.circle}>
-          <Image
-            source={require("./../assets/lixeiraicon.png")}
-            style={styles.lixeiraIcon}
-          />
+          <FontAwesome name="trash" size={24} color="white" />
+        </View>
+      </Pressable>
+
+      <Pressable style={styles.editarButton} onPress={editarVaga}>
+        <View style={styles.circle}>
+          <FontAwesome name="pencil" size={24} color="white" />
         </View>
       </Pressable>
 
@@ -137,6 +144,13 @@ const styles = StyleSheet.create({
     marginTop: 30,
     top: 20,
     right: 20,
+    zIndex: 1,
+  },
+  editarButton: {
+    position: "absolute",
+    marginTop: 30,
+    top: 20,
+    right: 80,
     zIndex: 1,
   },
   scrollViewContainer: {

@@ -1,21 +1,38 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'; // Importando FontAwesome
 
+const TelaQR = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.BemVindo}>Escaneie para baixar o mapa</Text>
+      <View>
+        <Image
+          source={require("./../assets/QR.png")}
+          style={styles.QR}
+        />
+      </View>
+      
+      <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
+        <FontAwesome name="arrow-left" size={24} color="black" />
+      </Pressable>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: "#E8E8E8",
   },
-  
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
-  settingsbuttonText: {
+  settingsButtonText: { // Renomeando para evitar conflito
     color: '#fff',
     fontSize: 10,
     fontWeight: 'bold',
@@ -35,7 +52,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
     alignSelf: 'flex-end',
-   
   },
   logo: {
     width: 70,
@@ -57,64 +73,12 @@ const styles = StyleSheet.create({
     // top:0 ,
     // left:0 ,
   },
-  TextoMedio: {
-    color: 'black',
-    fontSize: '15',
-    fontWeight: 'normal',
-    borderRadius: 40,
-  },
-
-  //Não estou conseguindo conectar no momento, talvez na sprint seguinte???
-  // TxtMapas: {
-  //   color: 'white',
-  //   width: 70,
-  //   height: 53,
-  //   top:0 ,
-  //   left:0 ,
-  //   position: 'absolute',
-  //   alignSelf: 'center',
-  //   alignContent: 'center' ,
-  //   alignItems: 'center',
-  //   textAlign: 'center',
-  // },
-
-  //BOTÕES
-  Buttons: {
-  borderRadius: 10,
-  alignItems: 'center',
-  },
-  ButtonTurmas: {
-    backgroundColor: '#ff0000',
-    padding: 20,
-    borderRadius: 30, //ARREDONDA O BOTÃO
-    marginBottom: 10,
-    alignItems: 'center',
-    width: 200,
-    height: 65,
-  },
-  ReturnButton: {
-    backgroundColor: '#ff0000',
-    padding: 5,
-    borderRadius: '60%',
-    alignItems: 'center',
-    //textAlign: 'center',//aparenta não ter utildade momentanea
-    width: 40,
-    height: 40,
-    position: 'absolute',
-    bottom: 20,
+  backButton: {
+    position: "absolute",
+    top: 20,
     left: 20,
-  },
-  ADMButton: {
-    backgroundColor: '#ff0000',
-    padding: 13,
-    borderRadius: '60%',
-    alignItems: 'center',
-    textAlign: 'center',
-    width: 40,
-    height: 40,
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
+    zIndex: 1,
+    borderRadius: 60, // Corrigindo para número
   },
   // TEXTO DOS BOTÕES
   buttonText: {
@@ -128,17 +92,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     // alignContent: 'center',
   },
-  seta: {
-    width: 30,
-    height: 30,
-     top:0 ,
-     left:0 ,
-     //position:'absolute',
-     //alignContent: 'center',
-     //alignItems: 'center',
-     //alignSelf: 'center',
-     //textAlign: 'center',
-  },
   QR: {
     width: 350,
     height: 350,
@@ -146,51 +99,6 @@ const styles = StyleSheet.create({
      left:0 ,
      alignItems: 'center',
   },
-
 });
-
-
-const TelaQR = ({ navigation }) => {
-
-
-  return (
-    <View style={styles.container}>
-
-      {/* define o tema da tela */}
-      <Text style={styles.BemVindo}>Scann Qr Code</Text>
-      <Text style={styles.TextoMedio}>escaneie para baixar o Map</Text>
-
-      {/* define o "header" da tela com bandeira e o logo senai */}
-      <View style={styles.header}>
-      {/* <Text Style={styles.TxtMapas}>Mapa</Text> */}
-      <Text style={styles.headerText}>SENAI</Text>
-      <Image
-        source={require("./../assets/Brasil.png")}
-        style={styles.logo}
-      />
-      </View>
-        <View>
-          <Image
-          source={require("./../assets/QR.png")}
-          style={styles.QR}
-          />
-        </View>
-      {/* Botões de foother */}
-      <Pressable style={[styles.ReturnButton, {borderWidth: 1, borderColor: 'black'}]} onPress={() => navigation.goBack()}>
-        {/* <Text  style={styles.settingsbuttonText}>Voltar</Text> */}
-        <Image source={require("./../assets/SetaRetorno2.png")}
-         style={styles.seta}
-        />
-      </Pressable>
-      <Pressable style={[styles.ADMButton, {borderWidth: 1, borderColor: 'black'}]} onPress={() => console.log('Configurações pressionadas')}>
-        <Text  style={styles.settingsbuttonText}>ADM</Text>
-      </Pressable>
-
-    </View>
-  );
-};
-
-
-
 
 export default TelaQR;

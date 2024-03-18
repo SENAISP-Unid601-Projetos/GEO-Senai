@@ -8,9 +8,11 @@ import { FontAwesome } from "@expo/vector-icons";
 const TelaVagas = ({ navigation }) => {
   //navegar para tela inicial
   const [vagas, setVagas] = useState([]);
-
+  
+  const local = "http://10.110.12.19:8080/vagas";
+  
   const atualizarVagas = () => {
-    fetch("http://10.110.12.19:8080/vagas", {
+    fetch(local, {
       method: "GET",
       headers: {
         Accept: "application/json",

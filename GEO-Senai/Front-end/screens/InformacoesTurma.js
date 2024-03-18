@@ -16,12 +16,8 @@ const InformacoesTurma = ({ route, navigation }) => {
   
   const { turma } = route.params;
 
-  const [local] = useState(
-    `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`
-  );
-  const [nuvem] = useState(
-    `https://geosenai.azurewebsites.net/turmas/deletar/${turma.id_turma}`
-  );
+  const local = `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`;
+  const nuvem = `https://geosenai.azurewebsites.net/turmas/deletar/${turma.id_turma}`;
 
   return (
     <View style={styles.container}>
@@ -63,7 +59,7 @@ const InformacoesTurma = ({ route, navigation }) => {
               navigation.navigate("TelaHorarios", { turma: turma })
             }
           >
-            <Text style={styles.texto}>Horarios</Text>
+            <Text style={styles.texto}>Horários</Text>
           </Pressable>
 
           <Pressable
@@ -189,14 +185,6 @@ const styles = StyleSheet.create({
   },
   quadroPadding: {
     paddingHorizontal: 40,
-  },
-  circle: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "red",
-    justifyContent: "center",
-    alignItems: "center",
   },
   centeredView: {
     flex: 1,

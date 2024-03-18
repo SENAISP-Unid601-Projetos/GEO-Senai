@@ -10,6 +10,9 @@ import CadastroTurma from "./screens/CadastroTurma";
 import InformacoesTurma from "./screens/InformacoesTurma";
 import TelaLogin from "./screens/TelaLogin";
 import CadastroAdmin from "./screens/CadastroAdmin";
+import EditarVaga from "./screens/EditarVaga";
+import EditarTurma from "./screens/EditarTurma";
+import TelaHorarios from "./screens/TelaHorarios";
 
 const Stack = createStackNavigator();
 
@@ -60,6 +63,21 @@ const App = () => {
         <Stack.Screen
           name="CadastroAdmin"
           component={CadastroAdmin}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditarVaga"
+          component={EditarVaga}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditarTurma"
+          component={EditarTurma}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TelaHorarios"
+          component={TelaHorarios}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

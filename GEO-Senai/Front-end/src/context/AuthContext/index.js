@@ -4,10 +4,10 @@ import React, { createContext, useState } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [adm, setAdm] = useState(false);
+  const [mapaCaminho, setMapaCaminho] = useState("./../../../assets/mapaSenai.png");
 
   return (
-    <AuthContext.Provider value={{ adm, setAdm }}>
+    <AuthContext.Provider value={{ mapaCaminho, setMapaCaminho }}>
       {children}
     </AuthContext.Provider>
   );
