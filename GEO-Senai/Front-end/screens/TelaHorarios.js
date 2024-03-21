@@ -78,10 +78,7 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>Baixar QR</Text>
       </Pressable>
 
-      {/* Botão ADM */}
-      <Pressable style={[styles.ADMButton, { borderWidth: 1, borderColor: 'black' }]}>
-        <Text style={styles.buttonTextADM}>ADM</Text>
-      </Pressable>
+    
     </View>
   );
 };
@@ -111,9 +108,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 70,
     height: 53,
-    top: 0,
-    left: 0,
-    position: 'absolute',
+    position: 'absolute', // Mantenha apenas isso
   },
   Fundo_Cinza: {
     backgroundColor: 'gray',
@@ -151,17 +146,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
-  ADMButton: {
-    backgroundColor: '#ff0000',
-    padding: 13,
-    borderRadius: '60%',
-    alignItems: 'center',
-    width: 40,
-    height: 40,
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
-  },
+
   BaixarQRButton: {
     backgroundColor: '#ff0000',
     padding: 15,

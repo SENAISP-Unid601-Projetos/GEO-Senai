@@ -34,35 +34,23 @@ const TelaInicial = ({ navigation }) => {
         É um prazer tê-lo conosco, como posso te ajudar?
       </Text>
 
-
-
-
       <Pressable style={styles.classesButton} onPress={botaoMapa}>
         <Text style={styles.buttonText}>Mapas</Text>
-        <FontAwesome name="map" size={30} color="#ffffff" />
+        <FontAwesome name="map" size={50} color="#ffffff" />
       </Pressable>
-
-
-
-
 
       <Pressable style={styles.classesButton} onPress={botaoTurmas}>
         <Text style={styles.buttonText}>Turmas</Text>
-        <FontAwesome name="users" size={30} color="#ffffff" />
+        <FontAwesome name="users" size={50} color="#ffffff" />
       </Pressable>
-
-
-
-
-
 
       <Pressable style={styles.classesButton} onPress={botaoVagas}>
         <Text style={styles.buttonText}>Vagas</Text>
-        <FontAwesome name="user-plus" size={30} color="#ffffff" />
+        <FontAwesome name="user-plus" size={50} color="#ffffff" />
       </Pressable>
 
       <Text style={styles.textoOculto}>
-        Todos os direitos reservados para @Templarios.
+        Todos os direitos reservados para Templarios®
       </Text>
     </View>
   );
@@ -70,14 +58,15 @@ const TelaInicial = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+  
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#E8E8E8",
   },
   senai: {
-    width: 200,
-    height: 50,
+    width: 600,
+    height: 150,
   },
   classesButton: {
     flexDirection: "row", // Para alinhar o texto e o ícone lado a lado
@@ -101,7 +90,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 40,
     fontWeight: "bold",
   },
   settingsbuttonText: {
@@ -111,30 +100,31 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   logo: {
+    marginLeft:20,
     marginTop: 40,
-    width: 70,
-    height: 53,
+    width: 120,
+    height: 83,
     top: 10,
     left: 10,
     position: "absolute",
   },
   BemVindo: {
     color: "black",
-    fontSize: 25,
+    fontSize: 70,
     fontWeight: "bold",
     marginBottom: 10,
     marginTop: 40,
   },
   TextoMedio: {
     color: "black",
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "normal",
     borderRadius: 40,
     marginBottom: 50,
   },
   textoOculto: {
     color: "#C8C8C8",
-    fontSize: 10,
+    fontSize: 20,
   },
   centeredView: {
     flex: 1,
