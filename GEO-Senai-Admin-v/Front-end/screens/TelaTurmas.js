@@ -1,10 +1,14 @@
+// Versão do administrador de TelaTurmas, com o acréscimo da função de acrescentar
+// novas turmas
+
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
+import { StyleSheet, Text, View, Pressable, ScrollView, Modal, Button, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaTurmas = ({ navigation }) => {
   const [turmas, setTurmas] = useState([]);
   const [atualizarLista, setAtualizarLista] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const [local] = useState("http://10.110.12.19:8080/turmas");
 
@@ -27,6 +31,35 @@ const TelaTurmas = ({ navigation }) => {
 
   const atualizarListaTurmas = () => {
     setAtualizarLista(!atualizarLista);
+  };
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const excluiTudo = async () => {
+    setModalVisible(false);
+
+    try {
+      const response = await fetch(
+        "http://10.110.12.19:8080/turmas/deletar/all",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        Alert.alert("Sucesso na exclusão.");
+      } else {
+        Alert.alert("Erro ao excluir vagas");
+      }
+    } catch (error) {
+      console.error("Erro ao excluir vagas:", error);
+      Alert.alert("Erro ao excluir vagas. Verifique sua conexão de internet.");
+    }
   };
 
   return (
@@ -53,6 +86,10 @@ const TelaTurmas = ({ navigation }) => {
         </View>
       </ScrollView>
 
+      <Pressable style={styles.ButtonExcluiTudo} onPress={toggleModal}>
+        <Text style={styles.buttonText}>Excluir tudo</Text>
+      </Pressable>
+
       <Pressable style={styles.addButton} onPress={adicionarTurma}>
         <FontAwesome name="plus" size={24} color="white" />
       </Pressable>
@@ -60,6 +97,25 @@ const TelaTurmas = ({ navigation }) => {
       <Pressable style={styles.updateButton} onPress={atualizarListaTurmas}>
         <FontAwesome name="refresh" size={24} color="white" />
       </Pressable>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Confirma a exclusão?</Text>
+            <View style={styles.buttonsContainer}>
+              <Button title="Cancelar" onPress={toggleModal} />
+              <Button title="Confirmar" onPress={excluiTudo} />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -118,9 +174,52 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  ButtonExcluiTudo: {
+    position: "absolute",
+    bottom: 20,
+    left: 20,
+    backgroundColor: "black",
+    width: 150,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   backButton: {
     marginTop: 40,
     marginRight: 10,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    color: "red",
+    fontWeight: "bold",
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
   },
 });
 

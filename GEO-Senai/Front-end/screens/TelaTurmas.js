@@ -1,3 +1,6 @@
+// Tela que apresenta em forma de botão todas as turmas cadastradas no GEO SENAI, permitindo
+// o acesso as informações de cada turma específica (InformacoesTurma)
+
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -6,7 +9,7 @@ const TelaTurmas = ({ navigation }) => {
   const [turmas, setTurmas] = useState([]);
   const [atualizarLista, setAtualizarLista] = useState(true);
 
-  const [local] = useState("http://10.110.12.19:8080/turmas");
+  const local = "http://10.110.12.19:8080/turmas";
 
   useEffect(() => {
     fetch(local, {

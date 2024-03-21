@@ -28,5 +28,16 @@ public class TurmaResource {
 	public void deletaTurma(@PathVariable Long id) {
 		turmaRepository.deleteById(id);
 	}
+
+	@DeleteMapping("/deletar/all")
+	public void deletaTudo() {
+		turmaRepository.deleteAll();
+	}
+
+	@PutMapping("/editar/{id}")
+	public Turma editarTurma(@PathVariable Long id, @RequestBody Turma turma) {
+		turma.setId_turma(id);
+		return turmaRepository.save(turma);
+	}
 }
 

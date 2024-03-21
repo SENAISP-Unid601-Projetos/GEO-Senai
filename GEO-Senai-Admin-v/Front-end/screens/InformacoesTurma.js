@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,7 @@ import {
   Modal,
   Button,
   Alert,
+  ScrollView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -15,19 +16,22 @@ const InformacoesTurma = ({ route, navigation }) => {
   const { turma } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [local] = useState(
-    `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`
-  );
-  const [nuvem] = useState(
-    `https://geosenai.azurewebsites.net/turmas/deletar/${turma.id_turma}`
-  );
+  const local = `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`;
+  const nuvem = `https://geosenai.azurewebsites.net/deletar/${turma.id_turma}`;
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
 
+  const editarTurma = () => {
+    navigation.navigate('EditarTurma', { turma: turma });
+  };
+
+  const botaoHorarios = () => {
+    navigation.navigate('TelaHorarios', { turma: turma });
+  };
+
   const deletarTurma = async () => {
-    // Fechar o modal de confirmação
     setModalVisible(false);
 
     try {
@@ -39,11 +43,9 @@ const InformacoesTurma = ({ route, navigation }) => {
       });
 
       if (response.ok) {
-        // Turma excluída com sucesso
         Alert.alert("Turma excluída com sucesso");
-        navigation.navigate("TelaTurmas"); // Navega para a tela de turmas após excluir a turma
+        navigation.navigate("TelaTurmas");
       } else {
-        // Turma não pôde ser excluída
         Alert.alert("Erro ao excluir turma");
       }
     } catch (error) {
@@ -54,15 +56,82 @@ const InformacoesTurma = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable
-        style={styles.lixeiraButton}
-        onPress={toggleModal} // Quando a lixeira for pressionada, abre o modal de confirmação
-      >
+      <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
+        <FontAwesome name="arrow-left" size={24} color="black" />
+      </Pressable>
+
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <View style={styles.redBack}>
+          <View
+            style={[styles.quadro, styles.roundedCorners, styles.quadroPadding]}
+          >
+            <Text style={styles.titulo}>{turma.codigo_turma}</Text>
+            <Text style={styles.txtInfoCurso}>Sala: {turma.sala_turma}</Text>
+            <Text style={styles.txtInfoCurso}>
+              Duração do curso: {turma.duracao_curso}
+            </Text>
+
+            <Pressable
+              style={[styles.botao, styles.botoesPequenos]}
+              onPress={() => console.log("Turmas pressionados")}
+            >
+              <Text style={styles.texto}>Ver no mapa</Text>
+            </Pressable>
+          </View>
+
+          <View
+            style={[
+              styles.quadro2,
+              styles.roundedCorners,
+              styles.quadroPadding,
+            ]}
+          >
+            <Pressable
+              style={[styles.botao, styles.botoesPequenos]}
+              onPress={() => console.log("Turmas pressionados")}
+            >
+              <Text style={styles.texto}>Foto</Text>
+            </Pressable>
+
+            <Pressable
+              style={[styles.botao, styles.botoesPequenos]}
+              onPress={botaoHorarios}
+            >
+              <Text style={styles.texto}>Horários</Text>
+            </Pressable>
+
+            <Pressable
+              style={[styles.botao, styles.botoesPequenos]}
+              onPress={() => console.log("Turmas pressionados")}
+            >
+              <Text style={styles.texto}>Localize-se</Text>
+            </Pressable>
+          </View>
+
+          <View
+            style={[
+              styles.quadro3,
+              styles.roundedCorners,
+              styles.quadroPadding,
+            ]}
+          >
+            <Text style={styles.titulo}>{turma.nome_curso}</Text>
+            <View style={styles.textoDoMeio}>
+              <Text style={styles.descTexto}>{turma.desc_curso}</Text>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+
+      <Pressable style={styles.lixeiraButton} onPress={toggleModal}>
         <View style={styles.circle}>
-          <Image
-            source={require("./../assets/lixeiraicon.png")}
-            style={styles.lixeiraIcon}
-          />
+          <FontAwesome name="trash" size={24} color="white" />
+        </View>
+      </Pressable>
+
+      <Pressable style={styles.editarButton} onPress={editarTurma}>
+        <View style={styles.circle}>
+          <FontAwesome name="pencil" size={24} color="white" />
         </View>
       </Pressable>
 
@@ -84,63 +153,6 @@ const InformacoesTurma = ({ route, navigation }) => {
           </View>
         </View>
       </Modal>
-
-      <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
-      </Pressable>
-
-      <View style={styles.redBack}>
-        <View
-          style={[styles.quadro, styles.roundedCorners, styles.quadroPadding]}
-        >
-          <Text style={styles.titulo}>{turma.codigo_turma}</Text>
-          <Text style={styles.txtInfoCurso}>Sala: {turma.sala_turma}</Text>
-          <Text style={styles.txtInfoCurso}>
-            Duração do curso: {turma.duracao_curso}
-          </Text>
-
-          <Pressable
-            style={[styles.botãoVerMapa, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
-          >
-            <Text style={styles.texto}>Ver no mapa</Text>
-          </Pressable>
-        </View>
-
-        <View
-          style={[styles.quadro, styles.roundedCorners, styles.quadroPadding]}
-        >
-          <Pressable
-            style={[styles.botaoFoto, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
-          >
-            <Text style={styles.texto}>Foto</Text>
-          </Pressable>
-
-          <Pressable
-            style={[styles.botaoHorario, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
-          >
-            <Text style={styles.texto}>Horarios</Text>
-          </Pressable>
-
-          <Pressable
-            style={[styles.botaoLocalizarse, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
-          >
-            <Text style={styles.texto}>Localize-se</Text>
-          </Pressable>
-        </View>
-
-        <View
-          style={[styles.quadro3, styles.roundedCorners, styles.quadroPadding]}
-        >
-          <Text style={styles.titulo}>{turma.nome_curso}</Text>
-          <View style={styles.textoDoMeio}>
-            <Text style={styles.descTexto}>{turma.desc_curso}</Text>
-          </View>
-        </View>
-      </View>
     </View>
   );
 };
@@ -148,12 +160,10 @@ const InformacoesTurma = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 120,
-    paddingTop: 20,
-    paddingBottom: 20,
+    backgroundColor: "#E8E8E8",
   },
   backButton: {
+    marginTop: 40,
     position: "absolute",
     top: 20,
     left: 20,
@@ -161,77 +171,80 @@ const styles = StyleSheet.create({
   },
   lixeiraButton: {
     position: "absolute",
+    marginTop: 30,
     top: 20,
     right: 20,
     zIndex: 1,
   },
+  editarButton: {
+    position: "absolute",
+    marginTop: 30,
+    top: 20,
+    right: 80,
+    zIndex: 1,
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    paddingTop: 110,
+    paddingHorizontal: 20,
+    width: "100%",
+  },
   redBack: {
+    backgroundColor: "#E8E8E8",
     flex: 1,
-    backgroundColor: "white",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
     flexWrap: "wrap",
-    padding: 10,
+    width: "100%",
   },
   quadro: {
-    width: "49%",
-    height: "46%",
+    width: "100%",
+    height: "25%",
     backgroundColor: "red",
-    marginBottom: 5,
+    marginBottom: 10,
+    alignItems: "center",
+  },
+  quadro2: {
+    width: "100%",
+    height: "20%",
+    backgroundColor: "red",
+    marginBottom: 10,
     alignItems: "center",
   },
   quadro3: {
     width: "100%",
-    height: "50%",
+    height: "45%",
     backgroundColor: "red",
-    marginTop: "1%",
+    marginTop: 10,
   },
-  botãoVerMapa: {
-    marginTop: "8%",
-    borderRadius: 100,
-    backgroundColor: "white",
-    height: 25,
-    width: 90,
-    alignItems: "center",
-    borderColor: "black",
-  },
-  botaoFoto: {
-    marginTop: "5%",
+  botao: {
+    marginTop: 10,
     borderRadius: 100,
     backgroundColor: "white",
     height: 30,
     width: 90,
     alignItems: "center",
     borderColor: "black",
+    borderWidth: 1,
   },
-  botaoHorario: {
-    marginTop: "5%",
-    borderRadius: 100,
+  botoesPequenos: {
+    marginBottom: 10,
     backgroundColor: "white",
-    height: 30,
-    width: 90,
-    alignItems: "center",
-    borderColor: "black",
-  },
-  botaoLocalizarse: {
-    marginTop: "5%",
-    borderRadius: 100,
-    backgroundColor: "white",
-    height: 30,
-    width: 90,
-    alignItems: "center",
-    borderColor: "black",
   },
   titulo: {
+    marginBottom: 10,
+    marginTop: 10,
     textAlign: "center",
-    fontSize: 40,
+    fontSize: 25,
     fontWeight: "bold",
     color: "white",
   },
   txtInfoCurso: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "bold",
     color: "white",
   },
@@ -245,14 +258,14 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   descTexto: {
-    fontSize: 16,
+    fontSize: 18,
     padding: 10,
   },
   roundedCorners: {
     borderRadius: 20,
   },
   quadroPadding: {
-    paddingHorizontal: 40,
+    paddingHorizontal: 10,
   },
   circle: {
     width: 50,
@@ -289,19 +302,6 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center",
-  },
-  input: {
-    height: 40,
-    width: 200,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-  },
-  fecharStyle: {
-    color: "black",
-    fontWeight: "bold",
     textAlign: "center",
   },
   buttonsContainer: {

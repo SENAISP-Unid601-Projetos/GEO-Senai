@@ -3,10 +3,6 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaHorarios = ({ navigation, route }) => {
-  const CaminhoQr = () => {
-    navigation.navigate("TelaQR");
-  };
-
   const { turma } = route.params;
 
   return (
@@ -22,70 +18,39 @@ const TelaHorarios = ({ navigation, route }) => {
       <View style={styles.Fundo_Cinza}>
         {/* Quadros Cinzas Pequenos */}
         <View style={styles.quadroCinzaPequenoTitulo}>
-          <Text style={styles.quadroTexto}>{turma.codigo_turma}</Text>
+          <Text style={styles.quadroTextoTitulo}>{turma.codigo_turma}</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Segunda</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Terça</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Quarta</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Quinta</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Sexta</Text>
+          <Text style={styles.quadroTexto}>Seg</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
           <Text style={styles.quadroTexto}></Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>Ter</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
           <Text style={styles.quadroTexto}></Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>Qua</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
           <Text style={styles.quadroTexto}></Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>Qui</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
           <Text style={styles.quadroTexto}></Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>Sex</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
           <Text style={styles.quadroTexto}></Text>
         </View>
       </View>
-
-      {/* Botão "Baixar QR" */}
-      <Pressable
-        style={[
-          styles.BaixarQRButton,
-          { borderWidth: 1, borderColor: "black" },
-        ]}
-        onPress={CaminhoQr}
-      >
-        <Text style={styles.buttonText}>Baixar QR</Text>
-      </Pressable>
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> c423d7cb1ed10a1ca1e3f598a0af63540fdf87e8
     </View>
   );
 };
@@ -114,22 +79,19 @@ const styles = StyleSheet.create({
   logo: {
     width: 70,
     height: 53,
-<<<<<<< HEAD
-    position: 'absolute', // Mantenha apenas isso
-=======
     top: 0,
     left: 0,
     position: "absolute",
->>>>>>> c423d7cb1ed10a1ca1e3f598a0af63540fdf87e8
   },
   Fundo_Cinza: {
     backgroundColor: "gray",
-    width: "80%",
-    height: 300,
+    width: "95%",
+    height: '75%',
     padding: 10,
     alignItems: "center",
     flexDirection: "row",
     flexWrap: "wrap",
+    marginTop: 20,
   },
   quadroCinzaPequenoTitulo: {
     backgroundColor: "#d3d3d3",
@@ -138,29 +100,31 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "black",
-    margin: 5,
+    marginTop: 10,
     justifyContent: "center",
     alignItems: "center",
   },
   quadroCinzaPequeno: {
     backgroundColor: "#d3d3d3",
-    width: "19%",
-    height: 55,
+    width: "50%",
+    height: '16%',
+    marginTop: 5,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "black",
-    margin: 5,
     justifyContent: "center",
     alignItems: "center",
   },
   quadroTexto: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
     color: "black",
   },
-<<<<<<< HEAD
-
-=======
+  quadroTextoTitulo: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "black",
+  },
   ADMButton: {
     backgroundColor: "#ff0000",
     padding: 13,
@@ -172,7 +136,6 @@ const styles = StyleSheet.create({
     bottom: 20,
     right: 20,
   },
->>>>>>> c423d7cb1ed10a1ca1e3f598a0af63540fdf87e8
   BaixarQRButton: {
     backgroundColor: "#ff0000",
     padding: 15,
@@ -190,6 +153,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   txt_horarios: {
+    marginTop: 20,
     fontSize: 25,
   },
   backButton: {

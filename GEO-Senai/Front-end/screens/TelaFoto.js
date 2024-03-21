@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
 const HomeScreen = ({ navigation }) => {
   
   const CaminhoQr = () => {
-    navigation.navigate("Qr");
+    navigation.navigate("TelaQR");
   };
 
 

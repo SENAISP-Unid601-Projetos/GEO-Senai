@@ -1,3 +1,6 @@
+// Tela inicial da versão de administrador do GEO SENAI
+
+
 import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";

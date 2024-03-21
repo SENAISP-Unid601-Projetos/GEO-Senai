@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Importe o ícone FontAwesome da biblioteca
 
-const CadastroTurma = ({ navigation }) => {
+const CadastroVaga = ({ navigation }) => {
   const [areaVaga, setAreaVaga] = useState("");
   const [nomeVaga, setNomeVaga] = useState("");
   const [descricaoVaga, setDescricaoVaga] = useState("");
@@ -96,7 +96,7 @@ const CadastroTurma = ({ navigation }) => {
           onChangeText={(text) => setNomeVaga(text)}
         />
         <TextInput
-          style={styles.input}
+          style={[styles.input, styles.textArea]}
           placeholder="Descrição da Vaga*"
           placeholderTextColor="gray"
           multiline
@@ -204,4 +204,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CadastroTurma;
+export default CadastroVaga;

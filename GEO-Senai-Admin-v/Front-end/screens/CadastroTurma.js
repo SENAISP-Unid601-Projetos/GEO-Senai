@@ -1,3 +1,5 @@
+// Tela que permite ao administrador cadastrar novas turmas no GEO SENAI
+
 import React, { useState } from "react";
 import {
   View,

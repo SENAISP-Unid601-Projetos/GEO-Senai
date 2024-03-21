@@ -1,37 +1,23 @@
-import React, { useState, useContext } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-  Modal,
-  Button,
-  Alert,
-} from "react-native";
+// Tela para exibir todas as informações de uma turma em específico, previamente cadastrada
+// em CadastroTurma, na versão para administrador do GEO SENAI
+
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const InformacoesTurma = ({ route, navigation }) => {
-
   const TelaFoto = () => {
     navigation.navigate("TelaFoto");
   };
-  const TelaHorarios = () => {
-    navigation.navigate("TelaHorarios");
-  };
+
   const botaoMapa = () => {
     navigation.navigate("TelaMapa");
   };
+  
   const { turma } = route.params;
 
- 
-
-  const [local] = useState(
-    `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`
-  );
-  const [nuvem] = useState(
-    `https://geosenai.azurewebsites.net/turmas/deletar/${turma.id_turma}`
-  );
+  const local = `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`;
+  const nuvem = `https://geosenai.azurewebsites.net/turmas/deletar/${turma.id_turma}`;
 
   return (
     <View style={styles.container}>
@@ -69,9 +55,11 @@ const InformacoesTurma = ({ route, navigation }) => {
 
           <Pressable
             style={[styles.botaoHorario, { borderWidth: 1 }]}
-            onPress={TelaHorarios}
+            onPress={() =>
+              navigation.navigate("TelaHorarios", { turma: turma })
+            }
           >
-            <Text style={styles.texto}>Horarios</Text>
+            <Text style={styles.texto}>Horários</Text>
           </Pressable>
 
           <Pressable
@@ -98,7 +86,7 @@ const InformacoesTurma = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#E8E8E8",
     paddingHorizontal: 120,
     paddingTop: 20,
     paddingBottom: 20,
@@ -111,7 +99,7 @@ const styles = StyleSheet.create({
   },
   redBack: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#E8E8E8",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
@@ -197,14 +185,6 @@ const styles = StyleSheet.create({
   },
   quadroPadding: {
     paddingHorizontal: 40,
-  },
-  circle: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "red",
-    justifyContent: "center",
-    alignItems: "center",
   },
   centeredView: {
     flex: 1,

@@ -8,7 +8,7 @@ import InformacoesTurma from "./screens/InformacoesTurma";
 import Carrossel from "./src/components/Carrossel";
 import TelaMapa from "./screens/TelaMapa";
 import TelaVagas from "./screens/TelaVagas";
-import Qr from "./screens/Qr";
+import TelaQR from "./screens/TelaQR";
 import TelaFoto from "./screens/TelaFoto";
 import TelaHorarios from "./screens/TelaHorarios";
 
@@ -95,8 +95,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
          <Stack.Screen
-          name="Qr"
-          component={Qr}
+          name="TelaQR"
+          component={TelaQR}
           options={{ headerShown: false }}
         />
         <Stack.Screen

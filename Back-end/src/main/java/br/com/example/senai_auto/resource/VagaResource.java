@@ -27,4 +27,15 @@ public class VagaResource {
     public void deletaVaga(@PathVariable Long id) {
         vagaRepository.deleteById(id);
     }
+
+    @DeleteMapping("/deletar/all")
+    public void deletaTudo() {
+        vagaRepository.deleteAll();
+    }
+
+    @PutMapping("/editar/{id}")
+    public Vaga editarVaga(@PathVariable Long id, @RequestBody Vaga vaga) {
+        vaga.setId_vaga(id);
+        return vagaRepository.save(vaga);
+    }
 }

@@ -1,0 +1,247 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+
+  }
+
+    /* Estilos para o menu */
+    
+  nav {
+    
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+    padding: 2vh 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  nav ul li {
+    display: inline;
+  }
+  nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 2vh 3vw;
+    display: inline-block;
+  }
+
+  .logo {
+    margin-left: 2vw;
+  }
+  .container_btn_header {
+    margin-right: 2vw;
+  }
+  #logo_header {
+    height: 8vh;
+    width: 4vw;
+  }
+  .btn_header {
+    border-radius: 20px;
+    padding: 2vh 3vw;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    cursor: pointer;
+
+  }
+
+  /* Primeira parte */
+  .fist_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+
+  }
+  .fist_container h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15vh;
+    margin: 0;
+  }
+  .fist_container p {
+    padding: 2vh;
+    width: 70vw;
+    color: #303030;
+    font-size: 3.5vh;
+  }
+  .fist_container button {
+    padding: 3vh 5vw;
+    border-radius: 40px;
+    border: 1px solid #000000;
+    margin: 1vw;
+    font-size: 2vh;
+  }
+
+
+  /* coluna de icons */
+  .icons{
+    height: 10vh;
+    padding: 2vh 9.3vw;
+  }
+
+
+  /* Segunda parte - Cards*/
+
+  .txt_cards{
+    text-align: center;
+  }
+
+  .card{
+    background-color: #841C1C;
+    width: 40vw; 
+    height: 37vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
+
+  }
+
+  .containerCards{
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-around;
+
+  }
+
+  .icons_cards{
+    height: 10vh;
+    padding: 5vh;
+  }
+
+  .internal_container{
+    display: flex;
+ 
+  }
+
+  .internal_container{
+  padding-top: 5vh;
+  color: #ffffff;
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .internal_container p{
+    margin: 0;
+  }
+
+
+    /* Terceira parte - dores*/
+    .custom-shape-divider-bottom-1710683552 {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+  }
+  
+  .custom-shape-divider-bottom-1710683552 svg {
+      position: relative;
+      display: block;
+      width: calc(300% + 1.3px);
+      height: 150px;
+  }
+  
+  .custom-shape-divider-bottom-1710683552 .shape-fill {
+      fill: #FFFFFF;
+  }
+
+
+.dores_cliente{
+  margin-top: 20vh;
+  background-color: #841C1C;
+} 
+
+.txt_icons{
+  display: flex;
+  margin-left: 20vw;
+}
+
+.custom-shape-divider-top-1710613243 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1710613243 svg {
+  position: relative;
+  display: block;
+  width: calc(180% + 1.3px);
+  height: 167px;
+}
+
+.custom-shape-divider-top-1710613243 .shape-fill {
+  fill: #FFFFFF;
+}
+
+.txt_dores_cliente{
+  color: #FFFFFF;
+  width: 61vw;
+  margin-left: 20vw;
+
+}
+
+
+    /* Barra de rolagem */
+
+    /* Estiliza a barra de rolagem */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+/* Estiliza a alça da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background-color: #841C1C; /* Cor da alça da barra de rolagem */
+  border-radius: 6px; /* Borda arredondada */
+  transition: all 0.3s ease; /* Adiciona uma transição suave */
+}
+
+/* Estiliza a alça da barra de rolagem quando estiver sendo arrastada */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6a1515; /* Cor da alça da barra de rolagem ao passar o mouse */
+}
+
+/* Adiciona animação à alça da barra de rolagem quando estiver ociosa */
+::-webkit-scrollbar-thumb:active {
+  background-color: #6a1515; /* Cor da alça da barra de rolagem ao ser clicada */
+}
+
+/* Adiciona animação à alça da barra de rolagem quando estiver ociosa */
+::-webkit-scrollbar-thumb {
+  background-color: #841C1C; /* Cor da alça da barra de rolagem */
+  border-radius: 6px; /* Borda arredondada */
+  transition: all 0.3s ease; /* Adiciona uma transição suave */
+  animation: scrollbar-animation 3s infinite alternate; /* Adiciona animação */
+}
+
+/* Define a animação */
+@keyframes scrollbar-animation {
+  0% {
+    width: 12px; /* Largura inicial da alça */
+  }
+  100% {
+    width: 15px; /* Largura final da alça */
+  }
+}
+
+
+/* Final*/
+
+.container_interno{
+  display: flex;
+
+}
+
+.final{
+
+  margin-bottom: 20vh;
+}
