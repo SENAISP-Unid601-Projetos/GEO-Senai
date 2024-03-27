@@ -33,15 +33,16 @@ const TelaTurmas = ({ navigation }) => {
   };
 
   return (
+    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       
       <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+        <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
 
       <Text style={styles.headerTitle}>Turmas</Text>
 
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+     
         <View style={styles.Buttons}>
           {turmas.map((turma) => (
             <Pressable
@@ -55,18 +56,20 @@ const TelaTurmas = ({ navigation }) => {
             </Pressable>
           ))}
         </View>
-      </ScrollView>
+     
 
       <Pressable style={styles.atualizarButton} onPress={atualizarListaTurmas}>
         <FontAwesome
           name="refresh"
-          size={20}
+          size={50}
           style={styles.iconPlus}
           color="#ffffff"
         />
         <Text style={styles.buttonAttText}>Atualizar Lista</Text>
       </Pressable>
+     
     </View>
+    </ScrollView>
   );
 };
 
@@ -79,7 +82,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     textAlign: "center",
     color: "black",
-    fontSize: 25,
+    fontSize: 50,
     fontWeight: "bold",
   },
   scrollContainer: {
@@ -92,14 +95,14 @@ const styles = StyleSheet.create({
   },
   ButtonTurmas: {
     backgroundColor: "#ff0000",
-    padding: 20,
-    marginBottom: 10,
+    padding: 30,
+    marginBottom: 20,
     alignItems: "center",
     width: "80%",
   },
   buttonText: {
     color: "#fff",
-    fontSize: 14,
+    fontSize: 25,
     fontWeight: "bold",
   },
   atualizarButton: {
@@ -111,13 +114,13 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center", // Adicionando alinhamento vertical para centralizar o texto
-    width: 200,
-    height: 50,
+    width: 300,
+    height: 75,
     marginTop: 20, // Ajuste a margem superior conforme necessário
   },
   buttonAttText: {
     color: "#fff",
-    fontSize: 14,
+    fontSize: 25,
     fontWeight: "bold",
   },
   iconPlus: {

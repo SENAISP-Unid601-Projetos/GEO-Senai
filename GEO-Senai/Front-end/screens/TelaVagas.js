@@ -1,16 +1,12 @@
-// Tela que apresenta em forma de botão todas as vagas de emprego cadastradas no GEO SENAI,
-// permitindo o acesso as informações de cada turma específica (InformacoesVaga)
-
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaVagas = ({ navigation }) => {
-  //navegar para tela inicial
   const [vagas, setVagas] = useState([]);
-  
+
   const local = "http://10.110.12.19:8080/vagas";
-  
+
   const atualizarVagas = () => {
     fetch(local, {
       method: "GET",
@@ -31,11 +27,8 @@ const TelaVagas = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Pressable
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <FontAwesome name="arrow-left" size={24} color="black" />
+        <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+          <FontAwesome name="arrow-left" size={50} color="black" />
         </Pressable>
       </View>
 
@@ -49,9 +42,7 @@ const TelaVagas = ({ navigation }) => {
             <Pressable
               key={vaga.id}
               style={styles.ButtonVagas}
-              onPress={
-                () => navigation.navigate("InformacoesVaga", { vaga: vaga }) //navegar para tela inicial
-              }
+              onPress={() => navigation.navigate("InformacoesVaga", { vaga: vaga })}
             >
               <Text style={styles.buttonText}>
                 Área: {vaga.area_vaga} - Empresa: {vaga.nome_vaga}
@@ -62,12 +53,7 @@ const TelaVagas = ({ navigation }) => {
       </ScrollView>
 
       <Pressable style={styles.atualizarButton} onPress={atualizarVagas}>
-        <FontAwesome
-          name="refresh"
-          size={20}
-          style={styles.iconPlus}
-          color="#ffffff"
-        />
+        <FontAwesome name="refresh" size={20} style={styles.iconPlus} color="#ffffff" />
         <Text style={styles.buttonAttText}>Atualizar Lista</Text>
       </Pressable>
     </View>
@@ -97,6 +83,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
+    paddingBottom: 20, // Para evitar que o último botão seja cortado
   },
   Buttons: {
     borderRadius: 10,
@@ -105,14 +92,14 @@ const styles = StyleSheet.create({
   },
   ButtonVagas: {
     backgroundColor: "#ff0000",
-    padding: 20,
-    marginBottom: 10,
+    padding:30,
+    marginBottom: 20,
     alignItems: "center",
     width: "80%",
   },
   buttonText: {
     color: "#fff",
-    fontSize: 14,
+    fontSize: 25, // Ajuste o tamanho da fonte conforme necessário
     fontWeight: "bold",
   },
   atualizarButton: {
@@ -123,10 +110,10 @@ const styles = StyleSheet.create({
     padding: 13,
     borderRadius: 30,
     alignItems: "center",
-    justifyContent: "center", // Adicionando alinhamento vertical para centralizar o texto
+    justifyContent: "center",
     width: 200,
     height: 50,
-    marginTop: 20, // Ajuste a margem superior conforme necessário
+    marginTop: 20,
   },
   iconPlus: {
     paddingRight: 14,

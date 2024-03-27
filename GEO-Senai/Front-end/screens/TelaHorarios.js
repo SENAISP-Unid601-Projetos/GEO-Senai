@@ -81,11 +81,7 @@ const TelaHorarios = ({ navigation, route }) => {
       >
         <Text style={styles.buttonText}>Baixar QR</Text>
       </Pressable>
-<<<<<<< HEAD
 
-    
-=======
->>>>>>> c423d7cb1ed10a1ca1e3f598a0af63540fdf87e8
     </View>
   );
 };
@@ -114,13 +110,11 @@ const styles = StyleSheet.create({
   logo: {
     width: 70,
     height: 53,
-<<<<<<< HEAD
     position: 'absolute', // Mantenha apenas isso
-=======
     top: 0,
     left: 0,
     position: "absolute",
->>>>>>> c423d7cb1ed10a1ca1e3f598a0af63540fdf87e8
+
   },
   Fundo_Cinza: {
     backgroundColor: "gray",
@@ -158,9 +152,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
   },
-<<<<<<< HEAD
-
-=======
   ADMButton: {
     backgroundColor: "#ff0000",
     padding: 13,
@@ -172,7 +163,7 @@ const styles = StyleSheet.create({
     bottom: 20,
     right: 20,
   },
->>>>>>> c423d7cb1ed10a1ca1e3f598a0af63540fdf87e8
+
   BaixarQRButton: {
     backgroundColor: "#ff0000",
     padding: 15,

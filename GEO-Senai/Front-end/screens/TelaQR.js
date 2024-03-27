@@ -14,7 +14,7 @@ const TelaQR = ({ navigation }) => {
       </View>
       
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+        <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
     </View>
   );
@@ -68,10 +68,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 30,
     fontWeight: 'bold',
-    // width: 70,
-    // height: 53,
-    // top:0 ,
-    // left:0 ,
+    marginBottom:50,
   },
   backButton: {
     position: "absolute",
@@ -93,8 +90,8 @@ const styles = StyleSheet.create({
     // alignContent: 'center',
   },
   QR: {
-    width: 350,
-    height: 350,
+    width: 550,
+    height: 550,
      top:0 ,
      left:0 ,
      alignItems: 'center',
