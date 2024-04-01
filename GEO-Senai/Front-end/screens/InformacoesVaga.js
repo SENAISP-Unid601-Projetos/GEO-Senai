@@ -2,10 +2,8 @@
 // em CadastroVaga, na versão para administrador do GEO SENAI
 
 import React from "react";
-import { View, Text, Pressable, Image, StyleSheet, Dimensions } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-
-const { width, height } = Dimensions.get('window');
 
 const InformacoesVaga = ({ route, navigation }) => {
   const { vaga } = route.params;
@@ -15,15 +13,17 @@ const InformacoesVaga = ({ route, navigation }) => {
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
         <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
-      
-      <View style={styles.infoContainer}>
-        <Text style={styles.infoText}>Nome da Vaga: {vaga.nome_vaga}</Text>
-        <Text style={styles.infoText}>Área da Vaga: {vaga.area_vaga}</Text>
-        <Text style={styles.infoText}>Descrição: {vaga.desc_vaga}</Text>
-        <Text style={styles.infoText}>Requisitos: {vaga.requisitos_vaga}</Text>
-        <Text style={styles.infoText}>Carga Horária: {vaga.carga_vaga}</Text>
-        <Text style={styles.infoText}>Salário: {vaga.salario_vaga}</Text>
-        <Text style={styles.infoText}>Contato: {vaga.contato_vaga}</Text>
+
+      <View style={styles.redBack}>
+        <View style={styles.whiteBack}>
+          <Text style={styles.txtTituloPrincipal}>{vaga.nome_vaga}</Text>
+          <Text style={styles.infoText}><Text style={styles.txtTitulo}>Área da Vaga:</Text> {vaga.area_vaga}</Text>
+          <Text style={styles.infoText}><Text style={styles.txtTitulo}>Descrição:</Text> {vaga.desc_vaga}</Text>
+          <Text style={styles.infoText}><Text style={styles.txtTitulo}>Requisitos:</Text> {vaga.requisitos_vaga}</Text>
+          <Text style={styles.infoText}><Text style={styles.txtTitulo}>Carga Horária:</Text> {vaga.carga_vaga}</Text>
+          <Text style={styles.infoText}><Text style={styles.txtTitulo}>Salário:</Text> {vaga.salario_vaga}</Text>
+          <Text style={styles.infoText}><Text style={styles.txtTitulo}>Contato:</Text> {vaga.contato_vaga}</Text>
+        </View>
       </View>
     </View>
   );
@@ -31,23 +31,44 @@ const InformacoesVaga = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: height * 0.02,
-    paddingHorizontal: width * 0.05,
+    backgroundColor: "#E8E8E8",
+    alignItems: "center",
+    justifyContent: "center",
   },
   backButton: {
     position: "absolute",
-    top: height * 0.02,
-    left: width * 0.02,
+    top: 40,
+    left: 20,
     zIndex: 1,
   },
-  infoContainer: {
-    marginTop: height * 0.1,
+  redBack: {
+    marginTop: 40,
+    width: "80%",
+    height: 800,
+    backgroundColor: "red",
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  whiteBack: {
+    margin: 20,
+    padding: 20,
+    height: '92%',
+    backgroundColor: "white",
+    borderRadius: 20,
+  },
+  txtTitulo: {
+    fontSize: 25,
+    fontWeight: 'bold',
   },
   infoText: {
-    fontSize: 18,
-    marginBottom: height * 0.02,
+    fontSize: 25,
+    marginBottom: 10,
+  },
+  txtTituloPrincipal: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 50,
+    marginBottom: 10,
   },
 });
 
