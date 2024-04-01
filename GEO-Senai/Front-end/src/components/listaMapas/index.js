@@ -34,8 +34,8 @@ export default  ListaMapas=({setMapaSelecionado}) =>{
         style={styles.estiloBtn}
         onValueChange={handleChange}
       >
-        <Picker.Item label="Bloco B ( superior )" value="Mapa primeiro andar" />
-        <Picker.Item label="Bloco B ( inferior )" value="Mapa segundo andar" />
+        <Picker.Item label="Bloco B (superior)" value="Mapa primeiro andar" />
+        <Picker.Item label="Bloco B (inferior )" value="Mapa segundo andar" />
         <Picker.Item label="Bloco A" value="Mapa terceiro andar" />
       </Picker>
     </View>
@@ -47,12 +47,14 @@ const styles = StyleSheet.create({
 
   },
   estiloBtn: {
-    fontSize:25,
-    borderRadius:100,
-    height: 75,
-    width: 200,
+    padding: 20,
+    marginTop: 40,
+    fontSize: 25,
+    fontWeight: 'bold',
+    borderColor:"black",
+    borderRadius: 20,
+    borderWidth: 2,
     backgroundColor: '#ED2A2A',
     color: '#ffffff',
-    borderColor:"#ED2A2A"
   },
 });

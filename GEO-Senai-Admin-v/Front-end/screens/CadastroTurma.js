@@ -19,10 +19,8 @@ const CadastroTurma = ({ navigation }) => {
   const [duracaoCurso, setDuracaoCurso] = useState("");
   const [descricaoCurso, setDescricaoCurso] = useState("");
 
-  const [local] = useState("http://10.110.12.19:8080/turmas/nova-turma");
-  const [nuvem] = useState(
-    "https://geosenai.azurewebsites.net/senaiauto/turmas/nova-turma"
-  );
+  const local = "http://10.110.12.19:8080/turmas/nova-turma";
+  const nuvem = "https://appsenai.azurewebsites.net/turmas/nova-turma";
 
   const enviarDados = () => {
     // Valide os campos, se necessário

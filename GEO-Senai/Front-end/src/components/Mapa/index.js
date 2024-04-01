@@ -1,15 +1,11 @@
 
 import React, { useState,useEffect  } from 'react';
-import { StyleSheet, Pressable, View, Image } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // Importe o ícone FontAwesome da biblioteca
-import AuthContext from '../../context/AuthContext';
+import { StyleSheet, View, Image } from 'react-native';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
 const Mapa = ({ mapaSelecionado }) => {
 
   const [mapa, setMapa] = useState(require("./../../../assets/mapaSenai.png"));
-
-  
 
   useEffect(() => {
     if (mapaSelecionado === "2") {
@@ -38,7 +34,7 @@ const Mapa = ({ mapaSelecionado }) => {
           contentHeight={400}
         >
           <Image
-            style={{ width: '100%', height: '110%', resizeMode: 'contain' }}
+            style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
             source={mapa}
           />
         </ReactNativeZoomableView>
@@ -48,7 +44,6 @@ const Mapa = ({ mapaSelecionado }) => {
 };
 
 const styles = StyleSheet.create({
-
 
     container: {
         flex: 1,

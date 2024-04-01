@@ -17,7 +17,7 @@ const InformacoesVaga = ({ route, navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const local = `http://10.110.12.19:8080/vagas/deletar/${vaga.id_vaga}`;
-  const nuvem = `https://geosenai.azurewebsites.net/vagas/${vaga.id_vaga}`;
+  const nuvem = `https://appsenai.azurewebsites.net/vagas/${vaga.id_vaga}`;
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -117,8 +117,12 @@ const InformacoesVaga = ({ route, navigation }) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Confirma a exclusão da vaga?</Text>
             <View style={styles.buttonsContainer}>
-              <Button title="Cancelar" onPress={toggleModal} />
-              <Button title="Confirmar" onPress={deletarVaga} />
+              <Pressable style={[styles.botoesModalCancelar]} onPress={toggleModal} >
+                <Text style={styles.texto}>Cancelar</Text>
+              </Pressable>
+              <Pressable style={[styles.botoesModalConfirmar]} onPress={deletarVaga} >
+                <Text style={styles.texto}>Confirmar</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -248,6 +252,7 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: "white",
+    borderWidth: 2,
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
@@ -268,6 +273,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+  },
+  botoesModalCancelar: {
+    borderWidth: 2,
+    borderRadius: 10,
+    backgroundColor: "red",
+    alignItems: "center",
+    margin: 5,
+  },
+  botoesModalConfirmar: {
+    margin: 5,
+    borderWidth: 2,
+    borderRadius: 10,
+    backgroundColor: "gray",
+    alignItems: "center",
+  },
+  texto: {
+    padding: 7  ,
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'white',
   },
 });
 

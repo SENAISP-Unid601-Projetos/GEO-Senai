@@ -1,15 +1,25 @@
-// Tela que apresenta em forma de botão todas as turmas cadastradas no GEO SENAI, permitindo
-// o acesso as informações de cada turma específica (InformacoesTurma)
-
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ScrollView,
+  TextInput,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaTurmas = ({ navigation }) => {
   const [turmas, setTurmas] = useState([]);
   const [atualizarLista, setAtualizarLista] = useState(true);
+  const [searchText, setSearchText] = useState("");
+  const [paginaAtual, setPaginaAtual] = useState(0);
+  const turmasPorPagina = 5;
+  const [existeProximo, setExisteProximo] = useState(true);
+  const [existeAnterior, setExisteAnterior] = useState(false);
 
   const local = "http://10.110.12.19:8080/turmas";
+  const nuvem = "https://appsenai.azurewebsites.net/turmas";
 
   useEffect(() => {
     fetch(local, {
@@ -24,8 +34,46 @@ const TelaTurmas = ({ navigation }) => {
       .catch((error) => console.error("Erro ao obter turmas:", error));
   }, [atualizarLista]);
 
-  const adicionarTurma = () => {
-    navigation.navigate("CadastroTurma");
+  useEffect(() => {
+    setPaginaAtual(0);
+  }, [searchText]);
+
+  useEffect(() => {
+    setExisteProximo((paginaAtual + 1) * turmasPorPagina < turmas.length);
+    setExisteAnterior(paginaAtual > 0);
+  }, [paginaAtual, turmas.length]);
+
+  const renderizarTurmasPaginaAtual = () => {
+    const inicio = paginaAtual * turmasPorPagina;
+    const fim = inicio + turmasPorPagina;
+    return turmas
+      .filter((turma) =>
+        turma.codigo_turma.toLowerCase().includes(searchText.toLowerCase())
+      )
+      .slice(inicio, fim)
+      .map((turma) => (
+        <Pressable
+          key={turma.id}
+          style={styles.ButtonTurmas}
+          onPress={() =>
+            navigation.navigate("InformacoesTurma", { turma: turma })
+          }
+        >
+          <Text style={styles.buttonText}>{turma.codigo_turma}</Text>
+        </Pressable>
+      ));
+  };
+
+  const avancarPagina = () => {
+    if (existeProximo) {
+      setPaginaAtual(paginaAtual + 1);
+    }
+  };
+
+  const retrocederPagina = () => {
+    if (existeAnterior) {
+      setPaginaAtual(paginaAtual - 1);
+    }
   };
 
   const atualizarListaTurmas = () => {
@@ -33,32 +81,51 @@ const TelaTurmas = ({ navigation }) => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
-      
-      <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-        <FontAwesome name="arrow-left" size={50} color="black" />
-      </Pressable>
+      <View style={styles.cabecalho}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <FontAwesome name="arrow-left" size={50} color="black" />
+        </Pressable>
+
+        <FontAwesome style={styles.icon} name="users" size={50} color="black" />
+      </View>
 
       <Text style={styles.headerTitle}>Turmas</Text>
 
-     
-        <View style={styles.Buttons}>
-          {turmas.map((turma) => (
-            <Pressable
-              key={turma.id}
-              style={styles.ButtonTurmas}
-              onPress={() =>
-                navigation.navigate("InformacoesTurma", { turma: turma })
-              }
-            >
-              <Text style={styles.buttonText}>{turma.codigo_turma}</Text>
-            </Pressable>
-          ))}
-        </View>
-     
+      <TextInput
+        style={styles.searchBar}
+        placeholder="Pesquisar turma... Ex: 3TDS/3MDS"
+        onChangeText={(text) => setSearchText(text)}
+        value={searchText}
+      />
 
-      <Pressable style={styles.atualizarButton} onPress={atualizarListaTurmas}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.Buttons}>{renderizarTurmasPaginaAtual()}</View>
+      </ScrollView>
+
+      <View style={styles.paginacao}>
+        {existeAnterior && (
+          <Pressable style={styles.botaoPaginacao} onPress={retrocederPagina}>
+            <FontAwesome name="chevron-left" size={25} color="black" />
+          </Pressable>
+        )}
+
+        <Text style={styles.paginaAtual}>{paginaAtual + 1}</Text>
+
+        {existeProximo && (
+        <Pressable style={styles.botaoPaginacao} onPress={avancarPagina}>
+          <FontAwesome name="chevron-right" size={25} color="black" />
+        </Pressable>
+        )}
+      </View>
+
+      <Pressable
+        style={styles.atualizarButton}
+        onPress={atualizarListaTurmas}
+      >
         <FontAwesome
           name="refresh"
           size={50}
@@ -67,9 +134,7 @@ const TelaTurmas = ({ navigation }) => {
         />
         <Text style={styles.buttonAttText}>Atualizar Lista</Text>
       </Pressable>
-     
     </View>
-    </ScrollView>
   );
 };
 
@@ -129,6 +194,36 @@ const styles = StyleSheet.create({
   backButton: {
     marginTop: 40,
     marginRight: 10,
+  },
+  icon: {
+    alignSelf: "flex-end",
+    marginLeft: 20,
+  },
+  searchBar: {
+    width: "50%",
+    fontSize: 25,
+    backgroundColor: "#fff",
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    alignSelf: "center",
+  },
+  cabecalho: {
+    flexDirection: "row",
+  },
+  paginacao: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  botaoPaginacao: {
+    paddingHorizontal: 10,
+  },
+  paginaAtual: {
+    fontSize: 25,
+    marginHorizontal: 10,
   },
 });
 

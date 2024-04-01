@@ -12,7 +12,7 @@ const TelaLogin = ({ navigation }) => {
 
   const realizarLogin = async () => {
     // Login chumbado :)
-    if (usuario === 'alunos00' && senha === 'senai>harvard') {
+    if (usuario === 'templarios' && senha === 'tds2024') {
       navigation.navigate('TelaInicial');
     } else {
       Alert.alert('Erro', 'Usuário ou senha inválidos.');

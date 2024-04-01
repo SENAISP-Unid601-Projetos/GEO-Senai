@@ -2,15 +2,29 @@
 // novas turmas
 
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, ScrollView, Modal, Button, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ScrollView,
+  Modal,
+  TextInput,
+  Alert,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaTurmas = ({ navigation }) => {
   const [turmas, setTurmas] = useState([]);
   const [atualizarLista, setAtualizarLista] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
-  const [local] = useState("http://10.110.12.19:8080/turmas");
+  const local = "http://10.110.12.19:8080/turmas";
+  const nuvem = "https://appsenai.azurewebsites.net/turmas";
+
+  const localD = "http://10.110.12.19:8080/turmas/deletar/all";
+  const nuvemD = "https://appsenai.azurewebsites.net/turmas/deletar/all";
 
   useEffect(() => {
     fetch(local, {
@@ -42,7 +56,7 @@ const TelaTurmas = ({ navigation }) => {
 
     try {
       const response = await fetch(
-        "http://10.110.12.19:8080/turmas/deletar/all",
+        localD,
         {
           method: "DELETE",
           headers: {
@@ -62,6 +76,11 @@ const TelaTurmas = ({ navigation }) => {
     }
   };
 
+  // Função para filtrar as turmas com base no texto de pesquisa
+  const filteredTurmas = turmas.filter((turma) =>
+    turma.codigo_turma.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -70,9 +89,16 @@ const TelaTurmas = ({ navigation }) => {
 
       <Text style={styles.headerTitle}>Turmas</Text>
 
+      <TextInput
+        style={styles.searchBar}
+        placeholder="Pesquisar turma... Ex: 3TDS/3MDS"
+        onChangeText={(text) => setSearchText(text)}
+        value={searchText}
+      />
+
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.Buttons}>
-          {turmas.map((turma) => (
+      <View style={styles.Buttons}>
+          {filteredTurmas.map((turma) => (
             <Pressable
               key={turma.id}
               style={styles.ButtonTurmas}
@@ -110,8 +136,18 @@ const TelaTurmas = ({ navigation }) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Confirma a exclusão?</Text>
             <View style={styles.buttonsContainer}>
-              <Button title="Cancelar" onPress={toggleModal} />
-              <Button title="Confirmar" onPress={excluiTudo} />
+              <Pressable
+                style={[styles.botoesModalCancelar]}
+                onPress={toggleModal}
+              >
+                <Text style={styles.texto}>Cancelar</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.botoesModalConfirmar]}
+                onPress={excluiTudo}
+              >
+                <Text style={styles.texto}>Confirmar</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -198,6 +234,7 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: "white",
+    borderWidth: 2,
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
@@ -220,6 +257,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+  },
+  botoesModalCancelar: {
+    borderRadius: 10,
+    backgroundColor: "#4287f5",
+    alignItems: "center",
+    margin: 5,
+  },
+  botoesModalConfirmar: {
+    margin: 5,
+    borderRadius: 10,
+    backgroundColor: "red",
+    alignItems: "center",
+  },
+  texto: {
+    padding: 7,
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "white",
+  },
+  searchBar: {
+    backgroundColor: "#fff",
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

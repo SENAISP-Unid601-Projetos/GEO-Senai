@@ -32,30 +32,29 @@ const App = () => {
       handleIdle();
     };
 
-    handleIdle();
-
-    const resetTimerOnInteraction = () => {
+    const handleInteraction = () => {
       resetIdleTimer();
+      if (showCarousel) {
+        setShowCarousel(false);
+      }
     };
 
-    // Adiciona os ouvintes de eventos
+    // Adiciona ouvintes de eventos para reiniciar o temporizador em interações do usuário
     const addEventListeners = () => {
-      // Utilize os eventos de interação do React Native, como touchstart, mousedown, etc.
-      // No caso de React Native, você pode usar eventos de toque (touch), gestos ou interações específicas do seu aplicativo.
-      // Por exemplo, você pode usar onPress em componentes Touchable para detectar interações do usuário.
-      // Neste exemplo, deixarei o código de adição de ouvintes de eventos vazio, pois não é necessário para o carrossel.
+      // Use os eventos de interação adequados para o seu aplicativo
+      // Aqui, estamos adicionando um ouvinte de toque para redefinir o temporizador
+      document.addEventListener("touchstart", handleInteraction);
     };
 
-    // Não é necessário remover ouvintes de eventos no React Native
-
-    // Adiciona os ouvintes de eventos (não é necessário para o carrossel)
     addEventListeners();
+    handleIdle();
 
     return () => {
       clearTimeout(idleTimer);
-      // Não é necessário remover ouvintes de eventos no React Native
+      // Remova os ouvintes de eventos quando o componente for desmontado
+      document.removeEventListener("touchstart", handleInteraction);
     };
-  }, []);
+  }, [showCarousel]);
 
   const handleCloseCarousel = () => {
     setShowCarousel(false);

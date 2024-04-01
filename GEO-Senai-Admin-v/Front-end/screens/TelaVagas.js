@@ -16,7 +16,10 @@ const TelaVagas = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const local = "http://10.110.12.19:8080/vagas";
-  const nuvem = "https://geosenai.azurewebsites.net/vagas";
+  const nuvem = "https://appsenai.azurewebsites.net/vagas";
+
+  const localD = "http://10.110.12.19:8080/vagas/deletar/all";
+  const nuvemD = "https://appsenai.azurewebsites.net/vagas/deletar/all";
 
   const botaoMais = () => {
     navigation.navigate("CadastroVaga");
@@ -44,7 +47,7 @@ const TelaVagas = ({ navigation }) => {
 
     try {
       const response = await fetch(
-        "http://10.110.12.19:8080/vagas/deletar/all",
+        localD,
         {
           method: "DELETE",
           headers: {
@@ -125,8 +128,12 @@ const TelaVagas = ({ navigation }) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Confirma a exclusão?</Text>
             <View style={styles.buttonsContainer}>
-              <Button title="Cancelar" onPress={toggleModal} />
-              <Button title="Confirmar" onPress={excluiTudo} />
+              <Pressable style={[styles.botoesModalCancelar]} onPress={toggleModal}>
+                <Text style={styles.texto}>Cancelar</Text>
+              </Pressable>
+              <Pressable style={[styles.botoesModalConfirmar]} onPress={excluiTudo}>
+                <Text style={styles.texto}>Confirmar</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -218,6 +225,7 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: "white",
+    borderWidth: 2,
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
@@ -241,6 +249,25 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     width: "100%",
   },
+  botoesModalCancelar: {
+    borderRadius: 10,
+    backgroundColor: "#4287f5",
+    alignItems: 'center',
+    margin: 5,
+  },
+  botoesModalConfirmar: {
+    margin: 5,
+    borderRadius: 10,
+    backgroundColor: "red",
+    alignItems: 'center',
+  },
+  texto: {
+    padding: 7  ,
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'white',
+  },
+
 });
 
 export default TelaVagas;

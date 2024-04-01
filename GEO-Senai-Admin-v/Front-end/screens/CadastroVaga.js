@@ -19,8 +19,8 @@ const CadastroVaga = ({ navigation }) => {
   const [salarioVaga, setSalarioVaga] = useState("");
   const [contatoVaga, setContatoVaga] = useState("");
 
-  const [local] = useState("http://10.110.12.19:8080/vagas/nova-vaga");
-  const [nuvem] = useState("https://geosenai.azurewebsites.net/vagas/nova-vaga");
+  const local = "http://10.110.12.19:8080/vagas/nova-vaga";
+  const nuvem = "https://appsenai.azurewebsites.net/vagas/nova-vaga";
 
   const enviarDados = () => {
     // Valide os campos, se necessário

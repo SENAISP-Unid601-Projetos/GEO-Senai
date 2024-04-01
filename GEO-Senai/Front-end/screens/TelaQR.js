@@ -1,18 +1,25 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // Importando FontAwesome
+import React from "react";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { FontAwesome } from "@expo/vector-icons"; // Importando FontAwesome
 
 const TelaQR = ({ navigation }) => {
+  const botaoInicio = () => {
+    navigation.navigate("TelaInicial");
+  };
   return (
     <View style={styles.container}>
-      <Text style={styles.BemVindo}>Escaneie para baixar o mapa</Text>
-      <View>
-        <Image
-          source={require("./../assets/QR.png")}
-          style={styles.QR}
-        />
+      <Text style={styles.textoTitulo}>Obrigado por utilizar este totem</Text>
+      <View style={styles.textoMid}>
+        <Text style={styles.texto}>Escaneie para baixar o mapa </Text>
+        <FontAwesome name="mobile" size={50} color="black" />
       </View>
-      
+      <View>
+        <Image source={require("./../assets/QR.png")} style={styles.QR} />
+      </View>
+      <Pressable style={styles.buttonGoBack} onPress={botaoInicio}>
+        <Text style={styles.textGoBack}>Início</Text>
+      </Pressable>
+
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
         <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
@@ -23,78 +30,53 @@ const TelaQR = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#E8E8E8",
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  settingsButtonText: { // Renomeando para evitar conflito
-    color: '#fff',
-    fontSize: 10,
-    fontWeight: 'bold',
-    alignContent: 'center',
-  },
-  header: {
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-    backgroundColor: '#ff0000',
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  headerText: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#fff',
-    alignSelf: 'flex-end',
-  },
-  logo: {
-    width: 70,
-    height: 53,
-    top:0 ,
-    left:0 ,
-    position:'absolute',
-    alignContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    textAlign: 'center',
-  },
-  BemVindo: {
-    color: 'black',
+  texto: {
+    color: "black",
     fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom:50,
+    fontWeight: "bold",
   },
   backButton: {
     position: "absolute",
-    top: 20,
+    top: 40,
     left: 20,
     zIndex: 1,
     borderRadius: 60, // Corrigindo para número
   },
-  // TEXTO DOS BOTÕES
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'normal',
+  buttonGoBack: {
+    alignItems: "center",
+    backgroundColor: "red",
+    marginTop: 20,
+    borderWidth: 2,
+    borderRadius: 20,
+    width: 150,
+    padding: 10,
+    borderColor: "black",
   },
-  settingsbuttonText: {
-    color: '#fff',
-    fontSize: 10,
-    fontWeight: 'bold',
-    // alignContent: 'center',
+  textGoBack: {
+    fontSize: 30,
+    fontWeight: "bold",
+    alignSelf: "center",
+    color: "white",
   },
   QR: {
     width: 550,
     height: 550,
-     top:0 ,
-     left:0 ,
-     alignItems: 'center',
+    top: 0,
+    left: 0,
+    alignItems: "center",
+  },
+  textoMid: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  textoTitulo: {
+    fontSize: 40,
+    fontWeight: 'bold',
   },
 });
 

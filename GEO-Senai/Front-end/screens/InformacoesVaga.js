@@ -13,7 +13,7 @@ const InformacoesVaga = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+        <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
       
       <View style={styles.infoContainer}>

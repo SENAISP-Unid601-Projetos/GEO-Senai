@@ -17,7 +17,7 @@ const InformacoesTurma = ({ route, navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const local = `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`;
-  const nuvem = `https://geosenai.azurewebsites.net/deletar/${turma.id_turma}`;
+  const nuvem = `https://appsenai.azurewebsites.net/deletar/${turma.id_turma}`;
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -147,8 +147,12 @@ const InformacoesTurma = ({ route, navigation }) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Confirma a exclusão da turma?</Text>
             <View style={styles.buttonsContainer}>
-              <Button title="Cancelar" onPress={toggleModal} />
-              <Button title="Confirmar" onPress={deletarTurma} />
+              <Pressable style={[styles.botoesModalCancelar]} onPress={toggleModal}>
+                <Text style={styles.texto}>Cancelar</Text>
+              </Pressable>
+              <Pressable style={[styles.botoesModalConfirmar]} onPress={deletarTurma}>
+                <Text style={styles.texto}>Confirmar</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -288,6 +292,7 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: "white",
+    borderWidth: 2,
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
@@ -308,6 +313,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+  },
+  botoesModalCancelar: {
+    borderWidth: 2, 
+    borderRadius: 10,
+    backgroundColor: "red",
+    alignItems: 'center',
+    margin: 5,
+  },
+  botoesModalConfirmar: {
+    margin: 5,
+    borderWidth: 2, 
+    borderRadius: 10,
+    backgroundColor: "gray",
+    alignItems: 'center',
+  },
+  texto: {
+    padding: 7  ,
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'white',
   },
 });
 

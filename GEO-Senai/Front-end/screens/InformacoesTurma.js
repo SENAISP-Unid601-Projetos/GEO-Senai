@@ -16,13 +16,10 @@ const InformacoesTurma = ({ route, navigation }) => {
   
   const { turma } = route.params;
 
-  const local = `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`;
-  const nuvem = `https://geosenai.azurewebsites.net/turmas/deletar/${turma.id_turma}`;
-
   return (
     <View style={styles.container}>
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+        <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
 
       <View style={styles.redBack}>
@@ -36,7 +33,7 @@ const InformacoesTurma = ({ route, navigation }) => {
           </Text>
 
           <Pressable
-            style={[styles.botãoVerMapa, { borderWidth: 1 }]}
+            style={[styles.botoesPequenos, { borderWidth: 1 }]}
             onPress={() => console.log("Turmas pressionados")}
           >
             <Text style={styles.texto}>Ver no mapa</Text>
@@ -47,14 +44,14 @@ const InformacoesTurma = ({ route, navigation }) => {
           style={[styles.quadro, styles.roundedCorners, styles.quadroPadding]}
         >
           <Pressable
-            style={[styles.botaoFoto, { borderWidth: 1 }]}
+            style={[styles.botoesPequenos, { borderWidth: 1 }]}
             onPress={TelaFoto}
           >
             <Text style={styles.texto}>Foto</Text>
           </Pressable>
 
           <Pressable
-            style={[styles.botaoHorario, { borderWidth: 1 }]}
+            style={[styles.botoesPequenos, { borderWidth: 1 }]}
             onPress={() =>
               navigation.navigate("TelaHorarios", { turma: turma })
             }
@@ -63,7 +60,7 @@ const InformacoesTurma = ({ route, navigation }) => {
           </Pressable>
 
           <Pressable
-            style={[styles.botaoLocalizarse, { borderWidth: 1 }]}
+            style={[styles.botoesPequenos, { borderWidth: 1 }]}
             onPress={botaoMapa}
           >
             <Text style={styles.texto}>Localize-se</Text>
@@ -112,6 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     marginBottom: 5,
     alignItems: "center",
+    justifyContent: 'center',
   },
   quadro3: {
     width: "100%",
@@ -119,51 +117,29 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     marginTop: "1%",
   },
-  botãoVerMapa: {
-    marginTop: "8%",
+  botoesPequenos: {
+    margin: 20,
+    padding: 10,
     borderRadius: 100,
     backgroundColor: "white",
-    height: 25,
-    width: 90,
+    width: 200,
     alignItems: "center",
     borderColor: "black",
   },
-  botaoFoto: {
-    marginTop: "5%",
-    borderRadius: 100,
-    backgroundColor: "white",
-    height: 30,
-    width: 90,
-    alignItems: "center",
-    borderColor: "black",
-  },
-  botaoHorario: {
-    marginTop: "5%",
-    borderRadius: 100,
-    backgroundColor: "white",
-    height: 30,
-    width: 90,
-    alignItems: "center",
-    borderColor: "black",
-  },
-  botaoLocalizarse: {
-    marginTop: "5%",
-    borderRadius: 100,
-    backgroundColor: "white",
-    height: 30,
-    width: 90,
-    alignItems: "center",
-    borderColor: "black",
+  texto: {
+    fontWeight: 'bold',
+    fontSize: 25,
   },
   titulo: {
+    margin: 10,
     textAlign: "center",
-    fontSize: 40,
+    fontSize: 50,
     fontWeight: "bold",
     color: "white",
   },
   txtInfoCurso: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: "bold",
     color: "white",
   },
@@ -177,7 +153,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   descTexto: {
-    fontSize: 16,
+    fontSize: 30,
     padding: 10,
   },
   roundedCorners: {

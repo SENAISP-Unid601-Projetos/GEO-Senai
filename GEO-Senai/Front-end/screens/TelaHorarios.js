@@ -12,14 +12,14 @@ const TelaHorarios = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+        <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
 
       {/* Título */}
       <Text style={styles.txt_horarios}>Horários</Text>
 
       {/* Fundo Cinza */}
-      <View style={styles.Fundo_Cinza}>
+      <View style={styles.fundoCinza}>
         {/* Quadros Cinzas Pequenos */}
         <View style={styles.quadroCinzaPequenoTitulo}>
           <Text style={styles.quadroTexto}>{turma.codigo_turma}</Text>
@@ -116,11 +116,10 @@ const styles = StyleSheet.create({
     position: "absolute",
 
   },
-  Fundo_Cinza: {
+  fundoCinza: {
     backgroundColor: "gray",
     width: "80%",
-    height: 300,
-    padding: 10,
+    padding: 20,
     alignItems: "center",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -128,18 +127,18 @@ const styles = StyleSheet.create({
   quadroCinzaPequenoTitulo: {
     backgroundColor: "#d3d3d3",
     width: "100%",
+    marginBottom: 10,
     height: 80,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "black",
-    margin: 5,
     justifyContent: "center",
     alignItems: "center",
   },
   quadroCinzaPequeno: {
     backgroundColor: "#d3d3d3",
     width: "19%",
-    height: 55,
+    height: 100,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "black",
@@ -148,7 +147,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   quadroTexto: {
-    fontSize: 16,
+    fontSize: 30,
     fontWeight: "bold",
     color: "black",
   },
@@ -181,7 +180,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   txt_horarios: {
-    fontSize: 25,
+    fontSize: 50,
+    fontWeight: 'bold',
   },
   backButton: {
     alignSelf: 'flex-start',

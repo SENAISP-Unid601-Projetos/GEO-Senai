@@ -10,30 +10,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', // Cor de fundo da tela
   },
 
-  header: {
-    position: 'absolute', // Posicionamento absoluto para o cabeçalho
-    top: 0, // No topo da tela
-    width: '100%', // Largura total
-    backgroundColor: '#ff0000', // Cor de fundo vermelha
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc', // Cor da borda inferior
-    alignItems: 'flex-end', // Alinhar itens à direita
-  },
-  
-  headerText: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#fff', // Cor do texto do cabeçalho (branco)
-  },
-  
-  logo: {
-    width: 70,
-    height: 53,
-    position: 'absolute', // Posicionamento absoluto para o logo
-    top: 0,
-    left: 0,
-  },
+// //aparenta não estar sendo utilizado
+//   header: {
+//     position: 'absolute', // Posicionamento absoluto para o cabeçalho
+//     top: 0, // No topo da tela
+//     width: '100%', // Largura total
+//     backgroundColor: '#ff0000', // Cor de fundo vermelha
+//     padding: 10,
+//     borderBottomWidth: 1,
+//     borderBottomColor: '#ccc', // Cor da borda inferior
+//     alignItems: 'flex-end', // Alinhar itens à direita
+//   },
+//   //aparenta não estar sendo utilizado
+//   headerText: {
+//     fontSize: 25,
+//     fontWeight: 'bold',
+//     color: '#fff', // Cor do texto do cabeçalho (branco)
+//   },
+//   //aparenta não estar sendo utilizado
+//   logo: {
+//     width: 70,
+//     height: 53,
+//     position: 'absolute', // Posicionamento absoluto para o logo
+//     top: 0,
+//     left: 0,
+//   },
 
   
   //quadro vermelho no centro da tela
@@ -63,19 +64,94 @@ const styles = StyleSheet.create({
     marginTop: 30, // Adicionando uma margem superior para espaçamento
     
   },
-  
-  button: {
+
+  //Botões
+  buttonRetornar: {
+    borderWidth: 1,            // Define a largura da borda como 1
+    paddingVertical: 5,        // Reduzindo o padding vertical
+    paddingHorizontal: 10,    // Reduzindo o padding horizontal
+    borderRadius: 10,          // Define o raio da borda como 10 para tornar os cantos arredondados
+    marginHorizontal: 25,      // Adicionando um pequeno espaçamento horizontal entre os botões
+    width: 200,                // Definindo a largura do botão como 200
+    height: 50,                // Definindo a altura do botão como 50
+    backgroundColor: 'white',
+    alignItems:  'center',
+    borderColor: 'white',
+},
+buttonTextRetornar: {
+  fontSize: 30, 
+  fontWeight: 'bold',
+  alignSelf: 'center',
+},
+
+  buttonSeguir: {
+    borderWidth: 1,            // Define a largura da borda como 1
+    paddingVertical: 5,        // Reduzindo o padding vertical
+    paddingHorizontal: 10,    // Reduzindo o padding horizontal
+    borderRadius: 10,          // Define o raio da borda como 10 para tornar os cantos arredondados
+    marginHorizontal: 25,      // Adicionando um pequeno espaçamento horizontal entre os botões
+    width: 200,                // Definindo a largura do botão como 200
+    height: 50,                // Definindo a altura do botão como 50
+    backgroundColor: 'white',
+    alignItems:  'center',
+    borderColor: 'white',
+  },
+  buttonTextSeguir: {
+    fontSize: 30, 
+    fontWeight: 'bold',
+    alignSelf: 'center',
+  },
+
+  buttonQR: {
     borderWidth: 1,
     paddingVertical: 5, // Reduzindo o padding vertical
     paddingHorizontal: 10, // Reduzindo o padding horizontal
     borderRadius: 10,
     marginHorizontal: 5, // Adicionando um pequeno espaçamento horizontal entre os botões
+    width: 200,                // Definindo a largura do botão como 200
+    height: 50,                // Definindo a altura do botão como 50
+    backgroundColor: 'white',
+    alignItems:  'center',
+    borderColor: 'white',
   },
-  
-  buttonText: {
+  buttonTextQR: {
+    fontSize: 25, // Reduzindo o tamanho do texto
+    fontWeight: 'bold',
+  },
+
+  buttonVoltar: {
+    borderWidth: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 100, // Define a borda para fazer o botão circular (valor alto para garantir que seja um círculo)
+    width: 100, // Define a largura do botão
+    height: 100, // Define a altura do botão (se estiver usando flexDirection: 'column')
+    marginTop: 40, // Adicionando margem superior
+    alignItems: 'center',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+  buttonTextVoltar: {
+    fontSize: 21, // Reduzindo o tamanho do texto
+    fontWeight: 'bold',
+    alignSelf: 'center',
+  },
+
+  buttonADM: {
+    position: 'absolute',
+    bottom: 20,
+    //left: 20,
+    right: 20,
+    borderWidth: 1,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+  },
+  buttonTextADM: {
     fontSize: 14, // Reduzindo o tamanho do texto
     fontWeight: 'bold',
   },
+ 
 
   Tiulo_Informatica: {
     backgroundColor: 'gray',
@@ -97,24 +173,6 @@ const styles = StyleSheet.create({
     borderWidth: 2, // Adicionando borda
     borderColor: 'black', // Definindo a cor da borda como preto
     //position: 'absolute',
-  },
-
-  buttonVoltar: {
-    borderWidth: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginTop: 40, // Adicionando margem superior
-  },
-  buttonADM: {
-    position: 'absolute',
-    bottom: 20,
-    //left: 20,
-    right: 20,
-    borderWidth: 1,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 10,
   },
 });
 
@@ -142,25 +200,25 @@ const HomeScreen = ({ navigation }) => {
 
         <View style={styles.squareBaixo}>
           <Pressable
-            style={[styles.button]} 
+            style={[styles.buttonRetornar]} 
             onPress={() => navigation.goBack()}
           >
-            <Text style={styles.buttonText}>Retornar</Text>
+            <Text style={styles.buttonTextRetornar}>Retornar</Text>
           </Pressable>
 
           <Pressable
-            style={[styles.button]} 
+            style={[styles.buttonSeguir]} 
             onPress={CaminhoQr}
           >
-            <Text style={styles.buttonText}>Seguir</Text>
+            <Text style={styles.buttonTextSeguir}>Seguir</Text>
           </Pressable>
         </View>
 
         <Pressable
-          style={[styles.button]} 
+          style={[styles.buttonQR]} 
           onPress={CaminhoQr}
         >
-          <Text style={styles.buttonText}>Gerar QR Code</Text>
+          <Text style={styles.buttonTextQR}>Gerar QR Code</Text>
         </Pressable>
         
       </View>
@@ -170,15 +228,7 @@ const HomeScreen = ({ navigation }) => {
         style={[styles.buttonVoltar]} 
         onPress={() => navigation.goBack()}
       >
-        <Text style={styles.buttonText}>Voltar</Text>
-      </Pressable>
-
-      {/* Botão ADM no canto inferior esquerdo */}
-      <Pressable
-        style={[styles.buttonADM]} 
-        onPress={() => console.log('Botão ADM')}
-      >
-        <Text style={styles.buttonText}>ADM</Text>
+        <Text style={styles.buttonTextVoltar}>Voltar</Text>
       </Pressable>
 
     </View>
