@@ -12,7 +12,6 @@ import TelaQR from "./screens/TelaQR";
 import TelaFoto from "./screens/TelaFoto";
 import TelaHorarios from "./screens/TelaHorarios";
 
-
 const Stack = createStackNavigator();
 
 const App = () => {

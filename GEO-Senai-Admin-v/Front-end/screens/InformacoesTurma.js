@@ -70,13 +70,6 @@ const InformacoesTurma = ({ route, navigation }) => {
             <Text style={styles.txtInfoCurso}>
               Duração do curso: {turma.duracao_curso}
             </Text>
-
-            <Pressable
-              style={[styles.botao, styles.botoesPequenos]}
-              onPress={() => console.log("Turmas pressionados")}
-            >
-              <Text style={styles.texto}>Ver no mapa</Text>
-            </Pressable>
           </View>
 
           <View
@@ -98,13 +91,6 @@ const InformacoesTurma = ({ route, navigation }) => {
               onPress={botaoHorarios}
             >
               <Text style={styles.texto}>Horários</Text>
-            </Pressable>
-
-            <Pressable
-              style={[styles.botao, styles.botoesPequenos]}
-              onPress={() => console.log("Turmas pressionados")}
-            >
-              <Text style={styles.texto}>Localize-se</Text>
             </Pressable>
           </View>
 
@@ -210,6 +196,7 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     marginBottom: 10,
     alignItems: "center",
+    justifyContent: 'center',
   },
   quadro2: {
     width: "100%",
@@ -217,12 +204,14 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     marginBottom: 10,
     alignItems: "center",
+    justifyContent: 'center',
   },
   quadro3: {
     width: "100%",
     height: "45%",
     backgroundColor: "red",
     marginTop: 10,
+    justifyContent: 'center',
   },
   botao: {
     marginTop: 10,
@@ -235,12 +224,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   botoesPequenos: {
+    width: 120,
     marginBottom: 10,
     backgroundColor: "white",
   },
   titulo: {
     marginBottom: 10,
-    marginTop: 10,
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
@@ -257,7 +246,7 @@ const styles = StyleSheet.create({
     marginLeft: "3%",
     marginRight: "3%",
     borderRadius: 10,
-    height: "60%",
+    height: "70%",
     alignItems: "center",
     alignContent: "center",
   },
@@ -329,10 +318,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   texto: {
-    padding: 7  ,
+    padding: 2,
     fontWeight: 'bold',
-    fontSize: 18,
-    color: 'white',
+    fontSize: 14,
   },
 });
 

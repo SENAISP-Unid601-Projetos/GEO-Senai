@@ -43,9 +43,12 @@ const TelaMapa = ({ navigation }) => {
         </View>
 
         <View style={styles.mapa}>
-        <Mapa mapaSelecionado={mapaSelecionado} />
+          <Mapa mapaSelecionado={mapaSelecionado} />
         </View>
 
+        <Pressable style={styles.botaoVerSalas} >
+          <Text style={styles.footerText}>Ver salas</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -99,12 +102,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#ff0000",
     borderRadius: 20,
     borderWidth: 2,
-    padding: 20,
+    alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
+    justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
+  },
+  botaoVerSalas: {
+    marginTop: 20,
+    backgroundColor: "#ff0000",
+    borderRadius: 20,
+    borderWidth: 2,
+    alignSelf: 'center',
     alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
     justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
   },
   footerText: {
-    fontWeight: 'bold',
+    padding: 20,
+    fontWeight: "bold",
     fontSize: 25,
     color: "#ffffff",
     //alignSelf: 'center',
@@ -118,8 +130,8 @@ const styles = StyleSheet.create({
   },
   mapa: {
     padding: 20,
-    height: 800,
-  }
+    height: 650,
+  },
 });
 
 export default TelaMapa;

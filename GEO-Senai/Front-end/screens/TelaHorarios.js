@@ -40,19 +40,19 @@ const TelaHorarios = ({ navigation, route }) => {
           <Text style={styles.quadroTexto}>Sexta</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>{turma.seg_horario}</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>{turma.ter_horario}</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>{turma.qua_horario}</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>{turma.qui_horario}</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
+          <Text style={styles.quadroTexto}>{turma.sex_horario}</Text>
         </View>
         <View style={styles.quadroCinzaPequeno}>
           <Text style={styles.quadroTexto}></Text>

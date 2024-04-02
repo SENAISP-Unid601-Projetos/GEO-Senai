@@ -17,7 +17,6 @@ const InformacoesVaga = ({ route, navigation }) => {
       <View style={styles.redBack}>
         <View style={styles.whiteBack}>
           <Text style={styles.txtTituloPrincipal}>{vaga.nome_vaga}</Text>
-          <Text style={styles.infoText}><Text style={styles.txtTitulo}>Área da Vaga:</Text> {vaga.area_vaga}</Text>
           <Text style={styles.infoText}><Text style={styles.txtTitulo}>Descrição:</Text> {vaga.desc_vaga}</Text>
           <Text style={styles.infoText}><Text style={styles.txtTitulo}>Requisitos:</Text> {vaga.requisitos_vaga}</Text>
           <Text style={styles.infoText}><Text style={styles.txtTitulo}>Carga Horária:</Text> {vaga.carga_vaga}</Text>
