@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable, Picker } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import Mapa from "../src/components/Mapa";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
@@ -7,9 +7,39 @@ import ListaMapas from "../src/components/listaMapas";
 
 const TelaMapa = ({ navigation }) => {
   const [mapaSelecionado, setMapaSelecionado] = useState("1");
+  const [selectedValue, setSelectedValue] = useState("Mapa primeiro andar");
+
+  const handleChange = (itemValue, itemIndex) => {
+    setSelectedValue(itemValue);
+
+    // Dependendo da opção selecionada, defina um valor diferente para setMapaSelecionado
+    switch (itemValue) {
+      case "Mapa primeiro andar":
+        setMapaSelecionado("1");
+        break;
+      case "Mapa segundo andar":
+        setMapaSelecionado("2");
+        break;
+      case "Mapa terceiro andar":
+        setMapaSelecionado("3");
+        break;
+      default:
+        break;
+    }
+  };
 
   const CaminhoQr = () => {
-    navigation.navigate("TelaQR");
+    switch (selectedValue) {
+      case "Mapa primeiro andar":
+        navigation.navigate("TelaQR", { imagemLink: require("./../assets/mapaSenaiQR.png")});
+        break;
+      case "Mapa segundo andar":
+        navigation.navigate("TelaQR", { imagemLink: require("./../assets/blocobQR.png")});
+        break;
+      case "Mapa terceiro andar":
+        navigation.navigate("TelaQR", { imagemLink: require("./../assets/areadoisQR.png")});
+        break;    
+    }
   };
 
   return (
@@ -32,7 +62,21 @@ const TelaMapa = ({ navigation }) => {
             />
           </View>
 
-          <ListaMapas setMapaSelecionado={setMapaSelecionado} />
+          <Picker
+            selectedValue={selectedValue}
+            style={styles.estiloBtn}
+            onValueChange={handleChange}
+          >
+            <Picker.Item
+              label="Bloco B (superior)"
+              value="Mapa primeiro andar"
+            />
+            <Picker.Item
+              label="Bloco B (inferior )"
+              value="Mapa segundo andar"
+            />
+            <Picker.Item label="Bloco A" value="Mapa terceiro andar" />
+          </Picker>
 
           <Pressable
             style={[styles.botaoBaixarCaminho, {}]}
@@ -46,7 +90,7 @@ const TelaMapa = ({ navigation }) => {
           <Mapa mapaSelecionado={mapaSelecionado} />
         </View>
 
-        <Pressable style={styles.botaoVerSalas} >
+        <Pressable style={styles.botaoVerSalas}>
           <Text style={styles.footerText}>Ver salas</Text>
         </Pressable>
       </View>
@@ -110,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ff0000",
     borderRadius: 20,
     borderWidth: 2,
-    alignSelf: 'center',
+    alignSelf: "center",
     alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
     justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
   },
@@ -131,6 +175,17 @@ const styles = StyleSheet.create({
   mapa: {
     padding: 20,
     height: 650,
+  },
+  estiloBtn: {
+    padding: 20,
+    marginTop: 40,
+    fontSize: 25,
+    fontWeight: "bold",
+    borderColor: "black",
+    borderRadius: 20,
+    borderWidth: 2,
+    backgroundColor: "#ED2A2A",
+    color: "#ffffff",
   },
 });
 

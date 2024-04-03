@@ -1,6 +1,8 @@
-import React from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Image, Pressable, Button } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+
+
 
 const TelaHorarios = ({ navigation, route }) => {
   const CaminhoQr = () => {
@@ -8,6 +10,13 @@ const TelaHorarios = ({ navigation, route }) => {
   };
 
   const { turma } = route.params;
+
+  const [showImage, setShowImage] = useState(false);
+
+  const toggleImage = () => {
+    setShowImage(!showImage);
+  };
+  
 
   return (
     <View style={styles.container}>
@@ -73,18 +82,27 @@ const TelaHorarios = ({ navigation, route }) => {
 
       {/* Botão "Baixar QR" */}
       <Pressable
-        style={[
-          styles.BaixarQRButton,
-          { borderWidth: 1, borderColor: "black" },
-        ]}
-        onPress={CaminhoQr}
-      >
-        <Text style={styles.buttonText}>Baixar QR</Text>
+       style={[styles.BaixarQRButton, { borderWidth: 1, borderColor: "black" }]}
+       onPress={toggleImage}
+     >
+       <Text style={styles.buttonText}>
+         {showImage ? 'Esconder QR code' : 'Exibir QR code'}
+       </Text>
+       {showImage && (
+         <Image
+           source={require('./../assets/mapaSenaiQR.png')}
+           style={{ width: 200, height: 200, marginTop: 20 }}
+         />
+       )}
       </Pressable>
+
+
+
 
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -171,8 +189,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: "bold",
     fontWeight: "normal",
+    alignSelf: "center",
   },
   buttonTextADM: {
     fontSize: 15,
@@ -189,5 +209,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
 });
+
+
 
 export default TelaHorarios;

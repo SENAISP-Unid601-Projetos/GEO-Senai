@@ -2,7 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Importando FontAwesome
 
-const TelaQR = ({ navigation }) => {
+const TelaQR = ({ navigation, route }) => {
+  const { imagemLink } = route.params;
+
   const botaoInicio = () => {
     navigation.navigate("TelaInicial");
   };
@@ -14,7 +16,7 @@ const TelaQR = ({ navigation }) => {
         <FontAwesome name="mobile" size={50} color="black" />
       </View>
       <View>
-        <Image source={require("./../assets/QR.png")} style={styles.QR} />
+        <Image source={imagemLink} style={styles.QR} />
       </View>
       <Pressable style={styles.buttonGoBack} onPress={botaoInicio}>
         <Text style={styles.textGoBack}>Início</Text>
