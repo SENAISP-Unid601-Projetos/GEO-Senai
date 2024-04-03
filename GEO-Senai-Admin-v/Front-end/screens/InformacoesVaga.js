@@ -118,10 +118,10 @@ const InformacoesVaga = ({ route, navigation }) => {
             <Text style={styles.modalText}>Confirma a exclusão da vaga?</Text>
             <View style={styles.buttonsContainer}>
               <Pressable style={[styles.botoesModalCancelar]} onPress={toggleModal} >
-                <Text style={styles.texto}>Cancelar</Text>
+                <Text style={styles.textoConfirmacao}>Cancelar</Text>
               </Pressable>
               <Pressable style={[styles.botoesModalConfirmar]} onPress={deletarVaga} >
-                <Text style={styles.texto}>Confirmar</Text>
+                <Text style={styles.textoConfirmacao}>Confirmar</Text>
               </Pressable>
             </View>
           </View>
@@ -271,7 +271,6 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
     width: "100%",
   },
   botoesModalCancelar: {
@@ -293,6 +292,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     color: 'white',
+  },
+  textoConfirmacao: {
+    padding: 10,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });
 

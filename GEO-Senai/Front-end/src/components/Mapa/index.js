@@ -29,7 +29,7 @@ const Mapa = ({ mapaSelecionado }) => {
 
       <View style={{ flexShrink: 1, height: 1000, width: 1700 }}>
         <ReactNativeZoomableView
-          maxZoom={15}
+          maxZoom={2}
           contentWidth={800}
           contentHeight={400}
         >

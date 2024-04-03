@@ -80,14 +80,14 @@ const InformacoesTurma = ({ route, navigation }) => {
             ]}
           >
             <Pressable
-              style={[styles.botao, styles.botoesPequenos]}
+              style={styles.botao}
               onPress={() => console.log("Turmas pressionados")}
             >
               <Text style={styles.texto}>Foto</Text>
             </Pressable>
 
             <Pressable
-              style={[styles.botao, styles.botoesPequenos]}
+              style={styles.botao}
               onPress={botaoHorarios}
             >
               <Text style={styles.texto}>Horários</Text>
@@ -134,10 +134,10 @@ const InformacoesTurma = ({ route, navigation }) => {
             <Text style={styles.modalText}>Confirma a exclusão da turma?</Text>
             <View style={styles.buttonsContainer}>
               <Pressable style={[styles.botoesModalCancelar]} onPress={toggleModal}>
-                <Text style={styles.texto}>Cancelar</Text>
+                <Text style={styles.textoConfirmacao}>Cancelar</Text>
               </Pressable>
               <Pressable style={[styles.botoesModalConfirmar]} onPress={deletarTurma}>
-                <Text style={styles.texto}>Confirmar</Text>
+                <Text style={styles.textoConfirmacao}>Confirmar</Text>
               </Pressable>
             </View>
           </View>
@@ -214,19 +214,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   botao: {
-    marginTop: 10,
+    margin: 10,
     borderRadius: 100,
     backgroundColor: "white",
-    height: 30,
-    width: 90,
+    height: '25%',
+    width: 130,
     alignItems: "center",
-    borderColor: "black",
+    justifyContent: 'center',
     borderWidth: 1,
-  },
-  botoesPequenos: {
-    width: 120,
-    marginBottom: 10,
-    backgroundColor: "white",
   },
   titulo: {
     marginBottom: 10,
@@ -300,7 +295,6 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
     width: "100%",
   },
   botoesModalCancelar: {
@@ -320,7 +314,13 @@ const styles = StyleSheet.create({
   texto: {
     padding: 2,
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 18,
+  },
+  textoConfirmacao: {
+    padding: 10,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });
 
