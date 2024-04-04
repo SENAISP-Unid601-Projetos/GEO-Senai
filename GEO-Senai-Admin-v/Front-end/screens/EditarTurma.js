@@ -85,26 +85,26 @@ const EditarTurma = ({ route, navigation }) => {
           onChangeText={(text) => setNomeCursoEdt(text)}
         />
         <TextInput
-          style={[styles.input, styles.textArea]}
+          style={[styles.input]}
           placeholder="Sala"
           placeholderTextColor="gray"
           value={salaTurmaEdt}
           onChangeText={(text) => setSalaTurmaEdt(text)}
         />
         <TextInput
-          style={[styles.input, styles.textArea]}
+          style={[styles.input]}
           placeholder="Duração do curso"
           placeholderTextColor="gray"
           value={duracaoCursoEdt}
           onChangeText={(text) => setDuracaoCursoEdt(text)}
         />
         <TextInput
-          style={styles.input}
+          style={[styles.input, styles.textArea]}
           placeholder="Descrição do curso"
           placeholderTextColor="gray"
           value={descCursoEdt}
           multiline
-          numberOfLines={4}
+          numberOfLines={8}
           onChangeText={(text) => setDescCursoEdt(text)}
         />
         <View style={styles.containerBtnForm}>
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   textArea: {
-    height: 100,
+    height: 200,
   },
   btnEditar: {
     backgroundColor: "#ff0000",

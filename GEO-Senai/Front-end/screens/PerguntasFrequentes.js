@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  StyleSheet,
+  Image,
+  Linking,
+} from "react-native";
 import Collapsible from "react-native-collapsible";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -7,10 +14,83 @@ const PerguntasFrequentes = ({ navigation }) => {
   const [perguntaAtiva, setPerguntaAtiva] = useState(null);
 
   const faqs = [
-    { pergunta: "Pergunta 1", resposta: "Resposta 1" },
-    { pergunta: "Pergunta 2", resposta: "Resposta 2" },
-    { pergunta: "Pergunta 3", resposta: "Resposta 3" },
-    // Adicione mais perguntas e respostas conforme necessário
+    {
+      pergunta: "• Quais são os telefones do SENAI?",
+      conteudoResposta: (
+        <View>
+          <Text style={styles.txtResposta}>
+            Conteúdo customizado para a pergunta 1
+          </Text>
+          <Image
+            source={require("./../assets/Brasil.png")}
+            style={styles.imagem}
+          />
+          <Pressable onPress={() => Linking.openURL("https://www.example.com")}>
+            <Text style={styles.link}>Link para exemplo.com</Text>
+          </Pressable>
+        </View>
+      ),
+    },
+    {
+      pergunta: "• Onde fica a minha turma?",
+      conteudoResposta: (
+        <View>
+          <Text style={styles.txtResposta}>Para localizar sua sala de aula, você pode procurar
+           pelo código da sua turma em <Text style={{color: 'red', fontWeight: 'bold'}} onPress={() => navigation.navigate('TelaTurmas')}>Turmas </Text>
+           e localizar o nome da sala no primeiro quadro. Depois, basta acessar Mapas e encontrar
+           a sala correspondente!
+          </Text>
+        </View>
+      ),
+    },
+    {
+      pergunta: "• Quais são os horários da minha turma?  ",
+      conteudoResposta: (
+        <View>
+          <Text>Conteúdo customizado para a pergunta 3</Text>
+        </View>
+      ),
+    },
+    {
+      pergunta: "• Qual o horário de intervalo da minha turma?  ",
+      conteudoResposta: (
+        <View>
+          <Text>Conteúdo customizado para a pergunta 3</Text>
+        </View>
+      ),
+    },
+    {
+      pergunta: "• Onde posso monitorar minha frequência?  ",
+      conteudoResposta: (
+        <View>
+          <Text>Conteúdo customizado para a pergunta 3</Text>
+        </View>
+      ),
+    },
+    {
+      pergunta: "• Como funciona a biblioteca da escola?  ",
+      conteudoResposta: (
+        <View>
+          <Text>Conteúdo customizado para a pergunta 3</Text>
+        </View>
+      ),
+    },
+    {
+      pergunta: "• Como faço para obter o uniforme escolar?",
+      conteudoResposta: (
+        <View>
+          <Text>Conteúdo customizado para a pergunta 3</Text>
+        </View>
+      ),
+    },
+    {
+      pergunta: "• O que é a AAPM?",
+      conteudoResposta: (
+        <View>
+          <Text>Conteúdo customizado para a pergunta 3</Text>
+        </View>
+      ),
+    },
   ];
 
   const togglePergunta = (index) => {
@@ -37,20 +117,33 @@ const PerguntasFrequentes = ({ navigation }) => {
 
       <View style={styles.header}>
         <Text style={styles.titulo}>Perguntas frequentes</Text>
-        <Text style={styles.subtitulo}>Novo no SENAI? Esse "Guia de Sobrevivências" pode te ajudar.</Text>
+        <Text style={styles.subtitulo}>
+          Novo no SENAI? Este pequeno "Guia de Sobrevivências" pode te ajudar.
+        </Text>
       </View>
 
       <View style={styles.quadro}>
         {faqs.map((faq, index) => (
           <View key={index}>
             {perguntaAtiva === null || perguntaAtiva === index ? (
-              <Pressable style={styles.perguntaQuadro} onPress={() => togglePergunta(index)}>
-                  <Text style={styles.perguntaTxt}>{faq.pergunta}</Text>
-                <FontAwesome name="chevron-down" size={25} color="black" style={styles.seta}/>
+              <Pressable
+                style={styles.perguntaQuadro}
+                onPress={() => togglePergunta(index)}
+              >
+                <Text style={styles.perguntaTxt}>{faq.pergunta}</Text>
+                <FontAwesome
+                  name="chevron-down"
+                  size={25}
+                  color="black"
+                  style={styles.seta}
+                />
               </Pressable>
             ) : null}
             <Collapsible collapsed={perguntaAtiva !== index}>
-              <Text style={styles.resposta}>{faq.resposta}</Text>
+              <View style={styles.respostaContainer}>
+                {/* Renderizando o conteúdo personalizado da resposta */}
+                {faq.conteudoResposta}
+              </View>
             </Collapsible>
           </View>
         ))}
@@ -66,12 +159,12 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    alignItems: 'center',
-    marginTop: 10,
+    alignItems: "center",
+    marginTop: -60,
   },
   titulo: {
     fontSize: 50,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   subtitulo: {
     marginTop: 10,
@@ -86,19 +179,31 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   perguntaQuadro: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+    justifyContent: "space-between",
+    flexDirection: "row",
   },
   perguntaTxt: {
-    padding: 10,
+    padding: 20,
     fontSize: 30,
     color: "white",
     fontWeight: "bold",
   },
-  resposta: {
+  respostaContainer: {
+    backgroundColor: "white",
     padding: 20,
-    backgroundColor: 'white',
-    fontSize: 25,
+  },
+  txtResposta: {
+    padding: 20,
+    fontSize: 30,
+  },
+  imagem: {
+    width: 200,
+    height: 200,
+    resizeMode: "cover",
+  },
+  link: {
+    color: "blue",
+    textDecorationLine: "underline",
   },
   cabecalho: {
     flexDirection: "row",
@@ -111,8 +216,8 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginLeft: 20,
   },
-  seta: { 
-    padding: 20,
+  seta: {
+    padding: 25,
   },
 });
 

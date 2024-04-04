@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   textoDoMeio: {
+    padding: 20,
     backgroundColor: "white",
     marginLeft: "3%",
     marginRight: "3%",

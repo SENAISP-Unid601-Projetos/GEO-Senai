@@ -72,7 +72,12 @@ const CadastroTurma = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}></View>
+      
+      <Pressable onPress={() => navigation.goBack()} style={{ marginTop: 40 }}>
+        <FontAwesome name="arrow-left" size={30} color="black" />
+      </Pressable>
+
+      <View style={styles.header} />
       <View style={styles.containerForm}>
         <Text style={styles.headerText}>Cadastro de Turma</Text>
         <TextInput
@@ -118,9 +123,6 @@ const CadastroTurma = ({ navigation }) => {
           </Pressable>
         </View>
       </View>
-      <Pressable onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={30} color="#ffffff" />
-      </Pressable>
     </View>
   );
 };

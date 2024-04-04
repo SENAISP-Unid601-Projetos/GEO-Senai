@@ -24,7 +24,7 @@ const App = () => {
     const handleIdle = () => {
       idleTimer = setTimeout(() => {
         setShowCarousel(true);
-      }, 40000); // 40 segundos em milissegundos
+      }, 4000000); // 40 segundos em milissegundos
     };
 
     const resetIdleTimer = () => {
