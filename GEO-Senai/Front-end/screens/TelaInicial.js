@@ -18,6 +18,10 @@ const TelaInicial = ({ navigation }) => {
     navigation.navigate("TelaVagas");
   };
 
+  const botaoFAQ = () => {
+    navigation.navigate("PerguntasFrequentes");
+  };
+
   const abrirSite = () => {
     const url = "https://sp.senai.br/unidade/saocarlos";
     Linking.openURL(url);
@@ -49,6 +53,11 @@ const TelaInicial = ({ navigation }) => {
       <Pressable style={styles.classesButton} onPress={botaoVagas}>
         <Text style={styles.buttonText}>Vagas</Text>
         <FontAwesome name="user-plus" size={50} color="#ffffff" />
+      </Pressable>
+
+      <Pressable style={styles.classesButton} onPress={botaoFAQ}>
+        <Text style={styles.buttonText}>Perguntas frequentes</Text>
+        <FontAwesome name="question-circle" size={50} color="#ffffff" />
       </Pressable>
 
       <Text style={styles.textoOculto}>

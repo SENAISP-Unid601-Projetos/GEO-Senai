@@ -11,6 +11,7 @@ import TelaVagas from "./screens/TelaVagas";
 import TelaQR from "./screens/TelaQR";
 import TelaFoto from "./screens/TelaFoto";
 import TelaHorarios from "./screens/TelaHorarios";
+import PerguntasFrequentes from "./screens/PerguntasFrequentes";
 
 const Stack = createStackNavigator();
 
@@ -105,6 +106,11 @@ const App = () => {
         <Stack.Screen
           name="TelaHorarios"
           component={TelaHorarios}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="PerguntasFrequentes"
+          component={PerguntasFrequentes}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
