@@ -18,6 +18,8 @@ const InformacoesTurma = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
+
+      
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
         <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
@@ -41,36 +43,36 @@ const InformacoesTurma = ({ route, navigation }) => {
         </View>
 
         <View
-          style={[styles.quadro, styles.roundedCorners, styles.quadroPadding]}
+          style={[styles.quadroBton, styles.roundedCorners, styles.quadroPadding]}
         >
           <Pressable
-            style={[styles.botoesPequenos, { borderWidth: 1 }]}
+            style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}
             onPress={TelaFoto}
           >
-            <Text style={styles.texto}>Foto</Text>
+            <Text style={styles.textoFundo}>Foto</Text>
           </Pressable>
 
           <Pressable
-            style={[styles.botoesPequenos, { borderWidth: 1 }]}
+            style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}
             onPress={() =>
               navigation.navigate("TelaHorarios", { turma: turma })
             }
           >
-            <Text style={styles.texto}>Horários</Text>
+            <Text style={styles.textoFundo}>Horários</Text>
           </Pressable>
 
           <Pressable
-            style={[styles.botoesPequenos, { borderWidth: 1 }]}
+            style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}
             onPress={botaoMapa}
           >
-            <Text style={styles.texto}>Localize-se</Text>
+            <Text style={styles.textoFundo}>Localize-se</Text>
           </Pressable>
         </View>
 
         <View
           style={[styles.quadro3, styles.roundedCorners, styles.quadroPadding]}
         >
-          <Text style={styles.titulo}>{turma.nome_curso}</Text>
+          <Text style={styles.tituloBaixo}>{turma.nome_curso}</Text>
           <View style={styles.textoDoMeio}>
             <Text style={styles.descTexto}>{turma.desc_curso}</Text>
           </View>
@@ -106,42 +108,93 @@ const styles = StyleSheet.create({
   quadro: {
     width: "49%",
     height: "46%",
-    backgroundColor: "red",
+
+    marginBottom: 5,
+    alignItems: "baseline",
+    justifyContent: 'center',
+    shadowColor: "#000",
+ // Adiciona elevação para Android
+  },
+  quadroBton: {
+    width: "49%",
+    height: "46%",
     marginBottom: 5,
     alignItems: "center",
     justifyContent: 'center',
+   
   },
   quadro3: {
     width: "100%",
     height: "50%",
-    backgroundColor: "red",
     marginTop: "1%",
+
+  },
+  botoesPequenosFundo: {
+    margin: 20,
+    padding: 20,
+    borderRadius: 20,
+    backgroundColor: "red",
+    width: 800,
+    alignItems: "center",
+    borderColor: "red",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5, // Adiciona elevação para Android
   },
   botoesPequenos: {
     margin: 20,
     padding: 10,
-    borderRadius: 100,
-    backgroundColor: "white",
-    width: 200,
+    borderRadius: 20,
+    backgroundColor: "red",
+    width: 600,
     alignItems: "center",
-    borderColor: "black",
+    borderColor: "red",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5, // Adiciona elevação para Android
   },
   texto: {
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: 35,
+    color:"white"
+    
+  },
+  textoFundo: {
+    fontWeight: 'bold',
+    fontSize: 40,
+    color:"white"
   },
   titulo: {
-    margin: 10,
+    margin: 15,
     textAlign: "center",
-    fontSize: 50,
+    fontSize: 70,
     fontWeight: "bold",
-    color: "white",
+    color: "red",
+    
+  },
+  tituloBaixo: {
+    margin: 15,
+    textAlign: "center",
+    fontSize: 70,
+    fontWeight: "bold",
+    color: "red",
+    
   },
   txtInfoCurso: {
     textAlign: "center",
     fontSize: 30,
     fontWeight: "bold",
-    color: "white",
+    color: "black",
   },
   textoDoMeio: {
     padding: 20,

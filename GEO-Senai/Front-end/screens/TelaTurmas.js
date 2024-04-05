@@ -10,7 +10,9 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaTurmas = ({ navigation }) => {
+
   const [turmas, setTurmas] = useState([]);
+  
   const [atualizarLista, setAtualizarLista] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [paginaAtual, setPaginaAtual] = useState(0);

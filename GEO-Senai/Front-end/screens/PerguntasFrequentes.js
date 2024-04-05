@@ -35,10 +35,23 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• Onde fica a minha turma?",
       conteudoResposta: (
         <View>
-          <Text style={styles.txtResposta}>Para localizar sua sala de aula, você pode procurar
-           pelo código da sua turma em <Text style={{color: 'red', fontWeight: 'bold'}} onPress={() => navigation.navigate('TelaTurmas')}>Turmas </Text>
-           e localizar o nome da sala no primeiro quadro. Depois, basta acessar Mapas e encontrar
-           a sala correspondente!
+          <Text style={styles.txtResposta}>
+            Para localizar sua sala de aula, você pode procurar pelo código da
+            sua turma em{" "}
+            <Text
+              style={styles.spanTxtVermelho}
+              onPress={() => navigation.navigate("TelaTurmas")}
+            >
+              Turmas{" "}
+            </Text>
+            e localizar o nome da sala no primeiro quadro. Depois, basta acessar{" "}
+            <Text
+              style={styles.spanTxtVermelho}
+              onPress={() => navigation.navigate("TelaMapa")}
+            >
+              Mapas{" "}
+            </Text>
+            e encontrar a sala correspondente!
           </Text>
         </View>
       ),
@@ -47,7 +60,18 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• Quais são os horários da minha turma?  ",
       conteudoResposta: (
         <View>
-          <Text>Conteúdo customizado para a pergunta 3</Text>
+          <Text style={styles.txtResposta}>
+            Para localizar os horários da sua turma, você pode acessar a sua
+            turma em{" "}
+            <Text
+              style={styles.spanTxtVermelho}
+              onPress={() => navigation.navigate("TelaTurmas")}
+            >
+              Turmas{" "}
+            </Text>
+            e entrar na tela de horários, pressionando Horários no segundo
+            quadro.
+          </Text>
         </View>
       ),
     },
@@ -55,7 +79,34 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• Qual o horário de intervalo da minha turma?  ",
       conteudoResposta: (
         <View>
-          <Text>Conteúdo customizado para a pergunta 3</Text>
+          <Text style={styles.txtResposta}>
+            A nossa escola segue os seguintes horários para intervalo:
+          </Text>
+          <Text style={[styles.txtResposta, styles.spanTxtVermelho]}>
+            Período da manhã:
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>
+              Cursos de aprendizagem industrial
+            </Text>{" "}
+            -{" "}
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> -{" "}
+          </Text>
+          <Text style={[styles.txtResposta, styles.spanTxtVermelho]}>
+            Período da tarde:
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>
+              Cursos de aprendizagem industrial
+            </Text>{" "}
+            - 15:20 às 15:40
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> - 15:45
+            às 16h
+          </Text>
         </View>
       ),
     },
@@ -63,7 +114,35 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• Onde posso monitorar minha frequência?  ",
       conteudoResposta: (
         <View>
-          <Text>Conteúdo customizado para a pergunta 3</Text>
+          <Text style={styles.txtResposta}>
+            Infelizmente você não pode monitorar a sua frequência direto pelo
+            totem, mas você pode fazê-lo acessando o{" "}
+            <Text style={styles.spanTxtVermelho}>Portal Educacional </Text>
+            do SENAI, acessando o link{" "}
+            <Text style={{ fontWeight: "bold" }}>
+              https://pess.sesisenaispedu.org.br/
+            </Text>
+            .
+          </Text>
+          <View style={styles.espaco} />
+          <Text style={styles.txtResposta}>
+            Após logar no Portal Educacional, você deve seguir os seguintes
+            passos para verificar sua frequência:
+          </Text>
+          <Text style={styles.txtResposta}>
+            {">"} Dentro do menu inicial, acesse{" "}
+            <Text style={{ fontWeight: "bold" }}>'Secretaria Virtual'</Text>
+          </Text>
+          <Text style={styles.txtResposta}>
+            {">"} Selecione o serviço{" "}
+            <Text style={{ fontWeight: "bold" }}>
+              'Relatório de Aulas Dadas'
+            </Text>
+          </Text>
+          <Text style={styles.txtResposta}>
+            {">"} Selecione a turma e matrícula e clique em{" "}
+            <Text style={{ fontWeight: "bold" }}>'Pesquisar'</Text>
+          </Text>
         </View>
       ),
     },
@@ -71,7 +150,13 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• Como funciona a biblioteca da escola?  ",
       conteudoResposta: (
         <View>
-          <Text>Conteúdo customizado para a pergunta 3</Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>Qualquer aluno</Text> pode
+            fazer a retirada de livros na biblioteca, seja esse sócio da AAPM ou
+            não! A biblioteca do SENAI funciona de{" "}
+            <Text style={{ fontWeight: "bold" }}>segunda à sábado</Text>, nos
+            seguintes horários:
+          </Text>
         </View>
       ),
     },
@@ -79,7 +164,18 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• Como faço para obter o uniforme escolar?",
       conteudoResposta: (
         <View>
-          <Text>Conteúdo customizado para a pergunta 3</Text>
+          <Text style={styles.txtResposta}>
+            O uniforme escolar pode ser adquirido dentro da própria escola! Para
+            realizar sua obtenção, você pode se dirigir ao setor de apoio e
+            fazer a requisição do mesmo. O tamanho dos uniformes se inicia em PP
+            e vai até XGG. Seguem os preços:
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>Sócio -</Text> R$**,**
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>Não sócio -</Text> R$**,**
+          </Text>
         </View>
       ),
     },
@@ -87,7 +183,21 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• O que é a AAPM?",
       conteudoResposta: (
         <View>
-          <Text>Conteúdo customizado para a pergunta 3</Text>
+          <Text style={styles.txtResposta}>A Associação de Pais e Mestres é uma associação em parceria com
+          alunos associados, que é a responsável por fornecer fundos para a maioria dos eventos do SENAI 
+          como o bingo de páscoa, além de recursos como geladeiras e microondas, que beneficiam a todos
+          os alunos, sejam eles associados ou não.
+          </Text>
+          <View style={styles.espaco} />
+          <Text style={styles.txtResposta}>Para os associados, a AAPM oferece como benefícios internet dentro da escola, ármario próprio
+          e acesso a recursos como mesa de pebolim e vídeogame, além de vários descontos dentro da escola.
+          </Text>
+          <View style={styles.espaco} />
+          <Text style={[styles.txtResposta, styles.spanTxtVermelho]}>Preços da AAPM:</Text>
+          <Text style={styles.txtResposta}><Text style={{ fontWeight: "bold" }}>1 semestre -</Text> R$***,**</Text>
+          <Text style={styles.txtResposta}><Text style={{ fontWeight: "bold" }}>Integral -</Text> R$***,**</Text>
+          <View style={styles.espaco} />
+          <Text style={styles.txtResposta}>Para se tornar um associado da AAPM, o aluno deve procurar o setor de apoio.</Text>
         </View>
       ),
     },
@@ -99,23 +209,17 @@ const PerguntasFrequentes = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.cabecalho}>
-        <Pressable
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <FontAwesome name="arrow-left" size={50} color="black" />
-        </Pressable>
-
-        <FontAwesome
-          style={styles.icon}
-          name="question-circle"
-          size={50}
-          color="black"
-        />
-      </View>
+      <View style={styles.cabecalho}></View>
 
       <View style={styles.header}>
+        <View style={{ alignSelf: 'flex-start'}}>
+          <Pressable
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}
+          >
+            <FontAwesome name="arrow-left" size={50} color="black" />
+          </Pressable>
+        </View>
         <Text style={styles.titulo}>Perguntas frequentes</Text>
         <Text style={styles.subtitulo}>
           Novo no SENAI? Este pequeno "Guia de Sobrevivências" pode te ajudar.
@@ -134,14 +238,13 @@ const PerguntasFrequentes = ({ navigation }) => {
                 <FontAwesome
                   name="chevron-down"
                   size={25}
-                  color="black"
+                  color="white"
                   style={styles.seta}
                 />
               </Pressable>
             ) : null}
             <Collapsible collapsed={perguntaAtiva !== index}>
               <View style={styles.respostaContainer}>
-                {/* Renderizando o conteúdo personalizado da resposta */}
                 {faq.conteudoResposta}
               </View>
             </Collapsible>
@@ -160,7 +263,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginTop: -60,
+    marginTop: -40,
   },
   titulo: {
     fontSize: 50,
@@ -175,8 +278,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: "90%",
     backgroundColor: "red",
-    borderRadius: 20,
+    borderRadius: 10,
     borderWidth: 1,
+    borderColor: "red",
   },
   perguntaQuadro: {
     justifyContent: "space-between",
@@ -193,7 +297,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   txtResposta: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 5,
     fontSize: 30,
   },
   imagem: {
@@ -209,7 +314,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   backButton: {
-    marginRight: 10,
+    textAlign: "left",
     marginTop: 40,
   },
   icon: {
@@ -218,6 +323,13 @@ const styles = StyleSheet.create({
   },
   seta: {
     padding: 25,
+  },
+  spanTxtVermelho: {
+    color: "red",
+    fontWeight: "bold",
+  },
+  espaco: {
+    height: 10,
   },
 });
 

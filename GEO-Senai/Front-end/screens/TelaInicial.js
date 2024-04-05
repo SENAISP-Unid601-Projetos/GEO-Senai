@@ -1,7 +1,7 @@
 // Tela inicial do GEO SENAI, por onde são acessadas as telas de mapa, turmas e vagas
 
 import React from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable,ImageBackground } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaInicial = ({ navigation }) => {

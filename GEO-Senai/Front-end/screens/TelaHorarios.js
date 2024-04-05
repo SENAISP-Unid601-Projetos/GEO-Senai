@@ -82,7 +82,7 @@ const TelaHorarios = ({ navigation, route }) => {
 
       {/* Botão "Baixar QR" */}
       <Pressable
-       style={[styles.BaixarQRButton, { borderWidth: 1, borderColor: "black" }]}
+       style={[styles.BaixarQRButton]}
        onPress={toggleImage}
      >
        <Text style={styles.buttonText}>
@@ -169,36 +169,25 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
   },
-  ADMButton: {
-    backgroundColor: "#ff0000",
-    padding: 13,
-    borderRadius: "60%",
-    alignItems: "center",
-    width: 40,
-    height: 40,
-    position: "absolute",
-    bottom: 20,
-    right: 20,
-  },
+
 
   BaixarQRButton: {
-    backgroundColor: "#ff0000",
+    alignItems:"center",
+    backgroundColor: "red",
     padding: 15,
     borderRadius: 10,
+    width:600,
     marginTop: 10,
+    borderColor:"red"
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 20,
-    fontFamily: "bold",
-    fontWeight: "normal",
+    color: "white",
+    fontSize: 40,
+
+
     alignSelf: "center",
   },
-  buttonTextADM: {
-    fontSize: 15,
-    color: "#fff",
-    alignSelf: "center",
-  },
+
   txt_horarios: {
     fontSize: 50,
     fontWeight: 'bold',

@@ -75,7 +75,9 @@ const TelaMapa = ({ navigation }) => {
               label="Bloco B (inferior )"
               value="Mapa segundo andar"
             />
-            <Picker.Item label="Bloco A" value="Mapa terceiro andar" />
+            <Picker.Item 
+            label="Bloco A" 
+            value="Mapa terceiro andar" />
           </Picker>
 
           <Pressable
@@ -89,6 +91,7 @@ const TelaMapa = ({ navigation }) => {
         <View style={styles.mapa}>
           <Mapa mapaSelecionado={mapaSelecionado} />
         </View>
+        
 
         <Pressable style={styles.botaoVerSalas}>
           <Text style={styles.footerText}>Ver salas</Text>
@@ -175,16 +178,19 @@ const styles = StyleSheet.create({
   mapa: {
     padding: 20,
     height: 650,
+    borderColor: "#FF0000", // Cor da borda vermelha
+    borderWidth: 2, // Largura da borda
+    borderRadius: 10, // Raio do canto da borda
   },
   estiloBtn: {
     padding: 20,
     marginTop: 40,
     fontSize: 25,
     fontWeight: "bold",
-    borderColor: "black",
+    borderColor: "red",
     borderRadius: 20,
     borderWidth: 2,
-    backgroundColor: "#ED2A2A",
+    backgroundColor: "red ",
     color: "#ffffff",
   },
 });

@@ -8,6 +8,8 @@ const TelaQR = ({ navigation, route }) => {
   const botaoInicio = () => {
     navigation.navigate("TelaInicial");
   };
+
+
   return (
     <View style={styles.container}>
       <Text style={styles.textoTitulo}>Obrigado por utilizar este totem</Text>
@@ -18,6 +20,8 @@ const TelaQR = ({ navigation, route }) => {
       <View>
         <Image source={imagemLink} style={styles.QR} />
       </View>
+
+      
       <Pressable style={styles.buttonGoBack} onPress={botaoInicio}>
         <Text style={styles.textGoBack}>Início</Text>
       </Pressable>
@@ -56,7 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: 150,
     padding: 10,
-    borderColor: "black",
+    borderColor: "red",
   },
   textGoBack: {
     fontSize: 30,

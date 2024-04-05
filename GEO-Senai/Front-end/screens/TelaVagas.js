@@ -65,10 +65,7 @@ const TelaVagas = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
-        <Pressable
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
+        <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
           <FontAwesome name="arrow-left" size={50} color="black" />
         </Pressable>
 
