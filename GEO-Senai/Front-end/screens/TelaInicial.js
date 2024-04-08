@@ -1,11 +1,17 @@
 // Tela inicial do GEO SENAI, por onde são acessadas as telas de mapa, turmas e vagas
 
 import React from "react";
-import { StyleSheet, Text, View, Image, Pressable,ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  ImageBackground,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaInicial = ({ navigation }) => {
-  
   const botaoTurmas = () => {
     navigation.navigate("TelaTurmas");
   };
@@ -55,10 +61,20 @@ const TelaInicial = ({ navigation }) => {
         <FontAwesome name="user-plus" size={50} color="#ffffff" />
       </Pressable>
 
-      <Pressable style={styles.classesButton} onPress={botaoFAQ}>
-        <Text style={styles.buttonText}>Perguntas frequentes</Text>
-        <FontAwesome name="question-circle" size={50} color="#ffffff" />
-      </Pressable>
+      <View style={styles.faqsView}>
+        <View style={styles.quadroFaqs}>
+          <FontAwesome style={styles.exclamacao} name="exclamation" size={40} color="red"/>
+          <View style={styles.viewTxtFaqs}>
+            <Text style={styles.faqsTxt}>
+              Novo no SENAI? Experimente dar uma
+            </Text>
+            <Text style={styles.faqsTxt}>olhada em Perguntas Frequentes!</Text>
+          </View>
+        </View>
+        <Pressable onPress={botaoFAQ} style={styles.btnFaqs}>
+          <FontAwesome name="question-circle" size={75} color="red" />
+        </Pressable>
+      </View>
 
       <Text style={styles.textoOculto}>
         Todos os direitos reservados para Templarios®
@@ -69,7 +85,6 @@ const TelaInicial = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-  
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -88,16 +103,37 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "80%",
   },
-  settingsButton: {
-    backgroundColor: "#ff0000",
-    padding: 13,
-    borderRadius: 30,
-    alignItems: "center",
-    width: 40,
-    height: 40,
-    position: "absolute",
-    bottom: 20,
-    right: 20,
+  btnFaqs: {
+    marginLeft: 20,
+    marginRight: 30,
+  },
+  faqsView: {
+    justifyContent: "center",
+    marginTop: 20,
+    alignSelf: "flex-end",
+    flexDirection: "row",
+  },
+  quadroFaqs: {
+    backgroundColor: "white",
+    borderColor: "red",
+    borderWidth: 2,
+    borderRadius: 10,
+    flexDirection: "row",
+  },
+  viewTxtFaqs: {
+    justifyContent: "center",
+    height: 80,
+  },
+  faqsTxt: {
+    textAlign: "center",
+    color: "red",
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingHorizontal: 10,
+  },
+  exclamacao: {
+    alignSelf: 'center',
+    padding: 10,
   },
   buttonText: {
     color: "#fff",
@@ -111,7 +147,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   logo: {
-    marginLeft:20,
+    marginLeft: 20,
     marginTop: 40,
     width: 120,
     height: 83,

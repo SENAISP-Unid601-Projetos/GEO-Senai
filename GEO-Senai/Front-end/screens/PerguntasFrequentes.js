@@ -42,9 +42,9 @@ const PerguntasFrequentes = ({ navigation }) => {
               style={styles.spanTxtVermelho}
               onPress={() => navigation.navigate("TelaTurmas")}
             >
-              Turmas{" "}
+              Turmas
             </Text>
-            e localizar o nome da sala no primeiro quadro. Depois, basta acessar{" "}
+            , acessá-la e localizar o nome da sala no primeiro quadro. Depois, basta acessar{" "}
             <Text
               style={styles.spanTxtVermelho}
               onPress={() => navigation.navigate("TelaMapa")}
