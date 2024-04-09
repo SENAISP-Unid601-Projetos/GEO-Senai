@@ -15,6 +15,7 @@ const EditarVaga = ({ route, navigation }) => {
   const local = `http://10.110.12.19:8080/vagas/editar/${vaga.id_vaga}`;
   const nuvem = `https://appsenai.azurewebsites.net/vagas/editar/${vaga.id_vaga}`;
 
+  const [imagemVagaEdt, setImagemVagaEdt] = useState("");
   const [areaVagaEdt, setAreaVagaEdt] = useState("");
   const [nomeVagaEdt, setNomeVagaEdt] = useState("");
   const [descricaoVagaEdt, setDescricaoVagaEdt] = useState("");
@@ -24,6 +25,7 @@ const EditarVaga = ({ route, navigation }) => {
   const [contatoVagaEdt, setContatoVagaEdt] = useState("");
 
   useEffect(() => {
+    setImagemVagaEdt(vaga.imagem_vaga)
     setAreaVagaEdt(vaga.area_vaga);
     setNomeVagaEdt(vaga.nome_vaga);
     setDescricaoVagaEdt(vaga.desc_vaga);
@@ -35,6 +37,7 @@ const EditarVaga = ({ route, navigation }) => {
 
   const salvarEdicao = () => {
     const vagaEditada = {
+      imagem_vaga: imagemVagaEdt,
       area_vaga: areaVagaEdt,
       nome_vaga: nomeVagaEdt,
       desc_vaga: descricaoVagaEdt,
@@ -76,6 +79,13 @@ const EditarVaga = ({ route, navigation }) => {
 
       <View style={styles.containerForm}>
         <Text style={styles.headerText}>Editar vaga</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Endereço de imagem (Logo da empresa)"
+          placeholderTextColor="gray"
+          value={imagemVagaEdt}
+          onChangeText={(text) => setImagemVagaEdt(text)}
+        />
         <TextInput
           style={styles.input}
           placeholder="Área da Vaga* Ex: TI, Mecânica"

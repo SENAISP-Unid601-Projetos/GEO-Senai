@@ -19,6 +19,9 @@ const TelaInicial = ({ navigation }) => {
   const botaoMapa = () => {
     navigation.navigate("TelaMapa");
   };
+  const botaovagas = () => {
+    navigation.navigate("TextDecoderStream");
+  };
 
   const botaoVagas = () => {
     navigation.navigate("TelaVagas");
@@ -26,6 +29,9 @@ const TelaInicial = ({ navigation }) => {
 
   const botaoFAQ = () => {
     navigation.navigate("PerguntasFrequentes");
+  };
+  const botaoTelaVoz = () => {
+    navigation.navigate("TelaVoz");
   };
 
   const abrirSite = () => {
@@ -60,6 +66,12 @@ const TelaInicial = ({ navigation }) => {
         <Text style={styles.buttonText}>Vagas</Text>
         <FontAwesome name="user-plus" size={50} color="#ffffff" />
       </Pressable>
+
+      {/* <Pressable style={styles.classesButton} onPress={botaoTelaVoz}>
+        <Text style={styles.buttonText}>Vwagas</Text>
+        <FontAwesome name="user-plus" size={50} color="#ffffff" />
+      </Pressable> */}
+
 
       <View style={styles.faqsView}>
         <View style={styles.quadroFaqs}>

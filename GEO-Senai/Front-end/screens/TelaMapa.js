@@ -43,15 +43,22 @@ const TelaMapa = ({ navigation }) => {
   };
 
   return (
+    
     <View style={styles.container}>
+
       <View style={styles.contentContainer}>
+
         <View style={styles.footer}>
+
           <View style={styles.cabecalho}>
+
             <Pressable
               onPress={() => navigation.goBack()}
               style={styles.backButton}
             >
+
               <FontAwesome name="arrow-left" size={50} color="black" />
+
             </Pressable>
 
             <FontAwesome
@@ -67,14 +74,17 @@ const TelaMapa = ({ navigation }) => {
             style={styles.estiloBtn}
             onValueChange={handleChange}
           >
+
             <Picker.Item
               label="Bloco B (superior)"
               value="Mapa primeiro andar"
             />
+
             <Picker.Item
               label="Bloco B (inferior )"
               value="Mapa segundo andar"
             />
+
             <Picker.Item 
             label="Bloco A" 
             value="Mapa terceiro andar" />
@@ -86,17 +96,18 @@ const TelaMapa = ({ navigation }) => {
           >
             <Text style={styles.footerText}>Baixar caminho</Text>
           </Pressable>
+
         </View>
 
         <View style={styles.mapa}>
           <Mapa mapaSelecionado={mapaSelecionado} />
         </View>
         
-
         <Pressable style={styles.botaoVerSalas}>
           <Text style={styles.footerText}>Ver salas</Text>
         </Pressable>
       </View>
+
     </View>
   );
 };
@@ -148,7 +159,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#ff0000",
     borderRadius: 20,
-    borderWidth: 2,
     alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
     justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
   },
@@ -156,7 +166,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: "#ff0000",
     borderRadius: 20,
-    borderWidth: 2,
+ 
     alignSelf: "center",
     alignItems: "center", // Centraliza os itens horizontalmente dentro do botão
     justifyContent: "center", // Centraliza os itens verticalmente dentro do botão
@@ -177,10 +187,9 @@ const styles = StyleSheet.create({
   },
   mapa: {
     padding: 20,
-    height: 650,
-    borderColor: "#FF0000", // Cor da borda vermelha
-    borderWidth: 2, // Largura da borda
-    borderRadius: 10, // Raio do canto da borda
+    height: 850,
+
+
   },
   estiloBtn: {
     padding: 20,
@@ -190,7 +199,7 @@ const styles = StyleSheet.create({
     borderColor: "red",
     borderRadius: 20,
     borderWidth: 2,
-    backgroundColor: "red ",
+    backgroundColor: "red",
     color: "#ffffff",
   },
 });

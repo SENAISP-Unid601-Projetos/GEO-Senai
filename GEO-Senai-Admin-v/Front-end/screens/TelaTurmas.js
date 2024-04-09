@@ -55,8 +55,7 @@ const TelaTurmas = ({ navigation }) => {
     setModalVisible(false);
 
     try {
-      const response = await fetch(
-        localD,
+      const response = await fetch(localD,
         {
           method: "DELETE",
           headers: {

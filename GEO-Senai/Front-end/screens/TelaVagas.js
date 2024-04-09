@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ScrollView,
+  Image,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const TelaVagas = ({ navigation }) => {
   const [vagas, setVagas] = useState([]);
   const [paginaAtual, setPaginaAtual] = useState(0);
-  const vagasPorPagina = 5;
+  const vagasPorPagina = 4; // Alterando para 4 vagas por página
   const [existeProximo, setExisteProximo] = useState(true);
   const [existeAnterior, setExisteAnterior] = useState(false);
 
@@ -37,17 +44,78 @@ const TelaVagas = ({ navigation }) => {
   const renderizarVagasPaginaAtual = () => {
     const inicio = paginaAtual * vagasPorPagina;
     const fim = inicio + vagasPorPagina;
-    return vagas.slice(inicio, fim).map((vaga) => (
-      <Pressable
-        key={vaga.id}
-        style={styles.ButtonVagas}
-        onPress={() => navigation.navigate("InformacoesVaga", { vaga: vaga })}
-      >
-        <Text style={styles.buttonText}>
-          Área: {vaga.area_vaga} - Empresa: {vaga.nome_vaga}
-        </Text>
-      </Pressable>
-    ));
+    const vagasPagina = vagas.slice(inicio, fim);
+
+    const metade = Math.ceil(vagasPagina.length / 2);
+    const primeiraMetade = vagasPagina.slice(0, metade);
+    const segundaMetade = vagasPagina.slice(metade);
+
+    return (
+      <View style={styles.row}>
+        <View style={styles.column1}>
+          {primeiraMetade.map((vaga) => (
+            <Pressable
+              key={vaga.id}
+              style={styles.buttonVagas}
+              onPress={() =>
+                navigation.navigate("InformacoesVaga", { vaga: vaga })
+              }
+            >
+              
+              {vaga.imagem_vaga != '' && (
+              <View style={{ height: "80%", backgroundColor: "white" }}>
+                <Image
+                  style={styles.imgVaga}
+                  source={{ uri: vaga.imagem_vaga }}
+                />
+              </View>
+              )}
+
+              {vaga.imagem_vaga == '' && (
+              <View style={{ height: "80%", backgroundColor: "white", justifyContent: 'center' }}>
+                  <Text style={styles.imagemVaziaTxt}>
+                    {vaga.nome_vaga}
+                  </Text>
+              </View>
+              )}
+
+              <Text style={styles.saberMaisTxt}> Clique para saber mais</Text>
+            </Pressable>
+          ))}
+        </View>
+        <View style={styles.column2}>
+          {segundaMetade.map((vaga) => (
+            <Pressable
+              key={vaga.id}
+              style={styles.buttonVagas}
+              onPress={() =>
+                navigation.navigate("InformacoesVaga", { vaga: vaga })
+              }
+            >
+
+              {vaga.imagem_vaga != '' && (
+              <View style={{ height: "80%", backgroundColor: "white" }}>
+                <Image
+                  style={styles.imgVaga}
+                  source={{ uri: vaga.imagem_vaga }}
+                />
+              </View>
+              )}
+
+              {vaga.imagem_vaga == '' && (
+              <View style={{ height: "80%", backgroundColor: "white", justifyContent: 'center' }}>
+                  <Text style={styles.imagemVaziaTxt}>
+                    {vaga.nome_vaga}
+                  </Text>
+              </View>
+              )}
+
+              <Text style={styles.saberMaisTxt}> Clique para saber mais</Text>
+            </Pressable>
+          ))}
+        </View>
+      </View>
+    );
   };
 
   const avancarPagina = () => {
@@ -65,7 +133,10 @@ const TelaVagas = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
-        <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
           <FontAwesome name="arrow-left" size={50} color="black" />
         </Pressable>
 
@@ -82,7 +153,7 @@ const TelaVagas = ({ navigation }) => {
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.Buttons}>{renderizarVagasPaginaAtual()}</View>
+        {renderizarVagasPaginaAtual()}
       </ScrollView>
 
       <View style={styles.paginacao}>
@@ -147,22 +218,52 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingBottom: 20, // Para evitar que o último botão seja cortado
   },
-  Buttons: {
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 20,
-  },
-  ButtonVagas: {
-    backgroundColor: "#ff0000",
-    padding: 30,
+  row: {
+    justifyContent: "center",
+    width: "100%",
+    height: "50%",
+    flexDirection: "row",
     marginBottom: 20,
-    alignItems: "center",
-    width: "80%",
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 25, // Ajuste o tamanho da fonte conforme necessário
-    fontWeight: "bold",
+  column1: {
+    alignItems: "flex-end",
+    padding: 20,
+    width: "45%",
+  },
+  column2: {
+    alignItems: "flex-start",
+    padding: 20,
+    width: "45%",
+  },
+  imgVaga: {
+    height: "100%",
+    width: 700,
+    borderWidth: 2,
+  },
+  buttonVagas: {
+    backgroundColor: "#ff0000",
+    height: "100%",
+    width: "90%",
+    alignItems: "center",
+    margin: 20,
+    borderRadius: 10,
+    padding: 10,
+  },
+  saberMaisTxt: {
+    textAlign: "center",
+    marginTop: 10,
+    fontSize: 25,
+    borderWidth: 2,
+    backgroundColor: "white",
+    width: 700,
+  },
+  imagemVaziaTxt: {
+    textAlign: "center",
+    fontWeight: 'bold',
+    marginTop: 10,
+    fontSize: 40,
+    backgroundColor: "white",
+    width: 700,
   },
   atualizarButton: {
     flexDirection: "row",

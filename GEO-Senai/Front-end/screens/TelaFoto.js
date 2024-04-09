@@ -19,7 +19,7 @@ const TelaFoto = ({ route, navigation }) => {
         <Text style={styles.tituloCurso}>Informática</Text>
 
         <Image
-          source={require("./../assets/Brasil.png")} // Imagem do logo
+          source={require("./../assets/IMG-20240407-WA0066.jpg")} // Imagem do logo
           style={styles.imgFoto} // Estilos do logo
         />
 
@@ -33,7 +33,8 @@ const TelaFoto = ({ route, navigation }) => {
           </Pressable>
         </View>
 
-        <Pressable style={[styles.buttonQR]} onPress={CaminhoQr}>
+        <Pressable style={[styles.buttonQR]} onPress={CaminhoQr} disabled ={[false]} >
+          <FontAwesome name="lock" style={styles.lockIcon} size={40}/> {/* Lock icon */}
           <Text style={styles.buttonTextQR}>Gerar QR Code</Text>
         </Pressable>
       </View>
@@ -88,19 +89,20 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   buttonQR: {
-    borderWidth: 1,
+    flexDirection: 'row',
+    borderWidth: 0,
     paddingVertical: 5, // Reduzindo o padding vertical
     paddingHorizontal: 10, // Reduzindo o padding horizontal
     borderRadius: 10,
     marginHorizontal: 5, // Adicionando um pequeno espaçamento horizontal entre os botões
-    backgroundColor: "black",
+    backgroundColor: "gray",
     alignItems: "center",
   },
   buttonTextQR: {
     fontSize: 25, // Reduzindo o tamanho do texto
     fontWeight: "bold",
     padding: 10,
-    color: 'white',
+    color: '#a0a0a0',
   },
   tituloCurso: {
     color: "white",

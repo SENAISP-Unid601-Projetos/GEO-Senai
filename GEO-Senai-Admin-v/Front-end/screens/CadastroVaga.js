@@ -11,6 +11,7 @@ import {
 import { FontAwesome } from "@expo/vector-icons"; // Importe o ícone FontAwesome da biblioteca
 
 const CadastroVaga = ({ navigation }) => {
+  const [imagemVaga, setImagemVaga] = useState("");
   const [areaVaga, setAreaVaga] = useState("");
   const [nomeVaga, setNomeVaga] = useState("");
   const [descricaoVaga, setDescricaoVaga] = useState("");
@@ -38,6 +39,7 @@ const CadastroVaga = ({ navigation }) => {
 
     // Criar objeto de vaga com os dados
     const novaVaga = {
+      imagem_vaga: imagemVaga,
       area_vaga: areaVaga,
       nome_vaga: nomeVaga,
       desc_vaga: descricaoVaga,
@@ -81,6 +83,13 @@ const CadastroVaga = ({ navigation }) => {
 
       <View style={styles.containerForm}>
         <Text style={styles.headerText}>Cadastro de Vaga</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Endereço de imagem (Logo da empresa)"
+          placeholderTextColor="gray"
+          value={imagemVaga}
+          onChangeText={(text) => setImagemVaga(text)}
+        />
         <TextInput
           style={styles.input}
           placeholder="Área da Vaga* Ex: TI, Mecânica"

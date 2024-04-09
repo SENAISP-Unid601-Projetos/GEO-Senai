@@ -27,4 +27,6 @@ public class Vaga implements Serializable{
     private String contato_vaga;
     @Column(nullable = true)
     private String salario_vaga;
+    @Column(nullable = true)
+    private String imagem_vaga;
 }
