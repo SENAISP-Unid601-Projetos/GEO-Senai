@@ -1,7 +1,7 @@
-package br.com.example.senai_auto.resource;
+package br.com.example.geo_senai.resource;
 
-import br.com.example.senai_auto.entity.Vaga;
-import br.com.example.senai_auto.repository.VagaRepository;
+import br.com.example.geo_senai.entity.Vaga;
+import br.com.example.geo_senai.repository.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

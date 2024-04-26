@@ -28,6 +28,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-sound": "^0.11.2",
     "react-native-swiper": "^1.6.0",
+    "react-native-virtual-keyboard": "^1.2.3",
     "react-native-web": "~0.19.6",
     "react-native-zoomable": "^1.1.3"
   },

@@ -1,10 +1,10 @@
-package br.com.example.senai_auto;
+package br.com.example.geo_senai;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SenaiAutoApplicationTests {
+class GeoSenaiApplicationTests {
 
 	@Test
 	void contextLoads() {

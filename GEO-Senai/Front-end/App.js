@@ -13,6 +13,7 @@ import TelaFoto from "./screens/TelaFoto";
 import TelaHorarios from "./screens/TelaHorarios";
 import PerguntasFrequentes from "./screens/PerguntasFrequentes";
 import TelaVoz from "./screens/TelaVoz";
+import TelaSalas from "./screens/TelaSalas";
 
 const Stack = createStackNavigator();
 
@@ -94,7 +95,7 @@ const App = () => {
           component={TelaMapa}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="TelaQR"
           component={TelaQR}
           options={{ headerShown: false }}
@@ -109,14 +110,19 @@ const App = () => {
           component={TelaHorarios}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="PerguntasFrequentes"
           component={PerguntasFrequentes}
           options={{ headerShown: false }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="TelaVoz"
           component={TelaVoz}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TelaSalas"
+          component={TelaSalas}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

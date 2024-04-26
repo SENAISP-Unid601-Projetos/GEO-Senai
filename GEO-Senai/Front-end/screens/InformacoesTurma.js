@@ -7,19 +7,17 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const InformacoesTurma = ({ route, navigation }) => {
   const TelaFoto = () => {
-    navigation.navigate("TelaFoto");
+    navigation.navigate("TelaFoto", { turma: turma });
   };
 
   const botaoMapa = () => {
     navigation.navigate("TelaMapa");
   };
-  
+
   const { turma } = route.params;
 
   return (
     <View style={styles.container}>
-
-      
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
         <FontAwesome name="arrow-left" size={50} color="black" />
       </Pressable>
@@ -43,7 +41,11 @@ const InformacoesTurma = ({ route, navigation }) => {
         </View>
 
         <View
-          style={[styles.quadroBton, styles.roundedCorners, styles.quadroPadding]}
+          style={[
+            styles.quadroBton,
+            styles.roundedCorners,
+            styles.quadroPadding,
+          ]}
         >
           <Pressable
             style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}
@@ -111,23 +113,21 @@ const styles = StyleSheet.create({
 
     marginBottom: 5,
     alignItems: "baseline",
-    justifyContent: 'center',
+    justifyContent: "center",
     shadowColor: "#000",
- // Adiciona elevação para Android
+    // Adiciona elevação para Android
   },
   quadroBton: {
     width: "49%",
     height: "46%",
     marginBottom: 5,
     alignItems: "center",
-    justifyContent: 'center',
-   
+    justifyContent: "center",
   },
   quadro3: {
     width: "100%",
     height: "50%",
     marginTop: "1%",
-
   },
   botoesPequenosFundo: {
     margin: 20,
@@ -164,15 +164,14 @@ const styles = StyleSheet.create({
     elevation: 5, // Adiciona elevação para Android
   },
   texto: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 35,
-    color:"white"
-    
+    color: "white",
   },
   textoFundo: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 40,
-    color:"white"
+    color: "white",
   },
   titulo: {
     margin: 15,
@@ -180,7 +179,6 @@ const styles = StyleSheet.create({
     fontSize: 70,
     fontWeight: "bold",
     color: "red",
-    
   },
   tituloBaixo: {
     margin: 15,
@@ -188,7 +186,6 @@ const styles = StyleSheet.create({
     fontSize: 70,
     fontWeight: "bold",
     color: "red",
-    
   },
   txtInfoCurso: {
     textAlign: "center",

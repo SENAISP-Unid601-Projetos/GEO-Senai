@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
+  Alert,
   StyleSheet,
   Text,
   View,
@@ -9,18 +10,19 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-const TelaTurmas = ({ navigation }) => {
-  const [turmas, setTurmas] = useState([]);
+const TelaSalas = ({ navigation, route }) => {
+  const [salas, setSalas] = useState([]);
 
   const [atualizarLista, setAtualizarLista] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [paginaAtual, setPaginaAtual] = useState(0);
-  const turmasPorPagina = 5;
+  const salasPorPagina = 5;
   const [existeProximo, setExisteProximo] = useState(true);
   const [existeAnterior, setExisteAnterior] = useState(false);
 
-  const local = "http://10.110.12.19:8080/turmas";
-  const nuvem = "https://appsenai.azurewebsites.net/turmas";
+  const { local, andar } = route.params;
+
+  const nuvem = "https://appsenai.azurewebsites.net/salas";
 
   useEffect(() => {
     fetch(local, {
@@ -31,8 +33,8 @@ const TelaTurmas = ({ navigation }) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => setTurmas(data))
-      .catch((error) => console.error("Erro ao obter turmas:", error));
+      .then((data) => setSalas(data))
+      .catch((error) => Alert.alert("Erro ao obter salas:", error));
   }, [atualizarLista]);
 
   useEffect(() => {
@@ -40,27 +42,27 @@ const TelaTurmas = ({ navigation }) => {
   }, [searchText]);
 
   useEffect(() => {
-    setExisteProximo((paginaAtual + 1) * turmasPorPagina < turmas.length);
+    setExisteProximo((paginaAtual + 1) * salasPorPagina < salas.length);
     setExisteAnterior(paginaAtual > 0);
-  }, [paginaAtual, turmas.length]);
+  }, [paginaAtual, salas.length]);
 
-  const renderizarTurmasPaginaAtual = () => {
-    const inicio = paginaAtual * turmasPorPagina;
-    const fim = inicio + turmasPorPagina;
-    return turmas
-      .filter((turma) =>
-        turma.codigo_turma.toLowerCase().includes(searchText.toLowerCase())
+  const renderizarSalasPaginaAtual = () => {
+    const inicio = paginaAtual * salasPorPagina;
+    const fim = inicio + salasPorPagina;
+    return salas
+      .filter((sala) =>
+        sala.nome_sala.toLowerCase().includes(searchText.toLowerCase())
       )
       .slice(inicio, fim)
-      .map((turma) => (
+      .map((sala) => (
         <Pressable
-          key={turma.id}
+          key={sala.id}
           style={styles.ButtonTurmas}
-          onPress={() =>
-            navigation.navigate("InformacoesTurma", { turma: turma })
-          }
+          //   onPress={() =>
+          //     navigation.navigate("InformacoesTurma", { sala: sala })
+          //   }
         >
-          <Text style={styles.buttonText}>{turma.codigo_turma}</Text>
+          <Text style={styles.buttonText}>{sala.nome_sala}</Text>
         </Pressable>
       ));
   };
@@ -77,7 +79,7 @@ const TelaTurmas = ({ navigation }) => {
     }
   };
 
-  const atualizarListaTurmas = () => {
+  const atualizarListaSalas = () => {
     setAtualizarLista(!atualizarLista);
   };
 
@@ -91,20 +93,25 @@ const TelaTurmas = ({ navigation }) => {
           <FontAwesome name="arrow-left" size={50} color="black" />
         </Pressable>
 
-        <FontAwesome style={styles.icon} name="users" size={50} color="black" />
+        <FontAwesome
+          style={styles.icon}
+          name="fa-door-closed"
+          size={50}
+          color="black"
+        />
       </View>
 
-      <Text style={styles.headerTitle}>Turmas</Text>
+      <Text style={styles.headerTitle}>Salas - {andar}</Text>
 
       <TextInput
         style={styles.searchBar}
-        placeholder="Pesquisar turma... Ex: 3TDS/3MDS"
+        placeholder="Pesquisar sala..."
         onChangeText={(text) => setSearchText(text)}
         value={searchText}
       />
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.Buttons}>{renderizarTurmasPaginaAtual()}</View>
+        <View style={styles.Buttons}>{renderizarSalasPaginaAtual()}</View>
       </ScrollView>
 
       <View style={styles.paginacao}>
@@ -123,7 +130,7 @@ const TelaTurmas = ({ navigation }) => {
         )}
       </View>
 
-      <Pressable style={styles.atualizarButton} onPress={atualizarListaTurmas}>
+      <Pressable style={styles.atualizarButton} onPress={atualizarListaSalas}>
         <FontAwesome
           name="refresh"
           size={50}
@@ -237,4 +244,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TelaTurmas;
+export default TelaSalas;

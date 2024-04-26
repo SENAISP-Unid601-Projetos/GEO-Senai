@@ -1,4 +1,4 @@
-package br.com.example.senai_auto.entity;
+package br.com.example.geo_senai.entity;
 
 import java.io.Serializable;
 

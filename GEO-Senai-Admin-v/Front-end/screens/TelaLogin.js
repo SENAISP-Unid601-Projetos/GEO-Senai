@@ -2,26 +2,61 @@
 // Restringe o acesso a administradores.
 
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Pressable, TextInput, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  TextInput,
+  Alert,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+// import axios from 'axios';
 
 const TelaLogin = ({ navigation }) => {
-  const [usuario, setUsuario] = useState("");
-  const [senha, setSenha] = useState("");
+  const [logarUsuario, setLogarUsuario] = useState("");
+  const [logarSenha, setLogarSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
+
+  const local = "http://10.110.12.19:8080/admin/verificar-dados";
 
   const realizarLogin = async () => {
     // Login chumbado :)
-    if (usuario === 'templarios' && senha === 'tds2024') {
-      navigation.navigate('TelaInicial');
-    } else {
-      Alert.alert('Erro', 'Usuário ou senha inválidos.');
-    }
+     if (logarUsuario === 'templarios' && logarSenha === 'tds2024') {
+       navigation.navigate('TelaInicial');
+     } else {
+       Alert.alert('Erro', 'Usuário ou senha inválidos.');
+     }
+
+    // try {
+    //   const response = await axios.post(local, {
+    //     usuario: logarUsuario,
+    //     senha: logarSenha,
+    //   }, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     }
+    //   });
+    
+    //   if (response.status === 200) {
+    //     navigation.navigate("TelaInicial");
+    //   } else {
+    //     console.log("Erro ao tentar logar:", response.statusText);
+    //     Alert.alert("Erro ao tentar logar");
+    //   }
+    // } catch (error) {
+    //   Alert.alert("Ocorreu um erro ao tentar logar:", error.message);
+    // }
+    
   };
 
   return (
     <View style={styles.container}>
-      <Image source={require("./../assets/logoSenai.png")} style={styles.senai} />
+      <Image
+        source={require("./../assets/logoSenai.png")}
+        style={styles.senai}
+      />
 
       <Text style={styles.BemVindo}>GEO SENAI Controller (for Admin)</Text>
       <Text style={styles.TextoMedio}>Faça log-in para continuar.</Text>
@@ -30,8 +65,8 @@ const TelaLogin = ({ navigation }) => {
         style={styles.input}
         placeholder="Usuário"
         placeholderTextColor="gray"
-        value={usuario}
-        onChangeText={(text) => setUsuario(text)}
+        value={logarUsuario}
+        onChangeText={(text) => setLogarUsuario(text)}
       />
       <View style={styles.inputContainer}>
         <TextInput
@@ -39,11 +74,18 @@ const TelaLogin = ({ navigation }) => {
           placeholder="Senha"
           placeholderTextColor="gray"
           secureTextEntry={!mostrarSenha}
-          value={senha}
-          onChangeText={(text) => setSenha(text)}
+          value={logarSenha}
+          onChangeText={(text) => setLogarSenha(text)}
         />
-        <Pressable onPress={() => setMostrarSenha(!mostrarSenha)} style={styles.eyeIcon}>
-          <FontAwesome name={mostrarSenha ? "eye-slash" : "eye"} size={20} color="gray" />
+        <Pressable
+          onPress={() => setMostrarSenha(!mostrarSenha)}
+          style={styles.eyeIcon}
+        >
+          <FontAwesome
+            name={mostrarSenha ? "eye-slash" : "eye"}
+            size={20}
+            color="gray"
+          />
         </Pressable>
       </View>
 
@@ -52,7 +94,9 @@ const TelaLogin = ({ navigation }) => {
         <FontAwesome name="arrow-right" size={20} color="#ffffff" />
       </Pressable>
 
-      <Text style={styles.textoOculto}>Todos os direitos reservados para @Templarios.</Text>
+      <Text style={styles.textoOculto}>
+        Todos os direitos reservados para @Templarios.
+      </Text>
     </View>
   );
 };
@@ -71,7 +115,7 @@ const styles = StyleSheet.create({
   },
   classesButton: {
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: "white",
     borderRadius: 10,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -103,8 +147,8 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   inputContainer: {
-    position: 'relative',
-    width: '100%',
+    position: "relative",
+    width: "100%",
   },
   input: {
     width: "100%",
@@ -117,12 +161,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   eyeIcon: {
-    position: 'absolute',
+    position: "absolute",
     right: 10,
     top: 20,
   },
   textoOculto: {
-    color: '#C8C8C8',
+    color: "#C8C8C8",
   },
 });
 

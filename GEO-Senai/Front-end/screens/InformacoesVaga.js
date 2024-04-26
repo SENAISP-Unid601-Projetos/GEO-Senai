@@ -2,7 +2,7 @@
 // em CadastroVaga, na versão para administrador do GEO SENAI
 
 import React from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet,Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const InformacoesVaga = ({ route, navigation }) => {
@@ -16,6 +16,17 @@ const InformacoesVaga = ({ route, navigation }) => {
       <View>
         <View style={styles.redBack}>
           <View style={styles.whiteBack}>
+     
+           
+          {vaga.imagem_vaga != "" && (
+                <View style={{ height: "30%", backgroundColor: "white" , borderRadius:100}}>
+                  <Image
+                    style={{height: "100%", width:"100%", borderRadius:20}}
+                    source={{ uri: vaga.imagem_vaga }}
+                  />
+                </View>
+              )}
+             
             <Text style={styles.txtTituloPrincipal}>{vaga.nome_vaga}</Text>
             <Text style={styles.infoText}>
               <Text style={styles.txtTitulo}>Descrição:</Text> {vaga.desc_vaga}
@@ -29,7 +40,7 @@ const InformacoesVaga = ({ route, navigation }) => {
               {vaga.carga_vaga}
             </Text>
             <Text style={styles.infoText}>
-              <Text style={styles.txtTitulo}>Salário:</Text> {vaga.salario_vaga}
+              <Text style={styles.txtTitulo}>Salário: </Text> R${vaga.salario_vaga} 
             </Text>
             <Text style={styles.infoText}>
               <Text style={styles.txtTitulo}>Contato:</Text> {vaga.contato_vaga}
@@ -43,6 +54,7 @@ const InformacoesVaga = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    height: "100%",
     backgroundColor: "#E8E8E8",
     alignItems: "center",
     justifyContent: "center",
@@ -55,11 +67,19 @@ const styles = StyleSheet.create({
   },
   redBack: {
     marginTop: 40,
-    width: "80%",
-    height: 800,
-    backgroundColor: "red",
-    borderRadius: 20,
+    width: 900,
+    height: 1000,
+    backgroundColor: "white",
+    borderRadius: 10,
     justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   whiteBack: {
     margin: 20,
@@ -69,18 +89,18 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   txtTitulo: {
-    fontSize: 25,
-    fontWeight: "bold",
+    fontSize: 35,
+    color: "red",
   },
   infoText: {
-    fontSize: 25,
+    fontSize: 30,
     marginBottom: 10,
   },
   txtTituloPrincipal: {
     textAlign: "center",
-    fontWeight: "bold",
+    color: "#808080",
     fontSize: 50,
-    marginBottom: 10,
+    marginBottom: 50,
   },
 });
 

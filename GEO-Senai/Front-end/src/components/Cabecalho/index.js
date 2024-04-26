@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#ff0000",
     padding: 15,
-  
+
     borderBottomColor: "#ccc",
     alignItems: "flex-end",
   },

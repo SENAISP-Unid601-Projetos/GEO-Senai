@@ -1,10 +1,10 @@
-package br.com.example.senai_auto.resource;
+package br.com.example.geo_senai.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.example.senai_auto.entity.Turma;
-import br.com.example.senai_auto.repository.TurmaRepository;
+import br.com.example.geo_senai.entity.Turma;
+import br.com.example.geo_senai.repository.TurmaRepository;
 
 import java.util.List;
 

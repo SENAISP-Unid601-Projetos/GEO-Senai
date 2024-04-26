@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, Pressable, Button } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-
-
 const TelaHorarios = ({ navigation, route }) => {
   const CaminhoQr = () => {
     navigation.navigate("TelaQR");
@@ -16,7 +14,6 @@ const TelaHorarios = ({ navigation, route }) => {
   const toggleImage = () => {
     setShowImage(!showImage);
   };
-  
 
   return (
     <View style={styles.container}>
@@ -81,28 +78,20 @@ const TelaHorarios = ({ navigation, route }) => {
       </View>
 
       {/* Botão "Baixar QR" */}
-      <Pressable
-       style={[styles.BaixarQRButton]}
-       onPress={toggleImage}
-     >
-       <Text style={styles.buttonText}>
-         {showImage ? 'Esconder QR code' : 'Exibir QR code'}
-       </Text>
-       {showImage && (
-         <Image
-           source={require('./../assets/mapaSenaiQR.png')}
-           style={{ width: 200, height: 200, marginTop: 20 }}
-         />
-       )}
+      <Pressable style={[styles.BaixarQRButton]} onPress={toggleImage}>
+        <Text style={styles.buttonText}>
+          {showImage ? "Esconder QR code" : "Exibir QR code"}
+        </Text>
+        {showImage && (
+          <Image
+            source={require("./../assets/mapaSenaiQR.png")}
+            style={{ width: 200, height: 200, marginTop: 20 }}
+          />
+        )}
       </Pressable>
-
-
-
-
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -128,11 +117,10 @@ const styles = StyleSheet.create({
   logo: {
     width: 70,
     height: 53,
-    position: 'absolute', // Mantenha apenas isso
+    position: "absolute", // Mantenha apenas isso
     top: 0,
     left: 0,
     position: "absolute",
-
   },
   fundoCinza: {
     backgroundColor: "gray",
@@ -170,35 +158,31 @@ const styles = StyleSheet.create({
     color: "black",
   },
 
-
   BaixarQRButton: {
-    alignItems:"center",
+    alignItems: "center",
     backgroundColor: "red",
     padding: 15,
     borderRadius: 10,
-    width:600,
+    width: 600,
     marginTop: 10,
-    borderColor:"red"
+    borderColor: "red",
   },
   buttonText: {
     color: "white",
     fontSize: 40,
-
 
     alignSelf: "center",
   },
 
   txt_horarios: {
     fontSize: 50,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   backButton: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     marginTop: 40,
     marginLeft: 20,
   },
 });
-
-
 
 export default TelaHorarios;

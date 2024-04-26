@@ -9,7 +9,6 @@ const TelaQR = ({ navigation, route }) => {
     navigation.navigate("TelaInicial");
   };
 
-
   return (
     <View style={styles.container}>
       <Text style={styles.textoTitulo}>Obrigado por utilizar este totem</Text>
@@ -21,7 +20,6 @@ const TelaQR = ({ navigation, route }) => {
         <Image source={imagemLink} style={styles.QR} />
       </View>
 
-      
       <Pressable style={styles.buttonGoBack} onPress={botaoInicio}>
         <Text style={styles.textGoBack}>Início</Text>
       </Pressable>
@@ -76,13 +74,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textoMid: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     padding: 20,
   },
   textoTitulo: {
     fontSize: 40,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 

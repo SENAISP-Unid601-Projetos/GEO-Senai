@@ -61,25 +61,29 @@ const TelaVagas = ({ navigation }) => {
                 navigation.navigate("InformacoesVaga", { vaga: vaga })
               }
             >
-              
-              {vaga.imagem_vaga != '' && (
-              <View style={{ height: "80%", backgroundColor: "white" }}>
-                <Image
-                  style={styles.imgVaga}
-                  source={{ uri: vaga.imagem_vaga }}
-                />
-              </View>
+              {vaga.imagem_vaga != "" && (
+                <View style={{ height: "80%", backgroundColor: "red",   borderTopLeftRadius: 40, }}>
+                  <Image
+                    style={styles.imgVaga}
+                    source={{ uri: vaga.imagem_vaga }}
+                  />
+                </View>
               )}
 
-              {vaga.imagem_vaga == '' && (
-              <View style={{ height: "80%", backgroundColor: "white", justifyContent: 'center' }}>
-                  <Text style={styles.imagemVaziaTxt}>
-                    {vaga.nome_vaga}
-                  </Text>
-              </View>
+              {vaga.imagem_vaga == "" && (
+                <View
+                  style={{
+                    height: "80%",
+                    backgroundColor: "white",
+                    justifyContent: "center",
+                    borderTopLeftRadius: 40,
+                  }}
+                >
+                  <Text style={styles.imagemVaziaTxt}>{vaga.nome_vaga}</Text>
+                </View>
               )}
 
-              <Text style={styles.saberMaisTxt}> Clique para saber mais</Text>
+              <Text style={styles.saberMaisTxt}>{vaga.nome_vaga} ...</Text>
             </Pressable>
           ))}
         </View>
@@ -92,25 +96,28 @@ const TelaVagas = ({ navigation }) => {
                 navigation.navigate("InformacoesVaga", { vaga: vaga })
               }
             >
-
-              {vaga.imagem_vaga != '' && (
-              <View style={{ height: "80%", backgroundColor: "white" }}>
-                <Image
-                  style={styles.imgVaga}
-                  source={{ uri: vaga.imagem_vaga }}
-                />
-              </View>
+              {vaga.imagem_vaga != "" && (
+                <View style={{ height: "80%", backgroundColor: "red",   borderTopLeftRadius: 40, }}>
+                  <Image
+                    style={styles.imgVaga}
+                    source={{ uri: vaga.imagem_vaga }}
+                  />
+                </View>
               )}
 
-              {vaga.imagem_vaga == '' && (
-              <View style={{ height: "80%", backgroundColor: "white", justifyContent: 'center' }}>
-                  <Text style={styles.imagemVaziaTxt}>
-                    {vaga.nome_vaga}
-                  </Text>
-              </View>
+              {vaga.imagem_vaga == "" && (
+                <View
+                  style={{
+                    height: "80%",
+                    backgroundColor: "white",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={styles.imagemVaziaTxt}>{vaga.nome_vaga}</Text>
+                </View>
               )}
 
-              <Text style={styles.saberMaisTxt}> Clique para saber mais</Text>
+              <Text style={styles.saberMaisTxt}> {vaga.nome_vaga} ...</Text>
             </Pressable>
           ))}
         </View>
@@ -238,7 +245,8 @@ const styles = StyleSheet.create({
   imgVaga: {
     height: "100%",
     width: 700,
-    borderWidth: 2,
+    borderTopLeftRadius: 40,
+    marginTop:10,
   },
   buttonVagas: {
     backgroundColor: "#ff0000",
@@ -246,24 +254,31 @@ const styles = StyleSheet.create({
     width: "90%",
     alignItems: "center",
     margin: 20,
-    borderRadius: 10,
+    borderTopLeftRadius: 40,
     padding: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   saberMaisTxt: {
     textAlign: "center",
     marginTop: 10,
-    fontSize: 25,
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 700,
+    fontSize: 33,
+    color: "white",
   },
   imagemVaziaTxt: {
     textAlign: "center",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 10,
     fontSize: 40,
     backgroundColor: "white",
     width: 700,
+    
   },
   atualizarButton: {
     flexDirection: "row",
@@ -301,7 +316,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   paginaAtual: {
-    fontSize: 25,
+    fontSize: 35,
     marginHorizontal: 10,
   },
 });

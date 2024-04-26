@@ -18,16 +18,18 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• Quais são os telefones do SENAI?",
       conteudoResposta: (
         <View>
-          <Text style={styles.txtResposta}>
-            Conteúdo customizado para a pergunta 1
+          <Text style={styles.txtResposta} multiline={true}>
+            <Text style={{ fontWeight: "bold" }}>Secretaria:</Text> 16 21068700;
+            {"\n"}
+            <Text style={{ fontWeight: "bold" }}>Setor de apoio:</Text> 21062783
+            e 21062724;{"\n"}
+            <Text style={{ fontWeight: "bold" }}>Facebook:</Text>{" "}
+            @senaisaocarlos;{"\n"}
+            <Text style={{ fontWeight: "bold" }}>Instagram:</Text>{" "}
+            @senaisaocarlos601;{"\n"}
+            <Text style={{ fontWeight: "bold" }}>E-mail:</Text>{" "}
+            senaisaocarlos@sp.senai.br;{"\n"}
           </Text>
-          <Image
-            source={require("./../assets/Brasil.png")}
-            style={styles.imagem}
-          />
-          <Pressable onPress={() => Linking.openURL("https://www.example.com")}>
-            <Text style={styles.link}>Link para exemplo.com</Text>
-          </Pressable>
         </View>
       ),
     },
@@ -44,7 +46,8 @@ const PerguntasFrequentes = ({ navigation }) => {
             >
               Turmas
             </Text>
-            , acessá-la e localizar o nome da sala no primeiro quadro. Depois, basta acessar{" "}
+            , acessá-la e localizar o nome da sala no primeiro quadro. Depois,
+            basta acessar{" "}
             <Text
               style={styles.spanTxtVermelho}
               onPress={() => navigation.navigate("TelaMapa")}
@@ -86,22 +89,16 @@ const PerguntasFrequentes = ({ navigation }) => {
             Período da manhã:
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>
-              Cursos de aprendizagem industrial
-            </Text>{" "}
-            -{" "}
+            <Text style={{ fontWeight: "bold" }}>Cursos de aprendizagem industrial</Text> - 9:20 às 9:45
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> -{" "}
+            <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> - 9:45 às 10:00
           </Text>
           <Text style={[styles.txtResposta, styles.spanTxtVermelho]}>
             Período da tarde:
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>
-              Cursos de aprendizagem industrial
-            </Text>{" "}
-            - 15:20 às 15:40
+            <Text style={{ fontWeight: "bold" }}>Cursos de aprendizagem industrial</Text> - 15:20 às 15:40
           </Text>
           <Text style={styles.txtResposta}>
             <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> - 15:45
@@ -171,10 +168,10 @@ const PerguntasFrequentes = ({ navigation }) => {
             e vai até XGG. Seguem os preços:
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Sócio -</Text> R$**,**
+            <Text style={{ fontWeight: "bold" }}>Sócio -</Text> R$25,00
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Não sócio -</Text> R$**,**
+            <Text style={{ fontWeight: "bold" }}>Não sócio -</Text> R$33,00
           </Text>
         </View>
       ),
@@ -183,21 +180,34 @@ const PerguntasFrequentes = ({ navigation }) => {
       pergunta: "• O que é a AAPM?",
       conteudoResposta: (
         <View>
-          <Text style={styles.txtResposta}>A Associação de Pais e Mestres é uma associação em parceria com
-          alunos associados, que é a responsável por fornecer fundos para a maioria dos eventos do SENAI 
-          como o bingo de páscoa, além de recursos como geladeiras e microondas, que beneficiam a todos
-          os alunos, sejam eles associados ou não.
+          <Text style={styles.txtResposta}>
+            A Associação de Pais e Mestres é uma associação em parceria com
+            alunos associados, que é a responsável por fornecer fundos para a
+            maioria dos eventos do SENAI como o bingo de páscoa, além de
+            recursos como geladeiras e microondas, que beneficiam a todos os
+            alunos, sejam eles associados ou não.
           </Text>
           <View style={styles.espaco} />
-          <Text style={styles.txtResposta}>Para os associados, a AAPM oferece como benefícios internet dentro da escola, ármario próprio
-          e acesso a recursos como mesa de pebolim e vídeogame, além de vários descontos dentro da escola.
+          <Text style={styles.txtResposta}>
+            Para os associados, a AAPM oferece como benefícios internet dentro
+            da escola, ármario próprio e acesso a recursos como mesa de pebolim
+            e vídeogame, além de vários descontos dentro da escola.
           </Text>
           <View style={styles.espaco} />
-          <Text style={[styles.txtResposta, styles.spanTxtVermelho]}>Preços da AAPM:</Text>
-          <Text style={styles.txtResposta}><Text style={{ fontWeight: "bold" }}>1 semestre -</Text> R$***,**</Text>
-          <Text style={styles.txtResposta}><Text style={{ fontWeight: "bold" }}>Integral -</Text> R$***,**</Text>
+          <Text style={[styles.txtResposta, styles.spanTxtVermelho]}>
+            Preços da AAPM:
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>1 semestre -</Text> R$***,**
+          </Text>
+          <Text style={styles.txtResposta}>
+            <Text style={{ fontWeight: "bold" }}>Integral -</Text> R$***,**
+          </Text>
           <View style={styles.espaco} />
-          <Text style={styles.txtResposta}>Para se tornar um associado da AAPM, o aluno deve procurar o setor de apoio.</Text>
+          <Text style={styles.txtResposta}>
+            Para se tornar um associado da AAPM, o aluno deve procurar o setor
+            de apoio.
+          </Text>
         </View>
       ),
     },
@@ -212,7 +222,7 @@ const PerguntasFrequentes = ({ navigation }) => {
       <View style={styles.cabecalho}></View>
 
       <View style={styles.header}>
-        <View style={{ alignSelf: 'flex-start'}}>
+        <View style={{ alignSelf: "flex-start" }}>
           <Pressable
             onPress={() => navigation.goBack()}
             style={styles.backButton}

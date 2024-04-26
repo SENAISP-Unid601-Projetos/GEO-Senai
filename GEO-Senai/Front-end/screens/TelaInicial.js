@@ -64,7 +64,7 @@ const TelaInicial = ({ navigation }) => {
 
       <Pressable style={styles.classesButton} onPress={botaoVagas}>
         <Text style={styles.buttonText}>Vagas</Text>
-        <FontAwesome name="user-plus" size={50} color="#ffffff" />
+        <FontAwesome name="suitcase" size={50} color="#ffffff" />
       </Pressable>
 
       {/* <Pressable style={styles.classesButton} onPress={botaoTelaVoz}>
@@ -72,10 +72,14 @@ const TelaInicial = ({ navigation }) => {
         <FontAwesome name="user-plus" size={50} color="#ffffff" />
       </Pressable> */}
 
-
       <View style={styles.faqsView}>
         <View style={styles.quadroFaqs}>
-          <FontAwesome style={styles.exclamacao} name="exclamation" size={40} color="red"/>
+          <FontAwesome
+            style={styles.exclamacao}
+            name="exclamation"
+            size={40}
+            color="red"
+          />
           <View style={styles.viewTxtFaqs}>
             <Text style={styles.faqsTxt}>
               Novo no SENAI? Experimente dar uma
@@ -114,6 +118,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "center",
     width: "80%",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   btnFaqs: {
     marginLeft: 20,
@@ -144,7 +156,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   exclamacao: {
-    alignSelf: 'center',
+    alignSelf: "center",
     padding: 10,
   },
   buttonText: {

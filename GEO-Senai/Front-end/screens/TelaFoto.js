@@ -8,6 +8,8 @@ const TelaFoto = ({ route, navigation }) => {
     navigation.navigate("TelaQR");
   };
 
+  const { turma } = route.params;
+
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -16,7 +18,7 @@ const TelaFoto = ({ route, navigation }) => {
 
       {/* Quadro vermelho no centro */}
       <View style={styles.redBack}>
-        <Text style={styles.tituloCurso}>Informática</Text>
+        <Text style={styles.tituloCurso}>Sala: {turma.sala_turma}</Text>
 
         <Image
           source={require("./../assets/IMG-20240407-WA0066.jpg")} // Imagem do logo
@@ -24,19 +26,14 @@ const TelaFoto = ({ route, navigation }) => {
         />
 
         <View style={styles.squareBaixo}>
-          <Pressable style={[styles.btnControleImg]} >
+          <Pressable style={[styles.btnControleImg]}>
             <FontAwesome name="chevron-left" size={25} color="black" />{" "}
           </Pressable>
 
-          <Pressable style={[styles.btnControleImg]} >
+          <Pressable style={[styles.btnControleImg]}>
             <FontAwesome name="chevron-right" size={25} color="black" />{" "}
           </Pressable>
         </View>
-
-        <Pressable style={[styles.buttonQR]} onPress={CaminhoQr} disabled ={[false]} >
-          <FontAwesome name="lock" style={styles.lockIcon} size={40}/> {/* Lock icon */}
-          <Text style={styles.buttonTextQR}>Gerar QR Code</Text>
-        </Pressable>
       </View>
     </View>
   );
@@ -46,6 +43,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     backgroundColor: "#E8E8E8", // Cor de fundo da tela
+    height: "100%",
   },
   redBack: {
     alignSelf: "center",
@@ -89,7 +87,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   buttonQR: {
-    flexDirection: 'row',
+    flexDirection: "row",
     borderWidth: 0,
     paddingVertical: 5, // Reduzindo o padding vertical
     paddingHorizontal: 10, // Reduzindo o padding horizontal
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
     fontSize: 25, // Reduzindo o tamanho do texto
     fontWeight: "bold",
     padding: 10,
-    color: '#a0a0a0',
+    color: "#a0a0a0",
   },
   tituloCurso: {
     color: "white",
@@ -115,10 +113,15 @@ const styles = StyleSheet.create({
     width: "40%", // Mantendo a largura atual
     height: "60%", // Mantendo a altura atual
     alignSelf: "center", // Alinhando a imagem ao centro horizontalmente
-    padding: 20,
-    borderRadius: 10, // Adicionando borda arredondada
-    borderWidth: 2, // Adicionando borda
-    borderColor: "black", // Definindo a cor da borda como preto
+    padding: 20, // Adicionando borda arredondada
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   backButton: {
     marginLeft: 20,

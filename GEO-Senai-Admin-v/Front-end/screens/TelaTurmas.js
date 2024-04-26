@@ -35,7 +35,7 @@ const TelaTurmas = ({ navigation }) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => setTurmas(data))
+      .then((data) => setTurmas(data)) 
       .catch((error) => console.error("Erro ao obter turmas:", error));
   }, [atualizarLista]);
 

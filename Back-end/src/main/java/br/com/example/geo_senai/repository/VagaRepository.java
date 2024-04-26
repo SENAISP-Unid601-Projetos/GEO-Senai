@@ -1,6 +1,6 @@
-package br.com.example.senai_auto.repository;
+package br.com.example.geo_senai.repository;
 
-import br.com.example.senai_auto.entity.Vaga;
+import br.com.example.geo_senai.entity.Vaga;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

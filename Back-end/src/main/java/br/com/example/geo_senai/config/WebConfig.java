@@ -1,4 +1,4 @@
-package br.com.example.senai_auto.config;
+package br.com.example.geo_senai.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

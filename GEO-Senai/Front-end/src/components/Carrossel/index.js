@@ -1,7 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { View, ScrollView, Image, StyleSheet, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  View,
+  ScrollView,
+  Image,
+  StyleSheet,
+  Dimensions,
+  TouchableWithoutFeedback,
+} from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const Carrossel = ({ onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,7 +17,10 @@ const Carrossel = ({ onClose }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (currentIndex < 2) {
-        scrollViewRef.current.scrollTo({ x: width * (currentIndex + 1), animated: true });
+        scrollViewRef.current.scrollTo({
+          x: width * (currentIndex + 1),
+          animated: true,
+        });
         setCurrentIndex(currentIndex + 1);
       } else {
         scrollViewRef.current.scrollTo({ x: 0, animated: true });
@@ -36,9 +46,18 @@ const Carrossel = ({ onClose }) => {
             setCurrentIndex(index);
           }}
         >
-          <Image source={require("./../../../assets/carrossel1.jpg")} style={styles.image} />
-          <Image source={require("./../../../assets/carrossel2.jpg")} style={styles.image} />
-          <Image source={require("./../../../assets/carrossel3.jpeg")} style={styles.image} />
+          <Image
+            source={require("./../../../assets/carrossel1.jpg")}
+            style={styles.image}
+          />
+          <Image
+            source={require("./../../../assets/carrossel2.jpg")}
+            style={styles.image}
+          />
+          <Image
+            source={require("./../../../assets/carrossel3.jpeg")}
+            style={styles.image}
+          />
           {/* Adicione quantas imagens desejar */}
         </ScrollView>
       </View>
@@ -48,22 +67,22 @@ const Carrossel = ({ onClose }) => {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'black',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "black",
     zIndex: 999,
   },
   scrollViewContent: {
     width: width * 3, // Multiplica a largura da tela pelo número de imagens
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   image: {
     width,
-    height: '100%',
-    resizeMode: 'cover',
+    height: "100%",
+    resizeMode: "cover",
   },
 });
 
