@@ -9,6 +9,8 @@ import {
   TextInput,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const TelaSalas = ({ navigation, route }) => {
   const [salas, setSalas] = useState([]);

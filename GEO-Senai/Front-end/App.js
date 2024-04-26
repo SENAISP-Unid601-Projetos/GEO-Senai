@@ -14,6 +14,7 @@ import TelaHorarios from "./screens/TelaHorarios";
 import PerguntasFrequentes from "./screens/PerguntasFrequentes";
 import TelaVoz from "./screens/TelaVoz";
 import TelaSalas from "./screens/TelaSalas";
+import { AcessibilidadeProvider } from "./src/context/AcessibilidadeContext";
 
 const Stack = createStackNavigator();
 
@@ -63,71 +64,73 @@ const App = () => {
   };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="TelaInicial">
-        <Stack.Screen
-          name="TelaTurmas"
-          component={TelaTurmas}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaVagas"
-          component={TelaVagas}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="InformacoesVaga"
-          component={InformacoesVaga}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaInicial"
-          component={TelaInicial}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="InformacoesTurma"
-          component={InformacoesTurma}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaMapa"
-          component={TelaMapa}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaQR"
-          component={TelaQR}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaFoto"
-          component={TelaFoto}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaHorarios"
-          component={TelaHorarios}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="PerguntasFrequentes"
-          component={PerguntasFrequentes}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaVoz"
-          component={TelaVoz}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TelaSalas"
-          component={TelaSalas}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-      {showCarousel && <Carrossel onClose={handleCloseCarousel} />}
-    </NavigationContainer>
+    <AcessibilidadeProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="TelaInicial">
+          <Stack.Screen
+            name="TelaTurmas"
+            component={TelaTurmas}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaVagas"
+            component={TelaVagas}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="InformacoesVaga"
+            component={InformacoesVaga}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaInicial"
+            component={TelaInicial}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="InformacoesTurma"
+            component={InformacoesTurma}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaMapa"
+            component={TelaMapa}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaQR"
+            component={TelaQR}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaFoto"
+            component={TelaFoto}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaHorarios"
+            component={TelaHorarios}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="PerguntasFrequentes"
+            component={PerguntasFrequentes}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaVoz"
+            component={TelaVoz}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TelaSalas"
+            component={TelaSalas}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+        {showCarousel && <Carrossel onClose={handleCloseCarousel} />}
+      </NavigationContainer>
+    </AcessibilidadeProvider>
   );
 };
 

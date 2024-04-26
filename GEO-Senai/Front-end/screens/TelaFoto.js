@@ -35,6 +35,11 @@ const TelaFoto = ({ route, navigation }) => {
           </Pressable>
         </View>
       </View>
+
+      <Pressable style={[styles.buttonQR]}>
+        <Text style={styles.buttonTextQR}>Botão QR</Text>
+      </Pressable>
+
     </View>
   );
 };
@@ -49,11 +54,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "red", // Cor de fundo vermelha do quadrado
     width: "80%", // Largura do quadrado (80% da largura da tela)
-    height: 750, // Altura do quadrado (70% da altura da tela)
+    height: "70%", // Altura do quadrado (70% da altura da tela)
     alignItems: "center", // Centraliza conteúdo na horizontal
     flexDirection: "column", // Alinha os elementos filhos na...
     justifyContent: "center",
     borderRadius: 30,
+    marginBottom: "1%"
   },
   squareBaixo: {
     backgroundColor: "red", // Cor de fundo vermelha do quadrado
@@ -75,45 +81,40 @@ const styles = StyleSheet.create({
     marginHorizontal: 25, // Adicionando um pequeno espaçamento horizontal entre os botões
     backgroundColor: "white",
     alignItems: "center",
-  },
-  buttonTextRetornar: {
-    fontSize: 30,
-    fontWeight: "bold",
-    alignSelf: "center",
-  },
-  txtControleImg: {
-    fontSize: 30,
-    fontWeight: "bold",
-    alignSelf: "center",
+    width: "10%",
   },
   buttonQR: {
-    flexDirection: "row",
-    borderWidth: 0,
-    paddingVertical: 5, // Reduzindo o padding vertical
-    paddingHorizontal: 10, // Reduzindo o padding horizontal
+    alignSelf: 'center',
+    backgroundColor: 'red',
+    width: '10%',
+    height: "5%",
+    alignItems: 'center',
     borderRadius: 10,
-    marginHorizontal: 5, // Adicionando um pequeno espaçamento horizontal entre os botões
-    backgroundColor: "gray",
-    alignItems: "center",
   },
   buttonTextQR: {
     fontSize: 25, // Reduzindo o tamanho do texto
     fontWeight: "bold",
     padding: 10,
-    color: "#a0a0a0",
+    color: "white",
   },
   tituloCurso: {
-    color: "white",
+    color: "black",
     textAlign: "center",
-    fontSize: 40,
+    fontSize: 50,
     fontWeight: "bold",
     marginBottom: 20,
-  },
+    backgroundColor: 'white',
+    width: '20%',
+    borderRadius: 10,
+   },
   imgFoto: {
     width: "40%", // Mantendo a largura atual
     height: "60%", // Mantendo a altura atual
     alignSelf: "center", // Alinhando a imagem ao centro horizontalmente
     padding: 20, // Adicionando borda arredondada
+    borderColor: 'black',
+    borderWidth: 3,
+    borderRadius: 30,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

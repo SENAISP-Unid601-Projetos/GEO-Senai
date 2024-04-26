@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, Pressable, Button } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const TelaHorarios = ({ navigation, route }) => {
   const CaminhoQr = () => {
@@ -30,51 +32,52 @@ const TelaHorarios = ({ navigation, route }) => {
         <View style={styles.quadroCinzaPequenoTitulo}>
           <Text style={styles.quadroTexto}>{turma.codigo_turma}</Text>
         </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Segunda</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Terça</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Quarta</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Quinta</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>Sexta</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>{turma.seg_horario}</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>{turma.ter_horario}</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>{turma.qua_horario}</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>{turma.qui_horario}</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}>{turma.sex_horario}</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>Segunda</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>Terça</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>Quarta</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>Quinta</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>Sexta</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>{turma.seg_horario}</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>{turma.ter_horario}</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>{turma.qua_horario}</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>{turma.qui_horario}</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}>{turma.sex_horario}</Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}></Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}></Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}></Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}></Text>
+          </View>
+          <View style={styles.quadroCinzaPequeno}>
+            <Text style={styles.quadroTexto}></Text>
+          </View>
+        
       </View>
 
       {/* Botão "Baixar QR" */}
@@ -122,36 +125,43 @@ const styles = StyleSheet.create({
     left: 0,
     position: "absolute",
   },
-  fundoCinza: {
-    backgroundColor: "gray",
-    width: "80%",
-    padding: 20,
-    alignItems: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
+  // Estilo para um fundo cinza
+fundoCinza: {
+  backgroundColor: "gray",     // Cor de fundo cinza
+  width: "80%",                // Largura de 80% do componente pai
+  height: "50%",               // Altura de 50% do componente pai
+  alignItems: "center",        // Alinhamento dos itens centralizado horizontalmente
+  flexDirection: "row",        // Disposição dos itens em linha
+  flexWrap: "wrap",            // Envolver os itens quando não couberem na mesma linha
+},
+  // Estilo para um quadro cinza pequeno com título
   quadroCinzaPequenoTitulo: {
-    backgroundColor: "#d3d3d3",
-    width: "100%",
-    marginBottom: 10,
-    height: 80,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "black",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#d3d3d3", // Cor de fundo cinza
+    width: "97%", // Largura ocupando 98% do espaço disponível
+    height: "13%", // Altura de 10% do componente pai
+    marginBottom: 10, // Margem inferior de 10 unidades
+    marginLeft: "1.5%",
+    borderRadius: 10, // Borda arredondada com raio de 10 unidades
+    borderWidth: 1, // Largura da borda de 1 unidade
+    borderColor: "black", // Cor da borda preta
+    justifyContent: "center", // Alinhamento vertical centralizado
+    alignItems: "center", // Alinhamento horizontal centralizado
   },
-  quadroCinzaPequeno: {
-    backgroundColor: "#d3d3d3",
-    width: "19%",
-    height: 100,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "black",
-    margin: 5,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
+  // Estilo para um quadro cinza pequeno
+quadroCinzaPequeno: {
+  backgroundColor: "#d3d3d3",    // Cor de fundo cinza
+  width: "18%",                  // Largura de 19% do componente pai
+  height: "20%",                 // Altura de 20% do componente pai
+  borderRadius: 10,              // Borda arredondada com raio de 10 unidades
+  borderWidth: 1,                // Largura da borda de 1 unidade
+  borderColor: "black",          // Cor da borda preta
+  margin: 5,                     // Margem de 5 unidades em todos os lados
+  marginLeft: "1.5%",
+  justifyContent: "center",      // Alinhamento vertical centralizado
+  alignItems: "center",          // Alinhamento horizontal centralizado
+  alignSelf: "center",           // Alinhamento próprio ao centro horizontalmente
+},
   quadroTexto: {
     fontSize: 30,
     fontWeight: "bold",

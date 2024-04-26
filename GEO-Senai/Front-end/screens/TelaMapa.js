@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Pressable, Picker } from "react-native";
+import { StyleSheet, Text, View, Pressable, Picker, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import Mapa from "../src/components/Mapa";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import ListaMapas from "../src/components/listaMapas";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const TelaMapa = ({ navigation }) => {
+  const { acessibilidade } = useAcessibilidade();
+
   const [mapaSelecionado, setMapaSelecionado] = useState("1");
-  const [selectedValue, setSelectedValue] = useState("Mapa primeiro andar");
+  const [selectedValue, setSelectedValue] = useState("Mapa área 1 (superior)");
 
   const [showImage1, setShowImage1] = useState(false); // Estado para a primeira seção
   const [showImage2, setShowImage2] = useState(false); // Estado para a segunda seção
@@ -16,47 +20,77 @@ const TelaMapa = ({ navigation }) => {
   const toggleImage = () => {
     setShowImage(!showImage);
   };
+
+  const falarTexto = (texto) => {
+    Speech.speak(texto, { language: "pt-BR" });
+  };
+
   const handleChange = (itemValue, itemIndex) => {
     setSelectedValue(itemValue);
     // Dependendo da opção selecionada, defina um valor diferente para setMapaSelecionado
     switch (itemValue) {
-      case "Mapa primeiro andar":
+      case "Mapa área 1 (superior)":
         setMapaSelecionado("1");
         break;
-      case "Mapa segundo andar":
+      case "Mapa área 1 (inferior)":
         setMapaSelecionado("2");
         break;
-      case "Mapa terceiro andar":
+      case "Mapa área 2":
         setMapaSelecionado("3");
         break;
       default:
         break;
     }
+    if (acessibilidade) {
+      falarTexto(itemValue);
+    }
   };
+
   const CaminhoQr = () => {
     switch (selectedValue) {
-      case "Mapa primeiro andar":
-        navigation.navigate("TelaQR", {imagemLink: require("./../assets/mapaSenaiQR.png"),});
+      case "Mapa área 1 (superior)":
+        navigation.navigate("TelaQR", {
+          imagemLink: require("./../assets/mapaSenaiQR.png"),
+        });
         break;
-      case "Mapa segundo andar":
-        navigation.navigate("TelaQR", {imagemLink: require("./../assets/blocobQR.png"),});
+      case "Mapa área 1 (inferior)":
+        navigation.navigate("TelaQR", {
+          imagemLink: require("./../assets/blocobQR.png"),
+        });
         break;
-      case "Mapa terceiro andar":
-        navigation.navigate("TelaQR", {imagemLink: require("./../assets/areadoisQR.png"),});
+      case "Mapa área 2":
+        navigation.navigate("TelaQR", {
+          imagemLink: require("./../assets/areadoisQR.png"),
+        });
         break;
+    }
+    if (acessibilidade) {
+      falarTexto("Baixar caminho");
     }
   };
 
   const btnSalas = () => {
     switch (selectedValue) {
-      case "Mapa primeiro andar":
-        navigation.navigate("TelaSalas", {local: "http://10.110.12.19:8080/salas/area1-inferior"}, {andar: "Área 1 (inferior)"});
+      case "Mapa área 1 (superior)":
+        navigation.navigate(
+          "TelaSalas",
+          { local: "http://10.110.12.19:8080/salas/area1-inferior" },
+          { andar: "Área 1 (inferior)" }
+        );
         break;
-      case "Mapa segundo andar":
-        navigation.navigate("TelaSalas", {local: "http://10.110.12.19:8080/salas/area1-superior"}, {andar: "Área 1 (superior)"});
+      case "Mapa área 1 (inferior)":
+        navigation.navigate(
+          "TelaSalas",
+          { local: "http://10.110.12.19:8080/salas/area1-superior" },
+          { andar: "Área 1 (superior)" }
+        );
         break;
-      case "Mapa terceiro andar":
-        navigation.navigate("TelaSalas", {local: "http://10.110.12.19:8080/salas/area2"}, {andar: "Área 2"});
+      case "Mapa área 2":
+        navigation.navigate(
+          "TelaSalas",
+          { local: "http://10.110.12.19:8080/salas/area2" },
+          { andar: "Área 2" }
+        );
         break;
     }
   };
@@ -87,16 +121,16 @@ const TelaMapa = ({ navigation }) => {
             onValueChange={handleChange}
           >
             <Picker.Item
-              label="Area 1 (superior)"
-              value="Mapa primeiro andar"
+              label="Área 1 (superior)"
+              value="Mapa área 1 (superior)"
             />
 
             <Picker.Item
-              label="Area 1 (inferior )"
-              value="Mapa segundo andar"
+              label="Área 1 (inferior )"
+              value="Mapa área 1 (inferior)"
             />
 
-            <Picker.Item label="Area 2" value="Mapa terceiro andar" />
+            <Picker.Item label="Área 2" value="Mapa área 2" />
           </Picker>
 
           <Pressable
@@ -106,240 +140,15 @@ const TelaMapa = ({ navigation }) => {
             <Text style={styles.footerText}>Baixar caminho</Text>
           </Pressable>
         </View>
-        
+
         <View style={styles.mapa}>
           <Mapa mapaSelecionado={mapaSelecionado} />
         </View>
 
+        <Pressable style={styles.btnsalas} onPress={btnSalas}> 
+          <Text style={styles.textoBtnSalas}>Salas</Text>
+        </Pressable>
 
-        <View style={styles.containerBTNS}>
-          {/* Area 1 andar 1 */}
-          <Pressable
-            style={styles.BaixarQRButton}
-            onPress={() => setShowImage1(!showImage1)}
-          >
-            <Text style={styles.buttonText}>
-              {showImage1
-                ? "Esconder salas Area I - inferior"
-                : "Exibir salas Area I - inferior"}
-            </Text>
-            {showImage1 && (
-              <View style={styles.BTNS}>
-                <View style={styles.column}>
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Mecanica</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Eletrica</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>refeitório</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Biblioteca</Text>
-                  </Pressable>
-                </View>
-              </View>
-            )}
-          </Pressable>
-
-          {/* Area 1 andar 2 */}
-          <Pressable
-            style={styles.BaixarQRButton}
-            onPress={() => setShowImage2(!showImage2)}
-             >
-            <Text style={styles.buttonText}>
-              {showImage2
-                ? "Esconder salas Area I - superior"
-                : "Exibir salas Area I - superior"}
-            </Text>
-            {showImage2 && (
-              <View style={styles.BTNS}>
-
-                <View style={styles.column}>
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Eletronica geral
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Comandos e acionamentos
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Pneumatica
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Lab. LIP</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Hidraulica
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Lab. Robótica</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Lab. CLP</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Informatica IV
-                    </Text>
-                  </Pressable>
-                </View>
-
-                <View style={styles.column}>
-                   <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                   >
-                    <Text style={styles.TextoBotaoColunas}>Sala comum II</Text>
-                   </Pressable>
-                 
-                
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. em construção
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Informatica III / CAD
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Informatica II
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>
-                      Lab. Desenhos Tecnicos
-                    </Text>
-                  </Pressable>
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Lab. Projetos</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Sala comum I</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.botaoColunas, {}]}
-                    onPress={CaminhoQr}
-                  >
-                    <Text style={styles.TextoBotaoColunas}>Auditório</Text>
-                  </Pressable>
-                </View>
-
-
-              </View>
-            )}
-          </Pressable>
-
-          {/* Area 2 unico */}
-          <Pressable
-            style={styles.BaixarQRButton}
-            onPress={() => setShowImage3(!showImage3)}
-          >
-            <Text style={styles.buttonText}>
-              {showImage3 ? "Esconder salas area II" : "Exibir salas area II"}
-            </Text>
-            {showImage3 && (
-              <View style={styles.BTNS}>
-
-              <View style={styles.column}>
-                <Pressable
-                  style={[styles.botaoColunas, {}]}
-                  onPress={CaminhoQr}
-                >
-                  <Text style={styles.TextoBotaoColunas}>Sala I</Text>
-                </Pressable>
-
-                <Pressable
-                  style={[styles.botaoColunas, {}]}
-                  onPress={CaminhoQr}
-                >
-                  <Text style={styles.TextoBotaoColunas}>Sala II</Text>
-                </Pressable>
-                </View>
-              </View>
-            )}
-          </Pressable>
-        </View>
       </View>
     </View>
   );
@@ -460,7 +269,7 @@ const styles = StyleSheet.create({
   BTNS: {
     alignItems: "center",
     alignSelf: "center",
-   //backgroundColor: "black",
+    //backgroundColor: "black",
     flexDirection: "row", // Alterado para 'row'
     margin: 5, // Alterado para 5 sem aspas
     marginLeft: "2.5%",
@@ -519,8 +328,24 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: "2%",
     //marginRight: '50'
-    width: '100%'
+    width: "100%",
   },
+  btnsalas: {
+    alignSelf: 'center',
+    textAlign: 'center',
+    width: '10%',
+    height: '7%',
+    backgroundColor: 'red',
+    borderRadius: 10,
+    borderColor: 'black',
+    borderWidth: 3,
+  },
+  textoBtnSalas: {
+    color: 'white',
+    fontSize: 50,
+    alignSelf: 'center',
+  },
+
 });
 
 export default TelaMapa;

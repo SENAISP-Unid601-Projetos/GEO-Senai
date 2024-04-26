@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { View, Picker, StyleSheet } from "react-native";
 
 export default ListaMapas = ({ setMapaSelecionado }) => {
-  const [selectedValue, setSelectedValue] = useState("Mapa primeiro andar");
+  const [selectedValue, setSelectedValue] = useState("Mapa área 1 (superior)");
 
   const handleChange = (itemValue, itemIndex) => {
     setSelectedValue(itemValue);
 
     // Dependendo da opção selecionada, defina um valor diferente para setMapaSelecionado
     switch (itemValue) {
-      case "Mapa primeiro andar":
+      case "Mapa área 1 (superior)":
         setMapaSelecionado("1");
 
         break;
-      case "Mapa segundo andar":
+      case "Mapa área 1 (inferior)":
         setMapaSelecionado("2");
 
         break;
-      case "Mapa terceiro andar":
+      case "Mapa área 2":
         setMapaSelecionado("3");
 
         break;
@@ -33,9 +33,9 @@ export default ListaMapas = ({ setMapaSelecionado }) => {
         style={styles.estiloBtn}
         onValueChange={handleChange}
       >
-        <Picker.Item label="Bloco B (superior)" value="Mapa primeiro andar" />
-        <Picker.Item label="Bloco B (inferior )" value="Mapa segundo andar" />
-        <Picker.Item label="Bloco A" value="Mapa terceiro andar" />
+        <Picker.Item label="Bloco B (superior)" value="Mapa área 1 (superior)" />
+        <Picker.Item label="Bloco B (inferior )" value="Mapa área 1 (inferior)" />
+        <Picker.Item label="Bloco A" value="Mapa área 2" />
       </Picker>
     </View>
   );

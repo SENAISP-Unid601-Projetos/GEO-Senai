@@ -1,5 +1,3 @@
-// Tela inicial do GEO SENAI, por onde são acessadas as telas de mapa, turmas e vagas
-
 import React from "react";
 import {
   StyleSheet,
@@ -7,36 +5,54 @@ import {
   View,
   Image,
   Pressable,
-  ImageBackground,
+  Linking,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import SwitchToggle from "react-native-switch-toggle";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const TelaInicial = ({ navigation }) => {
+  const { acessibilidade, toggleAcessibilidade } = useAcessibilidade();
+
+  const falarTexto = (texto) => {
+      Speech.speak(texto, { language: "pt-BR" });
+  };
+
   const botaoTurmas = () => {
-    navigation.navigate("TelaTurmas");
+    if (acessibilidade) {
+      navigation.navigate("TelaTurmas");
+      falarTexto("Turmas");
+    } else {
+      navigation.navigate("TelaTurmas");
+    }
   };
 
   const botaoMapa = () => {
-    navigation.navigate("TelaMapa");
-  };
-  const botaovagas = () => {
-    navigation.navigate("TextDecoderStream");
+    if (acessibilidade) {
+      navigation.navigate("TelaMapa");
+      falarTexto("Mapas");
+    } else {
+      navigation.navigate("TelaMapa");
+    }
   };
 
   const botaoVagas = () => {
-    navigation.navigate("TelaVagas");
+    if (acessibilidade) {
+      navigation.navigate("TelaVagas");
+      falarTexto("Vagas");
+    } else {
+      navigation.navigate("TelaVagas");
+    }
   };
 
   const botaoFAQ = () => {
-    navigation.navigate("PerguntasFrequentes");
-  };
-  const botaoTelaVoz = () => {
-    navigation.navigate("TelaVoz");
-  };
-
-  const abrirSite = () => {
-    const url = "https://sp.senai.br/unidade/saocarlos";
-    Linking.openURL(url);
+    if (acessibilidade) {
+      navigation.navigate("PerguntasFrequentes");
+      falarTexto("Perguntas frequentes");
+    } else {
+      navigation.navigate("PerguntasFrequentes");
+    }
   };
 
   return (
@@ -47,10 +63,24 @@ const TelaInicial = ({ navigation }) => {
         style={styles.senai}
       />
 
+      <View style={styles.switchContainer}>
+        <SwitchToggle
+          backgroundColorOff="black"
+          backgroundColorOn="red"
+          circleStyle={styles.circleStyle}
+          switchOn={acessibilidade}
+          onPress={toggleAcessibilidade}
+        />
+      </View>
+
+      {/* {acessibilidade && ( */}
+      {/* // <View> */}
       <Text style={styles.BemVindo}>Seja bem-vindo ao GEO SENAI!</Text>
       <Text style={styles.TextoMedio}>
         É um prazer tê-lo conosco, como posso te ajudar?
       </Text>
+      {/* </View> */}
+      {/* )} */}
 
       <Pressable style={styles.classesButton} onPress={botaoMapa}>
         <Text style={styles.buttonText}>Mapas</Text>
@@ -66,11 +96,6 @@ const TelaInicial = ({ navigation }) => {
         <Text style={styles.buttonText}>Vagas</Text>
         <FontAwesome name="suitcase" size={50} color="#ffffff" />
       </Pressable>
-
-      {/* <Pressable style={styles.classesButton} onPress={botaoTelaVoz}>
-        <Text style={styles.buttonText}>Vwagas</Text>
-        <FontAwesome name="user-plus" size={50} color="#ffffff" />
-      </Pressable> */}
 
       <View style={styles.faqsView}>
         <View style={styles.quadroFaqs}>
@@ -109,6 +134,17 @@ const styles = StyleSheet.create({
   senai: {
     width: 600,
     height: 150,
+  },
+  switchContainer: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+  },
+  circleStyle: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: "white",
   },
   classesButton: {
     flexDirection: "row", // Para alinhar o texto e o ícone lado a lado

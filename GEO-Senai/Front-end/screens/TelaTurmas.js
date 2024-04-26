@@ -8,8 +8,12 @@ import {
   TextInput,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const TelaTurmas = ({ navigation }) => {
+  const { acessibilidade } = useAcessibilidade();
+
   const [turmas, setTurmas] = useState([]);
 
   const [atualizarLista, setAtualizarLista] = useState(true);
@@ -44,6 +48,10 @@ const TelaTurmas = ({ navigation }) => {
     setExisteAnterior(paginaAtual > 0);
   }, [paginaAtual, turmas.length]);
 
+  const falarTexto = (texto) => {
+    Speech.speak(texto, { language: "pt-BR" });
+  };
+
   const renderizarTurmasPaginaAtual = () => {
     const inicio = paginaAtual * turmasPorPagina;
     const fim = inicio + turmasPorPagina;
@@ -66,19 +74,38 @@ const TelaTurmas = ({ navigation }) => {
   };
 
   const avancarPagina = () => {
-    if (existeProximo) {
-      setPaginaAtual(paginaAtual + 1);
+    if (acessibilidade) {
+      if (existeProximo) {
+        setPaginaAtual(paginaAtual + 1);
+        falarTexto("Avançar página");
+      }
+    } else {
+      if (existeProximo) {
+        setPaginaAtual(paginaAtual + 1);
+      }
     }
   };
 
   const retrocederPagina = () => {
-    if (existeAnterior) {
-      setPaginaAtual(paginaAtual - 1);
+    if (acessibilidade) {
+      if (existeAnterior) {
+        setPaginaAtual(paginaAtual - 1);
+        falarTexto("Retroceder página")
+      }
+    } else {
+      if (existeAnterior) {
+        setPaginaAtual(paginaAtual - 1);
+      }
     }
   };
 
   const atualizarListaTurmas = () => {
-    setAtualizarLista(!atualizarLista);
+    if (acessibilidade) {
+      falarTexto("Atualizar lista");
+      setAtualizarLista(!atualizarLista);
+    } else {
+      setAtualizarLista(!atualizarLista);
+    }
   };
 
   return (

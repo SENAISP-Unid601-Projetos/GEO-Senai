@@ -1,11 +1,25 @@
 // Tela para exibir todas as informações de uma turma em específico, previamente cadastrada
 // em CadastroTurma, na versão para administrador do GEO SENAI
 
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const InformacoesTurma = ({ route, navigation }) => {
+  const { acessibilidade } = useAcessibilidade();
+
+  useEffect(() => {
+    if (acessibilidade) {
+      falarTexto(turma.codigo_turma)
+    }
+  })
+
+  const falarTexto = (texto) => {
+    Speech.speak(texto, { language: "pt-BR" });
+  };
+
   const TelaFoto = () => {
     navigation.navigate("TelaFoto", { turma: turma });
   };
@@ -34,7 +48,7 @@ const InformacoesTurma = ({ route, navigation }) => {
 
           <Pressable
             style={[styles.botoesPequenos, { borderWidth: 1 }]}
-            onPress={() => console.log("Turmas pressionados")}
+            onPress={botaoMapa}
           >
             <Text style={styles.texto}>Ver no mapa</Text>
           </Pressable>
@@ -61,13 +75,6 @@ const InformacoesTurma = ({ route, navigation }) => {
             }
           >
             <Text style={styles.textoFundo}>Horários</Text>
-          </Pressable>
-
-          <Pressable
-            style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}
-            onPress={botaoMapa}
-          >
-            <Text style={styles.textoFundo}>Localize-se</Text>
           </Pressable>
         </View>
 

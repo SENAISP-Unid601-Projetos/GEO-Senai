@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import Collapsible from "react-native-collapsible";
 import { FontAwesome } from "@expo/vector-icons";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const PerguntasFrequentes = ({ navigation }) => {
   const [perguntaAtiva, setPerguntaAtiva] = useState(null);

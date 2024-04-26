@@ -8,18 +8,25 @@ import {
   Image,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const TelaVagas = ({ navigation }) => {
+  const { acessibilidade } = useAcessibilidade();
+
   const [vagas, setVagas] = useState([]);
+
   const [paginaAtual, setPaginaAtual] = useState(0);
   const vagasPorPagina = 4; // Alterando para 4 vagas por página
   const [existeProximo, setExisteProximo] = useState(true);
   const [existeAnterior, setExisteAnterior] = useState(false);
+  const [atualizarLista, setAtualizarLista] = useState(true);
+
 
   const local = "http://10.110.12.19:8080/vagas";
   const nuvem = "https://appsenai.azurewebsites.net/vagas";
 
-  const atualizarVagas = () => {
+  useEffect(() => {
     fetch(local, {
       method: "GET",
       headers: {
@@ -30,16 +37,25 @@ const TelaVagas = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => setVagas(data))
       .catch((error) => console.error("Erro ao obter vagas:", error));
-  };
-
-  useEffect(() => {
-    atualizarVagas();
-  }, []);
+  }, [atualizarLista]);
 
   useEffect(() => {
     setExisteProximo((paginaAtual + 1) * vagasPorPagina < vagas.length);
     setExisteAnterior(paginaAtual > 0);
   }, [paginaAtual, vagas.length]);
+
+  const falarTexto = (texto) => {
+    Speech.speak(texto, { language: "pt-BR" });
+  };
+
+  const atualizarVagas = () => {
+    if (acessibilidade) {
+      falarTexto("Atualizar lista");
+      setAtualizarLista(!atualizarLista);
+    } else {
+      setAtualizarLista(!atualizarLista);
+    }
+  };
 
   const renderizarVagasPaginaAtual = () => {
     const inicio = paginaAtual * vagasPorPagina;

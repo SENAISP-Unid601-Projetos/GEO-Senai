@@ -1,12 +1,26 @@
 // Tela para exibir todas as informações de uma vaga de emprego em específico, previamente cadastrada
 // em CadastroVaga, na versão para administrador do GEO SENAI
 
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Pressable, StyleSheet,Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
+import * as Speech from "expo-speech";
 
 const InformacoesVaga = ({ route, navigation }) => {
   const { vaga } = route.params;
+
+  const { acessibilidade } = useAcessibilidade();
+
+  const falarTexto = (texto) => {
+    Speech.speak(texto, { language: "pt-BR" });
+  };
+
+  useEffect(() => {
+    if (acessibilidade) {
+      falarTexto(vaga.nome_vaga);
+    }
+  })
 
   return (
     <View style={styles.container}>
