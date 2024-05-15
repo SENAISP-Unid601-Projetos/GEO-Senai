@@ -12,7 +12,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const EditarTurma = ({ route, navigation }) => {
   const { turma } = route.params;
 
-  const local = `http://10.110.12.44:8080/turmas/editar/${turma.id_turma}`;
+  const local = `http://10.110.12.19:8080/turmas/editar/${turma.id_turma}`;
   const nuvem = `https://appsenai.azurewebsites.net/turmas/editar/${turma.id_turma}`;
 
   const [codigoTurmaEdt, setCodigoTurmaEdt] = useState("");

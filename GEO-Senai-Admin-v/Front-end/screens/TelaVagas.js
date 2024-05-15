@@ -15,10 +15,10 @@ const TelaVagas = ({ navigation }) => {
   const [vagas, setVagas] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const local = "http://10.110.12.44:8080/vagas";
+  const local = "http://10.110.12.19:8080/vagas";
   const nuvem = "https://appsenai.azurewebsites.net/vagas";
 
-  const localD = "http://10.110.12.44:8080/vagas/deletar/all";
+  const localD = "http://10.110.12.19:8080/vagas/deletar/all";
   const nuvemD = "https://appsenai.azurewebsites.net/vagas/deletar/all";
 
   const botaoMais = () => {

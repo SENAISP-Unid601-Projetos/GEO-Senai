@@ -74,21 +74,21 @@ const TelaMapa = ({ navigation }) => {
       case "Mapa área 1 (superior)":
         navigation.navigate(
           "TelaSalas",
-          { local: "http://10.110.12.44:8080/salas/area1-inferior" },
+          { local: "http://10.110.12.19:8080/salas/area1-inferior" },
           { andar: "Área 1 (inferior)" }
         );
         break;
       case "Mapa área 1 (inferior)":
         navigation.navigate(
           "TelaSalas",
-          { local: "http://10.110.12.44:8080/salas/area1-superior" },
+          { local: "http://10.110.12.19:8080/salas/area1-superior" },
           { andar: "Área 1 (superior)" }
         );
         break;
       case "Mapa área 2":
         navigation.navigate(
           "TelaSalas",
-          { local: "http://10.110.12.44:8080/salas/area2" },
+          { local: "http://10.110.12.19:8080/salas/area2" },
           { andar: "Área 2" }
         );
         break;
@@ -332,19 +332,18 @@ const styles = StyleSheet.create({
   },
   btnsalas: {
     alignSelf: 'center',
-    textAlign: 'center',
+    textItems: 'center',
     width: '10%',
     height: '7%',
     backgroundColor: 'red',
     borderRadius: 10,
-
-
+    justifyContent: 'center',
   },
   textoBtnSalas: {
-    marginTop:10,
     color: 'white',
-    fontSize: 35,
+    fontSize: 30,
     alignSelf: 'center',
+    fontWeight: 'bold',
   },
 
 });

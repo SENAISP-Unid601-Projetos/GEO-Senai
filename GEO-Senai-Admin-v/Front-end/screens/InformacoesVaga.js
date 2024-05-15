@@ -16,7 +16,7 @@ const InformacoesVaga = ({ route, navigation }) => {
   const { vaga } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
 
-  const local = `http://10.110.12.44:8080/vagas/deletar/${vaga.id_vaga}`;
+  const local = `http://10.110.12.19:8080/vagas/deletar/${vaga.id_vaga}`;
   const nuvem = `https://appsenai.azurewebsites.net/vagas/deletar/${vaga.id_vaga}`;
 
   const toggleModal = () => {

@@ -19,7 +19,7 @@ const CadastroTurma = ({ navigation }) => {
   const [duracaoCurso, setDuracaoCurso] = useState("");
   const [descricaoCurso, setDescricaoCurso] = useState("");
 
-  const local = "http://10.110.12.44:8080/turmas/nova-turma";
+  const local = "http://10.110.12.19:8080/turmas/nova-turma";
   const nuvem = "https://appsenai.azurewebsites.net/turmas/nova-turma";
 
   const enviarDados = () => {

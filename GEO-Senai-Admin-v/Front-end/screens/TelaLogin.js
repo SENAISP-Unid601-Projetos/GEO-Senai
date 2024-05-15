@@ -19,7 +19,7 @@ const TelaLogin = ({ navigation }) => {
   const [logarSenha, setLogarSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
-  const local = "http://10.110.12.44:8080/admin/verificar-dados";
+  const local = "http://10.110.12.19:8080/admin/verificar-dados";
 
   const realizarLogin = async () => {
     // Login chumbado :)

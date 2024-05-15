@@ -8,7 +8,7 @@ const ImageComponent = () => {
         const getImage = async () => {
             try {
                 // URL da sua API
-                const apiUrl = `http://10.110.12.44:8080/salas/images/0.png`; //  lucas jedi = lucas return (lucas dos name);
+                const apiUrl = `http://10.110.12.19:8080/salas/images/0.png`; //  lucas jedi = lucas return (lucas dos name);
 
         // Fazendo a solicitação GET usando fetch
         const response = await fetch(apiUrl);

@@ -54,7 +54,7 @@ public class SalaResource {
                 // Exemplo: retorne um erro 404
             }
 
-            return ResponseEntity.ok().body("Imagem " + imageName + " enviada com sucesso!");
+            return ResponseEntity.ok().body("Imagem enviada com sucesso!");
         } catch (IOException e) {
             return ResponseEntity.internalServerError().body("Erro ao fazer upload da imagem: " + e.getMessage());
         }

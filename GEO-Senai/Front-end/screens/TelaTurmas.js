@@ -23,7 +23,7 @@ const TelaTurmas = ({ navigation }) => {
   const [existeProximo, setExisteProximo] = useState(true);
   const [existeAnterior, setExisteAnterior] = useState(false);
 
-  const local = "http://10.110.12.44:8080/turmas";
+  const local = "http://10.110.12.19:8080/turmas";
   const nuvem = "https://appsenai.azurewebsites.net/turmas";
 
   useEffect(() => {
