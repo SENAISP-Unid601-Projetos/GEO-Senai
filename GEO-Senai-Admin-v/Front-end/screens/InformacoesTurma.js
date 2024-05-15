@@ -16,7 +16,7 @@ const InformacoesTurma = ({ route, navigation }) => {
   const { turma } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
 
-  const local = `http://10.110.12.19:8080/turmas/deletar/${turma.id_turma}`;
+  const local = `http://10.110.12.44:8080/turmas/deletar/${turma.id_turma}`;
   const nuvem = `https://appsenai.azurewebsites.net/turmas/deletar/${turma.id_turma}`;
 
   const toggleModal = () => {

@@ -11,7 +11,7 @@ const TelaQR = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textoTitulo}>Obrigado por utilizar este totem</Text>
+      <Text style={styles.textoTitulo}>Obrigado por utilizar esse totem</Text>
       <View style={styles.textoMid}>
         <Text style={styles.texto}>Escaneie para baixar o mapa </Text>
         <FontAwesome name="mobile" size={50} color="black" />

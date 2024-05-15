@@ -63,7 +63,7 @@ const InformacoesTurma = ({ route, navigation }) => {
         >
           <Pressable
             style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}
-            onPress={TelaFoto}
+            // onPress={TelaFoto}
           >
             <Text style={styles.textoFundo}>Foto</Text>
           </Pressable>
@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     marginTop: "1%",
   },
   botoesPequenosFundo: {
+  
     margin: 20,
     padding: 20,
     borderRadius: 20,

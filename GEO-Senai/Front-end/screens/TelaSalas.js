@@ -9,12 +9,9 @@ import {
   TextInput,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
-import * as Speech from "expo-speech";
 
 const TelaSalas = ({ navigation, route }) => {
   const [salas, setSalas] = useState([]);
-
   const [atualizarLista, setAtualizarLista] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [paginaAtual, setPaginaAtual] = useState(0);
@@ -27,17 +24,20 @@ const TelaSalas = ({ navigation, route }) => {
   const nuvem = "https://appsenai.azurewebsites.net/salas";
 
   useEffect(() => {
-    fetch(local, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setSalas(data))
-      .catch((error) => Alert.alert("Erro ao obter salas:", error));
-  }, [atualizarLista]);
+    if (atualizarLista) {
+      fetch(local, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => setSalas(data))
+        .catch((error) => Alert.alert("Erro ao obter salas:", error))
+        .finally(() => setAtualizarLista(false));
+    }
+  }, [atualizarLista, local]);
 
   useEffect(() => {
     setPaginaAtual(0);
@@ -60,9 +60,7 @@ const TelaSalas = ({ navigation, route }) => {
         <Pressable
           key={sala.id}
           style={styles.ButtonTurmas}
-          //   onPress={() =>
-          //     navigation.navigate("InformacoesTurma", { sala: sala })
-          //   }
+          onPress={() => navigation.navigate("TelaFoto", { sala: sala })}
         >
           <Text style={styles.buttonText}>{sala.nome_sala}</Text>
         </Pressable>
@@ -82,7 +80,7 @@ const TelaSalas = ({ navigation, route }) => {
   };
 
   const atualizarListaSalas = () => {
-    setAtualizarLista(!atualizarLista);
+    setAtualizarLista(true);
   };
 
   return (
@@ -95,12 +93,7 @@ const TelaSalas = ({ navigation, route }) => {
           <FontAwesome name="arrow-left" size={50} color="black" />
         </Pressable>
 
-        <FontAwesome
-          style={styles.icon}
-          name="fa-door-closed"
-          size={50}
-          color="black"
-        />
+        <FontAwesome name="building" size={50} color="black" style={styles.icon} />
       </View>
 
       <Text style={styles.headerTitle}>Salas - {andar}</Text>
@@ -156,6 +149,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 50,
     fontWeight: "bold",
+    marginVertical: 20,
   },
   scrollContainer: {
     flexGrow: 1,
@@ -192,11 +186,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#02234D",
     padding: 13,
     borderRadius: 30,
-    alignItems: "center",
-    justifyContent: "center", // Adicionando alinhamento vertical para centralizar o texto
     width: 300,
     height: 75,
-    marginTop: 20, // Ajuste a margem superior conforme necessário
+    marginTop: 20,
   },
   buttonAttText: {
     color: "#fff",
@@ -215,12 +207,11 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   searchBar: {
-    width: "50%",
+    width: "80%",
     fontSize: 25,
     backgroundColor: "#E8E8E8",
     padding: 10,
     borderWidth: 1,
-
     marginTop: 10,
     marginBottom: 10,
     alignSelf: "center",
@@ -231,6 +222,7 @@ const styles = StyleSheet.create({
   },
   cabecalho: {
     flexDirection: "row",
+    alignItems: "center",
   },
   paginacao: {
     flexDirection: "row",
