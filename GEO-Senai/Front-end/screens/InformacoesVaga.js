@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   redBack: {
     marginTop: 40,
     width: 900,
-    height: 1000,
+    height: 900,
     backgroundColor: "white",
     borderRadius: 10,
     justifyContent: "center",

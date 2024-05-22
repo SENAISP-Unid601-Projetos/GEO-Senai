@@ -22,6 +22,10 @@ const CadastroTurma = ({ navigation }) => {
   const local = "http://10.110.12.19:8080/turmas/nova-turma";
   const nuvem = "https://appsenai.azurewebsites.net/turmas/nova-turma";
 
+  const botaoUpload = () => {
+    navigation.navigate("UploadImageStatus");
+  };
+
   const enviarDados = () => {
     // Valide os campos, se necessário
     if (
@@ -118,9 +122,15 @@ const CadastroTurma = ({ navigation }) => {
           onChangeText={(text) => setDescricaoCurso(text)}
         />
         <View style={styles.containerBtnForm}>
+
+         <Pressable style={styles.buttonAdiciona} onPress={botaoUpload}>
+            <Text style={styles.buttonText}>Adicionar Imagem</Text>
+          </Pressable>
+
           <Pressable style={styles.button} onPress={enviarDados}>
             <Text style={styles.buttonText}>Salvar</Text>
           </Pressable>
+
         </View>
       </View>
     </View>
@@ -139,8 +149,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   containerBtnForm: {
+    flexWrap: 'rowrap',
     alignItems: "flex-end",
-  },
+   },
   input: {
     height: 40,
     borderColor: "#E8E8E8", // Cor da borda
@@ -157,8 +168,20 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
+    // alignSelf: "flex-end",
     width: 100,
     height: 40,
+    // marginHorizontal: "50%",
+  },
+  buttonAdiciona: {
+    backgroundColor: "#ff0000",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    alignSelf: "flex-start",
+    width: 180,
+    height: 40,
+
   },
   buttonText: {
     color: "#fff",

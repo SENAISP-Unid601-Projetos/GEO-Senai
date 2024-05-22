@@ -13,6 +13,7 @@ import CadastroAdmin from "./screens/CadastroAdmin";
 import EditarVaga from "./screens/EditarVaga";
 import EditarTurma from "./screens/EditarTurma";
 import TelaHorarios from "./screens/TelaHorarios";
+import UploadImageStatus from "./screens/UploadImageStatus";
 
 const Stack = createStackNavigator();
 
@@ -78,6 +79,11 @@ const App = () => {
         <Stack.Screen
           name="TelaHorarios"
           component={TelaHorarios}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="UploadImageStatus"
+          component={UploadImageStatus}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -34,7 +34,7 @@ public class SalaResource {
 
         try {
             byte[] bytes = file.getBytes();
-            String imageName = n++ + ".png"; // Nome da imagem a ser salva
+            String imageName = nome + ".png"; // Nome da imagem a ser salva
             Path path = Paths.get(UPLOAD_DIR + imageName);
             Files.write(path, bytes);
 

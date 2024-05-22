@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Pressable, Picker, Image } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Pressable, Picker } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import Mapa from "../src/components/Mapa";
-import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
-import ListaMapas from "../src/components/listaMapas";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
 
@@ -13,10 +11,6 @@ const TelaMapa = ({ navigation }) => {
   const [mapaSelecionado, setMapaSelecionado] = useState("1");
   const [selectedValue, setSelectedValue] = useState("Mapa área 1 (superior)");
 
-  const [showImage1, setShowImage1] = useState(false); // Estado para a primeira seção
-  const [showImage2, setShowImage2] = useState(false); // Estado para a segunda seção
-  const [showImage3, setShowImage3] = useState(false); // Estado para a terceira seção
-
   const toggleImage = () => {
     setShowImage(!showImage);
   };
@@ -25,7 +19,7 @@ const TelaMapa = ({ navigation }) => {
     Speech.speak(texto, { language: "pt-BR" });
   };
 
-  const handleChange = (itemValue, itemIndex) => {
+  const handleChange = (itemValue) => {
     setSelectedValue(itemValue);
     // Dependendo da opção selecionada, defina um valor diferente para setMapaSelecionado
     switch (itemValue) {
@@ -71,14 +65,14 @@ const TelaMapa = ({ navigation }) => {
 
   const btnSalas = () => {
     switch (selectedValue) {
-      case "Mapa área 1 (superior)":
+      case "Mapa área 1 (inferior)":
         navigation.navigate(
           "TelaSalas",
           { local: "http://10.110.12.19:8080/salas/area1-inferior" },
           { andar: "Área 1 (inferior)" }
         );
         break;
-      case "Mapa área 1 (inferior)":
+      case "Mapa área 1 (superior)":
         navigation.navigate(
           "TelaSalas",
           { local: "http://10.110.12.19:8080/salas/area1-superior" },

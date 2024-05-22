@@ -1,22 +1,16 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-  Linking,
-} from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import SwitchToggle from "react-native-switch-toggle";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
+import * as Animatable from "react-native-animatable";
 
 const TelaInicial = ({ navigation }) => {
   const { acessibilidade, toggleAcessibilidade } = useAcessibilidade();
 
   const falarTexto = (texto) => {
-      Speech.speak(texto, { language: "pt-BR" });
+    Speech.speak(texto, { language: "pt-BR" });
   };
 
   const botaoTurmas = () => {
@@ -55,6 +49,11 @@ const TelaInicial = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    this.viewFaqs.pulse(2000);
+    this.viewBemVindo.pulse(2000);
+  }, []);
+
   return (
     <View style={styles.container}>
       <Image source={require("./../assets/Brasil.png")} style={styles.logo} />
@@ -75,10 +74,12 @@ const TelaInicial = ({ navigation }) => {
 
       {/* {acessibilidade && ( */}
       {/* // <View> */}
-      <Text style={styles.BemVindo}>Seja bem-vindo ao GEO SENAI!</Text>
-      <Text style={styles.TextoMedio}>
-        É um prazer tê-lo conosco, como posso te ajudar?
-      </Text>
+      <Animatable.View ref={(ref) => this.viewBemVindo = ref} style={{ alignItems: "center" }}>
+        <Text style={styles.BemVindo}>Seja bem-vindo ao GEO SENAI!</Text>
+        <Text style={styles.TextoMedio}>
+          É um prazer tê-lo conosco, como posso te ajudar?
+        </Text>
+      </Animatable.View>
       {/* </View> */}
       {/* )} */}
 
@@ -97,7 +98,10 @@ const TelaInicial = ({ navigation }) => {
         <FontAwesome name="suitcase" size={50} color="#ffffff" />
       </Pressable>
 
-      <View style={styles.faqsView}>
+      <Animatable.View
+        ref={(ref) => (this.viewFaqs = ref)}
+        style={styles.faqsView}
+      >
         <View style={styles.quadroFaqs}>
           <FontAwesome
             style={styles.exclamacao}
@@ -115,7 +119,7 @@ const TelaInicial = ({ navigation }) => {
         <Pressable onPress={botaoFAQ} style={styles.btnFaqs}>
           <FontAwesome name="question-circle" size={75} color="red" />
         </Pressable>
-      </View>
+      </Animatable.View>
 
       <Text style={styles.textoOculto}>
         Todos os direitos reservados para Templarios®

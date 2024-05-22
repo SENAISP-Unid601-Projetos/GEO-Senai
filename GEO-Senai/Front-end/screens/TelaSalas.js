@@ -53,7 +53,7 @@ const TelaSalas = ({ navigation, route }) => {
     const fim = inicio + salasPorPagina;
     return salas
       .filter((sala) =>
-        sala.nome_sala.toLowerCase().includes(searchText.toLowerCase())
+        sala.nomeSala.toLowerCase().includes(searchText.toLowerCase())
       )
       .slice(inicio, fim)
       .map((sala) => (
@@ -62,7 +62,7 @@ const TelaSalas = ({ navigation, route }) => {
           style={styles.ButtonTurmas}
           onPress={() => navigation.navigate("TelaFoto", { sala: sala })}
         >
-          <Text style={styles.buttonText}>{sala.nome_sala}</Text>
+          <Text style={styles.buttonText}>{sala.nomeSala}</Text>
         </Pressable>
       ));
   };

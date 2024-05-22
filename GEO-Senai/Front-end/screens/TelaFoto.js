@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-// Componente principal da tela inicial
 const TelaFoto = ({ route, navigation }) => {
+  const { sala } = route.params;
+
+  const [imageData, setImageData] = useState(null);
+
+  useEffect(() => {
+    const getImage = async () => {
+      try {
+        // URL da sua API
+        const apiUrl = `http://10.110.12.19:8080/salas/images/${sala.nomeSala}.png`;
+
+        // Fazendo a solicitação GET usando fetch
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error('Erro ao recuperar a imagem');
+        }
+
+        // Convertendo os dados da imagem para uma string base64
+        const imageBlob = await response.blob();
+        const imageBase64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            resolve(reader.result);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(imageBlob);
+        });
+
+        setImageData(imageBase64);
+      } catch (error) {
+        console.error('Erro ao recuperar a imagem:', error);
+      }
+    };
+
+    getImage();
+  }, []);
+
   const CaminhoQr = () => {
     navigation.navigate("TelaQR");
   };
-
-  const { sala } = route.params;
 
   return (
     <View style={styles.container}>
@@ -18,70 +52,60 @@ const TelaFoto = ({ route, navigation }) => {
 
       {/* Quadro vermelho no centro */}
       <View style={styles.redBack}>
-        <Text style={styles.tituloCurso}>Sala: {sala.nome_sala}</Text>
+        <Text style={styles.tituloCurso}>Sala: {sala.nomeSala}</Text>
 
-        <Image
-          source={require("./../assets/IMG-20240407-WA0066.jpg")} // Imagem do logo
-          style={styles.imgFoto} // Estilos do logo
-        />
+          <Image source={{ uri: imageData }} style={styles.imgFoto} />
 
-        <View style={styles.squareBaixo}>
-          <Pressable style={[styles.btnControleImg]}>
-            <FontAwesome name="chevron-left" size={25} color="white" />{" "}
+        {/* <View style={styles.squareBaixo}>
+          <Pressable style={styles.btnControleImg}>
+            <FontAwesome name="chevron-left" size={25} color="white" />
           </Pressable>
 
-          <Pressable style={[styles.btnControleImg]}>
-            <FontAwesome name="chevron-right" size={25} color="white" />{" "}
+          <Pressable style={styles.btnControleImg}>
+            <FontAwesome name="chevron-right" size={25} color="white" />
           </Pressable>
-        </View>
+        </View> */}
       </View>
-
-  
-
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    backgroundColor: "#E8E8E8", // Cor de fundo da tela
+    backgroundColor: "#E8E8E8",
     height: "100%",
   },
   redBack: {
     alignSelf: "center",
-// Cor de fundo vermelha do quadrado
-    width: "80%", // Largura do quadrado (80% da largura da tela)
-    height: "70%", // Altura do quadrado (70% da altura da tela)
-    alignItems: "center", // Centraliza conteúdo na horizontal
-    flexDirection: "column", // Alinha os elementos filhos na...
+    width: "80%",
+    height: "70%",
+    alignItems: "center",
+    flexDirection: "column",
     justifyContent: "center",
     borderRadius: 30,
-    marginBottom: "1%"
+    marginBottom: "1%",
   },
   squareBaixo: {
- // Cor de fundo vermelha do quadrado
-    width: "100%", // Largura do quadrado (80% da largura da tela)
+    width: "100%",
     height: 10,
-    aspectRatio: 10 / 1, // Mantém a proporção 10:1 para fazer uma barra horizontal
-    flexDirection: "row", // Alinhando os botões na horizontal
-    justifyContent: "center", // Centralizando os botões na horizontal
-    alignItems: "center", // Centralizando conteúdo na vertical
+    aspectRatio: 10 / 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 30,
-    marginBottom: 40, // Aumentando a margem inferior para mover os botões para baixo
-    marginTop: 30, // Adicionando uma margem superior para espaçamento
+    marginBottom: 40,
+    marginTop: 30,
   },
   btnControleImg: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    paddingVertical: 5, // Reduzindo o padding vertical
-    paddingHorizontal: 10, // Reduzindo o padding horizontal
-    // Define o raio da borda como 10 para tornar os cantos arredondados
-    marginHorizontal: 25, // Adicionando um pequeno espaçamento horizontal entre os botões
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    marginHorizontal: 25,
     backgroundColor: "red",
     alignItems: "center",
     width: "20%",
-    height:40
+    height: 40,
   },
   buttonQR: {
     alignSelf: 'center',
@@ -92,7 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonTextQR: {
-    fontSize: 25, // Reduzindo o tamanho do texto
+    fontSize: 25,
     fontWeight: "bold",
     padding: 10,
     color: "white",
@@ -100,20 +124,19 @@ const styles = StyleSheet.create({
   tituloCurso: {
     color: "red",
     textAlign: "center",
-    fontSize: 50,
-
+    fontSize: 40,
+    fontWeight: 'bold',
     marginBottom: 20,
-
     width: '20%',
     borderRadius: 10,
-   },
+  },
   imgFoto: {
-    width: "60%", // Mantendo a largura atual
-    height: "100%", // Mantendo a altura atual
-    alignSelf: "center", // Alinhando a imagem ao centro horizontalmente
-    padding: 20, // Adicionando borda arredondada
+    borderWidth: 2,
+    width: "80%",
+    height: "100%",
+    alignSelf: "center",
+    padding: 20,
     borderColor: 'black',
-
     borderTopLeftRadius: 50,
     borderBottomRightRadius: 50,
     shadowColor: "#000",
