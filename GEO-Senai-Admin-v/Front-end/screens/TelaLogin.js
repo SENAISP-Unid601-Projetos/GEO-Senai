@@ -12,7 +12,7 @@ import {
   Alert,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-// import axios from 'axios';
+import axios from 'axios';
 
 const TelaLogin = ({ navigation }) => {
   const [logarUsuario, setLogarUsuario] = useState("");
@@ -48,7 +48,57 @@ const TelaLogin = ({ navigation }) => {
     // } catch (error) {
     //   Alert.alert("Ocorreu um erro ao tentar logar:", error.message);
     // }
-    
+
+    try {
+      const response = await axios.post('http://10.110.12.19:8080/admin/login', {
+        username,
+        password,
+      });
+  
+      if (response.data === 'Credenciais inválidas') {
+        Alert.alert('Credenciais inválidas');
+      } else {
+        navigation.navigate('TelaInicial');
+      }
+    } catch (error) {
+      Alert.alert('Erro ao fazer login');
+      console.error(error);
+    }
+
+  };
+
+  const efetuarLogin = () => {
+    // Valide os campos, se necessário
+    if (logarUsuario.trim() === "" || logarSenha.trim()) {
+      Alert.alert("Erro", "Por favor, preencha todos os campos");
+    }
+      const dados = {
+        usuario_admin: logarUsuario,
+        senha_admin: logarSenha,
+      };
+
+      // Enviar os dados para o backend
+      fetch('http://10.110.12.19:8080/admin/login', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dados),
+      })
+        .then((response) => {
+          if (response.ok) {
+            Alert.alert("Sucesso", "Login bem sucedido.");
+            navigation.navigate("TelaInicial");
+          } else {
+            throw new Error("Erro ao efetuar login");
+          }
+        })
+        .catch((error) => {
+          Alert.alert(
+            "Erro",
+            "Erro ao efetuar login. Por favor, tente novamente mais tarde."
+          );
+        });
   };
 
   return (

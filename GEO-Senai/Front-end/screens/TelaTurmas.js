@@ -123,13 +123,6 @@ const TelaTurmas = ({ navigation }) => {
 
       <Text style={styles.headerTitle}>Turmas</Text>
 
-      <TextInput
-        style={styles.searchBar}
-        placeholder="Pesquisar turma... Ex: 3TDS/3MDS"
-        onChangeText={(text) => setSearchText(text)}
-        value={searchText}
-      />
-
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.Buttons}>{renderizarTurmasPaginaAtual()}</View>
       </ScrollView>

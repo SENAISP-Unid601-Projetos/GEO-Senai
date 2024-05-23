@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import SwitchToggle from "react-native-switch-toggle";
@@ -49,10 +49,20 @@ const TelaInicial = ({ navigation }) => {
     }
   };
 
+  const viewBemVindoRef = useRef(null);
+  const viewFaqsRef = useRef(null);
+
   useEffect(() => {
-    this.viewFaqs.pulse(2000);
-    this.viewBemVindo.pulse(2000);
-  }, []);
+    viewBemVindoRef.current.pulse(2000);
+
+    const animaNovamente = navigation.addListener('focus', () => {
+      if (viewFaqsRef.current) {
+        viewFaqsRef.current.pulse(2000);
+      }
+    });
+
+    return animaNovamente;
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
@@ -72,16 +82,12 @@ const TelaInicial = ({ navigation }) => {
         />
       </View>
 
-      {/* {acessibilidade && ( */}
-      {/* // <View> */}
-      <Animatable.View ref={(ref) => this.viewBemVindo = ref} style={{ alignItems: "center" }}>
+      <Animatable.View ref={viewBemVindoRef} style={{ alignItems: "center" }}>
         <Text style={styles.BemVindo}>Seja bem-vindo ao GEO SENAI!</Text>
         <Text style={styles.TextoMedio}>
           É um prazer tê-lo conosco, como posso te ajudar?
         </Text>
       </Animatable.View>
-      {/* </View> */}
-      {/* )} */}
 
       <Pressable style={styles.classesButton} onPress={botaoMapa}>
         <Text style={styles.buttonText}>Mapas</Text>
@@ -99,7 +105,7 @@ const TelaInicial = ({ navigation }) => {
       </Pressable>
 
       <Animatable.View
-        ref={(ref) => (this.viewFaqs = ref)}
+        ref={viewFaqsRef}
         style={styles.faqsView}
       >
         <View style={styles.quadroFaqs}>

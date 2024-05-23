@@ -13,7 +13,7 @@ const Mapa = ({ mapaSelecionado }) => {
       setMapa(require("./../../../assets/Foto_Area_1_andar_1.png"));
     } else if (mapaSelecionado === "1") {
       console.log(mapaSelecionado);
-      setMapa(require("./../../../assets/Foto_Area_1_andar_2.png"));
+      setMapa(require("./../../../assets/Foto_Area_1_andar_2-removebg.png"));
     } else if (mapaSelecionado === "3") {
       setMapa(require("./../../../assets/Foto_Area_2.png"));
     } else {

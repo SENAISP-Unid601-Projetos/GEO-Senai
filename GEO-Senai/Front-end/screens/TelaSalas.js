@@ -98,13 +98,6 @@ const TelaSalas = ({ navigation, route }) => {
 
       <Text style={styles.headerTitle}>Salas - {andar}</Text>
 
-      <TextInput
-        style={styles.searchBar}
-        placeholder="Pesquisar sala..."
-        onChangeText={(text) => setSearchText(text)}
-        value={searchText}
-      />
-
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.Buttons}>{renderizarSalasPaginaAtual()}</View>
       </ScrollView>

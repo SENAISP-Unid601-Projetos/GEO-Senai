@@ -9,8 +9,11 @@ import {
   StyleSheet,
   Text,
   Image,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Importe o ícone FontAwesome da biblioteca
+import { ScrollView } from "react-native-gesture-handler";
 
 const CadastroTurma = ({ navigation }) => {
   const [codigoTurma, setCodigoTurma] = useState("");
@@ -75,8 +78,11 @@ const CadastroTurma = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+     <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <Pressable onPress={() => navigation.goBack()} style={{ marginTop: 40 }}>
         <FontAwesome name="arrow-left" size={30} color="black" />
       </Pressable>
@@ -133,7 +139,8 @@ const CadastroTurma = ({ navigation }) => {
 
         </View>
       </View>
-    </View>
+      </ScrollView> 
+    </KeyboardAvoidingView>
   );
 };
 
@@ -142,6 +149,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#E8E8E8",
     flex: 1,
     padding: 20,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
   },
   containerForm: {
     padding: 10,

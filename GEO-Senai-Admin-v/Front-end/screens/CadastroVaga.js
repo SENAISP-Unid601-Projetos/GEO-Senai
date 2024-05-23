@@ -6,7 +6,9 @@ import {
   Alert,
   StyleSheet,
   Text,
-  Image,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Importe o ícone FontAwesome da biblioteca
 
@@ -76,80 +78,85 @@ const CadastroVaga = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Pressable style={styles.voltarSeta} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={30} color="black" />
-      </Pressable>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <Pressable style={styles.voltarSeta} onPress={() => navigation.goBack()}>
+          <FontAwesome name="arrow-left" size={30} color="black" />
+        </Pressable>
 
-      <View style={styles.containerForm}>
-        <Text style={styles.headerText}>Cadastro de Vaga</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Endereço de imagem (Logo da empresa)"
-          placeholderTextColor="gray"
-          value={imagemVaga}
-          onChangeText={(text) => setImagemVaga(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Área da Vaga* Ex: TI, Mecânica"
-          placeholderTextColor="gray"
-          value={areaVaga}
-          onChangeText={(text) => setAreaVaga(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Nome da Vaga*"
-          placeholderTextColor="gray"
-          value={nomeVaga}
-          onChangeText={(text) => setNomeVaga(text)}
-        />
-        <TextInput
-          style={[styles.input, styles.textArea]}
-          placeholder="Descrição da Vaga*"
-          placeholderTextColor="gray"
-          multiline
-          numberOfLines={4}
-          value={descricaoVaga}
-          onChangeText={(text) => setDescricaoVaga(text)}
-        />
-        <TextInput
-          style={[styles.input, styles.textArea]}
-          placeholder="Requisitos da Vaga*"
-          placeholderTextColor="gray"
-          multiline
-          numberOfLines={4}
-          value={requisitosVaga}
-          onChangeText={(text) => setRequisitosVaga(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Carga Horária*"
-          placeholderTextColor="gray"
-          value={cargaHorariaVaga}
-          onChangeText={(text) => setCargaHorariaVaga(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Salário"
-          placeholderTextColor="gray"
-          value={salarioVaga}
-          onChangeText={(text) => setSalarioVaga(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Contato da Vaga*"
-          placeholderTextColor="gray"
-          value={contatoVaga}
-          onChangeText={(text) => setContatoVaga(text)}
-        />
-        <View style={styles.containerBtnForm}>
-          <Pressable style={styles.btnPublicar} onPress={enviarDados}>
-            <Text style={styles.buttonText}>Publicar</Text>
-          </Pressable>
+        <View style={styles.containerForm}>
+          <Text style={styles.headerText}>Cadastro de Vaga</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Endereço de imagem (Logo da empresa)"
+            placeholderTextColor="gray"
+            value={imagemVaga}
+            onChangeText={(text) => setImagemVaga(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Área da Vaga* Ex: TI, Mecânica"
+            placeholderTextColor="gray"
+            value={areaVaga}
+            onChangeText={(text) => setAreaVaga(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Nome da Vaga*"
+            placeholderTextColor="gray"
+            value={nomeVaga}
+            onChangeText={(text) => setNomeVaga(text)}
+          />
+          <TextInput
+            style={[styles.input, styles.textArea]}
+            placeholder="Descrição da Vaga*"
+            placeholderTextColor="gray"
+            multiline
+            numberOfLines={4}
+            value={descricaoVaga}
+            onChangeText={(text) => setDescricaoVaga(text)}
+          />
+          <TextInput
+            style={[styles.input, styles.textArea]}
+            placeholder="Requisitos da Vaga*"
+            placeholderTextColor="gray"
+            multiline
+            numberOfLines={4}
+            value={requisitosVaga}
+            onChangeText={(text) => setRequisitosVaga(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Carga Horária*"
+            placeholderTextColor="gray"
+            value={cargaHorariaVaga}
+            onChangeText={(text) => setCargaHorariaVaga(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Salário"
+            placeholderTextColor="gray"
+            value={salarioVaga}
+            onChangeText={(text) => setSalarioVaga(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Contato da Vaga*"
+            placeholderTextColor="gray"
+            value={contatoVaga}
+            onChangeText={(text) => setContatoVaga(text)}
+          />
+          <View style={styles.containerBtnForm}>
+            <Pressable style={styles.btnPublicar} onPress={enviarDados}>
+              <Text style={styles.buttonText}>Publicar</Text>
+            </Pressable>
+          </View>
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -159,8 +166,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
+  scrollViewContent: {
+    flexGrow: 1,
+  },
   containerForm: {
-    verticalAlign: "middle",
     marginTop: 20,
     padding: 10,
     borderRadius: 10,
