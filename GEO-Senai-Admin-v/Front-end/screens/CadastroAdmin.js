@@ -27,8 +27,8 @@ const CadastroAdmin = ({ navigation }) => {
     } else if (senha1 === senha2) {
       // Criar objeto de administrador com os dados
       const novoAdmin = {
-        usuario_admin: usuario,
-        senha_admin: senha1,
+        usuarioAdmin: usuario,
+        senhaAdmin: senha1,
       };
 
       // Enviar os dados para o backend

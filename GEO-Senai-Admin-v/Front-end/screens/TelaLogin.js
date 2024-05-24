@@ -1,6 +1,3 @@
-// Tela de login da versão de administrador do GEO SENAI.
-// Restringe o acesso a administradores.
-
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -13,92 +10,33 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TelaLogin = ({ navigation }) => {
   const [logarUsuario, setLogarUsuario] = useState("");
   const [logarSenha, setLogarSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
-  const local = "http://10.110.12.19:8080/admin/verificar-dados";
+  const local = "http://10.110.12.19:8080/admin/login";  // URL do endpoint de login
 
   const realizarLogin = async () => {
-    // Login chumbado :)
-     if (logarUsuario === 'templarios' && logarSenha === 'tds2024') {
-       navigation.navigate('TelaInicial');
-     } else {
-       Alert.alert('Erro', 'Usuário ou senha inválidos.');
-     }
-
-    // try {
-    //   const response = await axios.post(local, {
-    //     usuario: logarUsuario,
-    //     senha: logarSenha,
-    //   }, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     }
-    //   });
-    
-    //   if (response.status === 200) {
-    //     navigation.navigate("TelaInicial");
-    //   } else {
-    //     console.log("Erro ao tentar logar:", response.statusText);
-    //     Alert.alert("Erro ao tentar logar");
-    //   }
-    // } catch (error) {
-    //   Alert.alert("Ocorreu um erro ao tentar logar:", error.message);
-    // }
-
     try {
-      const response = await axios.post('http://10.110.12.19:8080/admin/login', {
-        username,
-        password,
+      const response = await axios.post(local, {
+        usuarioAdmin: logarUsuario,
+        senhaAdmin: logarSenha,
       });
-  
+
       if (response.data === 'Credenciais inválidas') {
-        Alert.alert('Credenciais inválidas');
+        Alert.alert('Erro', 'Usuário ou senha inválidos.');
       } else {
+        const token = response.data;
+        await AsyncStorage.setItem('authToken', token);  // Armazena o token
         navigation.navigate('TelaInicial');
       }
     } catch (error) {
       Alert.alert('Erro ao fazer login');
-      console.error(error);
+      console.error('Erro ao fazer login', error);
     }
-
-  };
-
-  const efetuarLogin = () => {
-    // Valide os campos, se necessário
-    if (logarUsuario.trim() === "" || logarSenha.trim()) {
-      Alert.alert("Erro", "Por favor, preencha todos os campos");
-    }
-      const dados = {
-        usuario_admin: logarUsuario,
-        senha_admin: logarSenha,
-      };
-
-      // Enviar os dados para o backend
-      fetch('http://10.110.12.19:8080/admin/login', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dados),
-      })
-        .then((response) => {
-          if (response.ok) {
-            Alert.alert("Sucesso", "Login bem sucedido.");
-            navigation.navigate("TelaInicial");
-          } else {
-            throw new Error("Erro ao efetuar login");
-          }
-        })
-        .catch((error) => {
-          Alert.alert(
-            "Erro",
-            "Erro ao efetuar login. Por favor, tente novamente mais tarde."
-          );
-        });
   };
 
   return (
@@ -108,8 +46,8 @@ const TelaLogin = ({ navigation }) => {
         style={styles.senai}
       />
 
-      <Text style={styles.BemVindo}>GEO SENAI Controller (for Admin)</Text>
-      <Text style={styles.TextoMedio}>Faça log-in para continuar.</Text>
+      <Text style={styles.bemVindo}>GEO SENAI Controller (for Admin)</Text>
+      <Text style={styles.textoMedio}>Faça log-in para continuar.</Text>
 
       <TextInput
         style={styles.input}
@@ -182,7 +120,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-  BemVindo: {
+  bemVindo: {
     color: "white",
     textAlign: "center",
     fontSize: 25,
@@ -190,7 +128,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 40,
   },
-  TextoMedio: {
+  textoMedio: {
     color: "white",
     fontSize: 20,
     fontWeight: "normal",

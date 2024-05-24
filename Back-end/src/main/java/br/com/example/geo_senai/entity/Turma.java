@@ -17,10 +17,19 @@ public class Turma implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_turma;
+
+	@Column
 	private String codigo_turma;
+
+	@Column
 	private String nome_curso;
+
+	@Column
 	private String sala_turma;
+
+	@Column
 	private String duracao_curso;
+
 	@Column(length = 500)
 	private String desc_curso;
 

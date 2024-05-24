@@ -17,16 +17,28 @@ public class Vaga implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_vaga;
+
+    @Column
     private String area_vaga;
+
+    @Column
     private String nome_vaga;
+
     @Column(length = 500)
     private String desc_vaga;
+
     @Column(length = 150)
     private String requisitos_vaga;
+
+    @Column
     private String carga_vaga;
+
+    @Column
     private String contato_vaga;
+
     @Column(nullable = true)
     private String salario_vaga;
+
     @Column(nullable = true)
     private String imagem_vaga;
 }

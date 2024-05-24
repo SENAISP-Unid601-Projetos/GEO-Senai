@@ -15,9 +15,13 @@ public class Sala implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_sala;
+
     @Column(unique = true)
     private String nomeSala;
+
+    @Column
     private String posicaoSala;
+
     @Column(nullable = true)
     private String url_imagem;
 }
