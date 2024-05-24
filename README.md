@@ -4,7 +4,12 @@
 # Projeto: Autoatendimento Senai São Carlos
 
 - Área: Setor de apoios
-- Responsável: Vladimir
+- Responsável: Vinicius dos Santos, Wesley Pecoraro e Rafael Selvagio
+
+## Links para acesso em produção
+
+- [Aluno](https://prod.liveshare.vsengsaas.visualstudio.com/join?BC8DF73B3600A224B32076F2C5565066E2CC) 
+- [Admin](https://prod.liveshare.vsengsaas.visualstudio.com/join?80847230ADCE60C7191F71510835842C6685)
 
 ## 1. Escopo
 
