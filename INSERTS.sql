@@ -1,3 +1,5 @@
+-- :)
+
 -- EXEMPLOS DE INSERT --
 
 -- Inserir turmas
