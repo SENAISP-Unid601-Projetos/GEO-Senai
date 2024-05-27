@@ -13,7 +13,7 @@ import CadastroAdmin from "./screens/CadastroAdmin";
 import EditarVaga from "./screens/EditarVaga";
 import EditarTurma from "./screens/EditarTurma";
 import TelaHorarios from "./screens/TelaHorarios";
-import UploadImageStatus from "./screens/UploadImageStatus";
+import PerguntasFrequentes from "./screens/PerguntasFrequentes";
 
 const Stack = createStackNavigator();
 
@@ -82,8 +82,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="UploadImageStatus"
-          component={UploadImageStatus}
+          name="PerguntasFrequentes"
+          component={PerguntasFrequentes}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

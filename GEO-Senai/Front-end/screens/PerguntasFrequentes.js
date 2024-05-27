@@ -8,7 +8,6 @@ import {
   Linking,
 } from "react-native";
 import Collapsible from "react-native-collapsible";
-import { FontAwesome } from "@expo/vector-icons";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
 
@@ -91,16 +90,23 @@ const PerguntasFrequentes = ({ navigation }) => {
             Período da manhã:
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Cursos de aprendizagem industrial</Text> - 9:20 às 9:45
+            <Text style={{ fontWeight: "bold" }}>
+              Cursos de aprendizagem industrial
+            </Text>{" "}
+            - 9:20 às 9:45
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> - 9:45 às 10:00
+            <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> - 9:45
+            às 10:00
           </Text>
           <Text style={[styles.txtResposta, styles.spanTxtVermelho]}>
             Período da tarde:
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Cursos de aprendizagem industrial</Text> - 15:20 às 15:40
+            <Text style={{ fontWeight: "bold" }}>
+              Cursos de aprendizagem industrial
+            </Text>{" "}
+            - 15:20 às 15:40
           </Text>
           <Text style={styles.txtResposta}>
             <Text style={{ fontWeight: "bold" }}>Cursos técnicos</Text> - 15:45
@@ -229,7 +235,10 @@ const PerguntasFrequentes = ({ navigation }) => {
             onPress={() => navigation.goBack()}
             style={styles.backButton}
           >
-            <FontAwesome name="arrow-left" size={50} color="black" />
+            <Image
+              source={require("./../assets/icons/arrow-left-solid.svg")}
+              style={{ height: 50, width: 50 }}
+            />{" "}
           </Pressable>
         </View>
         <Text style={styles.titulo}>Perguntas frequentes</Text>
@@ -247,12 +256,7 @@ const PerguntasFrequentes = ({ navigation }) => {
                 onPress={() => togglePergunta(index)}
               >
                 <Text style={styles.perguntaTxt}>{faq.pergunta}</Text>
-                <FontAwesome
-                  name="chevron-down"
-                  size={25}
-                  color="white"
-                  style={styles.seta}
-                />
+                <Image source={require("./../assets/icons/chevron-down-solid.svg")} style={styles.seta}/>
               </Pressable>
             ) : null}
             <Collapsible collapsed={perguntaAtiva !== index}>
@@ -335,6 +339,8 @@ const styles = StyleSheet.create({
   },
   seta: {
     padding: 25,
+    width: 25,
+    height: 25,
   },
   spanTxtVermelho: {
     color: "red",

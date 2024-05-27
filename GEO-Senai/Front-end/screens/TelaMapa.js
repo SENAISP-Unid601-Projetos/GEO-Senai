@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, Picker } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { StyleSheet, Text, View, Pressable, Picker, Image } from "react-native";
 import Mapa from "../src/components/Mapa";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
@@ -98,15 +97,10 @@ const TelaMapa = ({ navigation }) => {
               onPress={() => navigation.goBack()}
               style={styles.backButton}
             >
-              <FontAwesome name="arrow-left" size={50} color="black" />
+              <Image source={require('./../assets/icons/arrow-left-solid.svg')} style={{height: 50, width: 50}} />
             </Pressable>
 
-            <FontAwesome
-              style={styles.icon}
-              name="map"
-              size={50}
-              color="black"
-            />
+            <Image source={require('./../assets/icons/map-black-solid.svg')} style={{...styles.icon, height: 50, width: 50}} />
           </View>
 
           <Picker

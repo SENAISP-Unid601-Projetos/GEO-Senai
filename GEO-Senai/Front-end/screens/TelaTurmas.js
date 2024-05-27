@@ -6,8 +6,8 @@ import {
   Pressable,
   ScrollView,
   TextInput,
+  Image,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
 
@@ -90,7 +90,7 @@ const TelaTurmas = ({ navigation }) => {
     if (acessibilidade) {
       if (existeAnterior) {
         setPaginaAtual(paginaAtual - 1);
-        falarTexto("Retroceder página")
+        falarTexto("Retroceder página");
       }
     } else {
       if (existeAnterior) {
@@ -115,10 +115,16 @@ const TelaTurmas = ({ navigation }) => {
           onPress={() => navigation.goBack()}
           style={styles.backButton}
         >
-          <FontAwesome name="arrow-left" size={50} color="black" />
+          <Image
+            source={require("./../assets/icons/arrow-left-solid.svg")}
+            style={{ height: 50, width: 50 }}
+          />
         </Pressable>
 
-        <FontAwesome style={styles.icon} name="users" size={50} color="black" />
+        <Image
+          source={require("./../assets/icons/users-black-solid.svg")}
+          style={{ ...styles.icon, height: 50, width: 50 }}
+        />
       </View>
 
       <Text style={styles.headerTitle}>Turmas</Text>
@@ -130,7 +136,10 @@ const TelaTurmas = ({ navigation }) => {
       <View style={styles.paginacao}>
         {existeAnterior && (
           <Pressable style={styles.botaoPaginacao} onPress={retrocederPagina}>
-            <FontAwesome name="chevron-left" size={25} color="black" />
+            <Image
+              source={require("./../assets/icons/chevron-left-solid.svg")}
+              style={{ height: 25, width: 25 }}
+            />
           </Pressable>
         )}
 
@@ -138,17 +147,18 @@ const TelaTurmas = ({ navigation }) => {
 
         {existeProximo && (
           <Pressable style={styles.botaoPaginacao} onPress={avancarPagina}>
-            <FontAwesome name="chevron-right" size={25} color="black" />
+            <Image
+              source={require("./../assets/icons/chevron-right-solid.svg")}
+              style={{ height: 25, width: 25 }}
+            />
           </Pressable>
         )}
       </View>
 
       <Pressable style={styles.atualizarButton} onPress={atualizarListaTurmas}>
-        <FontAwesome
-          name="refresh"
-          size={50}
-          style={styles.iconPlus}
-          color="#ffffff"
+        <Image
+          source={require("./../assets/icons/arrows-rotate-solid.svg")}
+          style={{ height: 25, width: 25 }}
         />
         <Text style={styles.buttonAttText}>Atualizar Lista</Text>
       </Pressable>

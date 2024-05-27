@@ -7,7 +7,6 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
 
@@ -21,7 +20,6 @@ const TelaVagas = ({ navigation }) => {
   const [existeProximo, setExisteProximo] = useState(true);
   const [existeAnterior, setExisteAnterior] = useState(false);
   const [atualizarLista, setAtualizarLista] = useState(true);
-
 
   const local = "http://10.110.12.19:8080/vagas";
   const nuvem = "https://appsenai.azurewebsites.net/vagas";
@@ -78,7 +76,13 @@ const TelaVagas = ({ navigation }) => {
               }
             >
               {vaga.imagem_vaga != "" && (
-                <View style={{ height: "80%", backgroundColor: "red",   borderTopLeftRadius: 40, }}>
+                <View
+                  style={{
+                    height: "80%",
+                    backgroundColor: "red",
+                    borderTopLeftRadius: 40,
+                  }}
+                >
                   <Image
                     style={styles.imgVaga}
                     source={{ uri: vaga.imagem_vaga }}
@@ -113,7 +117,13 @@ const TelaVagas = ({ navigation }) => {
               }
             >
               {vaga.imagem_vaga != "" && (
-                <View style={{ height: "80%", backgroundColor: "red",   borderTopLeftRadius: 40, }}>
+                <View
+                  style={{
+                    height: "80%",
+                    backgroundColor: "red",
+                    borderTopLeftRadius: 40,
+                  }}
+                >
                   <Image
                     style={styles.imgVaga}
                     source={{ uri: vaga.imagem_vaga }}
@@ -160,14 +170,15 @@ const TelaVagas = ({ navigation }) => {
           onPress={() => navigation.goBack()}
           style={styles.backButton}
         >
-          <FontAwesome name="arrow-left" size={50} color="black" />
+          <Image
+            source={require("./../assets/icons/arrow-left-solid.svg")}
+            style={{ height: 50, width: 50 }}
+          />
         </Pressable>
 
-        <FontAwesome
-          style={styles.icon}
-          name="user-plus"
-          size={50}
-          color="black"
+        <Image
+          source={require("./../assets/icons/user-plus-solid.svg")}
+          style={{ ...styles.iconPlus, height: 50, width: 50 }}
         />
       </View>
 
@@ -186,7 +197,10 @@ const TelaVagas = ({ navigation }) => {
             onPress={retrocederPagina}
             disabled={paginaAtual === 0}
           >
-            <FontAwesome name="chevron-left" size={25} color="black" />
+            <Image
+              source={require("./../assets/icons/chevron-left-solid.svg")}
+              style={{ height: 25, width: 25 }}
+            />
           </Pressable>
         )}
 
@@ -198,17 +212,18 @@ const TelaVagas = ({ navigation }) => {
             onPress={avancarPagina}
             disabled={(paginaAtual + 1) * vagasPorPagina >= vagas.length}
           >
-            <FontAwesome name="chevron-right" size={25} color="black" />
+            <Image
+              source={require("./../assets/icons/chevron-right-solid.svg")}
+              style={{ height: 25, width: 25 }}
+            />
           </Pressable>
         )}
       </View>
 
       <Pressable style={styles.atualizarButton} onPress={atualizarVagas}>
-        <FontAwesome
-          name="refresh"
-          size={25}
-          style={styles.iconPlus}
-          color="#ffffff"
+        <Image
+          source={require("./../assets/icons/arrows-rotate-solid.svg")}
+          style={{ height: 25, width: 25 }}
         />
         <Text style={styles.buttonAttText}>Atualizar Lista</Text>
       </Pressable>
@@ -262,7 +277,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: 700,
     borderTopLeftRadius: 40,
-    marginTop:10,
+    marginTop: 10,
   },
   buttonVagas: {
     backgroundColor: "#ff0000",
@@ -294,7 +309,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     backgroundColor: "white",
     width: 700,
-    
   },
   atualizarButton: {
     flexDirection: "row",

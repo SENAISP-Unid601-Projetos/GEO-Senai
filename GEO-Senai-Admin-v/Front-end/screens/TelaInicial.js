@@ -1,6 +1,5 @@
 // Tela inicial da versão de administrador do GEO SENAI
 
-
 import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -20,8 +19,24 @@ const TelaInicial = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={require("./../assets/Brasil.png")} style={styles.logo} />
-      <Image source={require("./../assets/logoSenai.png")} style={styles.senai} />
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          width: "100%",
+          height: "15%",
+        }}
+      >
+        <Image source={require("./../assets/Brasil.png")} style={styles.logo} />
+        <Pressable onPress={() => navigation.navigate('PerguntasFrequentes')}>
+          <FontAwesome name="question-circle" size={50} color="red" />
+        </Pressable>
+      </View>
+
+      <Image
+        source={require("./../assets/logoSenai.png")}
+        style={styles.senai}
+      />
 
       <Text style={styles.BemVindo}>
         Bem-vindo a versão de administrador do GEO SENAI.
@@ -78,12 +93,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   logo: {
-    marginTop: 40,
     width: 70,
     height: 53,
-    position: "absolute",
-    top: 10,
-    left: 10,
+  },
+  ajuda: {
+
   },
   BemVindo: {
     color: "black",

@@ -2,8 +2,7 @@
 // em CadastroTurma, na versão para administrador do GEO SENAI
 
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
 
@@ -33,7 +32,7 @@ const InformacoesTurma = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={50} color="black" />
+      <Image source={require('./../assets/icons/arrow-left-solid.svg')} style={{height: 50, width: 50}} />
       </Pressable>
 
       <View style={styles.redBack}>

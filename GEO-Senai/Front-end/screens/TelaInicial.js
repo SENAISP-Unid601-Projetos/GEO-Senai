@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 import SwitchToggle from "react-native-switch-toggle";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
@@ -55,7 +54,7 @@ const TelaInicial = ({ navigation }) => {
   useEffect(() => {
     viewBemVindoRef.current.pulse(2000);
 
-    const animaNovamente = navigation.addListener('focus', () => {
+    const animaNovamente = navigation.addListener("focus", () => {
       if (viewFaqsRef.current) {
         viewFaqsRef.current.pulse(2000);
       }
@@ -91,29 +90,33 @@ const TelaInicial = ({ navigation }) => {
 
       <Pressable style={styles.classesButton} onPress={botaoMapa}>
         <Text style={styles.buttonText}>Mapas</Text>
-        <FontAwesome name="map" size={50} color="#ffffff" />
+        <Image
+          source={require("./../assets/icons/map-solid.svg")}
+          style={styles.icon}
+        />
       </Pressable>
 
       <Pressable style={styles.classesButton} onPress={botaoTurmas}>
         <Text style={styles.buttonText}>Turmas</Text>
-        <FontAwesome name="users" size={50} color="#ffffff" />
+        <Image
+          source={require("./../assets/icons/users-solid.svg")}
+          style={styles.icon}
+        />
       </Pressable>
 
       <Pressable style={styles.classesButton} onPress={botaoVagas}>
         <Text style={styles.buttonText}>Vagas</Text>
-        <FontAwesome name="suitcase" size={50} color="#ffffff" />
+        <Image
+          source={require("./../assets/icons/suitcase-solid.svg")}
+          style={styles.icon}
+        />
       </Pressable>
 
-      <Animatable.View
-        ref={viewFaqsRef}
-        style={styles.faqsView}
-      >
+      <Animatable.View ref={viewFaqsRef} style={styles.faqsView}>
         <View style={styles.quadroFaqs}>
-          <FontAwesome
+          <Image
+            source={require("./../assets/icons/exclamation-solid.svg")}
             style={styles.exclamacao}
-            name="exclamation"
-            size={40}
-            color="red"
           />
           <View style={styles.viewTxtFaqs}>
             <Text style={styles.faqsTxt}>
@@ -123,7 +126,10 @@ const TelaInicial = ({ navigation }) => {
           </View>
         </View>
         <Pressable onPress={botaoFAQ} style={styles.btnFaqs}>
-          <FontAwesome name="question-circle" size={75} color="red" />
+          <Image
+            source={require("./../assets/icons/circle-question-solid.svg")}
+            style={{width: 75, height: 75}}
+          />
         </Pressable>
       </Animatable.View>
 
@@ -204,6 +210,8 @@ const styles = StyleSheet.create({
   exclamacao: {
     alignSelf: "center",
     padding: 10,
+    width: 40,
+    height: 40,
   },
   buttonText: {
     color: "#fff",
@@ -256,6 +264,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
+  },
+  icon: {
+    height: 50,
+    width: 50,
   },
 });
 

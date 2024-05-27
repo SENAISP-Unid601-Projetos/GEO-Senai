@@ -2,8 +2,7 @@
 // em CadastroVaga, na versão para administrador do GEO SENAI
 
 import React, { useEffect } from "react";
-import { View, Text, Pressable, StyleSheet,Image } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { View, Text, Pressable, StyleSheet, Image } from "react-native";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
 
@@ -20,27 +19,34 @@ const InformacoesVaga = ({ route, navigation }) => {
     if (acessibilidade) {
       falarTexto(vaga.nome_vaga);
     }
-  })
+  });
 
   return (
     <View style={styles.container}>
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={50} color="black" />
+        <Image
+          source={require("./../assets/icons/arrow-left-solid.svg")}
+          style={{ height: 50, width: 50 }}
+        />
       </Pressable>
       <View>
         <View style={styles.redBack}>
           <View style={styles.whiteBack}>
-     
-           
-          {vaga.imagem_vaga != "" && (
-                <View style={{ height: "30%", backgroundColor: "white" , borderRadius:100}}>
-                  <Image
-                    style={{height: "100%", width:"100%", borderRadius:20}}
-                    source={{ uri: vaga.imagem_vaga }}
-                  />
-                </View>
-              )}
-             
+            {vaga.imagem_vaga != "" && (
+              <View
+                style={{
+                  height: "30%",
+                  backgroundColor: "white",
+                  borderRadius: 100,
+                }}
+              >
+                <Image
+                  style={{ height: "100%", width: "100%", borderRadius: 20 }}
+                  source={{ uri: vaga.imagem_vaga }}
+                />
+              </View>
+            )}
+
             <Text style={styles.txtTituloPrincipal}>{vaga.nome_vaga}</Text>
             <Text style={styles.infoText}>
               <Text style={styles.txtTitulo}>Descrição:</Text> {vaga.desc_vaga}
@@ -54,7 +60,8 @@ const InformacoesVaga = ({ route, navigation }) => {
               {vaga.carga_vaga}
             </Text>
             <Text style={styles.infoText}>
-              <Text style={styles.txtTitulo}>Salário: </Text> R${vaga.salario_vaga} 
+              <Text style={styles.txtTitulo}>Salário: </Text> R$
+              {vaga.salario_vaga}
             </Text>
             <Text style={styles.infoText}>
               <Text style={styles.txtTitulo}>Contato:</Text> {vaga.contato_vaga}

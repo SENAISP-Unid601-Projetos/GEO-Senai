@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons"; // Importando FontAwesome
 
 const TelaQR = ({ navigation, route }) => {
   const { imagemLink } = route.params;
@@ -14,7 +13,7 @@ const TelaQR = ({ navigation, route }) => {
       <Text style={styles.textoTitulo}>Obrigado por utilizar esse totem</Text>
       <View style={styles.textoMid}>
         <Text style={styles.texto}>Escaneie para baixar o mapa </Text>
-        <FontAwesome name="mobile" size={50} color="black" />
+        <Image source={require('./../assets/icons/mobile-solid.svg')} style={{height: 50, width: 50}} />
       </View>
       <View>
         <Image source={imagemLink} style={styles.QR} />
@@ -25,7 +24,10 @@ const TelaQR = ({ navigation, route }) => {
       </Pressable>
 
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={50} color="black" />
+        <Image
+          source={require("./../assets/icons/arrow-left-solid.svg")}
+          style={{ height: 50, width: 50 }}
+        />
       </Pressable>
     </View>
   );

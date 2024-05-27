@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 
 const TelaFoto = ({ route, navigation }) => {
   const { sala } = route.params;
@@ -17,7 +16,7 @@ const TelaFoto = ({ route, navigation }) => {
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
-          throw new Error('Erro ao recuperar a imagem');
+          throw new Error("Erro ao recuperar a imagem");
         }
 
         // Convertendo os dados da imagem para uma string base64
@@ -33,7 +32,7 @@ const TelaFoto = ({ route, navigation }) => {
 
         setImageData(imageBase64);
       } catch (error) {
-        console.error('Erro ao recuperar a imagem:', error);
+        console.error("Erro ao recuperar a imagem:", error);
       }
     };
 
@@ -47,14 +46,17 @@ const TelaFoto = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-        <FontAwesome name="arrow-left" size={50} color="black" />
+        <Image
+          source={require("./../assets/icons/arrow-left-solid.svg")}
+          style={{ height: 50, width: 50 }}
+        />
       </Pressable>
 
       {/* Quadro vermelho no centro */}
       <View style={styles.redBack}>
         <Text style={styles.tituloCurso}>Sala: {sala.nomeSala}</Text>
 
-          <Image source={{ uri: imageData }} style={styles.imgFoto} />
+        <Image source={{ uri: imageData }} style={styles.imgFoto} />
 
         {/* <View style={styles.squareBaixo}>
           <Pressable style={styles.btnControleImg}>
@@ -62,7 +64,7 @@ const TelaFoto = ({ route, navigation }) => {
           </Pressable>
 
           <Pressable style={styles.btnControleImg}>
-            <FontAwesome name="chevron-right" size={25} color="white" />
+            <some name="chevron-right" size={25} color="white" />
           </Pressable>
         </View> */}
       </View>
@@ -108,11 +110,11 @@ const styles = StyleSheet.create({
     height: 40,
   },
   buttonQR: {
-    alignSelf: 'center',
-    backgroundColor: 'red',
-    width: '10%',
+    alignSelf: "center",
+    backgroundColor: "red",
+    width: "10%",
     height: "5%",
-    alignItems: 'center',
+    alignItems: "center",
     borderRadius: 10,
   },
   buttonTextQR: {
@@ -125,9 +127,9 @@ const styles = StyleSheet.create({
     color: "red",
     textAlign: "center",
     fontSize: 40,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
-    width: '20%',
+    width: "20%",
     borderRadius: 10,
   },
   imgFoto: {
@@ -136,7 +138,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignSelf: "center",
     padding: 20,
-    borderColor: 'black',
+    borderColor: "black",
     borderTopLeftRadius: 50,
     borderBottomRightRadius: 50,
     shadowColor: "#000",

@@ -7,8 +7,8 @@ import {
   Pressable,
   ScrollView,
   TextInput,
+  Image,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 
 const TelaSalas = ({ navigation, route }) => {
   const [salas, setSalas] = useState([]);
@@ -90,10 +90,16 @@ const TelaSalas = ({ navigation, route }) => {
           onPress={() => navigation.goBack()}
           style={styles.backButton}
         >
-          <FontAwesome name="arrow-left" size={50} color="black" />
+          <Image
+            source={require("./../assets/icons/arrow-left-solid.svg")}
+            style={{ height: 50, width: 50 }}
+          />
         </Pressable>
 
-        <FontAwesome name="building" size={50} color="black" style={styles.icon} />
+        <Image
+          source={require("./../assets/icons/building-solid.svg")}
+          style={{ ...styles.icon, height: 50, width: 50 }}
+        />
       </View>
 
       <Text style={styles.headerTitle}>Salas - {andar}</Text>
@@ -105,7 +111,10 @@ const TelaSalas = ({ navigation, route }) => {
       <View style={styles.paginacao}>
         {existeAnterior && (
           <Pressable style={styles.botaoPaginacao} onPress={retrocederPagina}>
-            <FontAwesome name="chevron-left" size={25} color="black" />
+            <Image
+              source={require("./../assets/icons/chevron-left-solid.svg")}
+              style={{ height: 25, width: 25 }}
+            />
           </Pressable>
         )}
 
@@ -113,17 +122,18 @@ const TelaSalas = ({ navigation, route }) => {
 
         {existeProximo && (
           <Pressable style={styles.botaoPaginacao} onPress={avancarPagina}>
-            <FontAwesome name="chevron-right" size={25} color="black" />
+            <Image
+              source={require("./../assets/icons/chevron-right-solid.svg")}
+              style={{ height: 25, width: 25 }}
+            />
           </Pressable>
         )}
       </View>
 
       <Pressable style={styles.atualizarButton} onPress={atualizarListaSalas}>
-        <FontAwesome
-          name="refresh"
-          size={50}
-          style={styles.iconPlus}
-          color="#ffffff"
+        <Image
+          source={require("./../assets/icons/arrows-rotate-solid.svg")}
+          style={{...styles.iconPlus, height: 25, width: 25 }}
         />
         <Text style={styles.buttonAttText}>Atualizar Lista</Text>
       </Pressable>
