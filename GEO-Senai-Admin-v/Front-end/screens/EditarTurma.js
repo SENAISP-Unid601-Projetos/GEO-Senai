@@ -8,6 +8,7 @@ import {
   Text,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
 
 const EditarTurma = ({ route, navigation }) => {
   const { turma } = route.params;
@@ -47,7 +48,7 @@ const EditarTurma = ({ route, navigation }) => {
     })
       .then((response) => {
         if (response.ok) {
-          Alert.alert("Sucesso", "Turma editada com sucesso");
+          Alert.alert("Sucesso", "Turma editada com sucesso. Por favor atualize a tela de turmas para vizualizar as alterações.");
           navigation.navigate("TelaTurmas");
         } else {
           throw new Error("Erro ao editar turma");
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontWeight: "bold",
   },
   header: {
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerText: {
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "bold",
     marginBottom: 20,
   },

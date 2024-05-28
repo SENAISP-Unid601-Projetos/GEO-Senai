@@ -11,6 +11,7 @@ import {
   Platform,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Importe o ícone FontAwesome da biblioteca
+import { RFValue } from "react-native-responsive-fontsize";
 
 const CadastroVaga = ({ navigation }) => {
   const [imagemVaga, setImagemVaga] = useState("");
@@ -62,7 +63,7 @@ const CadastroVaga = ({ navigation }) => {
       .then((response) => {
         if (response.ok) {
           // Turma adicionada com sucesso, fazer algo, se necessário
-          Alert.alert("Sucesso", "Vaga postada com sucesso");
+          Alert.alert("Sucesso", "Vaga postada com sucesso. Por favor atualize a tela de vagas para vizualizar as alterações.");
           navigation.navigate("TelaVagas");
         } else {
           throw new Error("Erro ao adicionar vaga");
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontWeight: "bold",
   },
   header: {
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerText: {
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "bold",
     marginBottom: 20,
   },

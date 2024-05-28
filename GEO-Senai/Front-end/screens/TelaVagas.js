@@ -178,7 +178,7 @@ const TelaVagas = ({ navigation }) => {
 
         <Image
           source={require("./../assets/icons/user-plus-solid.svg")}
-          style={{ ...styles.iconPlus, height: 50, width: 50 }}
+          style={{ ...styles.iconPlus, height: 50, width: 70 }}
         />
       </View>
 
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     marginRight: 10,
-    marginTop: 40,
+    marginTop: 20,
   },
   headerTitle: {
     textAlign: "center",
@@ -323,7 +323,8 @@ const styles = StyleSheet.create({
     width: 270,
   },
   iconPlus: {
-    paddingRight: 14,
+    marginTop: 20,
+    marginLeft: 10,
   },
   buttonAttText: {
     color: "#fff",

@@ -11,6 +11,7 @@ import {
   ScrollView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
 
 const InformacoesVaga = ({ route, navigation }) => {
   const { vaga } = route.params;
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
   },
   txtInfoCurso: {
     textAlign: "center",
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "bold",
     color: "white",
   },
@@ -218,7 +219,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   descTexto: {
-    fontSize: 18,
+    fontSize: RFValue(18),
     padding: 10,
   },
   roundedCorners: {
@@ -290,14 +291,14 @@ const styles = StyleSheet.create({
   texto: {
     padding: 7  ,
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: RFValue(18),
     color: 'white',
   },
   textoConfirmacao: {
     padding: 10,
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: RFValue(18),
   },
 });
 

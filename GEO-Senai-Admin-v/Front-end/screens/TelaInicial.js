@@ -3,6 +3,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
+
 
 const TelaInicial = ({ navigation }) => {
   const botaoTurmas = () => {
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontWeight: "bold",
   },
   logo: {
@@ -109,13 +111,13 @@ const styles = StyleSheet.create({
   },
   TextoMedio: {
     color: "black",
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "normal",
     marginBottom: 50,
   },
   textoOculto: {
     color: "#C8C8C8",
-    fontSize: 10,
+    fontSize:RFValue (10),
   },
 });
 

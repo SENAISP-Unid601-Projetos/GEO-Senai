@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     paddingRight: 14,
   },
   backButton: {
-    marginTop: 40,
+    marginTop: 20,
     marginRight: 10,
   },
   icon: {

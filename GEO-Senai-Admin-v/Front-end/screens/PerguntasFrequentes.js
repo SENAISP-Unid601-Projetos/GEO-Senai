@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import Collapsible from "react-native-collapsible";
+import { RFValue } from "react-native-responsive-fontsize";
 import { FontAwesome } from "@expo/vector-icons";
 
 const PerguntasFrequentes = ({ navigation }) => {
@@ -17,7 +18,7 @@ const PerguntasFrequentes = ({ navigation }) => {
     {
       pergunta: "• Como cadastrar uma turma/vaga de emprego nova no totem?",
       conteudoResposta: (
-        <ScrollView style={{ height: 500 }}>
+        <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
             No menu inicial, acesse a tela de{" "}
             <Text
@@ -57,7 +58,7 @@ const PerguntasFrequentes = ({ navigation }) => {
     {
       pergunta: "• Como adicionar horários a uma turma?",
       conteudoResposta: (
-        <ScrollView style={{ height: 500 }}>
+        <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
             No menu de turmas, selecione a turma escolhida e pressione o botão
             <Text style={{ fontWeight: "bold" }}> "Horários"</Text> como
@@ -90,7 +91,7 @@ const PerguntasFrequentes = ({ navigation }) => {
     {
       pergunta: "• Como adicionar um logotipo a minha vaga de emprego?  ",
       conteudoResposta: (
-        <ScrollView style={{ height: 500 }}>
+        <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
             No seu navegador, busque pela sua logo e abra com outra guia, como
             indicado na imagem abaixo:
@@ -128,7 +129,7 @@ const PerguntasFrequentes = ({ navigation }) => {
     {
       pergunta: "• Como editar uma turma/vaga de emprego existente?  ",
       conteudoResposta: (
-        <ScrollView style={{ height: 500 }}>
+        <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
             No menu inicial, acesse a tela de{" "}
             <Text
@@ -172,7 +173,7 @@ const PerguntasFrequentes = ({ navigation }) => {
     {
       pergunta: "• Como deletar uma turma/vaga de emprego existente?  ",
       conteudoResposta: (
-        <ScrollView style={{ height: 500 }}>
+        <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
             No menu inicial, acesse a tela de{" "}
             <Text
@@ -284,7 +285,7 @@ const styles = StyleSheet.create({
   },
   perguntaTxt: {
     padding: 20,
-    fontSize: 18,
+    fontSize:RFValue(18),
     color: "white",
     fontWeight: "bold",
   },
@@ -295,7 +296,7 @@ const styles = StyleSheet.create({
   txtResposta: {
     paddingHorizontal: 20,
     paddingVertical: 5,
-    fontSize: 18,
+    fontSize:RFValue(18),
   },
   imagemFAQ: {
     height: 300,

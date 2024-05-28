@@ -13,7 +13,6 @@ const TelaQR = ({ navigation, route }) => {
       <Text style={styles.textoTitulo}>Obrigado por utilizar esse totem</Text>
       <View style={styles.textoMid}>
         <Text style={styles.texto}>Escaneie para baixar o mapa </Text>
-        <Image source={require('./../assets/icons/mobile-solid.svg')} style={{height: 50, width: 50}} />
       </View>
       <View>
         <Image source={imagemLink} style={styles.QR} />

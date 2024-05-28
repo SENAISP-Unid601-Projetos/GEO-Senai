@@ -8,6 +8,7 @@ import {
   Text,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; 
+import { RFValue } from "react-native-responsive-fontsize";
 
 const EditarVaga = ({ route, navigation }) => {
   const { vaga } = route.params;
@@ -56,7 +57,7 @@ const EditarVaga = ({ route, navigation }) => {
     })
       .then((response) => {
         if (response.ok) {
-          Alert.alert("Sucesso", "Vaga editada com sucesso");
+          Alert.alert("Sucesso", "Vaga editada com sucesso. Por favor atualize a tela de vagas para vizualizar as alterações.");
           navigation.navigate('TelaVagas');
         } else {
           throw new Error("Erro ao editar vaga");
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontWeight: "bold",
   },
   header: {
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerText: {
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "bold",
     marginBottom: 20,
   },

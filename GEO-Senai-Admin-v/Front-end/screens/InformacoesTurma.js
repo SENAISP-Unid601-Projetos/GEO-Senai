@@ -3,14 +3,13 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   Pressable,
   Modal,
-  Button,
   Alert,
   ScrollView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
 
 const InformacoesTurma = ({ route, navigation }) => {
   const { turma } = route.params;
@@ -24,11 +23,11 @@ const InformacoesTurma = ({ route, navigation }) => {
   };
 
   const editarTurma = () => {
-    navigation.navigate('EditarTurma', { turma: turma });
+    navigation.navigate("EditarTurma", { turma: turma });
   };
 
   const botaoHorarios = () => {
-    navigation.navigate('TelaHorarios', { turma: turma });
+    navigation.navigate("TelaHorarios", { turma: turma });
   };
 
   const deletarTurma = async () => {
@@ -79,28 +78,13 @@ const InformacoesTurma = ({ route, navigation }) => {
               styles.quadroPadding,
             ]}
           >
-            <Pressable
-              style={styles.botao}
-              onPress={() => console.log("Turmas pressionados")}
-            >
-              <Text style={styles.texto}>Foto</Text>
-            </Pressable>
 
-            <Pressable
-              style={styles.botao}
-              onPress={botaoHorarios}
-            >
-              <Text style={styles.texto}>Horários</Text>
+            <Pressable style={styles.botao} onPress={botaoHorarios}>
+              <Text style={{...styles.texto, padding: 5, fontSize: RFValue(16)}}>Horários</Text>
             </Pressable>
           </View>
 
-          <View
-            style={[
-              styles.quadro3,
-              styles.roundedCorners,
-              styles.quadroPadding,
-            ]}
-          >
+          <View style={styles.quadro3}>
             <Text style={styles.titulo}>{turma.nome_curso}</Text>
             <View style={styles.textoDoMeio}>
               <Text style={styles.descTexto}>{turma.desc_curso}</Text>
@@ -133,10 +117,16 @@ const InformacoesTurma = ({ route, navigation }) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Confirma a exclusão da turma?</Text>
             <View style={styles.buttonsContainer}>
-              <Pressable style={[styles.botoesModalCancelar]} onPress={toggleModal}>
+              <Pressable
+                style={[styles.botoesModalCancelar]}
+                onPress={toggleModal}
+              >
                 <Text style={styles.textoConfirmacao}>Cancelar</Text>
               </Pressable>
-              <Pressable style={[styles.botoesModalConfirmar]} onPress={deletarTurma}>
+              <Pressable
+                style={[styles.botoesModalConfirmar]}
+                onPress={deletarTurma}
+              >
                 <Text style={styles.textoConfirmacao}>Confirmar</Text>
               </Pressable>
             </View>
@@ -196,43 +186,44 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     marginBottom: 10,
     alignItems: "center",
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   quadro2: {
     width: "100%",
-    height: "20%",
+    height: "10%",
     backgroundColor: "red",
     marginBottom: 10,
     alignItems: "center",
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   quadro3: {
     width: "100%",
-    height: "45%",
+    height: "60%",
     backgroundColor: "red",
     marginTop: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
+    borderRadius: 20,
+    paddingHorizontal: 10,
   },
   botao: {
+    width: '60%',
     margin: 10,
-    borderRadius: 100,
+    borderRadius: 20,
     backgroundColor: "white",
-    height: '25%',
-    width: 130,
     alignItems: "center",
-    justifyContent: 'center',
+    justifyContent: "center",
     borderWidth: 1,
   },
   titulo: {
     marginBottom: 10,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: RFValue(20),
     fontWeight: "bold",
     color: "white",
   },
   txtInfoCurso: {
     textAlign: "center",
-    fontSize: 20,
+    fontSize: RFValue(16),
     fontWeight: "bold",
     color: "white",
   },
@@ -241,12 +232,12 @@ const styles = StyleSheet.create({
     marginLeft: "3%",
     marginRight: "3%",
     borderRadius: 10,
-    height: "70%",
+    height: '75%',
     alignItems: "center",
     alignContent: "center",
   },
   descTexto: {
-    fontSize: 18,
+    fontSize: RFValue(15),
     padding: 10,
   },
   roundedCorners: {
@@ -298,29 +289,29 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   botoesModalCancelar: {
-    borderWidth: 2, 
+    borderWidth: 2,
     borderRadius: 10,
     backgroundColor: "red",
-    alignItems: 'center',
+    alignItems: "center",
     margin: 5,
   },
   botoesModalConfirmar: {
     margin: 5,
-    borderWidth: 2, 
+    borderWidth: 2,
     borderRadius: 10,
     backgroundColor: "gray",
-    alignItems: 'center',
+    alignItems: "center",
   },
   texto: {
     padding: 2,
-    fontWeight: 'bold',
-    fontSize: 18,
+    fontWeight: "bold",
+    fontSize: RFValue(18),
   },
   textoConfirmacao: {
     padding: 10,
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
+    color: "white",
+    fontWeight: "bold",
+    fontSize: RFValue(18),
   },
 });
 

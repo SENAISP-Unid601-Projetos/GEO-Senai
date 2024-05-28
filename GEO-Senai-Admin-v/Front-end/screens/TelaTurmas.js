@@ -13,6 +13,7 @@ import {
   Alert,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
 
 const TelaTurmas = ({ navigation }) => {
   const [turmas, setTurmas] = useState([]);
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 14,
+    fontSize:RFValue (14),
     fontWeight: "bold",
   },
   addButton: {
@@ -272,7 +273,7 @@ const styles = StyleSheet.create({
   texto: {
     padding: 7,
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: RFValue(18),
     color: "white",
   },
   searchBar: {

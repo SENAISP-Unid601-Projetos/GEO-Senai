@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
 
 const TelaHorarios = ({ navigation, route }) => {
   const { turma } = route.params;
@@ -233,7 +234,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   quadroTexto: {
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontWeight: "bold",
     color: "black",
   },
@@ -269,7 +270,7 @@ const styles = StyleSheet.create({
   },
   input: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: RFValue(18),
   },
 });
 

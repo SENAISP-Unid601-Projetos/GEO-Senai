@@ -22,6 +22,7 @@
     "react-native": "^0.74.1",
     "react-native-collapsible": "^1.6.1",
     "react-native-gesture-handler": "^2.16.1",
+    "react-native-responsive-fontsize": "^0.5.1",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {

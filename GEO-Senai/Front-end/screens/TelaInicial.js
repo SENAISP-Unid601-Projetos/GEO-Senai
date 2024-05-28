@@ -115,7 +115,7 @@ const TelaInicial = ({ navigation }) => {
       <Animatable.View ref={viewFaqsRef} style={styles.faqsView}>
         <View style={styles.quadroFaqs}>
           <Image
-            source={require("./../assets/icons/exclamation-solid.svg")}
+            source={require("./../assets/icons/circle-exclamation-solid.svg")}
             style={styles.exclamacao}
           />
           <View style={styles.viewTxtFaqs}>
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   },
   exclamacao: {
     alignSelf: "center",
-    padding: 10,
+    margin: 10,
     width: 40,
     height: 40,
   },

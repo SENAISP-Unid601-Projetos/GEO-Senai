@@ -11,6 +11,7 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RFValue } from "react-native-responsive-fontsize";
 
 const TelaLogin = ({ navigation }) => {
   const [logarUsuario, setLogarUsuario] = useState("");
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "bold",
   },
   bemVindo: {
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   },
   textoMedio: {
     color: "white",
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "normal",
     marginBottom: 50,
   },

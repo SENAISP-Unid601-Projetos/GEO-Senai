@@ -256,7 +256,7 @@ const PerguntasFrequentes = ({ navigation }) => {
                 onPress={() => togglePergunta(index)}
               >
                 <Text style={styles.perguntaTxt}>{faq.pergunta}</Text>
-                <Image source={require("./../assets/icons/chevron-down-solid.svg")} style={styles.seta}/>
+                <Image source={require("./../assets/icons/chevron-down-solid.svg")} style={{height: 25, width: 25, margin: 25}}/>
               </Pressable>
             ) : null}
             <Collapsible collapsed={perguntaAtiva !== index}>
@@ -339,8 +339,8 @@ const styles = StyleSheet.create({
   },
   seta: {
     padding: 25,
-    width: 25,
-    height: 25,
+    width: 1,
+    height: 10,
   },
   spanTxtVermelho: {
     color: "red",

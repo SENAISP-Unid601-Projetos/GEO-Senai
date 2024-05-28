@@ -60,12 +60,12 @@ const InformacoesTurma = ({ route, navigation }) => {
             styles.quadroPadding,
           ]}
         >
-          <Pressable
+          {/* <Pressable
             style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}
             // onPress={TelaFoto}
           >
             <Text style={styles.textoFundo}>Foto</Text>
-          </Pressable>
+          </Pressable> */}
 
           <Pressable
             style={[styles.botoesPequenosFundo, { borderWidth: 1 }]}

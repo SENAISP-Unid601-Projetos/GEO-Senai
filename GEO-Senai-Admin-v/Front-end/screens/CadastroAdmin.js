@@ -11,6 +11,7 @@ import {
   Text,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; 
+import { RFValue } from "react-native-responsive-fontsize";
 
 const CadastroAdmin = ({ navigation }) => {
   const [usuario, setUsuario] = useState("");
@@ -42,7 +43,7 @@ const CadastroAdmin = ({ navigation }) => {
         .then((response) => {
           if (response.ok) {
             // Turma adicionada com sucesso, fazer algo, se necessário
-            Alert.alert("Sucesso", "Cadastro bem sucedido.");
+            Alert.alert("Sucesso", "Novo administrador cadastrado com sucesso.");
             navigation.navigate("TelaInicial");
           } else {
             throw new Error("Erro ao efetuar cadastro");
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize:RFValue (16),
     fontWeight: "bold",
   },
   header: {
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerText: {
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "bold",
     marginBottom: 20,
   },

@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Importe o ícone FontAwesome da biblioteca
 import { ScrollView } from "react-native-gesture-handler";
+import { RFValue } from "react-native-responsive-fontsize";
 
 const CadastroTurma = ({ navigation }) => {
   const [codigoTurma, setCodigoTurma] = useState("");
@@ -58,7 +59,7 @@ const CadastroTurma = ({ navigation }) => {
       .then((response) => {
         if (response.ok) {
           // Turma adicionada com sucesso, fazer algo, se necessário
-          Alert.alert("Sucesso", "Turma adicionada com sucesso");
+          Alert.alert("Sucesso", "Turma adicionada com sucesso. Por favor atualize a tela de turmas para vizualizar as alterações.");
           navigation.navigate("TelaTurmas"); // Navega para a tela de turmas após adicionar a turma
         } else {
           throw new Error("Erro ao adicionar turma");
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontWeight: "bold",
   },
   header: {
@@ -186,7 +187,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerText: {
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: "bold",
     marginBottom: 20,
   },
