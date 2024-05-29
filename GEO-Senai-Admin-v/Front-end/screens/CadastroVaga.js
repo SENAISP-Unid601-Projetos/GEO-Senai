@@ -195,16 +195,14 @@ const styles = StyleSheet.create({
   },
   btnPublicar: {
     backgroundColor: "#ff0000",
-    padding: 10,
     borderRadius: 10,
     alignItems: "center",
-    width: 100,
-    height: 40,
   },
   buttonText: {
     color: "#fff",
-    fontSize: RFValue(18),
+    fontSize: RFValue(16),
     fontWeight: "bold",
+    padding: 10,
   },
   header: {
     flexDirection: "row",

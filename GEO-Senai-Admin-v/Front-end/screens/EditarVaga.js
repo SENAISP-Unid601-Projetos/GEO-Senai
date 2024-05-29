@@ -182,14 +182,13 @@ const styles = StyleSheet.create({
   },
   btnEditar: {
     backgroundColor: "#ff0000",
-    padding: 10,
     borderRadius: 10,
     alignItems: "center",
-    height: 40,
   },
   buttonText: {
+    padding: 10,
     color: "#fff",
-    fontSize: RFValue(18),
+    fontSize: RFValue(16),
     fontWeight: "bold",
   },
   header: {

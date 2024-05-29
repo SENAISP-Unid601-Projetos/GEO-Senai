@@ -49,35 +49,20 @@ const TelaHorarios = ({ navigation, route }) => {
         <View style={styles.quadroCinzaPequeno}>
           <Text style={styles.quadroTexto}>Sexta</Text>
         </View>
-        <View style={styles.quadroCinzaPequeno}>
+        <View style={styles.quadroCinzaPequenoH}>
           <Text style={styles.quadroTexto}>{turma.seg_horario}</Text>
         </View>
-        <View style={styles.quadroCinzaPequeno}>
+        <View style={styles.quadroCinzaPequenoH}>
           <Text style={styles.quadroTexto}>{turma.ter_horario}</Text>
         </View>
-        <View style={styles.quadroCinzaPequeno}>
+        <View style={styles.quadroCinzaPequenoH}>
           <Text style={styles.quadroTexto}>{turma.qua_horario}</Text>
         </View>
-        <View style={styles.quadroCinzaPequeno}>
+        <View style={styles.quadroCinzaPequenoH}>
           <Text style={styles.quadroTexto}>{turma.qui_horario}</Text>
         </View>
-        <View style={styles.quadroCinzaPequeno}>
+        <View style={styles.quadroCinzaPequenoH}>
           <Text style={styles.quadroTexto}>{turma.sex_horario}</Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
-        </View>
-        <View style={styles.quadroCinzaPequeno}>
-          <Text style={styles.quadroTexto}></Text>
         </View>
       </View>
     </View>
@@ -135,7 +120,6 @@ const styles = StyleSheet.create({
     justifyContent: "center", // Alinhamento vertical centralizado
     alignItems: "center", // Alinhamento horizontal centralizado
   },
-
   // Estilo para um quadro cinza pequeno
   quadroCinzaPequeno: {
     backgroundColor: "#d3d3d3", // Cor de fundo cinza
@@ -149,6 +133,19 @@ const styles = StyleSheet.create({
     justifyContent: "center", // Alinhamento vertical centralizado
     alignItems: "center", // Alinhamento horizontal centralizado
     alignSelf: "center", // Alinhamento próprio ao centro horizontalmente
+  },
+  quadroCinzaPequenoH: {
+    backgroundColor: "#d3d3d3",
+    width: "18%",
+    height: "50%",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "black",
+    margin: 5,
+    marginLeft: "1.5%",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
   },
   quadroTexto: {
     fontSize: 30,

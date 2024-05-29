@@ -168,18 +168,16 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#ff0000",
-    padding: 10,
     borderRadius: 10,
     alignItems: "center",
     // alignSelf: "flex-end",
-    width: 100,
-    height: 40,
     // marginHorizontal: "50%",
   },
   buttonText: {
     color: "#fff",
-    fontSize: RFValue(18),
+    fontSize: RFValue(16),
     fontWeight: "bold",
+    padding: 10
   },
   header: {
     flexDirection: "row",
