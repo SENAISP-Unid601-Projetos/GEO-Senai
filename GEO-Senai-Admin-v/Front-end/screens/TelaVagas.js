@@ -27,7 +27,7 @@ const TelaVagas = ({ navigation }) => {
   };
 
   const atualizarVagas = () => {
-    fetch(local, {
+    fetch(nuvem, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -47,7 +47,7 @@ const TelaVagas = ({ navigation }) => {
     setModalVisible(false);
 
     try {
-      const response = await fetch(localD,
+      const response = await fetch(nuvemD,
         {
           method: "DELETE",
           headers: {

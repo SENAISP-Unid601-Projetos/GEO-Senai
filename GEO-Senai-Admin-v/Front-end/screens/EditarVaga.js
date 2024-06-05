@@ -48,7 +48,7 @@ const EditarVaga = ({ route, navigation }) => {
       contato_vaga: contatoVagaEdt,
     };
 
-    fetch(local, {
+    fetch(nuvem, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

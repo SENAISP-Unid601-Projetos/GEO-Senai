@@ -25,7 +25,7 @@ const TelaVagas = ({ navigation }) => {
   const nuvem = "https://appsenai.azurewebsites.net/vagas";
 
   useEffect(() => {
-    fetch(local, {
+    fetch(nuvem, {
       method: "GET",
       headers: {
         Accept: "application/json",

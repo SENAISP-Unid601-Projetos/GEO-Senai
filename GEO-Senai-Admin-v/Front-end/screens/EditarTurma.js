@@ -39,7 +39,7 @@ const EditarTurma = ({ route, navigation }) => {
       desc_curso: descCursoEdt,
     };
 
-    fetch(local, {
+    fetch(nuvem, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

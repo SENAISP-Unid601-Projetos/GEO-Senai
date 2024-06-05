@@ -49,7 +49,7 @@ const CadastroTurma = ({ navigation }) => {
     };
 
     // Enviar os dados para o back-end
-    fetch(local, {
+    fetch(nuvem, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

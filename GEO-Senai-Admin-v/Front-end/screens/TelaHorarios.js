@@ -42,7 +42,7 @@ const TelaHorarios = ({ navigation, route }) => {
       sex_horario: sextaHrr,
     };
 
-    fetch(local, {
+    fetch(nuvem, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

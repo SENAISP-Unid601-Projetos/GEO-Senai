@@ -32,7 +32,7 @@ const InformacoesVaga = ({ route, navigation }) => {
     setModalVisible(false);
 
     try {
-      const response = await fetch(local, {
+      const response = await fetch(nuvem, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

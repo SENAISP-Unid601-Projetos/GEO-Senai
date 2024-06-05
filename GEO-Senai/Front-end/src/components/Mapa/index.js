@@ -4,18 +4,18 @@ import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-vi
 
 const Mapa = ({ mapaSelecionado }) => {
   const [mapa, setMapa] = useState(
-    require("./../../../assets/Foto_Area_1_andar_1.png")
+    require("./../../../assets/area1inferior.png")
   );
 
   useEffect(() => {
     if (mapaSelecionado === "2") {
       console.log(mapaSelecionado);
-      setMapa(require("./../../../assets/Foto_Area_1_andar_1.png"));
+      setMapa(require("./../../../assets/area1inferior.png"));
     } else if (mapaSelecionado === "1") {
       console.log(mapaSelecionado);
-      setMapa(require("./../../../assets/Foto_Area_1_andar_2-removebg.png"));
+      setMapa(require("./../../../assets/area1superior.png"));
     } else if (mapaSelecionado === "3") {
-      setMapa(require("./../../../assets/Foto_Area_2.png"));
+      setMapa(require("./../../../assets/area2.png"));
     } else {
       setMapa(require("./../../../assets/Foto_Area_1_andar_1.png"));
     }

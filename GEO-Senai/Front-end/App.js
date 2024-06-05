@@ -12,9 +12,7 @@ import TelaQR from "./screens/TelaQR";
 import TelaFoto from "./screens/TelaFoto";
 import TelaHorarios from "./screens/TelaHorarios";
 import PerguntasFrequentes from "./screens/PerguntasFrequentes";
-import TelaVoz from "./screens/TelaVoz";
 import TelaSalas from "./screens/TelaSalas";
-import Teste from "./screens/Teste";
 import { AcessibilidadeProvider } from "./src/context/AcessibilidadeContext";
 
 const Stack = createStackNavigator();
@@ -119,18 +117,8 @@ const App = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="TelaVoz"
-            component={TelaVoz}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
             name="TelaSalas"
             component={TelaSalas}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Teste"
-            component={Teste}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

@@ -28,7 +28,7 @@ const TelaTurmas = ({ navigation }) => {
   const nuvemD = "https://appsenai.azurewebsites.net/turmas/deletar/all";
 
   useEffect(() => {
-    fetch(local, {
+    fetch(nuvem, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -56,7 +56,7 @@ const TelaTurmas = ({ navigation }) => {
     setModalVisible(false);
 
     try {
-      const response = await fetch(localD,
+      const response = await fetch(nuvemD,
         {
           method: "DELETE",
           headers: {

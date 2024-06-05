@@ -10,9 +10,19 @@ import {
 import Collapsible from "react-native-collapsible";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
+import { Table, Row, Rows } from "react-native-table-component";
 
 const PerguntasFrequentes = ({ navigation }) => {
   const [perguntaAtiva, setPerguntaAtiva] = useState(null);
+
+  const produtosAAPM = [
+    ["Produtos"],
+    ["Bola de tênis de mesa"],
+    ["Camiseta básica (BM, P, G, GG, EG, EGG)"],
+    ["Cordão para crachá"],
+    ["Óculos de segurança com CA"],
+    ["Rede para cabelo"],
+  ];
 
   const faqs = [
     {
@@ -162,25 +172,26 @@ const PerguntasFrequentes = ({ navigation }) => {
             <Text style={{ fontWeight: "bold" }}>segunda à sábado</Text>, nos
             seguintes horários:
           </Text>
+          <Text>Segunda-feira à quinta-feira: 8:30 às 13:30 e 15:00 às 22:00</Text>
+          <Text>Sexta-feira: 8:30 às 13:30 e 15:00 às 22:00</Text>
+          <Text>Sábado: 8:00 às 12:15 e 12:30 às 14:15</Text>
         </View>
       ),
     },
     {
-      pergunta: "• Como faço para obter o uniforme escolar?",
+      pergunta: "• Produtos vendidos pela escola",
       conteudoResposta: (
         <View>
-          <Text style={styles.txtResposta}>
-            O uniforme escolar pode ser adquirido dentro da própria escola! Para
-            realizar sua obtenção, você pode se dirigir ao setor de apoio e
-            fazer a requisição do mesmo. O tamanho dos uniformes se inicia em PP
-            e vai até XGG. Seguem os preços:
-          </Text>
-          <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Sócio -</Text> R$25,00
-          </Text>
-          <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Não sócio -</Text> R$33,00
-          </Text>
+          <Text style={{fontSize: 24}}><Text style={{color: 'red'}}>*</Text>Consultar valores no setor de apoio</Text>
+          <View style={styles.espaco} />
+          <Table borderStyle={{ borderWidth: 1, borderColor: "#ccc" }}>
+            <Row
+              data={produtosAAPM[0]}
+              style={styles.head}
+              textStyle={styles.headText}
+            />
+            <Rows data={produtosAAPM.slice(1)} textStyle={styles.rowText} />
+          </Table>
         </View>
       ),
     },
@@ -206,10 +217,12 @@ const PerguntasFrequentes = ({ navigation }) => {
             Preços da AAPM:
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>1 semestre -</Text> R$***,**
+            <Text style={{ fontWeight: "bold" }}>Semestral -</Text> R$120,00
           </Text>
           <Text style={styles.txtResposta}>
-            <Text style={{ fontWeight: "bold" }}>Integral -</Text> R$***,**
+            <Text style={{ fontWeight: "bold" }}>Integral -</Text> R$380,00{" "}
+            {"("}Em até 6x {"("}dinheiro, cartão ou pix{")"}
+            {")"}
           </Text>
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>
@@ -256,7 +269,10 @@ const PerguntasFrequentes = ({ navigation }) => {
                 onPress={() => togglePergunta(index)}
               >
                 <Text style={styles.perguntaTxt}>{faq.pergunta}</Text>
-                <Image source={require("./../assets/icons/chevron-down-solid.svg")} style={{height: 25, width: 25, margin: 25}}/>
+                <Image
+                  source={require("./../assets/icons/chevron-down-solid.svg")}
+                  style={{ height: 25, width: 25, margin: 25 }}
+                />
               </Pressable>
             ) : null}
             <Collapsible collapsed={perguntaAtiva !== index}>
@@ -348,6 +364,20 @@ const styles = StyleSheet.create({
   },
   espaco: {
     height: 10,
+  },
+  head: { 
+    height: 60, 
+    backgroundColor: "red", 
+  },
+  headText: { 
+    fontSize: 30,
+    margin: 6,
+    color: 'white',
+    textAlign: 'center',
+  },
+  rowText: { 
+    fontSize: 30,
+    margin: 6,
   },
 });
 

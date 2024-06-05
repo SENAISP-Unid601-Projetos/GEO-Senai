@@ -53,7 +53,7 @@ const CadastroVaga = ({ navigation }) => {
     };
 
     // Enviar os dados para o backend
-    fetch(local, {
+    fetch(nuvem, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

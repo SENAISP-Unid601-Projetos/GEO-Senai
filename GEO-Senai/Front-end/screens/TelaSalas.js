@@ -19,13 +19,13 @@ const TelaSalas = ({ navigation, route }) => {
   const [existeProximo, setExisteProximo] = useState(true);
   const [existeAnterior, setExisteAnterior] = useState(false);
 
-  const { local, andar } = route.params;
+  const { link, andar } = route.params;
 
   const nuvem = "https://appsenai.azurewebsites.net/salas";
 
   useEffect(() => {
     if (atualizarLista) {
-      fetch(local, {
+      fetch(link, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -37,7 +37,7 @@ const TelaSalas = ({ navigation, route }) => {
         .catch((error) => Alert.alert("Erro ao obter salas:", error))
         .finally(() => setAtualizarLista(false));
     }
-  }, [atualizarLista, local]);
+  }, [atualizarLista, link]);
 
   useEffect(() => {
     setPaginaAtual(0);

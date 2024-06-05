@@ -15,15 +15,14 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "https://appback.azurewebsites.net/")
 @RestController
 @RequestMapping("/salas")
 public class SalaResource {
     @Autowired
     private SalaRepository salaRepository;
 
-    private static final String UPLOAD_DIR = "C:/GEO-Senai/Back-end/src/main/java/br/com/example/geo_senai/upload/";
-
+    private static final String UPLOAD_DIR = "../upload/";
     int n = 0;
 
     @PostMapping("/upload/{nome}")
