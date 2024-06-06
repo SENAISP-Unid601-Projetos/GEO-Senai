@@ -43,17 +43,17 @@ const TelaMapa = ({ navigation }) => {
     switch (selectedValue) {
       case "Mapa área 1 (superior)":
         navigation.navigate("TelaQR", {
-          imagemLink: require("./../assets/mapaSenaiQR.png"),
+          imagemLink: require("./../assets/area1superiorqrcode.png"),
         });
         break;
       case "Mapa área 1 (inferior)":
         navigation.navigate("TelaQR", {
-          imagemLink: require("./../assets/blocobQR.png"),
+          imagemLink: require("./../assets/area1inferiorqrcode.png"),
         });
         break;
       case "Mapa área 2":
         navigation.navigate("TelaQR", {
-          imagemLink: require("./../assets/areadoisQR.png"),
+          imagemLink: require("./../assets/area2qrcode.png"),
         });
         break;
     }
@@ -67,22 +67,19 @@ const TelaMapa = ({ navigation }) => {
       case "Mapa área 1 (inferior)":
         navigation.navigate(
           "TelaSalas",
-          { link: "https://appback.azurewebsites.net/salas/area1-inferior" },
-          { andar: "Área 1 (inferior)" }
+          { link: "https://appback.azurewebsites.net/salas/area1-inferior", andar: "Área 1 (inferior)" }
         );
         break;
       case "Mapa área 1 (superior)":
         navigation.navigate(
           "TelaSalas",
-          { link: "https://appback.azurewebsites.net/salas/area1-superior" },
-          { andar: "Área 1 (superior)" }
+          { link: "https://appback.azurewebsites.net/salas/area1-superior", andar: "Área 1 (superior)" }
         );
         break;
       case "Mapa área 2":
         navigation.navigate(
           "TelaSalas",
-          { link: "https://appback.azurewebsites.net/salas/area2" },
-          { andar: "Área 2" }
+          { link: "https://appback.azurewebsites.net/salas/area2", andar: "Área 2" }
         );
         break;
     }

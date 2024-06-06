@@ -10,7 +10,7 @@ const TelaQR = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textoTitulo}>Obrigado por utilizar esse totem</Text>
+      <Text style={styles.textoTitulo}>Obrigado por utilizar o GEO SENAI :{")"}</Text>
       <View style={styles.textoMid}>
         <Text style={styles.texto}>Escaneie para baixar o mapa </Text>
       </View>
