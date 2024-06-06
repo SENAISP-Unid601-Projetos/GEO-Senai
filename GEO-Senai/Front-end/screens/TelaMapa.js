@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable, Picker, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Picker,
+  Image,
+  Modal,
+} from "react-native";
 import Mapa from "../src/components/Mapa";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
+import { useApresentacao } from "../src/context/ApresentacaoContext";
 
 const TelaMapa = ({ navigation }) => {
   const { acessibilidade } = useAcessibilidade();
+  const { modoApresentacao, modalVisibility, setModalVisibility, toggleModal } = useApresentacao();
 
   const [mapaSelecionado, setMapaSelecionado] = useState("1");
   const [selectedValue, setSelectedValue] = useState("Mapa área 1 (superior)");
-
-  const toggleImage = () => {
-    setShowImage(!showImage);
-  };
 
   const falarTexto = (texto) => {
     Speech.speak(texto, { language: "pt-BR" });
@@ -65,25 +71,31 @@ const TelaMapa = ({ navigation }) => {
   const btnSalas = () => {
     switch (selectedValue) {
       case "Mapa área 1 (inferior)":
-        navigation.navigate(
-          "TelaSalas",
-          { link: "https://appback.azurewebsites.net/salas/area1-inferior", andar: "Área 1 (inferior)" }
-        );
+        navigation.navigate("TelaSalas", {
+          link: "https://appback.azurewebsites.net/salas/area1-inferior",
+          andar: "Área 1 (inferior)",
+        });
         break;
       case "Mapa área 1 (superior)":
-        navigation.navigate(
-          "TelaSalas",
-          { link: "https://appback.azurewebsites.net/salas/area1-superior", andar: "Área 1 (superior)" }
-        );
+        navigation.navigate("TelaSalas", {
+          link: "https://appback.azurewebsites.net/salas/area1-superior",
+          andar: "Área 1 (superior)",
+        });
         break;
       case "Mapa área 2":
-        navigation.navigate(
-          "TelaSalas",
-          { link: "https://appback.azurewebsites.net/salas/area2", andar: "Área 2" }
-        );
+        navigation.navigate("TelaSalas", {
+          link: "https://appback.azurewebsites.net/salas/area2",
+          andar: "Área 2",
+        });
         break;
     }
   };
+
+  useEffect(() => {
+    if (modoApresentacao) {
+      setModalVisibility(true);
+    }
+  }, [modoApresentacao]); 
 
   return (
     <View style={styles.container}>
@@ -94,10 +106,16 @@ const TelaMapa = ({ navigation }) => {
               onPress={() => navigation.goBack()}
               style={styles.backButton}
             >
-              <Image source={require('./../assets/icons/arrow-left-solid.svg')} style={{height: 50, width: 50}} />
+              <Image
+                source={require("./../assets/icons/arrow-left-solid.svg")}
+                style={{ height: 50, width: 50 }}
+              />
             </Pressable>
 
-            <Image source={require('./../assets/icons/map-black-solid.svg')} style={{...styles.icon, height: 50, width: 50}} />
+            <Image
+              source={require("./../assets/icons/map-black-solid.svg")}
+              style={{ ...styles.icon, height: 50, width: 50 }}
+            />
           </View>
 
           <Picker
@@ -130,10 +148,58 @@ const TelaMapa = ({ navigation }) => {
           <Mapa mapaSelecionado={mapaSelecionado} />
         </View>
 
-        <Pressable style={styles.btnsalas} onPress={btnSalas}> 
+        <Pressable style={styles.btnsalas} onPress={btnSalas}>
           <Text style={styles.textoBtnSalas}>Salas</Text>
         </Pressable>
 
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisibility}
+          onRequestClose={toggleModal}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text
+                style={{
+                  ...styles.modalText,
+                  fontSize: 40,
+                  fontWeight: "bold",
+                }}
+              >
+                Tela de mapas
+              </Text>
+              <Text style={styles.modalText}>
+                Através desta tela você pode localizar as salas dentro da escola em um dos 3 mapas
+                disponíveis e baixá-lo para o seu celular
+              </Text>
+              <Image
+                source={require("./../assets/apresentacao/mapa.png")}
+                style={{ height: 600, width: 1070 }}
+              />
+              <Pressable
+                onPress={toggleModal}
+                style={{
+                  alignItems: "center",
+                  backgroundColor: "red",
+                  borderRadius: 20,
+                  margin: 20,
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 30,
+                    fontWeight: "bold",
+                    padding: 10,
+                    color: "white",
+                  }}
+                >
+                  Continuar
+                </Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
       </View>
     </View>
   );
@@ -316,21 +382,48 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   btnsalas: {
-    alignSelf: 'center',
-    textItems: 'center',
-    width: '10%',
-    height: '7%',
-    backgroundColor: 'red',
+    alignSelf: "center",
+    textItems: "center",
+    width: "10%",
+    height: "7%",
+    backgroundColor: "red",
     borderRadius: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   textoBtnSalas: {
-    color: 'white',
+    color: "white",
     fontSize: 30,
-    alignSelf: 'center',
-    fontWeight: 'bold',
+    alignSelf: "center",
+    fontWeight: "bold",
   },
-
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // escurece o fundo
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderWidth: 2,
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 24,
+  },
 });
 
 export default TelaMapa;

@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { StyleSheet, Text, View, Image, Pressable, Modal } from "react-native";
 import SwitchToggle from "react-native-switch-toggle";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
 import * as Animatable from "react-native-animatable";
+import { useApresentacao } from "../src/context/ApresentacaoContext";
 
 const TelaInicial = ({ navigation }) => {
   const { acessibilidade, toggleAcessibilidade } = useAcessibilidade();
+  const { modoApresentacao, toggleApresentacao, modalVisibility, toggleModal } = useApresentacao();
 
   const falarTexto = (texto) => {
     Speech.speak(texto, { language: "pt-BR" });
@@ -48,6 +50,20 @@ const TelaInicial = ({ navigation }) => {
     }
   };
 
+  const [opcoes, setOpcoes] = useState(false);
+
+  const toggleOpcoes = () => {
+    setOpcoes(!opcoes);
+  };
+
+  const switchToggle = () => {
+    if (!modoApresentacao) {
+      toggleModal();
+    }
+    toggleApresentacao();
+    setOpcoes(false);
+  };
+
   const viewBemVindoRef = useRef(null);
   const viewFaqsRef = useRef(null);
 
@@ -71,15 +87,59 @@ const TelaInicial = ({ navigation }) => {
         style={styles.senai}
       />
 
-      <View style={styles.switchContainer}>
-        <SwitchToggle
-          backgroundColorOff="black"
-          backgroundColorOn="red"
-          circleStyle={styles.circleStyle}
-          switchOn={acessibilidade}
-          onPress={toggleAcessibilidade}
-        />
-      </View>
+      {!opcoes && (
+        <Pressable
+          onPress={toggleOpcoes}
+          style={{ position: "absolute", top: 20, right: 20 }}
+        >
+          <Image
+            source={require("./../assets/icons/gear-solid.svg")}
+            style={{ width: 75, height: 75 }}
+          />
+        </Pressable>
+      )}
+
+      {opcoes && (
+        <View style={styles.switchContainer}>
+          <View style={{ flexDirection: "row", marginHorizontal: 10 }}>
+            {opcoes && (
+              <Text style={{ fontSize: 30, margin: 10 }}>Auxílio de voz</Text>
+            )}
+            {opcoes && (
+              <SwitchToggle
+                backgroundColorOff="black"
+                backgroundColorOn="red"
+                circleStyle={styles.circleStyle}
+                switchOn={acessibilidade}
+                onPress={toggleAcessibilidade}
+              />
+            )}
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              marginHorizontal: 10,
+              paddingBottom: 10,
+            }}
+          >
+            {opcoes && (
+              <Text style={{ fontSize: 30, margin: 10 }}>
+                Modo Apresentação
+              </Text>
+            )}
+            {opcoes && (
+              <SwitchToggle
+                backgroundColorOff="black"
+                backgroundColorOn="red"
+                circleStyle={styles.circleStyle}
+                switchOn={modoApresentacao}
+                onPress={switchToggle}
+              />
+            )}
+          </View>
+        </View>
+      )}
 
       <Animatable.View ref={viewBemVindoRef} style={{ alignItems: "center" }}>
         <Text style={styles.BemVindo}>Seja bem-vindo ao GEO SENAI!</Text>
@@ -128,7 +188,7 @@ const TelaInicial = ({ navigation }) => {
         <Pressable onPress={botaoFAQ} style={styles.btnFaqs}>
           <Image
             source={require("./../assets/icons/circle-question-solid.svg")}
-            style={{width: 75, height: 75}}
+            style={{ width: 75, height: 75 }}
           />
         </Pressable>
       </Animatable.View>
@@ -136,6 +196,33 @@ const TelaInicial = ({ navigation }) => {
       <Text style={styles.textoOculto}>
         Todos os direitos reservados para Templarios®
       </Text>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibility}
+        onRequestClose={() => {
+          setModalVisibility(!modalVisibility);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={{...styles.modalText, fontSize: 40, fontWeight: 'bold'}}>Olá, bem vindo ao GEO SENAI!</Text>
+            <Text style={styles.modalText}>Conheça o nosso menu principal</Text>
+            <Image source={require("./../assets/apresentacao/menuInicial.png")} style={{height: 600, width: 1070}}/>
+            <Pressable onPress={toggleModal}
+              style={{
+                alignItems: "center",
+                backgroundColor: "red",
+                borderRadius: 20,
+                margin: 20,
+              }}
+            >
+              <Text style={{ fontSize: 30, fontWeight:'bold', padding: 10, color: 'white' }}>Vamos lá?</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -155,6 +242,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     right: 20,
+    justifyContent: "center",
+    borderWidth: 2,
+    borderRadius: 10,
+    backgroundColor: "white",
+    alignItems: "flex-end",
   },
   circleStyle: {
     width: 30,
@@ -251,12 +343,6 @@ const styles = StyleSheet.create({
     color: "#C8C8C8",
     fontSize: 20,
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
   input: {
     height: 40,
     width: 200,
@@ -268,6 +354,34 @@ const styles = StyleSheet.create({
   icon: {
     height: 50,
     width: 50,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // escurece o fundo
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderWidth: 2,
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 24,
   },
 });
 

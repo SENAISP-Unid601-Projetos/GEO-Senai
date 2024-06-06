@@ -14,6 +14,7 @@ import TelaHorarios from "./screens/TelaHorarios";
 import PerguntasFrequentes from "./screens/PerguntasFrequentes";
 import TelaSalas from "./screens/TelaSalas";
 import { AcessibilidadeProvider } from "./src/context/AcessibilidadeContext";
+import { ApresentacaoProvider } from "./src/context/ApresentacaoContext";
 
 const Stack = createStackNavigator();
 
@@ -63,6 +64,7 @@ const App = () => {
   };
 
   return (
+    <ApresentacaoProvider>
     <AcessibilidadeProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="TelaInicial">
@@ -125,6 +127,7 @@ const App = () => {
         {showCarousel && <Carrossel onClose={handleCloseCarousel} />}
       </NavigationContainer>
     </AcessibilidadeProvider>
+    </ApresentacaoProvider>
   );
 };
 

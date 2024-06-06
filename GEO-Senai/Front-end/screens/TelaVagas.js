@@ -6,12 +6,16 @@ import {
   Pressable,
   ScrollView,
   Image,
+  Modal,
 } from "react-native";
 import { useAcessibilidade } from "../src/context/AcessibilidadeContext";
 import * as Speech from "expo-speech";
+import { useApresentacao } from "../src/context/ApresentacaoContext";
 
 const TelaVagas = ({ navigation }) => {
   const { acessibilidade } = useAcessibilidade();
+  const { modoApresentacao, modalVisibility, setModalVisibility, toggleModal } =
+    useApresentacao();
 
   const [vagas, setVagas] = useState([]);
 
@@ -163,6 +167,12 @@ const TelaVagas = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    if (modoApresentacao) {
+      setModalVisibility(true);
+    }
+  }, [modoApresentacao]);
+
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
@@ -227,6 +237,55 @@ const TelaVagas = ({ navigation }) => {
         />
         <Text style={styles.buttonAttText}>Atualizar Lista</Text>
       </Pressable>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibility}
+        onRequestClose={toggleModal}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text
+              style={{
+                ...styles.modalText,
+                fontSize: 40,
+                fontWeight: "bold",
+              }}
+            >
+              Painel de vagas de emprego
+            </Text>
+            <Text style={styles.modalText}>
+              Através desta tela você pode navegar por vagas de emprego
+              cadastradas do mural do SENAI e obter informações sobre elas
+            </Text>
+            <Image
+              source={require("./../assets/apresentacao/telaVagas.png")}
+              style={{ height: 600, width: 1070 }}
+            />
+            <Pressable
+              onPress={toggleModal}
+              style={{
+                alignItems: "center",
+                backgroundColor: "red",
+                borderRadius: 20,
+                margin: 20,
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 30,
+                  fontWeight: "bold",
+                  padding: 10,
+                  color: "white",
+                }}
+              >
+                Continuar
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -349,6 +408,34 @@ const styles = StyleSheet.create({
   paginaAtual: {
     fontSize: 35,
     marginHorizontal: 10,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // escurece o fundo
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderWidth: 2,
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 24,
   },
 });
 
