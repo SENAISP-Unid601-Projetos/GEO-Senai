@@ -56,9 +56,17 @@ const TelaInicial = ({ navigation }) => {
     setOpcoes(!opcoes);
   };
 
+  const [modalTchau, setModalTchau] = useState(false);
+
+  const toggleModalTchau = () => {
+    setModalTchau(!modalTchau)
+  }
+
   const switchToggle = () => {
     if (!modoApresentacao) {
       toggleModal();
+    } else {
+      toggleModalTchau();
     }
     toggleApresentacao();
     setOpcoes(false);
@@ -223,6 +231,36 @@ const TelaInicial = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalTchau}
+        onRequestClose={() => {
+          setModalTchau(!modalTchau);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={{...styles.modalText, fontSize: 40, fontWeight: 'bold'}}>Parece que nosso tempo chegou ao fim...</Text>
+            <Text style={{...styles.modalText, fontSize: 30}}>Obrigado por utilizar o GEO SENAI :{")"} .</Text>
+            <Text style={{...styles.modalText, fontSize: 28}}>Agora, que tal visitar também o <Text style={{fontWeight: 'bold'}}>IntelliSpace</Text> no andar de cima?</Text>
+            <Text style={{...styles.modalText, fontSize: 28}}>Escaneie o QR code abaixo e <Text style={{fontWeight: 'bold'}}>obtenha o caminho para o projeto no auditório</Text>!</Text>
+            <Image source={require("./../assets/Caminho_IntelliSpace.png")} style={{height: 500, width: 500}}/>
+            <Pressable onPress={toggleModalTchau}
+              style={{
+                alignItems: "center",
+                backgroundColor: "red",
+                borderRadius: 20,
+                margin: 20,
+              }}
+            >
+              <Text style={{ fontSize: 30, fontWeight:'bold', padding: 10, color: 'white' }}>Até logo</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+
     </View>
   );
 };
