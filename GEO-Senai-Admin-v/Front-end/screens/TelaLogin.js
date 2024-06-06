@@ -19,10 +19,11 @@ const TelaLogin = ({ navigation }) => {
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
   const local = "http://10.110.12.19:8080/admin/login";  // URL do endpoint de login
+  const nuvem = "https://appback.azurewebsites.net/admin/login";
 
   const realizarLogin = async () => {
     try {
-      const response = await axios.post(local, {
+      const response = await axios.post(nuvem, {
         usuarioAdmin: logarUsuario,
         senhaAdmin: logarSenha,
       });
