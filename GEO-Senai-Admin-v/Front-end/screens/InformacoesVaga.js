@@ -6,7 +6,6 @@ import {
   Image,
   Pressable,
   Modal,
-  Button,
   Alert,
   ScrollView,
 } from "react-native";
@@ -54,7 +53,10 @@ const InformacoesVaga = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+      <Image
+          source={require('./../assets/icons/arrow-left-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
       </Pressable>
 
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
@@ -96,13 +98,19 @@ const InformacoesVaga = ({ route, navigation }) => {
 
       <Pressable style={styles.lixeiraButton} onPress={toggleModal}>
         <View style={styles.circle}>
-          <FontAwesome name="trash" size={24} color="white" />
+        <Image
+          source={require('./../assets/icons/trash-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
         </View>
       </Pressable>
 
       <Pressable style={styles.editarButton} onPress={editarVaga}>
         <View style={styles.circle}>
-          <FontAwesome name="pencil" size={24} color="white" />
+        <Image
+          source={require('./../assets/icons/pencil-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
         </View>
       </Pressable>
 

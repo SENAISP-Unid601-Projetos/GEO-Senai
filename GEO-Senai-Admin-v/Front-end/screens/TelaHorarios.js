@@ -1,32 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
+import React, { useState, useEffect } from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Pressable,
+  Image,
+} from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const TelaHorarios = ({ navigation, route }) => {
-  const { turma } = route.params;
+  const { turma } = route.params
 
-  const local = `http://10.110.12.19:8080/turmas/editar/${turma.id_turma}`;
-  const nuvem = `https://appsenai.azurewebsites.net/turmas/editar/${turma.id_turma}`;
+  const local = `http://10.110.12.19:8080/turmas/editar/${turma.id_turma}`
+  const nuvem = `https://appsenai.azurewebsites.net/turmas/editar/${turma.id_turma}`
 
-  const [editando, setEditando] = useState(false);
-  const [segundaHrr, setSegundaHrr] = useState("");
-  const [tercaHrr, setTercaHrr] = useState("");
-  const [quartaHrr, setQuartaHrr] = useState("");
-  const [quintaHrr, setQuintaHrr] = useState("");
-  const [sextaHrr, setSextaHrr] = useState("");
+  const [editando, setEditando] = useState(false)
+  const [segundaHrr, setSegundaHrr] = useState('')
+  const [tercaHrr, setTercaHrr] = useState('')
+  const [quartaHrr, setQuartaHrr] = useState('')
+  const [quintaHrr, setQuintaHrr] = useState('')
+  const [sextaHrr, setSextaHrr] = useState('')
 
   useEffect(() => {
-    setSegundaHrr(turma.seg_horario);
-    setTercaHrr(turma.ter_horario);
-    setQuartaHrr(turma.qua_horario);
-    setQuintaHrr(turma.qui_horario);
-    setSextaHrr(turma.sex_horario);
-  }, [turma]);
+    setSegundaHrr(turma.seg_horario)
+    setTercaHrr(turma.ter_horario)
+    setQuartaHrr(turma.qua_horario)
+    setQuintaHrr(turma.qui_horario)
+    setSextaHrr(turma.sex_horario)
+  }, [turma])
 
   const editar = () => {
-    setEditando(!editando);
-  };
+    setEditando(!editando)
+  }
 
   const salvarHorarios = () => {
     const turmaEditada = {
@@ -40,36 +47,36 @@ const TelaHorarios = ({ navigation, route }) => {
       qua_horario: quartaHrr,
       qui_horario: quintaHrr,
       sex_horario: sextaHrr,
-    };
+    }
 
     fetch(nuvem, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(turmaEditada),
     })
       .then((response) => {
         if (response.ok) {
           // Atualiza o estado das variáveis de horários
-          turma.seg_horario = segundaHrr;
-          turma.ter_horario = tercaHrr;
-          turma.qua_horario = quartaHrr;
-          turma.qui_horario = quintaHrr;
-          turma.sex_horario = sextaHrr;
-          editar();
+          turma.seg_horario = segundaHrr
+          turma.ter_horario = tercaHrr
+          turma.qua_horario = quartaHrr
+          turma.qui_horario = quintaHrr
+          turma.sex_horario = sextaHrr
+          editar()
         } else {
-          throw new Error("Erro ao salvar horários");
+          throw new Error('Erro ao salvar horários')
         }
       })
       .catch((error) => {
-        console.error("Erro ao editar turma:", error);
+        console.error('Erro ao editar turma:', error)
         Alert.alert(
-          "Erro",
-          "Erro ao editar turma. Por favor, tente novamente mais tarde."
-        );
-      });
-  };
+          'Erro',
+          'Erro ao editar turma. Por favor, tente novamente mais tarde.'
+        )
+      })
+  }
 
   return (
     <View style={styles.container}>
@@ -78,19 +85,28 @@ const TelaHorarios = ({ navigation, route }) => {
           onPress={() => navigation.goBack()}
           style={styles.backButton}
         >
-          <FontAwesome name="arrow-left" size={24} color="black" />
+          <Image
+            source={require('./../assets/icons/arrow-left-solid.png')}
+            style={{ width: 24, height: 24 }}
+          />
         </Pressable>
         {editando == false && (
           <Pressable style={styles.editarButton} onPress={editar}>
             <View style={styles.circle}>
-              <FontAwesome name="pencil" size={24} color="white" />
+              <Image
+                source={require('./../assets/icons/pencil-solid.png')}
+                style={{ width: 24, height: 24 }}
+              />
             </View>
           </Pressable>
         )}
         {editando && (
           <Pressable style={styles.editarButton} onPress={salvarHorarios}>
             <View style={styles.circle}>
-              <FontAwesome name="check" size={24} color="white" />
+              <Image
+                source={require('./../assets/icons/check-solid.png')}
+                style={{ width: 24, height: 24 }}
+              />
             </View>
           </Pressable>
         )}
@@ -192,70 +208,70 @@ const TelaHorarios = ({ navigation, route }) => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#E8E8E8",
+    alignItems: 'center',
+    backgroundColor: '#E8E8E8',
   },
   fundoCinza: {
-    backgroundColor: "gray",
-    width: "95%",
-    height: "75%",
+    backgroundColor: 'gray',
+    width: '95%',
+    height: '75%',
     padding: 10,
-    alignItems: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: 20,
   },
   quadroCinzaPequenoTitulo: {
-    backgroundColor: "#d3d3d3",
-    width: "100%",
+    backgroundColor: '#d3d3d3',
+    width: '100%',
     height: 80,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: 'black',
     marginTop: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   quadroCinzaPequeno: {
-    backgroundColor: "#d3d3d3",
-    width: "50%",
-    height: "16%",
+    backgroundColor: '#d3d3d3',
+    width: '50%',
+    height: '16%',
     marginTop: 5,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "black",
-    justifyContent: "center",
-    alignItems: "center",
+    borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   quadroTexto: {
     fontSize: RFValue(18),
-    fontWeight: "bold",
-    color: "black",
+    fontWeight: 'bold',
+    color: 'black',
   },
   quadroTextoTitulo: {
     fontSize: 25,
-    fontWeight: "bold",
-    color: "black",
+    fontWeight: 'bold',
+    color: 'black',
   },
   txtHorarios: {
     marginTop: 20,
     fontSize: 25,
   },
   backButton: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     marginTop: 60,
-    marginRight: "70%",
+    marginRight: '70%',
   },
   cabecalho: {
-    flexDirection: "row",
-    justifyContent: "center",
-    height: "10%",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    height: '10%',
   },
   editarButton: {
     marginTop: 50,
@@ -264,14 +280,14 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: "red",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
     textAlign: 'center',
     fontSize: RFValue(18),
   },
-});
+})
 
-export default TelaHorarios;
+export default TelaHorarios

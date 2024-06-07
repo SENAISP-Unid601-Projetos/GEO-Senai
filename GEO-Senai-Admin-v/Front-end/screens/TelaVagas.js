@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import {
   StyleSheet,
   Text,
@@ -6,70 +6,68 @@ import {
   Pressable,
   ScrollView,
   Modal,
-  Button,
   Alert,
-} from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
+  Image,
+} from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const TelaVagas = ({ navigation }) => {
-  const [vagas, setVagas] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [vagas, setVagas] = useState([])
+  const [modalVisible, setModalVisible] = useState(false)
 
-  const local = "http://10.110.12.19:8080/vagas";
-  const nuvem = "https://appsenai.azurewebsites.net/vagas";
+  const local = 'http://10.110.12.19:8080/vagas'
+  const nuvem = 'https://appsenai.azurewebsites.net/vagas'
 
-  const localD = "http://10.110.12.19:8080/vagas/deletar/all";
-  const nuvemD = "https://appsenai.azurewebsites.net/vagas/deletar/all";
+  const localD = 'http://10.110.12.19:8080/vagas/deletar/all'
+  const nuvemD = 'https://appsenai.azurewebsites.net/vagas/deletar/all'
 
   const botaoMais = () => {
-    navigation.navigate("CadastroVaga");
-  };
+    navigation.navigate('CadastroVaga')
+  }
 
   const atualizarVagas = () => {
     fetch(nuvem, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
     })
       .then((response) => response.json())
       .then((data) => setVagas(data))
-      .catch((error) => console.error("Erro ao obter vagas:", error));
-  };
+      .catch((error) => console.error('Erro ao obter vagas:', error))
+  }
 
   const toggleModal = () => {
-    setModalVisible(!modalVisible);
-  };
+    setModalVisible(!modalVisible)
+  }
 
   const excluiTudo = async () => {
-    setModalVisible(false);
+    setModalVisible(false)
 
     try {
-      const response = await fetch(nuvemD,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(nuvemD, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
 
       if (response.ok) {
-        Alert.alert("Sucesso na exclusão.");
+        Alert.alert('Sucesso na exclusão.')
       } else {
-        Alert.alert("Erro ao excluir vagas");
+        Alert.alert('Erro ao excluir vagas')
       }
     } catch (error) {
-      console.error("Erro ao excluir vagas:", error);
-      Alert.alert("Erro ao excluir vagas. Verifique sua conexão de internet.");
+      console.error('Erro ao excluir vagas:', error)
+      Alert.alert('Erro ao excluir vagas. Verifique sua conexão de internet.')
     }
-  };
+  }
 
   useEffect(() => {
-    atualizarVagas();
-  }, []);
+    atualizarVagas()
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -78,7 +76,10 @@ const TelaVagas = ({ navigation }) => {
           onPress={() => navigation.goBack()}
           style={styles.backButton}
         >
-          <FontAwesome name="arrow-left" size={24} color="black" />
+          <Image
+            source={require('./../assets/icons/arrow-left-solid.png')}
+            style={{ width: 24, height: 24 }}
+          />
         </Pressable>
       </View>
 
@@ -93,7 +94,7 @@ const TelaVagas = ({ navigation }) => {
               key={vaga.id}
               style={styles.ButtonVagas}
               onPress={() =>
-                navigation.navigate("InformacoesVaga", { vaga: vaga })
+                navigation.navigate('InformacoesVaga', { vaga: vaga })
               }
             >
               <Text style={styles.buttonText}>
@@ -109,11 +110,17 @@ const TelaVagas = ({ navigation }) => {
       </Pressable>
 
       <Pressable style={styles.addButton} onPress={botaoMais}>
-        <FontAwesome name="plus" size={24} color="white" />
+        <Image
+          source={require('./../assets/icons/plus-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
       </Pressable>
 
       <Pressable style={styles.updateButton} onPress={atualizarVagas}>
-        <FontAwesome name="refresh" size={24} color="white" />
+      <Image
+          source={require('./../assets/icons/arrows-rotate-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
       </Pressable>
 
       <Modal
@@ -121,17 +128,23 @@ const TelaVagas = ({ navigation }) => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          setModalVisible(!modalVisible);
+          setModalVisible(!modalVisible)
         }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Confirma a exclusão?</Text>
             <View style={styles.buttonsContainer}>
-              <Pressable style={[styles.botoesModalCancelar]} onPress={toggleModal}>
+              <Pressable
+                style={[styles.botoesModalCancelar]}
+                onPress={toggleModal}
+              >
                 <Text style={styles.texto}>Cancelar</Text>
               </Pressable>
-              <Pressable style={[styles.botoesModalConfirmar]} onPress={excluiTudo}>
+              <Pressable
+                style={[styles.botoesModalConfirmar]}
+                onPress={excluiTudo}
+              >
                 <Text style={styles.texto}>Confirmar</Text>
               </Pressable>
             </View>
@@ -139,18 +152,18 @@ const TelaVagas = ({ navigation }) => {
         </View>
       </Modal>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E8E8E8",
+    backgroundColor: '#E8E8E8',
     padding: 20,
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 20,
   },
   backButton: {
@@ -158,78 +171,78 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   headerTitle: {
-    textAlign: "center",
-    color: "black",
+    textAlign: 'center',
+    color: 'black',
     fontSize: 25,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   scrollContainer: {
     flexGrow: 1,
   },
   Buttons: {
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: 'center',
     marginTop: 20,
   },
   ButtonVagas: {
-    backgroundColor: "#ff0000",
+    backgroundColor: '#ff0000',
     padding: 20,
     marginBottom: 10,
-    alignItems: "center",
-    width: "80%",
+    alignItems: 'center',
+    width: '80%',
   },
   ButtonExcluiTudo: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 20,
     left: 20,
-    backgroundColor: "black",
+    backgroundColor: 'black',
     width: 150,
     height: 50,
     borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonText: {
-    color: "#fff",
-    fontSize:RFValue (14),
-    fontWeight: "bold",
+    color: '#fff',
+    fontSize: RFValue(14),
+    fontWeight: 'bold',
   },
   addButton: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 20,
     right: 20,
-    backgroundColor: "black",
+    backgroundColor: 'black',
     width: 50,
     height: 50,
     borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   updateButton: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 20,
     right: 90,
-    backgroundColor: "black",
+    backgroundColor: 'black',
     width: 50,
     height: 50,
     borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 22,
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderWidth: 2,
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -240,34 +253,33 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center",
-    color: "red",
-    fontWeight: "bold",
+    textAlign: 'center',
+    color: 'red',
+    fontWeight: 'bold',
   },
   buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
   },
   botoesModalCancelar: {
     borderRadius: 10,
-    backgroundColor: "#4287f5",
+    backgroundColor: '#4287f5',
     alignItems: 'center',
     margin: 5,
   },
   botoesModalConfirmar: {
     margin: 5,
     borderRadius: 10,
-    backgroundColor: "red",
+    backgroundColor: 'red',
     alignItems: 'center',
   },
   texto: {
-    padding: 7  ,
+    padding: 7,
     fontWeight: 'bold',
     fontSize: RFValue(18),
     color: 'white',
   },
+})
 
-});
-
-export default TelaVagas;
+export default TelaVagas

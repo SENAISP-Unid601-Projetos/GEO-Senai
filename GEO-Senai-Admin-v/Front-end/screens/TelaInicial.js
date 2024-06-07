@@ -1,42 +1,44 @@
 // Tela inicial da versão de administrador do GEO SENAI
 
-import React from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
-
+import React from 'react'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const TelaInicial = ({ navigation }) => {
   const botaoTurmas = () => {
-    navigation.navigate("TelaTurmas");
-  };
+    navigation.navigate('TelaTurmas')
+  }
 
   const botaoVagas = () => {
-    navigation.navigate("TelaVagas");
-  };
+    navigation.navigate('TelaVagas')
+  }
 
   const botaoAdmin = () => {
-    navigation.navigate("CadastroAdmin");
-  };
+    navigation.navigate('CadastroAdmin')
+  }
 
   return (
     <View style={styles.container}>
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: "100%",
-          height: "15%",
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '100%',
+          height: '15%',
         }}
       >
-        <Image source={require("./../assets/Brasil.png")} style={styles.logo} />
+        <Image source={require('./../assets/Brasil.png')} style={styles.logo} />
         <Pressable onPress={() => navigation.navigate('PerguntasFrequentes')}>
-          <FontAwesome name="question-circle" size={50} color="red" />
+          <Image
+            source={require('./../assets/icons/circle-question-solid.png')}
+            style={{ width: 50, height: 50 }}
+          />
         </Pressable>
       </View>
 
       <Image
-        source={require("./../assets/logoSenai.png")}
+        source={require('./../assets/logoSenai.png')}
         style={styles.senai}
       />
 
@@ -47,32 +49,41 @@ const TelaInicial = ({ navigation }) => {
 
       <Pressable style={styles.classesButton} onPress={botaoTurmas}>
         <Text style={styles.buttonText}>Gerenciar turmas</Text>
-        <FontAwesome name="users" size={30} color="#ffffff" />
+        <Image
+          source={require('./../assets/icons/users-solid.png')}
+          style={{ width: 40, height: 30 }}
+        />
       </Pressable>
 
       <Pressable style={styles.classesButton} onPress={botaoVagas}>
         <Text style={styles.buttonText}>Gerenciar vagas</Text>
-        <FontAwesome name="user-plus" size={30} color="#ffffff" />
+        <Image
+          source={require('./../assets/icons/user-plus-solid.png')}
+          style={{ width: 40, height: 30 }}
+        />
       </Pressable>
 
       <Pressable style={styles.classesButton} onPress={botaoAdmin}>
         <Text style={styles.buttonText}>Cadastrar administrador</Text>
-        <FontAwesome name="key" size={30} color="#ffffff" />
+        <Image
+          source={require('./../assets/icons/key-solid.png')}
+          style={{ width: 30, height: 30 }}
+        />
       </Pressable>
 
       <Text style={styles.textoOculto}>
         Todos os direitos reservados para @Templarios.
       </Text>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#E8E8E8",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E8E8E8',
     padding: 20,
   },
   senai: {
@@ -80,45 +91,43 @@ const styles = StyleSheet.create({
     height: 50,
   },
   classesButton: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "red",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: 'red',
     paddingVertical: 20,
     paddingHorizontal: 40,
     marginBottom: 20,
-    alignItems: "center",
-    width: "85%",
+    alignItems: 'center',
+    width: '85%',
   },
   buttonText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: RFValue(18),
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   logo: {
     width: 70,
     height: 53,
   },
-  ajuda: {
-
-  },
+  ajuda: {},
   BemVindo: {
-    color: "black",
-    textAlign: "center",
+    color: 'black',
+    textAlign: 'center',
     fontSize: 25,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 10,
     marginTop: 40,
   },
   TextoMedio: {
-    color: "black",
+    color: 'black',
     fontSize: RFValue(20),
-    fontWeight: "normal",
+    fontWeight: 'normal',
     marginBottom: 50,
   },
   textoOculto: {
-    color: "#C8C8C8",
-    fontSize:RFValue (10),
+    color: '#C8C8C8',
+    fontSize: RFValue(10),
   },
-});
+})
 
-export default TelaInicial;
+export default TelaInicial

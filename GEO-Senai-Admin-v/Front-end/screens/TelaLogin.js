@@ -71,17 +71,20 @@ const TelaLogin = ({ navigation }) => {
           onPress={() => setMostrarSenha(!mostrarSenha)}
           style={styles.eyeIcon}
         >
-          <FontAwesome
-            name={mostrarSenha ? "eye-slash" : "eye"}
-            size={20}
-            color="gray"
+           <Image
+            source={require("./../assets/icons/eye-regular.png")}
+            style={{ width: 25, height: 20 }}
           />
+
         </Pressable>
       </View>
 
       <Pressable style={styles.classesButton} onPress={realizarLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
-        <FontAwesome name="arrow-right" size={20} color="#ffffff" />
+        <Image
+            source={require("./../assets/icons/arrow-right-solid.png")}
+            style={{ width: 20, height: 20 }}
+          />
       </Pressable>
 
       <Text style={styles.textoOculto}>

@@ -6,6 +6,7 @@ import {
   Alert,
   StyleSheet,
   Text,
+  Image,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; 
 import { RFValue } from "react-native-responsive-fontsize";
@@ -75,7 +76,10 @@ const EditarVaga = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.voltarSeta} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={30} color="black" />
+      <Image
+          source={require('./../assets/icons/arrow-left-solid.png')}
+          style={{ width: 30, height: 30 }}
+        />
       </Pressable>
 
       <View style={styles.containerForm}>

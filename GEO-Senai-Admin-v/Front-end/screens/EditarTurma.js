@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import {
   View,
   TextInput,
@@ -6,29 +6,30 @@ import {
   Alert,
   StyleSheet,
   Text,
-} from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
+  Image,
+} from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const EditarTurma = ({ route, navigation }) => {
-  const { turma } = route.params;
+  const { turma } = route.params
 
-  const local = `http://10.110.12.19:8080/turmas/editar/${turma.id_turma}`;
-  const nuvem = `https://appsenai.azurewebsites.net/turmas/editar/${turma.id_turma}`;
+  const local = `http://10.110.12.19:8080/turmas/editar/${turma.id_turma}`
+  const nuvem = `https://appsenai.azurewebsites.net/turmas/editar/${turma.id_turma}`
 
-  const [codigoTurmaEdt, setCodigoTurmaEdt] = useState("");
-  const [nomeCursoEdt, setNomeCursoEdt] = useState("");
-  const [salaTurmaEdt, setSalaTurmaEdt] = useState("");
-  const [duracaoCursoEdt, setDuracaoCursoEdt] = useState("");
-  const [descCursoEdt, setDescCursoEdt] = useState("");
+  const [codigoTurmaEdt, setCodigoTurmaEdt] = useState('')
+  const [nomeCursoEdt, setNomeCursoEdt] = useState('')
+  const [salaTurmaEdt, setSalaTurmaEdt] = useState('')
+  const [duracaoCursoEdt, setDuracaoCursoEdt] = useState('')
+  const [descCursoEdt, setDescCursoEdt] = useState('')
 
   useEffect(() => {
-    setCodigoTurmaEdt(turma.codigo_turma);
-    setNomeCursoEdt(turma.nome_curso);
-    setSalaTurmaEdt(turma.sala_turma);
-    setDuracaoCursoEdt(turma.duracao_curso);
-    setDescCursoEdt(turma.desc_curso);
-  }, []);
+    setCodigoTurmaEdt(turma.codigo_turma)
+    setNomeCursoEdt(turma.nome_curso)
+    setSalaTurmaEdt(turma.sala_turma)
+    setDuracaoCursoEdt(turma.duracao_curso)
+    setDescCursoEdt(turma.desc_curso)
+  }, [])
 
   const salvarEdicao = () => {
     const turmaEditada = {
@@ -37,36 +38,42 @@ const EditarTurma = ({ route, navigation }) => {
       sala_turma: salaTurmaEdt,
       duracao_curso: duracaoCursoEdt,
       desc_curso: descCursoEdt,
-    };
+    }
 
     fetch(nuvem, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(turmaEditada),
     })
       .then((response) => {
         if (response.ok) {
-          Alert.alert("Sucesso", "Turma editada com sucesso. Por favor atualize a tela de turmas para vizualizar as alterações.");
-          navigation.navigate("TelaTurmas");
+          Alert.alert(
+            'Sucesso',
+            'Turma editada com sucesso. Por favor atualize a tela de turmas para vizualizar as alterações.'
+          )
+          navigation.navigate('TelaTurmas')
         } else {
-          throw new Error("Erro ao editar turma");
+          throw new Error('Erro ao editar turma')
         }
       })
       .catch((error) => {
-        console.error("Erro ao editar turma:", error);
+        console.error('Erro ao editar turma:', error)
         Alert.alert(
-          "Erro",
-          "Erro ao editar turma. Por favor, tente novamente mais tarde."
-        );
-      });
-  };
+          'Erro',
+          'Erro ao editar turma. Por favor, tente novamente mais tarde.'
+        )
+      })
+  }
 
   return (
     <View style={styles.container}>
       <Pressable style={styles.voltarSeta} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={30} color="black" />
+        <Image
+          source={require('./../assets/icons/arrow-left-solid.png')}
+          style={{ width: 30, height: 30 }}
+        />
       </Pressable>
 
       <View style={styles.containerForm}>
@@ -115,31 +122,31 @@ const EditarTurma = ({ route, navigation }) => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#E8E8E8",
+    backgroundColor: '#E8E8E8',
     flex: 1,
     padding: 20,
   },
   containerForm: {
-    verticalAlign: "middle",
+    verticalAlign: 'middle',
     marginTop: 20,
     padding: 10,
     borderRadius: 10,
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
   },
   containerBtnForm: {
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
   },
   voltarSeta: {
     marginTop: 40,
   },
   input: {
     height: 40,
-    borderColor: "#E8E8E8",
+    borderColor: '#E8E8E8',
     borderWidth: 2,
     borderRadius: 8,
     marginBottom: 10,
@@ -149,24 +156,24 @@ const styles = StyleSheet.create({
     height: 200,
   },
   btnEditar: {
-    backgroundColor: "#ff0000",
+    backgroundColor: '#ff0000',
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   buttonText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: RFValue(16),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     padding: 10,
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 20,
   },
   headerText: {
     fontSize: RFValue(20),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   seta: {
@@ -174,6 +181,6 @@ const styles = StyleSheet.create({
     height: 30,
     marginRight: 10,
   },
-});
+})
 
-export default EditarTurma;
+export default EditarTurma

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   View,
   TextInput,
@@ -9,35 +9,35 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
-} from "react-native";
-import { FontAwesome } from "@expo/vector-icons"; // Importe o ícone FontAwesome da biblioteca
-import { RFValue } from "react-native-responsive-fontsize";
+} from 'react-native'
+import { FontAwesome } from '@expo/vector-icons' // Importe o ícone FontAwesome da biblioteca
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const CadastroVaga = ({ navigation }) => {
-  const [imagemVaga, setImagemVaga] = useState("");
-  const [areaVaga, setAreaVaga] = useState("");
-  const [nomeVaga, setNomeVaga] = useState("");
-  const [descricaoVaga, setDescricaoVaga] = useState("");
-  const [requisitosVaga, setRequisitosVaga] = useState("");
-  const [cargaHorariaVaga, setCargaHorariaVaga] = useState("");
-  const [salarioVaga, setSalarioVaga] = useState("");
-  const [contatoVaga, setContatoVaga] = useState("");
+  const [imagemVaga, setImagemVaga] = useState('')
+  const [areaVaga, setAreaVaga] = useState('')
+  const [nomeVaga, setNomeVaga] = useState('')
+  const [descricaoVaga, setDescricaoVaga] = useState('')
+  const [requisitosVaga, setRequisitosVaga] = useState('')
+  const [cargaHorariaVaga, setCargaHorariaVaga] = useState('')
+  const [salarioVaga, setSalarioVaga] = useState('')
+  const [contatoVaga, setContatoVaga] = useState('')
 
-  const local = "http://10.110.12.19:8080/vagas/nova-vaga";
-  const nuvem = "https://appsenai.azurewebsites.net/vagas/nova-vaga";
+  const local = 'http://10.110.12.19:8080/vagas/nova-vaga'
+  const nuvem = 'https://appsenai.azurewebsites.net/vagas/nova-vaga'
 
   const enviarDados = () => {
     // Valide os campos, se necessário
     if (
-      areaVaga.trim() === "" ||
-      nomeVaga.trim() === "" ||
-      descricaoVaga.trim() === "" ||
-      requisitosVaga.trim() === "" ||
-      cargaHorariaVaga.trim() === "" ||
-      contatoVaga.trim() === ""
+      areaVaga.trim() === '' ||
+      nomeVaga.trim() === '' ||
+      descricaoVaga.trim() === '' ||
+      requisitosVaga.trim() === '' ||
+      cargaHorariaVaga.trim() === '' ||
+      contatoVaga.trim() === ''
     ) {
-      Alert.alert("Erro", "Por favor, preencha todos os campos obrigatórios");
-      return;
+      Alert.alert('Erro', 'Por favor, preencha todos os campos obrigatórios')
+      return
     }
 
     // Criar objeto de vaga com os dados
@@ -50,42 +50,51 @@ const CadastroVaga = ({ navigation }) => {
       carga_vaga: cargaHorariaVaga,
       salario_vaga: salarioVaga,
       contato_vaga: contatoVaga,
-    };
+    }
 
     // Enviar os dados para o backend
     fetch(nuvem, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(novaVaga),
     })
       .then((response) => {
         if (response.ok) {
           // Turma adicionada com sucesso, fazer algo, se necessário
-          Alert.alert("Sucesso", "Vaga postada com sucesso. Por favor atualize a tela de vagas para vizualizar as alterações.");
-          navigation.navigate("TelaVagas");
+          Alert.alert(
+            'Sucesso',
+            'Vaga postada com sucesso. Por favor atualize a tela de vagas para vizualizar as alterações.'
+          )
+          navigation.navigate('TelaVagas')
         } else {
-          throw new Error("Erro ao adicionar vaga");
+          throw new Error('Erro ao adicionar vaga')
         }
       })
       .catch((error) => {
-        console.error("Erro ao adicionar vaga:", error);
+        console.error('Erro ao adicionar vaga:', error)
         Alert.alert(
-          "Erro",
-          "Erro ao adicionar vaga. Por favor, tente novamente mais tarde."
-        );
-      });
-  };
+          'Erro',
+          'Erro ao adicionar vaga. Por favor, tente novamente mais tarde.'
+        )
+      })
+  }
 
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <Pressable style={styles.voltarSeta} onPress={() => navigation.goBack()}>
-          <FontAwesome name="arrow-left" size={30} color="black" />
+        <Pressable
+          style={styles.voltarSeta}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            source={require('./../assets/icons/arrow-left-solid.png')}
+            style={{ width: 30, height: 30 }}
+          />
         </Pressable>
 
         <View style={styles.containerForm}>
@@ -158,12 +167,12 @@ const CadastroVaga = ({ navigation }) => {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#E8E8E8",
+    backgroundColor: '#E8E8E8',
     flex: 1,
     padding: 20,
   },
@@ -174,17 +183,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 10,
     borderRadius: 10,
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
   },
   containerBtnForm: {
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
   },
   voltarSeta: {
     marginTop: 40,
   },
   input: {
     height: 40,
-    borderColor: "#E8E8E8", // Cor da borda
+    borderColor: '#E8E8E8', // Cor da borda
     borderWidth: 2, // Largura da borda
     borderRadius: 8, // Raio da borda
     marginBottom: 10,
@@ -194,24 +203,24 @@ const styles = StyleSheet.create({
     height: 100,
   },
   btnPublicar: {
-    backgroundColor: "#ff0000",
+    backgroundColor: '#ff0000',
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   buttonText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: RFValue(16),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     padding: 10,
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 20,
   },
   headerText: {
     fontSize: RFValue(20),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   seta: {
@@ -219,6 +228,6 @@ const styles = StyleSheet.create({
     height: 30,
     marginRight: 10,
   },
-});
+})
 
-export default CadastroVaga;
+export default CadastroVaga

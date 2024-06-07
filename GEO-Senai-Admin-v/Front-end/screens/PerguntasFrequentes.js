@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   View,
   Text,
@@ -6,46 +6,46 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-} from "react-native";
-import Collapsible from "react-native-collapsible";
-import { RFValue } from "react-native-responsive-fontsize";
-import { FontAwesome } from "@expo/vector-icons";
+} from 'react-native'
+import Collapsible from 'react-native-collapsible'
+import { RFValue } from 'react-native-responsive-fontsize'
+import { FontAwesome } from '@expo/vector-icons'
 
 const PerguntasFrequentes = ({ navigation }) => {
-  const [perguntaAtiva, setPerguntaAtiva] = useState(null);
+  const [perguntaAtiva, setPerguntaAtiva] = useState(null)
 
   const faqs = [
     {
-      pergunta: "• Como cadastrar uma turma/vaga de emprego nova no totem?",
+      pergunta: '• Como cadastrar uma turma/vaga de emprego nova no totem?',
       conteudoResposta: (
         <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
-            No menu inicial, acesse a tela de{" "}
+            No menu inicial, acesse a tela de{' '}
             <Text
-              style={{ color: "red", fontWeight: "bold" }}
-              onPress={() => navigation.navigate("TelaTurmas")}
+              style={{ color: 'red', fontWeight: 'bold' }}
+              onPress={() => navigation.navigate('TelaTurmas')}
             >
               Turmas
-            </Text>{" "}
-            /{" "}
+            </Text>{' '}
+            /{' '}
             <Text
-              style={{ color: "red", fontWeight: "bold" }}
-              onPress={() => navigation.navigate("TelaVagas")}
+              style={{ color: 'red', fontWeight: 'bold' }}
+              onPress={() => navigation.navigate('TelaVagas')}
             >
               Vagas
-            </Text>{" "}
-            e pressione o botão de <Text style={{ fontWeight: "bold" }}>+</Text>{" "}
+            </Text>{' '}
+            e pressione o botão de <Text style={{ fontWeight: 'bold' }}>+</Text>{' '}
             como indicado abaixo:
           </Text>
 
           <Image
-            source={require("./../assets/ajuda/botaomais.jpg")}
-            style={{ height: 80, width: "95%", alignSelf: "center" }}
+            source={require('./../assets/ajuda/botaomais.jpg')}
+            style={{ height: 80, width: '95%', alignSelf: 'center' }}
           />
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>
             Feito isso, basta preencher as informações e pressionar o botão
-            <Text style={{ fontWeight: "bold" }}> "Enviar"</Text>.
+            <Text style={{ fontWeight: 'bold' }}> "Enviar"</Text>.
           </Text>
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>
@@ -56,30 +56,30 @@ const PerguntasFrequentes = ({ navigation }) => {
       ),
     },
     {
-      pergunta: "• Como adicionar horários a uma turma?",
+      pergunta: '• Como adicionar horários a uma turma?',
       conteudoResposta: (
         <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
             No menu de turmas, selecione a turma escolhida e pressione o botão
-            <Text style={{ fontWeight: "bold" }}> "Horários"</Text> como
+            <Text style={{ fontWeight: 'bold' }}> "Horários"</Text> como
             indicado abaixo:
           </Text>
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/horariosinfo.jpg")}
+            source={require('./../assets/ajuda/horariosinfo.jpg')}
             style={styles.imagemFAQ}
           />
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>
-            Dentro dessa tela, pressione o botão de{" "}
-            <Text style={{ fontWeight: "bold" }}>lápis</Text> para adicionar os
+            Dentro dessa tela, pressione o botão de{' '}
+            <Text style={{ fontWeight: 'bold' }}>lápis</Text> para adicionar os
             respectivos horários. Basta pressionar o botão novamente para
             confirmar o envio.
           </Text>
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/horariostela.jpg")}
-            style={{ ...styles.imagemFAQ, width: "95%" }}
+            source={require('./../assets/ajuda/horariostela.jpg')}
+            style={{ ...styles.imagemFAQ, width: '95%' }}
           />
           <Text style={styles.txtResposta}>
             Caso não consiga ver os horários após o envio, pressione o botão de
@@ -89,7 +89,7 @@ const PerguntasFrequentes = ({ navigation }) => {
       ),
     },
     {
-      pergunta: "• Como adicionar um logotipo a minha vaga de emprego?  ",
+      pergunta: '• Como adicionar um logotipo a minha vaga de emprego?  ',
       conteudoResposta: (
         <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
@@ -98,53 +98,53 @@ const PerguntasFrequentes = ({ navigation }) => {
           </Text>
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/abriremoutraguia.jpg")}
+            source={require('./../assets/ajuda/abriremoutraguia.jpg')}
             style={styles.imagemFAQ}
           />
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>Copie o link da página.</Text>
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/copiarlink.jpg")}
+            source={require('./../assets/ajuda/copiarlink.jpg')}
             style={styles.imagemFAQ}
           />
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>
-            Na tela de cadastro de vaga {"("}ou edição, no caso de a vaga já
-            existir{")"}, cole o link da imagem e salve os dados.
+            Na tela de cadastro de vaga {'('}ou edição, no caso de a vaga já
+            existir{')'}, cole o link da imagem e salve os dados.
           </Text>
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/ondecolar.jpg")}
-            style={{ ...styles.imagemFAQ, width: "95%", height: 200 }}
+            source={require('./../assets/ajuda/ondecolar.jpg')}
+            style={{ ...styles.imagemFAQ, width: '95%', height: 200 }}
           />
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/linkcolado.jpg")}
-            style={{ ...styles.imagemFAQ, width: "95%", height: 200 }}
+            source={require('./../assets/ajuda/linkcolado.jpg')}
+            style={{ ...styles.imagemFAQ, width: '95%', height: 200 }}
           />
         </ScrollView>
       ),
     },
     {
-      pergunta: "• Como editar uma turma/vaga de emprego existente?  ",
+      pergunta: '• Como editar uma turma/vaga de emprego existente?  ',
       conteudoResposta: (
         <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
-            No menu inicial, acesse a tela de{" "}
+            No menu inicial, acesse a tela de{' '}
             <Text
-              style={{ color: "red", fontWeight: "bold" }}
-              onPress={() => navigation.navigate("TelaTurmas")}
+              style={{ color: 'red', fontWeight: 'bold' }}
+              onPress={() => navigation.navigate('TelaTurmas')}
             >
               Turmas
-            </Text>{" "}
-            /{" "}
+            </Text>{' '}
+            /{' '}
             <Text
-              style={{ color: "red", fontWeight: "bold" }}
-              onPress={() => navigation.navigate("TelaVagas")}
+              style={{ color: 'red', fontWeight: 'bold' }}
+              onPress={() => navigation.navigate('TelaVagas')}
             >
               Vagas
-            </Text>{" "}
+            </Text>{' '}
             e pressione aquela que você quiser editar.
           </Text>
           <View style={styles.espaco} />
@@ -154,13 +154,13 @@ const PerguntasFrequentes = ({ navigation }) => {
           </Text>
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/editar.jpg")}
-            style={{ ...styles.imagemFAQ, width: "95%", height: 200 }}
+            source={require('./../assets/ajuda/editar.jpg')}
+            style={{ ...styles.imagemFAQ, width: '95%', height: 200 }}
           />
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>
             Feito isso, basta preencher as informações e pressionar o botão
-            <Text style={{ fontWeight: "bold" }}> "Enviar"</Text> para salvar.
+            <Text style={{ fontWeight: 'bold' }}> "Enviar"</Text> para salvar.
           </Text>
           <View style={styles.espaco} />
           <Text style={styles.txtResposta}>
@@ -171,24 +171,24 @@ const PerguntasFrequentes = ({ navigation }) => {
       ),
     },
     {
-      pergunta: "• Como deletar uma turma/vaga de emprego existente?  ",
+      pergunta: '• Como deletar uma turma/vaga de emprego existente?  ',
       conteudoResposta: (
         <ScrollView style={{ height: 400 }}>
           <Text style={styles.txtResposta}>
-            No menu inicial, acesse a tela de{" "}
+            No menu inicial, acesse a tela de{' '}
             <Text
-              style={{ color: "red", fontWeight: "bold" }}
-              onPress={() => navigation.navigate("TelaTurmas")}
+              style={{ color: 'red', fontWeight: 'bold' }}
+              onPress={() => navigation.navigate('TelaTurmas')}
             >
               Turmas
-            </Text>{" "}
-            /{" "}
+            </Text>{' '}
+            /{' '}
             <Text
-              style={{ color: "red", fontWeight: "bold" }}
-              onPress={() => navigation.navigate("TelaVagas")}
+              style={{ color: 'red', fontWeight: 'bold' }}
+              onPress={() => navigation.navigate('TelaVagas')}
             >
               Vagas
-            </Text>{" "}
+            </Text>{' '}
             e pressione aquela que você quiser editar.
           </Text>
           <View style={styles.espaco} />
@@ -198,8 +198,8 @@ const PerguntasFrequentes = ({ navigation }) => {
           </Text>
           <View style={styles.espaco} />
           <Image
-            source={require("./../assets/ajuda/excluir.jpg")}
-            style={{ ...styles.imagemFAQ, width: "95%", height: 200 }}
+            source={require('./../assets/ajuda/excluir.jpg')}
+            style={{ ...styles.imagemFAQ, width: '95%', height: 200 }}
           />
           <View style={styles.espaco} />
           <View style={styles.espaco} />
@@ -210,23 +210,26 @@ const PerguntasFrequentes = ({ navigation }) => {
         </ScrollView>
       ),
     },
-  ];
+  ]
 
   const togglePergunta = (index) => {
-    setPerguntaAtiva(perguntaAtiva === index ? null : index);
-  };
+    setPerguntaAtiva(perguntaAtiva === index ? null : index)
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}></View>
 
       <View style={styles.header}>
-        <View style={{ alignSelf: "flex-start", marginTop: 40 }}>
+        <View style={{ alignSelf: 'flex-start', marginTop: 40 }}>
           <Pressable
             onPress={() => navigation.goBack()}
             style={styles.backButton}
           >
-            <FontAwesome name="arrow-left" size={25} color="black" />
+            <Image
+              source={require('./../assets/icons/arrow-left-solid.png')}
+              style={{ width: 30, height: 30 }}
+            />
           </Pressable>
         </View>
         <Text style={styles.titulo}>Ajuda</Text>
@@ -253,78 +256,78 @@ const PerguntasFrequentes = ({ navigation }) => {
         ))}
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#E8E8E8",
+    backgroundColor: '#E8E8E8',
     flex: 1,
     padding: 20,
   },
   header: {
-    alignItems: "center",
+    alignItems: 'center',
     marginTop: -40,
   },
   titulo: {
     fontSize: 25,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   quadro: {
     marginTop: 10,
-    alignSelf: "center",
-    width: "100%",
-    backgroundColor: "red",
+    alignSelf: 'center',
+    width: '100%',
+    backgroundColor: 'red',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "red",
+    borderColor: 'red',
   },
   perguntaQuadro: {
-    justifyContent: "space-between",
-    flexDirection: "row",
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
   perguntaTxt: {
     padding: 20,
-    fontSize:RFValue(18),
-    color: "white",
-    fontWeight: "bold",
+    fontSize: RFValue(18),
+    color: 'white',
+    fontWeight: 'bold',
   },
   respostaContainer: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 5,
   },
   txtResposta: {
     paddingHorizontal: 20,
     paddingVertical: 5,
-    fontSize:RFValue(18),
+    fontSize: RFValue(18),
   },
   imagemFAQ: {
     height: 300,
-    width: "80%",
-    alignSelf: "center",
+    width: '80%',
+    alignSelf: 'center',
   },
   link: {
-    color: "blue",
-    textDecorationLine: "underline",
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   cabecalho: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   backButton: {
-    textAlign: "left",
+    textAlign: 'left',
     marginTop: 40,
   },
   icon: {
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
     marginLeft: 20,
   },
   spanTxtVermelho: {
-    color: "red",
-    fontWeight: "bold",
+    color: 'red',
+    fontWeight: 'bold',
   },
   espaco: {
     height: 10,
   },
-});
+})
 
-export default PerguntasFrequentes;
+export default PerguntasFrequentes

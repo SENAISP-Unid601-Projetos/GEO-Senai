@@ -11,6 +11,7 @@ import {
   Modal,
   TextInput,
   Alert,
+  Image,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
@@ -84,7 +85,10 @@ const TelaTurmas = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+      <Image
+          source={require('./../assets/icons/arrow-left-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
       </Pressable>
 
       <Text style={styles.headerTitle}>Turmas</Text>
@@ -117,11 +121,17 @@ const TelaTurmas = ({ navigation }) => {
       </Pressable>
 
       <Pressable style={styles.addButton} onPress={adicionarTurma}>
-        <FontAwesome name="plus" size={24} color="white" />
+      <Image
+          source={require('./../assets/icons/plus-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
       </Pressable>
 
       <Pressable style={styles.updateButton} onPress={atualizarListaTurmas}>
-        <FontAwesome name="refresh" size={24} color="white" />
+      <Image
+          source={require('./../assets/icons/arrows-rotate-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
       </Pressable>
 
       <Modal

@@ -7,6 +7,7 @@ import {
   Modal,
   Alert,
   ScrollView,
+  Image,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
@@ -56,7 +57,10 @@ const InformacoesTurma = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={24} color="black" />
+      <Image
+          source={require('./../assets/icons/arrow-left-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
       </Pressable>
 
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
@@ -95,13 +99,19 @@ const InformacoesTurma = ({ route, navigation }) => {
 
       <Pressable style={styles.lixeiraButton} onPress={toggleModal}>
         <View style={styles.circle}>
-          <FontAwesome name="trash" size={24} color="white" />
+        <Image
+          source={require('./../assets/icons/trash-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
         </View>
       </Pressable>
 
       <Pressable style={styles.editarButton} onPress={editarTurma}>
         <View style={styles.circle}>
-          <FontAwesome name="pencil" size={24} color="white" />
+        <Image
+          source={require('./../assets/icons/pencil-solid.png')}
+          style={{ width: 24, height: 24 }}
+        />
         </View>
       </Pressable>
 
