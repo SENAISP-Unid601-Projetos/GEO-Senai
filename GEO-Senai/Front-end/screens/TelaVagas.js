@@ -26,7 +26,7 @@ const TelaVagas = ({ navigation }) => {
   const [atualizarLista, setAtualizarLista] = useState(true);
 
   const local = "http://10.110.12.19:8080/vagas";
-  const nuvem = "https://appsenai.azurewebsites.net/vagas";
+  const nuvem = "https://appbackend1.azurewebsites.net/vagas";
 
   useEffect(() => {
     fetch(nuvem, {

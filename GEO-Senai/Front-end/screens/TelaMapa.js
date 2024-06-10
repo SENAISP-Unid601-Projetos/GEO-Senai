@@ -72,19 +72,19 @@ const TelaMapa = ({ navigation }) => {
     switch (selectedValue) {
       case "Mapa área 1 (inferior)":
         navigation.navigate("TelaSalas", {
-          link: "https://appback.azurewebsites.net/salas/area1-inferior",
+          link: "https://appbackend1.azurewebsites.net/salas/area1-inferior",
           andar: "Área 1 (inferior)",
         });
         break;
       case "Mapa área 1 (superior)":
         navigation.navigate("TelaSalas", {
-          link: "https://appback.azurewebsites.net/salas/area1-superior",
+          link: "https://appbackend1.azurewebsites.net/salas/area1-superior",
           andar: "Área 1 (superior)",
         });
         break;
       case "Mapa área 2":
         navigation.navigate("TelaSalas", {
-          link: "https://appback.azurewebsites.net/salas/area2",
+          link: "https://appbackend1.azurewebsites.net/salas/area2",
           andar: "Área 2",
         });
         break;

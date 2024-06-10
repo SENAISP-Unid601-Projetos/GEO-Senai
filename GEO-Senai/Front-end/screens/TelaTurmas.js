@@ -27,7 +27,7 @@ const TelaTurmas = ({ navigation }) => {
   const [existeAnterior, setExisteAnterior] = useState(false);
 
   const local = "http://10.110.12.19:8080/turmas";
-  const nuvem = "https://appsenai.azurewebsites.net/turmas";
+  const nuvem = "https://appbackend1.azurewebsites.net/turmas";
 
   useEffect(() => {
     fetch(nuvem, {

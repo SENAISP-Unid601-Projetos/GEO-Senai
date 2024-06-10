@@ -21,7 +21,7 @@ const TelaSalas = ({ navigation, route }) => {
 
   const { link, andar } = route.params;
 
-  const nuvem = "https://appsenai.azurewebsites.net/salas";
+  const nuvem = "https://appbackend1.azurewebsites.net/salas";
 
   useEffect(() => {
     if (atualizarLista) {
