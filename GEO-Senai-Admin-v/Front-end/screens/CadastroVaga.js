@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
+  Image
 } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons' // Importe o ícone FontAwesome da biblioteca
 import { RFValue } from 'react-native-responsive-fontsize'
@@ -24,7 +25,7 @@ const CadastroVaga = ({ navigation }) => {
   const [contatoVaga, setContatoVaga] = useState('')
 
   const local = 'http://10.110.12.19:8080/vagas/nova-vaga'
-  const nuvem = 'https://appsenai.azurewebsites.net/vagas/nova-vaga'
+  const nuvem = 'https://appbackend1.azurewebsites.net/vagas/nova-vaga'
 
   const enviarDados = () => {
     // Valide os campos, se necessário

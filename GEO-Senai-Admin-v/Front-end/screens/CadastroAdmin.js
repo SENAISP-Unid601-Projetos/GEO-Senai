@@ -20,7 +20,7 @@ const CadastroAdmin = ({ navigation }) => {
   const [senha2, setSenha2] = useState("");
 
   const local = "http://10.110.12.19:8080/admin/cadastrar";
-  const nuvem = "https://appsenai.azurewebsites.net/admin/cadastrar";
+  const nuvem = "https://appbackend1.azurewebsites.net/admin/cadastrar";
 
   const enviarDados = () => {
     // Valide os campos, se necessário

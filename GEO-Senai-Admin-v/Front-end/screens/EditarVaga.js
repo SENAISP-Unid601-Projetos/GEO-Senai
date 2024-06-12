@@ -15,7 +15,7 @@ const EditarVaga = ({ route, navigation }) => {
   const { vaga } = route.params;
 
   const local = `http://10.110.12.19:8080/vagas/editar/${vaga.id_vaga}`;
-  const nuvem = `https://appsenai.azurewebsites.net/vagas/editar/${vaga.id_vaga}`;
+  const nuvem = `https://appbackend1.azurewebsites.net/vagas/editar/${vaga.id_vaga}`;
 
   const [imagemVagaEdt, setImagemVagaEdt] = useState("");
   const [areaVagaEdt, setAreaVagaEdt] = useState("");

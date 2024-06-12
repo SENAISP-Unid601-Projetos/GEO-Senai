@@ -10,7 +10,7 @@ const TelaFoto = ({ route, navigation }) => {
     const getImage = async () => {
       try {
         // URL da sua API
-        const apiUrl = `http://localhost:8080/salas/images/${sala.nomeSala}.png`;
+        const apiUrl = `http://10.110.12.44:8080/salas/images/${sala.nomeSala}.png`;
 
         // Fazendo a solicitação GET usando fetch
         const response = await fetch(apiUrl);

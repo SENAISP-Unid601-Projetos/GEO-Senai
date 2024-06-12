@@ -17,10 +17,10 @@ const TelaVagas = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false)
 
   const local = 'http://10.110.12.19:8080/vagas'
-  const nuvem = 'https://appsenai.azurewebsites.net/vagas'
+  const nuvem = 'https://appbackend1.azurewebsites.net/vagas'
 
   const localD = 'http://10.110.12.19:8080/vagas/deletar/all'
-  const nuvemD = 'https://appsenai.azurewebsites.net/vagas/deletar/all'
+  const nuvemD = 'https://appbackend1.azurewebsites.net/vagas/deletar/all'
 
   const botaoMais = () => {
     navigation.navigate('CadastroVaga')

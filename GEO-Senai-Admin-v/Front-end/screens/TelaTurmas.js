@@ -23,10 +23,10 @@ const TelaTurmas = ({ navigation }) => {
   const [searchText, setSearchText] = useState('');
 
   const local = "http://10.110.12.19:8080/turmas";
-  const nuvem = "https://appsenai.azurewebsites.net/turmas";
+  const nuvem = "https://appbackend1.azurewebsites.net/turmas";
 
   const localD = "http://10.110.12.19:8080/turmas/deletar/all";
-  const nuvemD = "https://appsenai.azurewebsites.net/turmas/deletar/all";
+  const nuvemD = "https://appbackend1.azurewebsites.net/turmas/deletar/all";
 
   useEffect(() => {
     fetch(nuvem, {
